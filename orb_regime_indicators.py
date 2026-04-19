@@ -29,12 +29,15 @@ Also requires the pre-converted CSV at the path set in CSV_FILE.
 
 import csv
 import json
+import lzma
 import math
 import datetime
+import os
 from collections import defaultdict
 
 # ── Config ────────────────────────────────────────────────────────────────────
-CSV_FILE    = "/Users/ashok/backups/QQQ/qqq_1m_2018_2026.csv"
+_HERE       = os.path.dirname(os.path.abspath(__file__))
+CSV_FILE    = os.path.join(_HERE, "qqq_1m_2018_2026.csv.xz")
 TRADES_FILE = "/tmp/orb_paper_results.json"
 OUT_FILE    = "/tmp/orb_regime_results.json"
 
@@ -47,13 +50,15 @@ MACD_SIGNAL = 9
 # ── Bar Loading ───────────────────────────────────────────────────────────────
 def load_csv_all_bars(csv_path: str) -> dict:
     """
-    Load pre-converted CSV (date, time, open, high, low, close, volume).
+    Load CSV (plain or .xz compressed) with columns:
+        date, time, open, high, low, close, volume
     Returns: {date_str: [(time_str, o, h, l, c, v), ...]} sorted by time.
     """
     print(f"Loading {csv_path} …", flush=True)
     daily = defaultdict(list)
     count = 0
-    with open(csv_path, newline="") as f:
+    opener = lzma.open if csv_path.endswith(".xz") else open
+    with opener(csv_path, "rt", newline="") as f:
         reader = csv.reader(f)
         next(reader)  # skip header
         for row in reader:

@@ -247,35 +247,9 @@ opening-range-breakout/
 
 ### Requirements
 
-**No external dependencies.** Both scripts use Python stdlib only (`csv`, `json`, `math`, `datetime`, `collections`). Python 3.9+ required (for `zoneinfo`).
+**No external dependencies.** Both scripts use Python stdlib only (`csv`, `json`, `lzma`, `math`, `datetime`, `os`, `collections`). Python 3.3+ required.
 
-### Data Preparation (one-time)
-
-Convert the Databento DBN file to a plain CSV once:
-
-```bash
-python3 - <<'EOF'
-import databento as db
-from zoneinfo import ZoneInfo
-import datetime, csv
-
-NY = ZoneInfo("America/New_York")
-store = db.DBNStore.from_file("/path/to/xnas-itch-*.ohlcv-1m.dbn.zst")
-with open("/path/to/qqq_1m_2018_2026.csv", "w", newline="") as f:
-    w = csv.writer(f)
-    w.writerow(["date", "time", "open", "high", "low", "close", "volume"])
-    for rec in store:
-        dt = datetime.datetime.fromtimestamp(rec.ts_event/1e9,
-               tz=datetime.timezone.utc).astimezone(NY)
-        t = dt.time().replace(second=0, microsecond=0)
-        if datetime.time(9,30) <= t < datetime.time(16,0):
-            w.writerow([dt.strftime("%Y-%m-%d"), dt.strftime("%H:%M"),
-                        rec.open/1e9, rec.high/1e9, rec.low/1e9,
-                        rec.close/1e9, rec.volume])
-EOF
-```
-
-After this step, databento is no longer needed.
+The data file **`qqq_1m_2018_2026.csv.xz`** ships with this repo (6.5 MB xz-compressed, 38 MB uncompressed, 769,808 bars). Scripts read it directly — no decompression step needed.
 
 ### Run the Backtest
 

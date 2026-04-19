@@ -29,12 +29,16 @@ Outputs:
 import sys
 import csv
 import json
+import lzma
 import math
 import datetime
+import os
 from collections import defaultdict
 
 # ── Configuration ─────────────────────────────────────────────────────────────
-CSV_FILE = "/Users/ashok/backups/QQQ/qqq_1m_2018_2026.csv"
+# Compressed data file ships with the repo; no external dependencies needed.
+_HERE    = os.path.dirname(os.path.abspath(__file__))
+CSV_FILE = os.path.join(_HERE, "qqq_1m_2018_2026.csv.xz")
 OUT_FILE = "/tmp/orb_paper_results.json"
 
 ORB_END_TIME   = datetime.time(9, 44)   # last bar included in ORB (09:44 close)
@@ -63,15 +67,16 @@ MIN_ORB_RANGE = 0.10   # $0.10
 # ── Step 1: Load CSV → {date: [(time, o, h, l, c, v), ...]} ─────────────────
 def load_csv_to_daily_bars(csv_path: str) -> dict:
     """
-    Read the pre-converted CSV (date, time, open, high, low, close, volume).
+    Read the CSV (plain or .xz compressed) with columns:
+        date, time, open, high, low, close, volume
     Returns: dict[date_str → list[(time_str HH:MM, o, h, l, c, v)]]
-    Already filtered to RTH-only rows.
     """
     print(f"Loading {csv_path} …", flush=True)
     daily: dict = defaultdict(list)
     total = 0
 
-    with open(csv_path, newline="") as f:
+    opener = lzma.open if csv_path.endswith(".xz") else open
+    with opener(csv_path, "rt", newline="") as f:
         reader = csv.reader(f)
         next(reader)  # skip header
         for row in reader:
