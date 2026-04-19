@@ -27,19 +27,15 @@ Outputs:
 """
 
 import sys
+import csv
 import json
 import math
 import datetime
 from collections import defaultdict
-from zoneinfo import ZoneInfo
-
-import databento as db
 
 # ── Configuration ─────────────────────────────────────────────────────────────
-DBN_FILE = "/Users/ashok/backups/QQQ/2024/XNAS-20260315-V375LGUJ7A/xnas-itch-20180501-20260313.ohlcv-1m.dbn.zst"
+CSV_FILE = "/Users/ashok/backups/QQQ/qqq_1m_2018_2026.csv"
 OUT_FILE = "/tmp/orb_paper_results.json"
-
-NY = ZoneInfo("America/New_York")
 
 ORB_END_TIME   = datetime.time(9, 44)   # last bar included in ORB (09:44 close)
 ENTRY_MIN_TIME = datetime.time(9, 45)   # earliest entry bar
@@ -64,42 +60,25 @@ TIMED_EXITS = {"T30": 30, "T60": 60}
 MIN_ORB_RANGE = 0.10   # $0.10
 
 
-# ── Step 1: Load DBN → {date: [(time, o, h, l, c, v), ...]} ──────────────────
-def load_dbn_to_daily_bars(dbn_path: str) -> dict:
+# ── Step 1: Load CSV → {date: [(time, o, h, l, c, v), ...]} ─────────────────
+def load_csv_to_daily_bars(csv_path: str) -> dict:
     """
-    Read the entire DBN file and bucket bars by NY trading date.
+    Read the pre-converted CSV (date, time, open, high, low, close, volume).
     Returns: dict[date_str → list[(time_str HH:MM, o, h, l, c, v)]]
-    Only regular-trading-hours bars (09:30–15:59) are kept.
+    Already filtered to RTH-only rows.
     """
-    print(f"Loading {dbn_path} …", flush=True)
-    store = db.DBNStore.from_file(dbn_path)
-
+    print(f"Loading {csv_path} …", flush=True)
     daily: dict = defaultdict(list)
     total = 0
 
-    for rec in store:
-        ts_ns = rec.ts_event
-        # Convert UTC ns → NY datetime
-        dt_utc = datetime.datetime.fromtimestamp(ts_ns / 1e9, tz=datetime.timezone.utc)
-        dt_ny  = dt_utc.astimezone(NY)
+    with open(csv_path, newline="") as f:
+        reader = csv.reader(f)
+        next(reader)  # skip header
+        for row in reader:
+            d, t, o, h, l, c, v = row
+            daily[d].append((t, float(o), float(h), float(l), float(c), int(v)))
+            total += 1
 
-        bar_time = dt_ny.time().replace(second=0, microsecond=0)
-        if bar_time < RTH_START or bar_time >= RTH_END:
-            continue  # skip pre/post-market bars
-
-        date_str = dt_ny.strftime("%Y-%m-%d")
-        time_str = dt_ny.strftime("%H:%M")
-
-        o = rec.open  / 1e9
-        h = rec.high  / 1e9
-        l = rec.low   / 1e9
-        c = rec.close / 1e9
-        v = rec.volume
-
-        daily[date_str].append((time_str, o, h, l, c, v))
-        total += 1
-
-    # Sort each day's bars chronologically
     for d in daily:
         daily[d].sort(key=lambda x: x[0])
 
@@ -532,7 +511,7 @@ def print_exit_reason_table(all_trades: list, cfg: str):
 # ── Main ──────────────────────────────────────────────────────────────────────
 def main():
     # 1. Load data
-    daily_bars = load_dbn_to_daily_bars(DBN_FILE)
+    daily_bars = load_csv_to_daily_bars(CSV_FILE)
 
     # 2. Run backtest
     all_trades = run_backtest(daily_bars)

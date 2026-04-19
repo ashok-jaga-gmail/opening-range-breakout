@@ -23,26 +23,20 @@ then runs stratified performance analysis.
 Usage:
     python3 orb_regime_indicators.py
 
-Requires /tmp/orb_paper_results.json from orb_paper_backtest.py to exist,
-OR pass DBN_ONLY=1 to compute from raw data (slower).
+Requires /tmp/orb_paper_results.json from orb_paper_backtest.py to exist.
+Also requires the pre-converted CSV at the path set in CSV_FILE.
 """
 
+import csv
 import json
 import math
 import datetime
 from collections import defaultdict
-from zoneinfo import ZoneInfo
-
-import databento as db
 
 # ── Config ────────────────────────────────────────────────────────────────────
-DBN_FILE      = "/Users/ashok/backups/QQQ/2024/XNAS-20260315-V375LGUJ7A/xnas-itch-20180501-20260313.ohlcv-1m.dbn.zst"
-TRADES_FILE   = "/tmp/orb_paper_results.json"
-OUT_FILE      = "/tmp/orb_regime_results.json"
-
-NY = ZoneInfo("America/New_York")
-RTH_START = datetime.time(9, 30)
-RTH_END   = datetime.time(16, 0)
+CSV_FILE    = "/Users/ashok/backups/QQQ/qqq_1m_2018_2026.csv"
+TRADES_FILE = "/tmp/orb_paper_results.json"
+OUT_FILE    = "/tmp/orb_regime_results.json"
 
 RSI_PERIOD  = 14
 MACD_FAST   = 12
@@ -51,26 +45,21 @@ MACD_SIGNAL = 9
 
 
 # ── Bar Loading ───────────────────────────────────────────────────────────────
-def load_dbn_all_bars(dbn_path: str) -> dict:
+def load_csv_all_bars(csv_path: str) -> dict:
     """
-    Load ALL 1-min bars (RTH only) into daily dict.
+    Load pre-converted CSV (date, time, open, high, low, close, volume).
     Returns: {date_str: [(time_str, o, h, l, c, v), ...]} sorted by time.
     """
-    print(f"Loading {dbn_path} …", flush=True)
-    store = db.DBNStore.from_file(dbn_path)
+    print(f"Loading {csv_path} …", flush=True)
     daily = defaultdict(list)
     count = 0
-    for rec in store:
-        ts_ns  = rec.ts_event
-        dt_utc = datetime.datetime.fromtimestamp(ts_ns / 1e9, tz=datetime.timezone.utc)
-        dt_ny  = dt_utc.astimezone(NY)
-        t      = dt_ny.time().replace(second=0, microsecond=0)
-        if t < RTH_START or t >= RTH_END:
-            continue
-        d = dt_ny.strftime("%Y-%m-%d")
-        s = dt_ny.strftime("%H:%M")
-        daily[d].append((s, rec.open/1e9, rec.high/1e9, rec.low/1e9, rec.close/1e9, rec.volume))
-        count += 1
+    with open(csv_path, newline="") as f:
+        reader = csv.reader(f)
+        next(reader)  # skip header
+        for row in reader:
+            d, t, o, h, l, c, v = row
+            daily[d].append((t, float(o), float(h), float(l), float(c), int(v)))
+            count += 1
     for d in daily:
         daily[d].sort()
     print(f"  {count:,} bars across {len(daily)} days.", flush=True)
@@ -804,7 +793,7 @@ def main():
     print(f"  {len(trades)} trades loaded.")
 
     # Load raw bars for indicator computation
-    daily_bars = load_dbn_all_bars(DBN_FILE)
+    daily_bars = load_csv_all_bars(CSV_FILE)
 
     # Annotate trades with regime indicators
     trades = annotate_trades(trades, daily_bars)
