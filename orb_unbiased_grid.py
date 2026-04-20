@@ -33,6 +33,9 @@ OPT_DIRS = {
 YEARS_ACTIVE = {"2025", "2026"}
 MAX_TRADES_PER_DAY = 4
 
+# EOD exit times to test
+EOD_TIMES = ["15:45", "15:50", "15:55", "15:59"]
+
 # Expanded grid
 PT1_OPTIONS = [25, 50, 75, 100]
 PT2_OPTIONS = [100, 125, 150, 175, 200]
@@ -172,7 +175,7 @@ def load_option_bars(date_str, year, right="call"):
 # ---------------------------------------------------------------------------
 # Step 4: Simulate one option trade (unbiased: enter at next-bar OPEN)
 # ---------------------------------------------------------------------------
-def simulate_trade(strike_bars, signal_time, direction, pt1, pt2, pt3, sl, weights):
+def simulate_trade(strike_bars, signal_time, direction, pt1, pt2, pt3, sl, weights, eod_time="15:55"):
     """
     Enter at OPEN of bar at/after next_minute(signal_time).
     Conservative: if same bar hits both PT and stop, stop wins (pre-T1 phase).
@@ -208,7 +211,7 @@ def simulate_trade(strike_bars, signal_time, direction, pt1, pt2, pt3, sl, weigh
         bar = strike_bars[t]
         if bar["close"] <= 0:
             continue
-        eod = t >= "15:55"
+        eod = t >= eod_time
 
         h, l, c = bar["high"], bar["low"], bar["close"]
         max_opt = max(max_opt, h)
@@ -422,56 +425,8 @@ def main():
         if pt3 <= pt2: continue
         configs.append((pt1, pt2, pt3, sl, wt_lbl, wt, strike_lbl))
 
-    print(f"\nRunning {len(configs)} configs × {total_sigs} signals …", flush=True)
+    print(f"\nRunning {len(configs)} configs × {total_sigs} signals × {len(EOD_TIMES)} EOD times …", flush=True)
 
-    # -- Run grid ------------------------------------------------------------
-    # For each config, collect pnls by tier and overall
-    all_results = []
-
-    for i, (pt1, pt2, pt3, sl, wt_lbl, wt, strike_lbl) in enumerate(configs):
-        if i % 100 == 0:
-            print(f"  {i}/{len(configs)} …", flush=True)
-
-        pnls_all = []
-        pnls_by_tier = defaultdict(list)
-
-        for sd in signal_data:
-            bars = sd["strikes"].get(strike_lbl)
-            if bars is None:
-                continue
-            pnl = simulate_trade(
-                bars, sd["signal_time"], sd["direction"],
-                pt1, pt2, pt3, sl, wt
-            )
-            if pnl is not None:
-                pnls_all.append(pnl)
-                pnls_by_tier[sd["tier"]].append(pnl)
-
-        if len(pnls_all) < 50:
-            continue
-
-        s_all = compute_stats(pnls_all)
-        if not s_all:
-            continue
-
-        tier_stats = {}
-        for tier in range(1, MAX_TRADES_PER_DAY + 1):
-            ps = pnls_by_tier.get(tier, [])
-            if ps:
-                tier_stats[f"trade{tier}"] = compute_stats(ps)
-
-        label = f"PT{pt1}/{pt2}/{pt3}_SL{sl}_{strike_lbl}_{wt_lbl}"
-        all_results.append({
-            "label":  label,
-            "pt1": pt1, "pt2": pt2, "pt3": pt3,
-            "sl": sl, "strike": strike_lbl, "weights": wt_lbl,
-            "stats": s_all,
-            "by_tier": tier_stats,
-        })
-
-    all_results.sort(key=sort_key)
-
-    # -- Print results -------------------------------------------------------
     SEP = "=" * 120
     HDR = f"  {'#':>3}  {'n':>4}  {'WR%':>5}  {'PF':>5}  {'Exp':>7}  {'Total':>9}  {'MaxDD':>8}  {'Sharpe':>6}  {'Calmar':>6}  Config"
     DIV = f"  {'-'*3}  {'-'*4}  {'-'*5}  {'-'*5}  {'-'*7}  {'-'*9}  {'-'*8}  {'-'*6}  {'-'*6}  {'-'*55}"
@@ -482,77 +437,121 @@ def main():
               f"${s['expect']:>+6.2f}  ${s['total']:>+8.2f}  "
               f"${s['max_dd']:>7.2f}  {s['sharpe']:>6.2f}  {str(s['calmar']):>6}  {r['label']}")
 
+    all_eod_results = {}   # eod_time -> sorted list of results
+    best_by_eod = {}       # eod_time -> best result
+
+    for eod_time in EOD_TIMES:
+        print(f"\n{'='*60}", flush=True)
+        print(f"  EOD exit: {eod_time}", flush=True)
+        print(f"{'='*60}", flush=True)
+
+        all_results = []
+
+        for i, (pt1, pt2, pt3, sl, wt_lbl, wt, strike_lbl) in enumerate(configs):
+            if i % 200 == 0:
+                print(f"  {i}/{len(configs)} …", flush=True)
+
+            pnls_all = []
+            pnls_by_tier = defaultdict(list)
+
+            for sd in signal_data:
+                bars = sd["strikes"].get(strike_lbl)
+                if bars is None:
+                    continue
+                pnl = simulate_trade(
+                    bars, sd["signal_time"], sd["direction"],
+                    pt1, pt2, pt3, sl, wt, eod_time=eod_time
+                )
+                if pnl is not None:
+                    pnls_all.append(pnl)
+                    pnls_by_tier[sd["tier"]].append(pnl)
+
+            if len(pnls_all) < 50:
+                continue
+
+            s_all = compute_stats(pnls_all)
+            if not s_all:
+                continue
+
+            tier_stats = {}
+            for tier in range(1, MAX_TRADES_PER_DAY + 1):
+                ps = pnls_by_tier.get(tier, [])
+                if ps:
+                    tier_stats[f"trade{tier}"] = compute_stats(ps)
+
+            label = f"PT{pt1}/{pt2}/{pt3}_SL{sl}_{strike_lbl}_{wt_lbl}"
+            all_results.append({
+                "label":  label,
+                "pt1": pt1, "pt2": pt2, "pt3": pt3,
+                "sl": sl, "strike": strike_lbl, "weights": wt_lbl,
+                "stats": s_all,
+                "by_tier": tier_stats,
+            })
+
+        all_results.sort(key=sort_key)
+        all_eod_results[eod_time] = all_results
+        if all_results:
+            best_by_eod[eod_time] = all_results[0]
+
+        # Top 10 by Calmar for this EOD time
+        print(f"\n  TOP 10 BY CALMAR — EOD {eod_time}")
+        print(f"  {HDR}")
+        print(f"  {DIV}")
+        for rank, r in enumerate(all_results[:10], 1):
+            print_row(rank, r)
+
+        # Top 5 by P&L
+        by_pnl = sorted(all_results, key=lambda r: -(r["stats"]["total"] if isinstance(r["stats"]["total"], (int, float)) else 0))
+        print(f"\n  TOP 5 BY TOTAL P&L — EOD {eod_time}")
+        print(f"  {HDR}")
+        print(f"  {DIV}")
+        for rank, r in enumerate(by_pnl[:5], 1):
+            print_row(rank, r)
+
+        # Best config tier breakdown
+        if all_results:
+            best = all_results[0]
+            tier_hdr = f"    {'Tier':>6}  {'n':>4}  {'WR%':>5}  {'Total':>9}  {'MaxDD':>8}  {'Calmar':>7}"
+            print(f"\n  BEST ({best['label']}) tier breakdown:")
+            print(tier_hdr)
+            for tier in sorted(best["by_tier"]):
+                ts = best["by_tier"][tier]
+                print(f"    {tier:>6}  {ts['n']:>4}  {ts['wr']:>5.1f}  "
+                      f"${ts['total']:>+8.2f}  ${ts['max_dd']:>7.2f}  {str(ts['calmar']):>7}")
+
+    # -- Cross-EOD comparison summary ----------------------------------------
     print(f"\n{SEP}")
-    print("  TOP 20 BY CALMAR — Unbiased, All Breakouts, Up to 4/day")
+    print(f"  CROSS-EOD COMPARISON — Best config per EOD time")
     print(SEP)
-    print(HDR); print(DIV)
-    for rank, r in enumerate(all_results[:20], 1):
-        print_row(rank, r)
+    print(f"  {'EOD':>5}  {'WR%':>5}  {'Total':>10}  {'MaxDD':>8}  {'Calmar':>7}  Config")
+    print(f"  {'-'*5}  {'-'*5}  {'-'*10}  {'-'*8}  {'-'*7}  {'-'*50}")
+    for eod_time in EOD_TIMES:
+        if eod_time in best_by_eod:
+            b = best_by_eod[eod_time]
+            s = b["stats"]
+            print(f"  {eod_time}  {s['wr']:>5.1f}  ${s['total']:>+9,.2f}  "
+                  f"${s['max_dd']:>7,.2f}  {str(s['calmar']):>7}  {b['label']}")
 
-    by_pnl = sorted(all_results, key=lambda r: -(r["stats"]["total"] if isinstance(r["stats"]["total"], (int, float)) else 0))
+    # -- Monthly breakdown for the overall best config -----------------------
+    # Find the single best config across all EOD times by Calmar
+    overall_best_eod = max(best_by_eod, key=lambda e: (
+        best_by_eod[e]["stats"]["calmar"] if best_by_eod[e]["stats"]["calmar"] != "inf" else 9999
+    ))
+    overall_best = best_by_eod[overall_best_eod]
     print(f"\n{SEP}")
-    print("  TOP 10 BY TOTAL P&L")
+    print(f"  OVERALL BEST: {overall_best['label']} @ EOD {overall_best_eod}")
     print(SEP)
-    print(HDR); print(DIV)
-    for rank, r in enumerate(by_pnl[:10], 1):
-        print_row(rank, r)
 
-    by_wr = sorted(all_results, key=lambda r: -r["stats"]["wr"])
-    print(f"\n{SEP}")
-    print("  TOP 10 BY WIN RATE")
-    print(SEP)
-    print(HDR); print(DIV)
-    for rank, r in enumerate(by_wr[:10], 1):
-        print_row(rank, r)
-
-    # -- Best config detail --------------------------------------------------
-    best = all_results[0]
-    print(f"\n{SEP}")
-    print(f"  BEST CONFIG: {best['label']}")
-    print(SEP)
-    print(f"\n  Overall:  n={best['stats']['n']}  WR={best['stats']['wr']}%  "
-          f"Total=${best['stats']['total']:+,.2f}  MaxDD=${best['stats']['max_dd']:,.2f}  "
-          f"Calmar={best['stats']['calmar']}")
-
-    print(f"\n  By trade tier:")
-    tier_hdr = f"    {'Tier':>5}  {'n':>4}  {'WR%':>5}  {'Total':>9}  {'MaxDD':>8}  {'Calmar':>7}"
-    print(tier_hdr)
-    print(f"    {'-'*5}  {'-'*4}  {'-'*5}  {'-'*9}  {'-'*8}  {'-'*7}")
-    for tier in sorted(best["by_tier"]):
-        ts = best["by_tier"][tier]
-        print(f"    {tier:>5}  {ts['n']:>4}  {ts['wr']:>5.1f}  "
-              f"${ts['total']:>+8.2f}  ${ts['max_dd']:>7.2f}  {str(ts['calmar']):>7}")
-
-    # -- Tier profitability across current Golden config ---------------------
-    print(f"\n{SEP}")
-    print(f"  GOLDEN BASELINE (PT50/150/200_SL75_ATM_equal) — Tier Breakdown")
-    print(SEP)
-    golden = next((r for r in all_results if r["label"] == "PT50/150/200_SL75_ATM_equal"), None)
-    if golden:
-        print(f"  Overall:  n={golden['stats']['n']}  WR={golden['stats']['wr']}%  "
-              f"Total=${golden['stats']['total']:+,.2f}  Calmar={golden['stats']['calmar']}")
-        print(f"\n  By trade tier:")
-        print(tier_hdr)
-        print(f"    {'-'*5}  {'-'*4}  {'-'*5}  {'-'*9}  {'-'*8}  {'-'*7}")
-        for tier in sorted(golden["by_tier"]):
-            ts = golden["by_tier"][tier]
-            print(f"    {tier:>5}  {ts['n']:>4}  {ts['wr']:>5.1f}  "
-                  f"${ts['total']:>+8.2f}  ${ts['max_dd']:>7.2f}  {str(ts['calmar']):>7}")
-    else:
-        print("  Golden baseline config not found in results.")
-
-    # -- Monthly breakdown of best config ------------------------------------
-    print(f"\n  Monthly breakdown of best config ({best['label']}):")
-
-    wt = WEIGHT_OPTIONS[best["weights"]]
+    wt = WEIGHT_OPTIONS[overall_best["weights"]]
     by_month = defaultdict(list)
     for sd in signal_data:
-        bars = sd["strikes"].get(best["strike"])
+        bars = sd["strikes"].get(overall_best["strike"])
         if bars is None:
             continue
         pnl = simulate_trade(
             bars, sd["signal_time"], sd["direction"],
-            best["pt1"], best["pt2"], best["pt3"], best["sl"], wt
+            overall_best["pt1"], overall_best["pt2"], overall_best["pt3"],
+            overall_best["sl"], wt, eod_time=overall_best_eod
         )
         if pnl is not None:
             by_month[sd["date"][:7]].append(pnl)
@@ -565,13 +564,26 @@ def main():
 
     # -- Save ----------------------------------------------------------------
     os.makedirs(os.path.dirname(OUT_FILE), exist_ok=True)
+    save_data = {
+        "signal_counts": {f"trade{k}": v for k, v in by_tier.items()},
+        "eod_times": EOD_TIMES,
+        "best_by_eod": {
+            eod: {
+                "label": best_by_eod[eod]["label"],
+                "stats": best_by_eod[eod]["stats"],
+            }
+            for eod in EOD_TIMES if eod in best_by_eod
+        },
+    }
+    for eod_time in EOD_TIMES:
+        results = all_eod_results.get(eod_time, [])
+        by_pnl_eod = sorted(results, key=lambda r: -(r["stats"]["total"] if isinstance(r["stats"]["total"], (int, float)) else 0))
+        save_data[f"eod_{eod_time.replace(':','')}"] = {
+            "top_by_calmar": results[:20],
+            "top_by_pnl": by_pnl_eod[:10],
+        }
     with open(OUT_FILE, "w") as f:
-        json.dump({
-            "top_by_calmar": all_results[:30],
-            "top_by_pnl":    by_pnl[:10],
-            "top_by_wr":     by_wr[:10],
-            "signal_counts": {f"trade{k}": v for k, v in by_tier.items()},
-        }, f, indent=2)
+        json.dump(save_data, f, indent=2)
     print(f"\n  Results saved → {OUT_FILE}")
 
 

@@ -141,7 +141,7 @@ def simulate_trade(strike_bars, signal_time):
     for t in times[start_idx:]:
         bar = strike_bars[t]
         if bar["close"] <= 0: continue
-        eod = t >= "15:55"
+        eod = t >= "15:59"
         h, l, c = bar["high"], bar["low"], bar["close"]
         max_opt = max(max_opt, h)
 

@@ -63,7 +63,7 @@ ORB_START         = "09:30"   # first bar included in ORB
 ORB_END           = "09:44"   # last bar included in ORB
 ENTRY_START       = "09:45"   # earliest signal bar
 SIGNAL_CUTOFF     = "15:00"   # no new entries after this time
-EOD_CLOSE_TIME    = "15:55"   # force-close all positions (avoid spurious closing prints)
+EOD_CLOSE_TIME    = "15:58"   # force-close all positions (15:58 avoids spurious 15:59 closing prints)
 
 DEFAULT_CONTRACTS = 3         # total contracts per trade
 HOST              = "127.0.0.1"
