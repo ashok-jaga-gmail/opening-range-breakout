@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ORB 2025-08-28</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0f1117; color: #e2e8f0; font-size: 14px; line-height: 1.5; }
+    a { color: #60a5fa; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Nav */
+    .nav { display:flex; justify-content:space-between; align-items:center;
+            padding: 12px 24px; background: #1a1d27; border-bottom: 1px solid #2d3142; }
+    .nav-center { font-size: 18px; font-weight: 700; }
+
+    /* Day header */
+    .day-header { padding: 20px 24px 0; display:flex; align-items:baseline; gap:20px; }
+    .day-date { font-size: 28px; font-weight: 800; }
+    .day-pnl { font-size: 22px; font-weight: 700; }
+    .win-day .day-pnl { color: #4ade80; }
+    .loss-day .day-pnl { color: #f87171; }
+    .flat-day .day-pnl { color: #94a3b8; }
+
+    /* ORB info bar */
+    .orb-bar { display:flex; gap:24px; padding: 12px 24px;
+                background: #1a1d27; margin: 16px 0; border-radius: 8px; flex-wrap:wrap; }
+    .orb-item { display:flex; flex-direction:column; }
+    .orb-label { font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing:.05em; }
+    .orb-value { font-size: 16px; font-weight: 600; }
+
+    /* Settings */
+    .settings { margin: 0 24px 20px; padding: 20px; background: #1a1d27;
+                 border-radius: 10px; border: 1px solid #2d3142; }
+    .settings h2 { font-size:15px; font-weight:700; margin-bottom:14px; color:#93c5fd; }
+    .settings h3 { font-size:12px; font-weight:600; color:#60a5fa; margin-bottom:8px; text-transform:uppercase; }
+    .settings-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; }
+    .setting-group table { width:100%; border-collapse:collapse; font-size:12px; }
+    .setting-group td { padding: 3px 6px; }
+    .setting-group td:first-child { color:#94a3b8; white-space:nowrap; padding-right:12px; }
+    .setting-group td:last-child { color:#e2e8f0; font-weight:500; }
+
+    /* Trade cards */
+    .trades-section { padding: 0 24px 40px; }
+    .trades-section h2 { font-size:16px; font-weight:700; margin-bottom:14px; color:#cbd5e1; }
+    .trade-card { background:#1a1d27; border:1px solid #2d3142; border-radius:10px;
+                   margin-bottom:16px; overflow:hidden; }
+    .trade-card.win { border-left: 4px solid #4ade80; }
+    .trade-card.loss { border-left: 4px solid #f87171; }
+    .trade-header { display:flex; align-items:center; gap:12px; padding:12px 16px;
+                     background:#1e2235; flex-wrap:wrap; }
+    .trade-num { font-weight:700; color:#94a3b8; font-size:13px; }
+    .dir-badge { padding:2px 10px; border-radius:12px; font-size:12px; font-weight:700; }
+    .dir-badge.long { background:#16453a; color:#4ade80; }
+    .dir-badge.short { background:#4a1616; color:#f87171; }
+    .trade-option { font-family:monospace; font-size:13px; color:#60a5fa; font-weight:600; }
+    .trade-entry-time { color:#94a3b8; font-size:12px; }
+    .phase-label { flex:1; font-size:12px; color:#cbd5e1; }
+    .trade-pnl { font-size:17px; font-weight:800; margin-left:auto; }
+    .trade-pnl.pos { color:#4ade80; }
+    .trade-pnl.neg { color:#f87171; }
+
+    /* Trade detail table */
+    .trade-detail { width:100%; border-collapse:collapse; font-size:13px; }
+    .trade-detail th { padding:8px 12px; text-align:left; font-size:11px; font-weight:600;
+                        color:#64748b; text-transform:uppercase; letter-spacing:.05em;
+                        border-bottom: 1px solid #2d3142; }
+    .trade-detail td { padding:7px 12px; border-bottom:1px solid #1e2235; }
+    .trade-detail tr:last-child td { border-bottom:none; }
+    .trade-detail tr.hit td { color:#e2e8f0; }
+    .trade-detail tr.miss td { color:#475569; }
+    .trade-detail tr.stop-row td { color:#475569; font-size:12px; }
+    .pos { color:#4ade80; font-weight:600; }
+    .neg { color:#f87171; font-weight:600; }
+    .zero { color:#94a3b8; }
+
+    /* Summary bar */
+    .day-summary { display:flex; gap:20px; padding: 14px 24px; margin: 0 0 20px;
+                    background:#1e2235; border-radius:8px; flex-wrap:wrap; }
+    .sum-item { display:flex; flex-direction:column; }
+    .sum-label { font-size:11px; color:#64748b; text-transform:uppercase; }
+    .sum-value { font-size:18px; font-weight:700; }
+
+    .no-trades { color:#64748b; padding:24px; text-align:center; font-style:italic; }
+
+    details { margin: 0 24px 20px; }
+    details summary { cursor:pointer; padding:10px 16px; background:#1a1d27;
+                       border-radius:8px; border:1px solid #2d3142; color:#60a5fa;
+                       font-size:13px; list-style:none; }
+    details summary::-webkit-details-marker { display:none; }
+    details[open] summary { border-radius:8px 8px 0 0; }
+    details > div { border:1px solid #2d3142; border-top:none;
+                     border-radius:0 0 8px 8px; padding:16px; background:#13151f; }
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <span><a href="2025-08-27.html">← 2025-08-27</a></span>
+  <span class="nav-center">QQQ ORB — Daily Report</span>
+  <span><a href="2025-08-29.html">2025-08-29 →</a></span>
+</nav>
+
+<div class="win-day">
+  <div class="day-header">
+    <span class="day-date">2025-08-28</span>
+    <span class="day-pnl">▲ $+26.91</span>
+    <span style="color:#64748b;font-size:14px">(3 trades)</span>
+  </div>
+
+  <div style="padding:0 24px">
+    <div class="orb-bar">
+      <div class="orb-item">
+        <span class="orb-label">ORB Open</span>
+        <span class="orb-value">$574.10</span>
+      </div>
+      <div class="orb-item">
+        <span class="orb-label">ORB High</span>
+        <span class="orb-value" style="color:#4ade80">$576.53</span>
+      </div>
+      <div class="orb-item">
+        <span class="orb-label">ORB Low</span>
+        <span class="orb-value" style="color:#f87171">$573.85</span>
+      </div>
+      <div class="orb-item">
+        <span class="orb-label">ORB Range</span>
+        <span class="orb-value">$2.68</span>
+      </div>
+      <div class="orb-item">
+        <span class="orb-label">ORB %</span>
+        <span class="orb-value">0.47%</span>
+      </div>
+      <div class="orb-item">
+        <span class="orb-label">Day P&L</span>
+        <span class="orb-value pos">$+26.91</span>
+      </div>
+    </div>
+  </div>
+
+  <details>
+    <summary>▼ Strategy Settings</summary>
+    <div>
+<div class="settings">
+  <h2>Strategy Settings — QQQ 15-min ORB Golden Strategy</h2>
+  <div class="settings-grid">
+    <div class="setting-group">
+      <h3>Opening Range</h3>
+      <table><tbody>
+        <tr><td>Window</td><td>09:30 – 09:44 ET (15 min)</td></tr>
+        <tr><td>Signal</td><td>1-min bar CLOSE exits ORB high/low</td></tr>
+        <tr><td>Entry from</td><td>09:45 ET</td></tr>
+        <tr><td>Max new entries</td><td>15:00 ET</td></tr>
+        <tr><td>Trades/day</td><td>Up to 3 (each new directional break)</td></tr>
+      </tbody></table>
+    </div>
+    <div class="setting-group">
+      <h3>Option Selection</h3>
+      <table><tbody>
+        <tr><td>Instrument</td><td>QQQ 0DTE options</td></tr>
+        <tr><td>LONG signal</td><td>Buy OTM Call (+1 strike from ATM)</td></tr>
+        <tr><td>SHORT signal</td><td>Buy OTM Put (−1 strike from ATM)</td></tr>
+        <tr><td>Filters</td><td>None — all breakouts taken</td></tr>
+      </tbody></table>
+    </div>
+    <div class="setting-group">
+      <h3>Exit Structure (3 Tranches)</h3>
+      <table><tbody>
+        <tr><td>T1 (25%)</td><td>+25% option gain → stop to breakeven</td></tr>
+        <tr><td>T2 (25%)</td><td>+100% option gain → trailing stop @ max × 70%</td></tr>
+        <tr><td>T3 (50%)</td><td>+200% option gain or EOD hold</td></tr>
+        <tr><td>Stop Loss</td><td>−30% from entry option price</td></tr>
+        <tr><td>EOD</td><td>Force close all at 15:59 ET</td></tr>
+      </tbody></table>
+    </div>
+    <div class="setting-group">
+      <h3>Backtest Performance (2025)</h3>
+      <table><tbody>
+        <tr><td>Trading days</td><td>250</td></tr>
+        <tr><td>Total trades</td><td>~640</td></tr>
+        <tr><td>Trade win rate</td><td>79.5%</td></tr>
+        <tr><td>Total P&L</td><td>+$11,046 / contract</td></tr>
+        <tr><td>Max Drawdown</td><td>$198</td></tr>
+        <tr><td>Calmar ratio</td><td>55.8</td></tr>
+      </tbody></table>
+    </div>
+  </div>
+</div>
+</div>
+  </details>
+
+  <div class="trades-section">
+    <h2>Trades — 2025-08-28</h2>
+    
+        <div class="trade-card win">
+          <div class="trade-header">
+            <span class="trade-num">Trade #1</span>
+            <span class="dir-badge short">📉 SHORT</span>
+            <span class="trade-option">PUT $573</span>
+            <span class="trade-entry-time">Signal @ 09:50</span>
+            <span class="phase-label">🟡 T1+T2 hit, trail stopped</span>
+            <span class="trade-pnl pos">$+50.22</span>
+          </div>
+          <table class="trade-detail">
+            <thead>
+              <tr>
+                <th>Level</th><th>Target</th><th>Price</th><th>Time</th><th>P&L contrib</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Entry</td>
+                <td>QQQ=573.59 | ATM=574 → OTM=573</td>
+                <td>$0.98</td><td>09:50</td><td>—</td>
+              </tr>
+              <tr class="hit">
+                <td>T1 (+25%)</td><td>$1.23</td>
+                <td>$1.23</td><td>09:50</td><td><span class="pos">$+6.13</span></td>
+              </tr>
+              <tr class="hit">
+                <td>T2 (+100%)</td><td>$1.96</td>
+                <td>$1.96</td><td>09:56</td><td><span class="pos">$+24.50</span></td>
+              </tr>
+              <tr class="miss">
+                <td>T3 (+200%)</td><td>$2.94</td>
+                <td>—</td><td>—</td><td>—</td>
+              </tr>
+              <tr class="stop-row">
+                <td>Stop (−30%)</td><td>$0.69</td>
+                <td>$1.37</td>
+                <td>10:00</td><td>—</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="trade-card win">
+          <div class="trade-header">
+            <span class="trade-num">Trade #2</span>
+            <span class="dir-badge short">📉 SHORT</span>
+            <span class="trade-option">PUT $572</span>
+            <span class="trade-entry-time">Signal @ 10:04</span>
+            <span class="phase-label">🟡 T1 hit, then stopped</span>
+            <span class="trade-pnl pos">$+5.19</span>
+          </div>
+          <table class="trade-detail">
+            <thead>
+              <tr>
+                <th>Level</th><th>Target</th><th>Price</th><th>Time</th><th>P&L contrib</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Entry</td>
+                <td>QQQ=573.23 | ATM=573 → OTM=572</td>
+                <td>$0.83</td><td>10:04</td><td>—</td>
+              </tr>
+              <tr class="hit">
+                <td>T1 (+25%)</td><td>$1.04</td>
+                <td>$1.04</td><td>10:04</td><td><span class="pos">$+5.19</span></td>
+              </tr>
+              <tr class="miss">
+                <td>T2 (+100%)</td><td>$1.66</td>
+                <td>—</td><td>—</td><td>—</td>
+              </tr>
+              <tr class="miss">
+                <td>T3 (+200%)</td><td>$2.49</td>
+                <td>—</td><td>—</td><td>—</td>
+              </tr>
+              <tr class="stop-row">
+                <td>Stop (−30%)</td><td>$0.58</td>
+                <td>$0.83</td>
+                <td>10:05</td><td>—</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="trade-card loss">
+          <div class="trade-header">
+            <span class="trade-num">Trade #3</span>
+            <span class="dir-badge short">📉 SHORT</span>
+            <span class="trade-option">PUT $573</span>
+            <span class="trade-entry-time">Signal @ 10:26</span>
+            <span class="phase-label">🔴 Stopped out</span>
+            <span class="trade-pnl neg">$-28.50</span>
+          </div>
+          <table class="trade-detail">
+            <thead>
+              <tr>
+                <th>Level</th><th>Target</th><th>Price</th><th>Time</th><th>P&L contrib</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Entry</td>
+                <td>QQQ=573.81 | ATM=574 → OTM=573</td>
+                <td>$0.95</td><td>10:26</td><td>—</td>
+              </tr>
+              <tr class="miss">
+                <td>T1 (+25%)</td><td>$1.19</td>
+                <td>—</td><td>—</td><td>—</td>
+              </tr>
+              <tr class="miss">
+                <td>T2 (+100%)</td><td>$1.90</td>
+                <td>—</td><td>—</td><td>—</td>
+              </tr>
+              <tr class="miss">
+                <td>T3 (+200%)</td><td>$2.85</td>
+                <td>—</td><td>—</td><td>—</td>
+              </tr>
+              <tr class="stop-row">
+                <td>Stop (−30%)</td><td>$0.66</td>
+                <td>$0.66</td>
+                <td>10:33</td><td>—</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  </div>
+</div>
+</body>
+</html>
