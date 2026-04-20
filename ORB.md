@@ -1,5 +1,57 @@
 # ORB Research Prompts & Methodology
 
+---
+
+## Golden Strategy — QQQ 15-min ORB, 0DTE Options (3 trades/day)
+
+### What it is
+
+A systematic intraday options strategy on QQQ that trades breakouts from the first 15 minutes of the session. Up to three independent breakout trades are taken per day — one contract each, no regime filters, both directions.
+
+### Setup
+
+**Opening Range (ORB):** The high and low of QQQ 1-minute bars from 09:30–09:44 ET define the range for the day.
+
+**Signal:** Starting at 09:45, the strategy watches for any 1-minute bar whose *close* exits the ORB — above the high (LONG signal) or below the low (SHORT signal). Each time price breaks out in a new direction after returning to the range, a new trade fires. Up to 3 signals per day are taken as independent positions.
+
+**Instrument:** QQQ 0DTE options — calls for LONG signals, puts for SHORT signals — at the first OTM strike (+1 from ATM).
+
+### Entry
+
+- Enter at the open of the option bar at (or immediately after) the breakout bar close time.
+- No filters on regime, alignment, CPR, or ORB size — every valid breakout is traded.
+
+### Exit — 3-tranche structure
+
+Each trade splits into three tranches (25% / 25% / 50%) with option-price percentage targets:
+
+| Tranche | Size | Target | Action on hit |
+|---|---|---|---|
+| T1 | 25% | +25% option gain | Exit T1; move stop to breakeven (entry price) |
+| T2 | 25% | +100% option gain | Exit T2; begin trailing stop at max_price × 70% |
+| T3 | 50% | +200% option gain or EOD | Exit T3 at target, trail stop, or 15:59 close |
+
+**Stop loss:** −30% from entry option price (all tranches until T1 is hit).  
+**After T1:** stop rises to entry price (no further loss possible).  
+**After T2:** trailing stop = rolling max option price × 70%, locking in gains.
+
+### Results (289 trading days, 766 trades, 2025 Jan – 2026 Mar)
+
+| Metric | Value |
+|---|---|
+| Total trades | 766 (avg 2.65/day) |
+| Trade win rate | **79.5%** |
+| Win days | 201/289 = 69.6% |
+| Total P&L | **+$13,835** per contract |
+| Avg P&L / day | +$48 |
+| Profit Factor | **4.66** |
+| Max Drawdown | $245 |
+| **Calmar ratio** | **56.53** |
+
+All 15 months (Jan 2025 – Mar 2026) profitable.
+
+---
+
 This document records the Claude Code prompts used to design and build this research project, along with methodology decisions and the reasoning behind them.
 
 ---
