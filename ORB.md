@@ -2,53 +2,60 @@
 
 ---
 
-## Golden Strategy — QQQ 15-min ORB, 0DTE Options (3 trades/day)
+## Golden Strategy — QQQ 15-min ORB, 0DTE Options (up to 4 trades/day, Unbiased)
 
 ### What it is
 
-A systematic intraday options strategy on QQQ that trades breakouts from the first 15 minutes of the session. Up to three independent breakout trades are taken per day — one contract each, no regime filters, both directions.
+A systematic intraday options strategy on QQQ that trades breakouts from the first 15 minutes of the session. Up to four independent breakout trades are taken per day — one contract each, no regime filters, both directions.
+
+> **Note on forward bias (confirmed 2026-04-19):** An earlier version of this strategy entered at the OPEN of the signal bar — the same bar whose CLOSE generates the signal. Since the bar open precedes the bar close, this is look-ahead: options were 15–25% cheaper at bar open vs close on breakout bars. The prior results (WR=79.5%, +$13,835, Calmar=56.53) were entirely phantom. The current baseline removes this bias: entry is at the OPEN of the bar *after* the signal bar.
 
 ### Setup
 
 **Opening Range (ORB):** The high and low of QQQ 1-minute bars from 09:30–09:44 ET define the range for the day.
 
-**Signal:** Starting at 09:45, the strategy watches for any 1-minute bar whose *close* exits the ORB — above the high (LONG signal) or below the low (SHORT signal). Each time price breaks out in a new direction after returning to the range, a new trade fires. Up to 3 signals per day are taken as independent positions.
+**Signal:** Starting at 09:45, the strategy watches for any 1-minute bar whose *close* exits the ORB — above the high (LONG signal) or below the low (SHORT signal). Each time price breaks out in a new direction after returning to the range, a new trade fires. Up to 4 signals per day are taken as independent positions.
 
-**Instrument:** QQQ 0DTE options — calls for LONG signals, puts for SHORT signals — at the first OTM strike (+1 from ATM).
+**Instrument:** QQQ 0DTE options — calls for LONG signals, puts for SHORT signals — at the ATM strike.
 
 ### Entry
 
-- Enter at the open of the option bar at (or immediately after) the breakout bar close time.
+- Enter at the OPEN of the option bar at the minute *after* the signal bar closes (unbiased).
 - No filters on regime, alignment, CPR, or ORB size — every valid breakout is traded.
 
-### Exit — 3-tranche structure
+### Exit — 3-tranche structure (equal weight)
 
-Each trade splits into three tranches (25% / 25% / 50%) with option-price percentage targets:
+Each trade splits into three equal tranches (33% / 33% / 33%) with option-price percentage targets:
 
 | Tranche | Size | Target | Action on hit |
 |---|---|---|---|
-| T1 | 25% | +25% option gain | Exit T1; move stop to breakeven (entry price) |
-| T2 | 25% | +100% option gain | Exit T2; begin trailing stop at max_price × 70% |
-| T3 | 50% | +200% option gain or EOD | Exit T3 at target, trail stop, or 15:59 close |
+| T1 | 33% | +50% option gain | Exit T1; move stop to breakeven (entry price) |
+| T2 | 33% | +125% option gain | Exit T2; begin trailing stop at max_price × (1−SL%) |
+| T3 | 33% | +200% option gain or EOD | Exit T3 at target, trail stop, or 15:59 close |
 
-**Stop loss:** −30% from entry option price (all tranches until T1 is hit).  
+**Stop loss:** −100% from entry option price (option goes to near-zero; all tranches until T1 is hit).  
 **After T1:** stop rises to entry price (no further loss possible).  
-**After T2:** trailing stop = rolling max option price × 70%, locking in gains.
+**After T2:** trailing stop = rolling max option price × (1−100%), locking in gains.
 
-### Results (289 trading days, 766 trades, 2025 Jan – 2026 Mar)
+### Results (287 trading days, 931 trades, 2025 Jan – 2026 Mar)
 
 | Metric | Value |
 |---|---|
-| Total trades | 766 (avg 2.65/day) |
-| Trade win rate | **79.5%** |
-| Win days | 201/289 = 69.6% |
-| Total P&L | **+$13,835** per contract |
-| Avg P&L / day | +$48 |
-| Profit Factor | **4.66** |
-| Max Drawdown | $245 |
-| **Calmar ratio** | **56.53** |
+| Total trades | 931 |
+| Trade win rate | **70.5%** |
+| Win days | 183/287 = 63.8% |
+| Total P&L | **+$14,695** per contract |
+| Max Drawdown | $3,766 |
+| **Calmar ratio** | **1.06** |
 
-All 15 months (Jan 2025 – Mar 2026) profitable.
+**Per trade tier — later breakouts are stronger:**
+
+| Trade | WR% | Total | Calmar |
+|---|---|---|---|
+| #1 first breakout | 67.4% | +$3,595 | 1.61 |
+| #2 | 70.0% | +$3,291 | 2.58 |
+| #3 | 73.1% | +$4,456 | **3.51** |
+| #4 | 72.6% | +$3,354 | **3.55** |
 
 ---
 

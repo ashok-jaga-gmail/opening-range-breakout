@@ -1,0 +1,3064 @@
+{
+  "top_by_calmar": [
+    {
+      "label": "PT50/125/200_SL100_ATM_equal",
+      "pt1": 50,
+      "pt2": 125,
+      "pt3": 200,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "equal",
+      "stats": {
+        "n": 931,
+        "wr": 70.5,
+        "pf": 1.35,
+        "expect": 15.78,
+        "total": 14694.83,
+        "max_dd": 3766.25,
+        "sharpe": 1.75,
+        "calmar": 1.06
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 279,
+          "wr": 67.4,
+          "pf": 1.25,
+          "expect": 12.88,
+          "total": 3594.5,
+          "max_dd": 2018.25,
+          "sharpe": 1.27,
+          "calmar": 1.61
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 70.0,
+          "pf": 1.3,
+          "expect": 13.54,
+          "total": 3290.5,
+          "max_dd": 1324.5,
+          "sharpe": 1.52,
+          "calmar": 2.58
+        },
+        "trade3": {
+          "n": 219,
+          "wr": 73.1,
+          "pf": 1.52,
+          "expect": 20.35,
+          "total": 4456.33,
+          "max_dd": 1462.83,
+          "sharpe": 2.44,
+          "calmar": 3.51
+        },
+        "trade4": {
+          "n": 190,
+          "wr": 72.6,
+          "pf": 1.46,
+          "expect": 17.65,
+          "total": 3353.5,
+          "max_dd": 1253.75,
+          "sharpe": 2.2,
+          "calmar": 3.55
+        }
+      }
+    },
+    {
+      "label": "PT50/125/250_SL100_ATM_equal",
+      "pt1": 50,
+      "pt2": 125,
+      "pt3": 250,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "equal",
+      "stats": {
+        "n": 931,
+        "wr": 70.5,
+        "pf": 1.38,
+        "expect": 16.75,
+        "total": 15596.17,
+        "max_dd": 4069.25,
+        "sharpe": 1.81,
+        "calmar": 1.04
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 279,
+          "wr": 67.4,
+          "pf": 1.24,
+          "expect": 12.63,
+          "total": 3524.0,
+          "max_dd": 2037.42,
+          "sharpe": 1.22,
+          "calmar": 1.56
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 70.0,
+          "pf": 1.36,
+          "expect": 16.5,
+          "total": 4010.33,
+          "max_dd": 1371.5,
+          "sharpe": 1.77,
+          "calmar": 3.03
+        },
+        "trade3": {
+          "n": 219,
+          "wr": 73.1,
+          "pf": 1.56,
+          "expect": 21.97,
+          "total": 4812.33,
+          "max_dd": 1426.33,
+          "sharpe": 2.57,
+          "calmar": 3.88
+        },
+        "trade4": {
+          "n": 190,
+          "wr": 72.6,
+          "pf": 1.45,
+          "expect": 17.1,
+          "total": 3249.5,
+          "max_dd": 1439.75,
+          "sharpe": 2.09,
+          "calmar": 2.99
+        }
+      }
+    },
+    {
+      "label": "PT50/150/200_SL100_ATM_equal",
+      "pt1": 50,
+      "pt2": 150,
+      "pt3": 200,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "equal",
+      "stats": {
+        "n": 931,
+        "wr": 70.5,
+        "pf": 1.34,
+        "expect": 15.24,
+        "total": 14183.83,
+        "max_dd": 3776.67,
+        "sharpe": 1.67,
+        "calmar": 1.02
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 279,
+          "wr": 67.4,
+          "pf": 1.23,
+          "expect": 12.17,
+          "total": 3395.33,
+          "max_dd": 1853.33,
+          "sharpe": 1.19,
+          "calmar": 1.65
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 70.0,
+          "pf": 1.28,
+          "expect": 12.64,
+          "total": 3070.5,
+          "max_dd": 1281.67,
+          "sharpe": 1.4,
+          "calmar": 2.48
+        },
+        "trade3": {
+          "n": 219,
+          "wr": 73.1,
+          "pf": 1.52,
+          "expect": 20.4,
+          "total": 4468.5,
+          "max_dd": 1535.5,
+          "sharpe": 2.42,
+          "calmar": 3.35
+        },
+        "trade4": {
+          "n": 190,
+          "wr": 72.6,
+          "pf": 1.45,
+          "expect": 17.1,
+          "total": 3249.5,
+          "max_dd": 1386.67,
+          "sharpe": 2.09,
+          "calmar": 3.11
+        }
+      }
+    },
+    {
+      "label": "PT50/150/250_SL100_ATM_equal",
+      "pt1": 50,
+      "pt2": 150,
+      "pt3": 250,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "equal",
+      "stats": {
+        "n": 931,
+        "wr": 70.5,
+        "pf": 1.36,
+        "expect": 16.16,
+        "total": 15045.0,
+        "max_dd": 4079.67,
+        "sharpe": 1.72,
+        "calmar": 1.0
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 279,
+          "wr": 67.4,
+          "pf": 1.23,
+          "expect": 11.92,
+          "total": 3324.83,
+          "max_dd": 1872.5,
+          "sharpe": 1.13,
+          "calmar": 1.6
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 70.0,
+          "pf": 1.34,
+          "expect": 15.43,
+          "total": 3750.17,
+          "max_dd": 1328.67,
+          "sharpe": 1.62,
+          "calmar": 2.93
+        },
+        "trade3": {
+          "n": 219,
+          "wr": 73.1,
+          "pf": 1.56,
+          "expect": 22.03,
+          "total": 4824.5,
+          "max_dd": 1499.0,
+          "sharpe": 2.55,
+          "calmar": 3.7
+        },
+        "trade4": {
+          "n": 190,
+          "wr": 72.6,
+          "pf": 1.44,
+          "expect": 16.56,
+          "total": 3145.5,
+          "max_dd": 1572.67,
+          "sharpe": 1.99,
+          "calmar": 2.65
+        }
+      }
+    },
+    {
+      "label": "PT50/100/250_SL100_ATM_equal",
+      "pt1": 50,
+      "pt2": 100,
+      "pt3": 250,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "equal",
+      "stats": {
+        "n": 931,
+        "wr": 70.5,
+        "pf": 1.37,
+        "expect": 16.51,
+        "total": 15372.17,
+        "max_dd": 4260.33,
+        "sharpe": 1.82,
+        "calmar": 0.98
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 279,
+          "wr": 67.4,
+          "pf": 1.25,
+          "expect": 12.93,
+          "total": 3606.83,
+          "max_dd": 1945.0,
+          "sharpe": 1.27,
+          "calmar": 1.67
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 70.0,
+          "pf": 1.36,
+          "expect": 16.37,
+          "total": 3976.83,
+          "max_dd": 1452.0,
+          "sharpe": 1.79,
+          "calmar": 2.84
+        },
+        "trade3": {
+          "n": 219,
+          "wr": 73.1,
+          "pf": 1.53,
+          "expect": 20.55,
+          "total": 4501.0,
+          "max_dd": 1486.5,
+          "sharpe": 2.47,
+          "calmar": 3.48
+        },
+        "trade4": {
+          "n": 190,
+          "wr": 72.6,
+          "pf": 1.46,
+          "expect": 17.3,
+          "total": 3287.5,
+          "max_dd": 1370.67,
+          "sharpe": 2.14,
+          "calmar": 3.18
+        }
+      }
+    },
+    {
+      "label": "PT50/100/200_SL100_ATM_equal",
+      "pt1": 50,
+      "pt2": 100,
+      "pt3": 200,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "equal",
+      "stats": {
+        "n": 931,
+        "wr": 70.5,
+        "pf": 1.34,
+        "expect": 15.39,
+        "total": 14328.67,
+        "max_dd": 3957.33,
+        "sharpe": 1.75,
+        "calmar": 0.98
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 279,
+          "wr": 67.4,
+          "pf": 1.25,
+          "expect": 13.0,
+          "total": 3626.33,
+          "max_dd": 1924.17,
+          "sharpe": 1.31,
+          "calmar": 1.7
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 70.0,
+          "pf": 1.29,
+          "expect": 13.13,
+          "total": 3190.17,
+          "max_dd": 1405.0,
+          "sharpe": 1.51,
+          "calmar": 2.35
+        },
+        "trade3": {
+          "n": 219,
+          "wr": 73.1,
+          "pf": 1.48,
+          "expect": 18.81,
+          "total": 4119.33,
+          "max_dd": 1523.0,
+          "sharpe": 2.32,
+          "calmar": 3.11
+        },
+        "trade4": {
+          "n": 190,
+          "wr": 72.6,
+          "pf": 1.47,
+          "expect": 17.86,
+          "total": 3392.83,
+          "max_dd": 1184.67,
+          "sharpe": 2.24,
+          "calmar": 3.8
+        }
+      }
+    },
+    {
+      "label": "PT50/125/200_SL100_ATM_runner50",
+      "pt1": 50,
+      "pt2": 125,
+      "pt3": 200,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "runner50",
+      "stats": {
+        "n": 931,
+        "wr": 68.6,
+        "pf": 1.35,
+        "expect": 15.61,
+        "total": 14532.62,
+        "max_dd": 4229.19,
+        "sharpe": 1.63,
+        "calmar": 0.93
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 279,
+          "wr": 66.3,
+          "pf": 1.26,
+          "expect": 13.67,
+          "total": 3813.12,
+          "max_dd": 2179.44,
+          "sharpe": 1.26,
+          "calmar": 1.58
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 68.3,
+          "pf": 1.28,
+          "expect": 12.93,
+          "total": 3142.62,
+          "max_dd": 1502.88,
+          "sharpe": 1.37,
+          "calmar": 2.17
+        },
+        "trade3": {
+          "n": 219,
+          "wr": 70.8,
+          "pf": 1.52,
+          "expect": 20.19,
+          "total": 4421.5,
+          "max_dd": 1532.38,
+          "sharpe": 2.27,
+          "calmar": 3.32
+        },
+        "trade4": {
+          "n": 190,
+          "wr": 70.0,
+          "pf": 1.43,
+          "expect": 16.61,
+          "total": 3155.38,
+          "max_dd": 1313.31,
+          "sharpe": 1.94,
+          "calmar": 3.19
+        }
+      }
+    },
+    {
+      "label": "PT50/125/250_SL100_ATM_runner50",
+      "pt1": 50,
+      "pt2": 125,
+      "pt3": 250,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "runner50",
+      "stats": {
+        "n": 931,
+        "wr": 68.3,
+        "pf": 1.38,
+        "expect": 17.06,
+        "total": 15884.62,
+        "max_dd": 4683.69,
+        "sharpe": 1.69,
+        "calmar": 0.92
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 279,
+          "wr": 65.9,
+          "pf": 1.25,
+          "expect": 13.29,
+          "total": 3707.38,
+          "max_dd": 2208.19,
+          "sharpe": 1.17,
+          "calmar": 1.52
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 68.3,
+          "pf": 1.38,
+          "expect": 17.38,
+          "total": 4222.38,
+          "max_dd": 1573.38,
+          "sharpe": 1.71,
+          "calmar": 2.78
+        },
+        "trade3": {
+          "n": 219,
+          "wr": 70.8,
+          "pf": 1.58,
+          "expect": 22.63,
+          "total": 4955.5,
+          "max_dd": 1486.19,
+          "sharpe": 2.43,
+          "calmar": 3.84
+        },
+        "trade4": {
+          "n": 190,
+          "wr": 68.9,
+          "pf": 1.41,
+          "expect": 15.79,
+          "total": 2999.37,
+          "max_dd": 1592.31,
+          "sharpe": 1.79,
+          "calmar": 2.5
+        }
+      }
+    },
+    {
+      "label": "PT50/100/250_SL100_ATM_runner50",
+      "pt1": 50,
+      "pt2": 100,
+      "pt3": 250,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "runner50",
+      "stats": {
+        "n": 931,
+        "wr": 66.6,
+        "pf": 1.37,
+        "expect": 16.93,
+        "total": 15759.5,
+        "max_dd": 4813.25,
+        "sharpe": 1.69,
+        "calmar": 0.89
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 279,
+          "wr": 64.9,
+          "pf": 1.26,
+          "expect": 13.63,
+          "total": 3801.5,
+          "max_dd": 1981.0,
+          "sharpe": 1.22,
+          "calmar": 1.73
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 65.4,
+          "pf": 1.37,
+          "expect": 17.12,
+          "total": 4160.12,
+          "max_dd": 1640.0,
+          "sharpe": 1.7,
+          "calmar": 2.63
+        },
+        "trade3": {
+          "n": 219,
+          "wr": 68.9,
+          "pf": 1.53,
+          "expect": 20.93,
+          "total": 4583.0,
+          "max_dd": 1522.75,
+          "sharpe": 2.29,
+          "calmar": 3.46
+        },
+        "trade4": {
+          "n": 190,
+          "wr": 67.9,
+          "pf": 1.44,
+          "expect": 16.92,
+          "total": 3214.87,
+          "max_dd": 1526.75,
+          "sharpe": 1.91,
+          "calmar": 2.79
+        }
+      }
+    },
+    {
+      "label": "PT50/150/200_SL100_ATM_runner50",
+      "pt1": 50,
+      "pt2": 150,
+      "pt3": 200,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "runner50",
+      "stats": {
+        "n": 931,
+        "wr": 70.5,
+        "pf": 1.33,
+        "expect": 14.8,
+        "total": 13775.62,
+        "max_dd": 4201.5,
+        "sharpe": 1.53,
+        "calmar": 0.89
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 279,
+          "wr": 67.4,
+          "pf": 1.23,
+          "expect": 12.18,
+          "total": 3398.25,
+          "max_dd": 2055.75,
+          "sharpe": 1.12,
+          "calmar": 1.49
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 70.0,
+          "pf": 1.26,
+          "expect": 12.02,
+          "total": 2921.38,
+          "max_dd": 1416.5,
+          "sharpe": 1.26,
+          "calmar": 2.14
+        },
+        "trade3": {
+          "n": 219,
+          "wr": 73.1,
+          "pf": 1.5,
+          "expect": 19.62,
+          "total": 4297.12,
+          "max_dd": 1596.88,
+          "sharpe": 2.21,
+          "calmar": 3.1
+        },
+        "trade4": {
+          "n": 190,
+          "wr": 72.6,
+          "pf": 1.44,
+          "expect": 16.63,
+          "total": 3158.88,
+          "max_dd": 1428.0,
+          "sharpe": 1.92,
+          "calmar": 2.93
+        }
+      }
+    },
+    {
+      "label": "PT50/150/250_SL100_ATM_runner50",
+      "pt1": 50,
+      "pt2": 150,
+      "pt3": 250,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "runner50",
+      "stats": {
+        "n": 931,
+        "wr": 70.5,
+        "pf": 1.36,
+        "expect": 16.18,
+        "total": 15067.38,
+        "max_dd": 4656.0,
+        "sharpe": 1.6,
+        "calmar": 0.88
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 279,
+          "wr": 67.4,
+          "pf": 1.22,
+          "expect": 11.8,
+          "total": 3292.5,
+          "max_dd": 2084.5,
+          "sharpe": 1.04,
+          "calmar": 1.43
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 70.0,
+          "pf": 1.35,
+          "expect": 16.22,
+          "total": 3940.87,
+          "max_dd": 1487.0,
+          "sharpe": 1.58,
+          "calmar": 2.75
+        },
+        "trade3": {
+          "n": 219,
+          "wr": 73.1,
+          "pf": 1.57,
+          "expect": 22.06,
+          "total": 4831.12,
+          "max_dd": 1564.38,
+          "sharpe": 2.38,
+          "calmar": 3.55
+        },
+        "trade4": {
+          "n": 190,
+          "wr": 72.6,
+          "pf": 1.42,
+          "expect": 15.8,
+          "total": 3002.87,
+          "max_dd": 1707.0,
+          "sharpe": 1.77,
+          "calmar": 2.33
+        }
+      }
+    },
+    {
+      "label": "PT50/100/200_SL100_ATM_runner50",
+      "pt1": 50,
+      "pt2": 100,
+      "pt3": 200,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "runner50",
+      "stats": {
+        "n": 931,
+        "wr": 66.9,
+        "pf": 1.34,
+        "expect": 15.25,
+        "total": 14194.25,
+        "max_dd": 4358.75,
+        "sharpe": 1.61,
+        "calmar": 0.88
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 279,
+          "wr": 65.2,
+          "pf": 1.26,
+          "expect": 13.73,
+          "total": 3830.75,
+          "max_dd": 1963.75,
+          "sharpe": 1.28,
+          "calmar": 1.76
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 65.4,
+          "pf": 1.26,
+          "expect": 12.26,
+          "total": 2980.12,
+          "max_dd": 1563.25,
+          "sharpe": 1.32,
+          "calmar": 1.98
+        },
+        "trade3": {
+          "n": 219,
+          "wr": 68.9,
+          "pf": 1.46,
+          "expect": 18.31,
+          "total": 4010.5,
+          "max_dd": 1577.5,
+          "sharpe": 2.1,
+          "calmar": 2.93
+        },
+        "trade4": {
+          "n": 190,
+          "wr": 68.9,
+          "pf": 1.46,
+          "expect": 17.75,
+          "total": 3372.88,
+          "max_dd": 1247.75,
+          "sharpe": 2.07,
+          "calmar": 3.59
+        }
+      }
+    },
+    {
+      "label": "PT50/175/200_SL100_ATM_equal",
+      "pt1": 50,
+      "pt2": 175,
+      "pt3": 200,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "equal",
+      "stats": {
+        "n": 931,
+        "wr": 70.5,
+        "pf": 1.31,
+        "expect": 13.63,
+        "total": 12688.17,
+        "max_dd": 4095.08,
+        "sharpe": 1.48,
+        "calmar": 0.84
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 279,
+          "wr": 67.4,
+          "pf": 1.22,
+          "expect": 11.36,
+          "total": 3168.67,
+          "max_dd": 1943.25,
+          "sharpe": 1.09,
+          "calmar": 1.47
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 70.0,
+          "pf": 1.2,
+          "expect": 9.34,
+          "total": 2269.5,
+          "max_dd": 1521.58,
+          "sharpe": 1.04,
+          "calmar": 1.55
+        },
+        "trade3": {
+          "n": 219,
+          "wr": 73.1,
+          "pf": 1.47,
+          "expect": 18.25,
+          "total": 3996.17,
+          "max_dd": 1509.67,
+          "sharpe": 2.16,
+          "calmar": 3.05
+        },
+        "trade4": {
+          "n": 190,
+          "wr": 72.6,
+          "pf": 1.45,
+          "expect": 17.13,
+          "total": 3253.83,
+          "max_dd": 1355.83,
+          "sharpe": 2.05,
+          "calmar": 3.18
+        }
+      }
+    },
+    {
+      "label": "PT50/125/250_SL100_ATM_runner67",
+      "pt1": 50,
+      "pt2": 125,
+      "pt3": 250,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "runner67",
+      "stats": {
+        "n": 931,
+        "wr": 67.5,
+        "pf": 1.38,
+        "expect": 17.37,
+        "total": 16173.08,
+        "max_dd": 5298.13,
+        "sharpe": 1.58,
+        "calmar": 0.83
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 279,
+          "wr": 65.6,
+          "pf": 1.26,
+          "expect": 13.95,
+          "total": 3890.75,
+          "max_dd": 2378.96,
+          "sharpe": 1.13,
+          "calmar": 1.48
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 67.1,
+          "pf": 1.39,
+          "expect": 18.25,
+          "total": 4434.42,
+          "max_dd": 1831.92,
+          "sharpe": 1.64,
+          "calmar": 2.51
+        },
+        "trade3": {
+          "n": 219,
+          "wr": 70.3,
+          "pf": 1.58,
+          "expect": 23.28,
+          "total": 5098.67,
+          "max_dd": 1591.46,
+          "sharpe": 2.3,
+          "calmar": 3.69
+        },
+        "trade4": {
+          "n": 190,
+          "wr": 67.4,
+          "pf": 1.36,
+          "expect": 14.47,
+          "total": 2749.25,
+          "max_dd": 1744.87,
+          "sharpe": 1.5,
+          "calmar": 2.09
+        }
+      }
+    },
+    {
+      "label": "PT50/125/200_SL100_ATM_runner67",
+      "pt1": 50,
+      "pt2": 125,
+      "pt3": 200,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "runner67",
+      "stats": {
+        "n": 931,
+        "wr": 67.8,
+        "pf": 1.34,
+        "expect": 15.44,
+        "total": 14370.42,
+        "max_dd": 4692.13,
+        "sharpe": 1.5,
+        "calmar": 0.83
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 279,
+          "wr": 65.9,
+          "pf": 1.27,
+          "expect": 14.45,
+          "total": 4031.75,
+          "max_dd": 2340.63,
+          "sharpe": 1.24,
+          "calmar": 1.56
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 67.1,
+          "pf": 1.26,
+          "expect": 12.32,
+          "total": 2994.75,
+          "max_dd": 1686.04,
+          "sharpe": 1.23,
+          "calmar": 1.84
+        },
+        "trade3": {
+          "n": 219,
+          "wr": 70.3,
+          "pf": 1.5,
+          "expect": 20.03,
+          "total": 4386.67,
+          "max_dd": 1601.92,
+          "sharpe": 2.09,
+          "calmar": 3.15
+        },
+        "trade4": {
+          "n": 190,
+          "wr": 68.4,
+          "pf": 1.39,
+          "expect": 15.56,
+          "total": 2957.25,
+          "max_dd": 1372.87,
+          "sharpe": 1.7,
+          "calmar": 2.86
+        }
+      }
+    },
+    {
+      "label": "PT50/175/250_SL100_ATM_equal",
+      "pt1": 50,
+      "pt2": 175,
+      "pt3": 250,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "equal",
+      "stats": {
+        "n": 931,
+        "wr": 70.5,
+        "pf": 1.33,
+        "expect": 14.55,
+        "total": 13548.5,
+        "max_dd": 4398.08,
+        "sharpe": 1.53,
+        "calmar": 0.83
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 279,
+          "wr": 67.4,
+          "pf": 1.21,
+          "expect": 10.95,
+          "total": 3054.83,
+          "max_dd": 1962.42,
+          "sharpe": 1.03,
+          "calmar": 1.41
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 70.0,
+          "pf": 1.26,
+          "expect": 12.14,
+          "total": 2949.17,
+          "max_dd": 1568.58,
+          "sharpe": 1.28,
+          "calmar": 1.95
+        },
+        "trade3": {
+          "n": 219,
+          "wr": 73.1,
+          "pf": 1.51,
+          "expect": 20.07,
+          "total": 4394.67,
+          "max_dd": 1473.17,
+          "sharpe": 2.3,
+          "calmar": 3.43
+        },
+        "trade4": {
+          "n": 190,
+          "wr": 72.6,
+          "pf": 1.44,
+          "expect": 16.58,
+          "total": 3149.83,
+          "max_dd": 1541.83,
+          "sharpe": 1.95,
+          "calmar": 2.71
+        }
+      }
+    },
+    {
+      "label": "PT50/100/250_SL100_ATM_runner67",
+      "pt1": 50,
+      "pt2": 100,
+      "pt3": 250,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "runner67",
+      "stats": {
+        "n": 931,
+        "wr": 65.0,
+        "pf": 1.36,
+        "expect": 17.34,
+        "total": 16146.83,
+        "max_dd": 5366.17,
+        "sharpe": 1.57,
+        "calmar": 0.81
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 279,
+          "wr": 62.7,
+          "pf": 1.26,
+          "expect": 14.32,
+          "total": 3996.17,
+          "max_dd": 2287.83,
+          "sharpe": 1.15,
+          "calmar": 1.58
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 63.8,
+          "pf": 1.36,
+          "expect": 17.87,
+          "total": 4343.42,
+          "max_dd": 1901.33,
+          "sharpe": 1.59,
+          "calmar": 2.37
+        },
+        "trade3": {
+          "n": 219,
+          "wr": 68.0,
+          "pf": 1.51,
+          "expect": 21.3,
+          "total": 4665.0,
+          "max_dd": 1612.42,
+          "sharpe": 2.11,
+          "calmar": 3.33
+        },
+        "trade4": {
+          "n": 190,
+          "wr": 66.3,
+          "pf": 1.4,
+          "expect": 16.54,
+          "total": 3142.25,
+          "max_dd": 1682.83,
+          "sharpe": 1.69,
+          "calmar": 2.48
+        }
+      }
+    },
+    {
+      "label": "PT50/100/200_SL100_ATM_runner67",
+      "pt1": 50,
+      "pt2": 100,
+      "pt3": 200,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "runner67",
+      "stats": {
+        "n": 931,
+        "wr": 65.3,
+        "pf": 1.32,
+        "expect": 15.1,
+        "total": 14059.83,
+        "max_dd": 4760.17,
+        "sharpe": 1.46,
+        "calmar": 0.8
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 279,
+          "wr": 63.1,
+          "pf": 1.26,
+          "expect": 14.46,
+          "total": 4035.17,
+          "max_dd": 2017.17,
+          "sharpe": 1.24,
+          "calmar": 1.81
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 63.8,
+          "pf": 1.23,
+          "expect": 11.4,
+          "total": 2770.08,
+          "max_dd": 1785.17,
+          "sharpe": 1.13,
+          "calmar": 1.61
+        },
+        "trade3": {
+          "n": 219,
+          "wr": 68.0,
+          "pf": 1.42,
+          "expect": 17.82,
+          "total": 3901.67,
+          "max_dd": 1632.0,
+          "sharpe": 1.88,
+          "calmar": 2.75
+        },
+        "trade4": {
+          "n": 190,
+          "wr": 67.4,
+          "pf": 1.43,
+          "expect": 17.65,
+          "total": 3352.92,
+          "max_dd": 1310.83,
+          "sharpe": 1.89,
+          "calmar": 3.39
+        }
+      }
+    },
+    {
+      "label": "PT50/200/250_SL100_ATM_equal",
+      "pt1": 50,
+      "pt2": 200,
+      "pt3": 250,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "equal",
+      "stats": {
+        "n": 931,
+        "wr": 70.5,
+        "pf": 1.32,
+        "expect": 14.3,
+        "total": 13316.17,
+        "max_dd": 4517.67,
+        "sharpe": 1.48,
+        "calmar": 0.8
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 279,
+          "wr": 67.4,
+          "pf": 1.2,
+          "expect": 10.4,
+          "total": 2900.5,
+          "max_dd": 2031.5,
+          "sharpe": 0.96,
+          "calmar": 1.29
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 70.0,
+          "pf": 1.25,
+          "expect": 11.34,
+          "total": 2756.67,
+          "max_dd": 1558.0,
+          "sharpe": 1.19,
+          "calmar": 1.83
+        },
+        "trade3": {
+          "n": 219,
+          "wr": 73.1,
+          "pf": 1.51,
+          "expect": 19.77,
+          "total": 4328.83,
+          "max_dd": 1556.17,
+          "sharpe": 2.22,
+          "calmar": 3.2
+        },
+        "trade4": {
+          "n": 190,
+          "wr": 72.6,
+          "pf": 1.46,
+          "expect": 17.53,
+          "total": 3330.17,
+          "max_dd": 1538.67,
+          "sharpe": 2.01,
+          "calmar": 2.87
+        }
+      }
+    },
+    {
+      "label": "PT50/150/250_SL100_ATM_runner67",
+      "pt1": 50,
+      "pt2": 150,
+      "pt3": 250,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "runner67",
+      "stats": {
+        "n": 931,
+        "wr": 68.9,
+        "pf": 1.36,
+        "expect": 16.21,
+        "total": 15089.75,
+        "max_dd": 5232.33,
+        "sharpe": 1.48,
+        "calmar": 0.78
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 279,
+          "wr": 65.9,
+          "pf": 1.22,
+          "expect": 11.69,
+          "total": 3260.17,
+          "max_dd": 2296.5,
+          "sharpe": 0.95,
+          "calmar": 1.28
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 68.7,
+          "pf": 1.37,
+          "expect": 17.0,
+          "total": 4131.58,
+          "max_dd": 1689.5,
+          "sharpe": 1.53,
+          "calmar": 2.54
+        },
+        "trade3": {
+          "n": 219,
+          "wr": 71.2,
+          "pf": 1.55,
+          "expect": 22.09,
+          "total": 4837.75,
+          "max_dd": 1656.92,
+          "sharpe": 2.21,
+          "calmar": 3.36
+        },
+        "trade4": {
+          "n": 190,
+          "wr": 70.5,
+          "pf": 1.38,
+          "expect": 15.05,
+          "total": 2860.25,
+          "max_dd": 1841.33,
+          "sharpe": 1.56,
+          "calmar": 2.06
+        }
+      }
+    },
+    {
+      "label": "PT50/150/200_SL100_ATM_runner67",
+      "pt1": 50,
+      "pt2": 150,
+      "pt3": 200,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "runner67",
+      "stats": {
+        "n": 931,
+        "wr": 69.2,
+        "pf": 1.32,
+        "expect": 14.36,
+        "total": 13367.42,
+        "max_dd": 4626.33,
+        "sharpe": 1.4,
+        "calmar": 0.78
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 279,
+          "wr": 66.3,
+          "pf": 1.23,
+          "expect": 12.19,
+          "total": 3401.17,
+          "max_dd": 2258.17,
+          "sharpe": 1.05,
+          "calmar": 1.36
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 68.7,
+          "pf": 1.25,
+          "expect": 11.41,
+          "total": 2772.25,
+          "max_dd": 1555.58,
+          "sharpe": 1.13,
+          "calmar": 1.85
+        },
+        "trade3": {
+          "n": 219,
+          "wr": 71.2,
+          "pf": 1.47,
+          "expect": 18.84,
+          "total": 4125.75,
+          "max_dd": 1658.25,
+          "sharpe": 2.0,
+          "calmar": 2.86
+        },
+        "trade4": {
+          "n": 190,
+          "wr": 71.6,
+          "pf": 1.42,
+          "expect": 16.15,
+          "total": 3068.25,
+          "max_dd": 1469.33,
+          "sharpe": 1.75,
+          "calmar": 2.77
+        }
+      }
+    },
+    {
+      "label": "PT50/125/300_SL100_ATM_equal",
+      "pt1": 50,
+      "pt2": 125,
+      "pt3": 300,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "equal",
+      "stats": {
+        "n": 931,
+        "wr": 70.5,
+        "pf": 1.31,
+        "expect": 13.63,
+        "total": 12689.17,
+        "max_dd": 4448.67,
+        "sharpe": 1.5,
+        "calmar": 0.77
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 279,
+          "wr": 67.4,
+          "pf": 1.18,
+          "expect": 9.66,
+          "total": 2695.17,
+          "max_dd": 2276.92,
+          "sharpe": 0.94,
+          "calmar": 1.07
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 70.0,
+          "pf": 1.21,
+          "expect": 9.69,
+          "total": 2353.83,
+          "max_dd": 1371.5,
+          "sharpe": 1.13,
+          "calmar": 1.78
+        },
+        "trade3": {
+          "n": 219,
+          "wr": 73.1,
+          "pf": 1.47,
+          "expect": 18.28,
+          "total": 4003.0,
+          "max_dd": 1389.83,
+          "sharpe": 2.18,
+          "calmar": 3.31
+        },
+        "trade4": {
+          "n": 190,
+          "wr": 72.6,
+          "pf": 1.5,
+          "expect": 19.14,
+          "total": 3637.17,
+          "max_dd": 1439.75,
+          "sharpe": 2.24,
+          "calmar": 3.35
+        }
+      }
+    },
+    {
+      "label": "PT50/150/300_SL100_ATM_equal",
+      "pt1": 50,
+      "pt2": 150,
+      "pt3": 300,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "equal",
+      "stats": {
+        "n": 931,
+        "wr": 70.5,
+        "pf": 1.29,
+        "expect": 12.99,
+        "total": 12097.83,
+        "max_dd": 4287.0,
+        "sharpe": 1.42,
+        "calmar": 0.76
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 279,
+          "wr": 67.4,
+          "pf": 1.17,
+          "expect": 8.95,
+          "total": 2496.0,
+          "max_dd": 2112.0,
+          "sharpe": 0.87,
+          "calmar": 1.07
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 70.0,
+          "pf": 1.18,
+          "expect": 8.45,
+          "total": 2053.5,
+          "max_dd": 1388.33,
+          "sharpe": 0.97,
+          "calmar": 1.53
+        },
+        "trade3": {
+          "n": 219,
+          "wr": 73.1,
+          "pf": 1.47,
+          "expect": 18.33,
+          "total": 4015.17,
+          "max_dd": 1471.83,
+          "sharpe": 2.17,
+          "calmar": 3.14
+        },
+        "trade4": {
+          "n": 190,
+          "wr": 72.6,
+          "pf": 1.49,
+          "expect": 18.6,
+          "total": 3533.17,
+          "max_dd": 1572.67,
+          "sharpe": 2.14,
+          "calmar": 2.98
+        }
+      }
+    },
+    {
+      "label": "PT50/175/250_SL100_ATM_runner50",
+      "pt1": 50,
+      "pt2": 175,
+      "pt3": 250,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "runner50",
+      "stats": {
+        "n": 931,
+        "wr": 70.5,
+        "pf": 1.33,
+        "expect": 14.56,
+        "total": 13557.88,
+        "max_dd": 4887.31,
+        "sharpe": 1.43,
+        "calmar": 0.75
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 279,
+          "wr": 67.4,
+          "pf": 1.21,
+          "expect": 10.82,
+          "total": 3019.25,
+          "max_dd": 2087.19,
+          "sharpe": 0.95,
+          "calmar": 1.31
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 70.0,
+          "pf": 1.28,
+          "expect": 13.01,
+          "total": 3161.62,
+          "max_dd": 1680.69,
+          "sharpe": 1.28,
+          "calmar": 1.95
+        },
+        "trade3": {
+          "n": 219,
+          "wr": 73.1,
+          "pf": 1.51,
+          "expect": 19.85,
+          "total": 4346.62,
+          "max_dd": 1558.69,
+          "sharpe": 2.13,
+          "calmar": 3.21
+        },
+        "trade4": {
+          "n": 190,
+          "wr": 72.6,
+          "pf": 1.42,
+          "expect": 15.95,
+          "total": 3030.38,
+          "max_dd": 1683.88,
+          "sharpe": 1.75,
+          "calmar": 2.39
+        }
+      }
+    },
+    {
+      "label": "PT50/175/200_SL100_ATM_runner50",
+      "pt1": 50,
+      "pt2": 175,
+      "pt3": 200,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "runner50",
+      "stats": {
+        "n": 931,
+        "wr": 70.5,
+        "pf": 1.3,
+        "expect": 13.18,
+        "total": 12267.38,
+        "max_dd": 4432.81,
+        "sharpe": 1.36,
+        "calmar": 0.75
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 279,
+          "wr": 67.4,
+          "pf": 1.22,
+          "expect": 11.43,
+          "total": 3190.0,
+          "max_dd": 2058.44,
+          "sharpe": 1.04,
+          "calmar": 1.4
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 70.0,
+          "pf": 1.19,
+          "expect": 8.82,
+          "total": 2142.12,
+          "max_dd": 1610.19,
+          "sharpe": 0.94,
+          "calmar": 1.38
+        },
+        "trade3": {
+          "n": 219,
+          "wr": 73.1,
+          "pf": 1.44,
+          "expect": 17.12,
+          "total": 3748.88,
+          "max_dd": 1577.5,
+          "sharpe": 1.94,
+          "calmar": 2.73
+        },
+        "trade4": {
+          "n": 190,
+          "wr": 72.6,
+          "pf": 1.44,
+          "expect": 16.77,
+          "total": 3186.37,
+          "max_dd": 1404.88,
+          "sharpe": 1.9,
+          "calmar": 3.01
+        }
+      }
+    },
+    {
+      "label": "PT50/200/250_SL100_ATM_runner50",
+      "pt1": 50,
+      "pt2": 200,
+      "pt3": 250,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "runner50",
+      "stats": {
+        "n": 931,
+        "wr": 70.5,
+        "pf": 1.32,
+        "expect": 14.22,
+        "total": 13239.0,
+        "max_dd": 4984.88,
+        "sharpe": 1.38,
+        "calmar": 0.72
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 279,
+          "wr": 67.4,
+          "pf": 1.19,
+          "expect": 9.97,
+          "total": 2782.0,
+          "max_dd": 2114.0,
+          "sharpe": 0.86,
+          "calmar": 1.19
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 70.0,
+          "pf": 1.26,
+          "expect": 11.8,
+          "total": 2866.62,
+          "max_dd": 1672.75,
+          "sharpe": 1.16,
+          "calmar": 1.78
+        },
+        "trade3": {
+          "n": 219,
+          "wr": 73.1,
+          "pf": 1.51,
+          "expect": 19.96,
+          "total": 4371.0,
+          "max_dd": 1617.38,
+          "sharpe": 2.11,
+          "calmar": 3.11
+        },
+        "trade4": {
+          "n": 190,
+          "wr": 72.6,
+          "pf": 1.45,
+          "expect": 16.94,
+          "total": 3219.38,
+          "max_dd": 1681.5,
+          "sharpe": 1.83,
+          "calmar": 2.54
+        }
+      }
+    },
+    {
+      "label": "PT50/100/300_SL100_ATM_equal",
+      "pt1": 50,
+      "pt2": 100,
+      "pt3": 300,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "equal",
+      "stats": {
+        "n": 931,
+        "wr": 70.5,
+        "pf": 1.3,
+        "expect": 13.34,
+        "total": 12422.67,
+        "max_dd": 4708.83,
+        "sharpe": 1.5,
+        "calmar": 0.71
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 279,
+          "wr": 67.4,
+          "pf": 1.19,
+          "expect": 10.21,
+          "total": 2848.33,
+          "max_dd": 2157.5,
+          "sharpe": 1.02,
+          "calmar": 1.19
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 70.0,
+          "pf": 1.2,
+          "expect": 9.37,
+          "total": 2276.5,
+          "max_dd": 1452.0,
+          "sharpe": 1.11,
+          "calmar": 1.63
+        },
+        "trade3": {
+          "n": 219,
+          "wr": 73.1,
+          "pf": 1.42,
+          "expect": 16.54,
+          "total": 3622.67,
+          "max_dd": 1450.0,
+          "sharpe": 2.03,
+          "calmar": 2.87
+        },
+        "trade4": {
+          "n": 190,
+          "wr": 72.6,
+          "pf": 1.51,
+          "expect": 19.34,
+          "total": 3675.17,
+          "max_dd": 1370.67,
+          "sharpe": 2.29,
+          "calmar": 3.56
+        }
+      }
+    },
+    {
+      "label": "PT100/125/250_SL100_ATM_equal",
+      "pt1": 100,
+      "pt2": 125,
+      "pt3": 250,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "equal",
+      "stats": {
+        "n": 927,
+        "wr": 52.8,
+        "pf": 1.23,
+        "expect": 15.78,
+        "total": 14624.08,
+        "max_dd": 5820.67,
+        "sharpe": 1.33,
+        "calmar": 0.68
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 277,
+          "wr": 51.6,
+          "pf": 1.19,
+          "expect": 14.25,
+          "total": 3946.25,
+          "max_dd": 2147.67,
+          "sharpe": 1.09,
+          "calmar": 1.67
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 52.7,
+          "pf": 1.21,
+          "expect": 14.45,
+          "total": 3511.58,
+          "max_dd": 1652.75,
+          "sharpe": 1.23,
+          "calmar": 2.2
+        },
+        "trade3": {
+          "n": 218,
+          "wr": 54.6,
+          "pf": 1.34,
+          "expect": 21.87,
+          "total": 4768.67,
+          "max_dd": 2152.0,
+          "sharpe": 1.93,
+          "calmar": 2.56
+        },
+        "trade4": {
+          "n": 189,
+          "wr": 52.4,
+          "pf": 1.2,
+          "expect": 12.69,
+          "total": 2397.58,
+          "max_dd": 2014.42,
+          "sharpe": 1.19,
+          "calmar": 1.59
+        }
+      }
+    },
+    {
+      "label": "PT50/175/250_SL100_ATM_runner67",
+      "pt1": 50,
+      "pt2": 175,
+      "pt3": 250,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "runner67",
+      "stats": {
+        "n": 931,
+        "wr": 69.6,
+        "pf": 1.32,
+        "expect": 14.57,
+        "total": 13567.25,
+        "max_dd": 5376.54,
+        "sharpe": 1.33,
+        "calmar": 0.68
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 279,
+          "wr": 66.7,
+          "pf": 1.2,
+          "expect": 10.69,
+          "total": 2983.67,
+          "max_dd": 2211.96,
+          "sharpe": 0.87,
+          "calmar": 1.22
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 69.5,
+          "pf": 1.3,
+          "expect": 13.89,
+          "total": 3374.08,
+          "max_dd": 1792.79,
+          "sharpe": 1.27,
+          "calmar": 1.95
+        },
+        "trade3": {
+          "n": 219,
+          "wr": 72.1,
+          "pf": 1.5,
+          "expect": 19.63,
+          "total": 4298.58,
+          "max_dd": 1653.13,
+          "sharpe": 1.97,
+          "calmar": 2.99
+        },
+        "trade4": {
+          "n": 190,
+          "wr": 71.1,
+          "pf": 1.4,
+          "expect": 15.32,
+          "total": 2910.92,
+          "max_dd": 1825.92,
+          "sharpe": 1.57,
+          "calmar": 2.11
+        }
+      }
+    },
+    {
+      "label": "PT50/175/200_SL100_ATM_runner67",
+      "pt1": 50,
+      "pt2": 175,
+      "pt3": 200,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "runner67",
+      "stats": {
+        "n": 931,
+        "wr": 69.9,
+        "pf": 1.28,
+        "expect": 12.72,
+        "total": 11846.58,
+        "max_dd": 4770.54,
+        "sharpe": 1.25,
+        "calmar": 0.67
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 279,
+          "wr": 67.0,
+          "pf": 1.22,
+          "expect": 11.51,
+          "total": 3211.33,
+          "max_dd": 2173.62,
+          "sharpe": 0.99,
+          "calmar": 1.33
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 69.5,
+          "pf": 1.18,
+          "expect": 8.29,
+          "total": 2014.75,
+          "max_dd": 1698.79,
+          "sharpe": 0.84,
+          "calmar": 1.23
+        },
+        "trade3": {
+          "n": 219,
+          "wr": 72.1,
+          "pf": 1.41,
+          "expect": 15.99,
+          "total": 3501.58,
+          "max_dd": 1653.13,
+          "sharpe": 1.72,
+          "calmar": 2.44
+        },
+        "trade4": {
+          "n": 190,
+          "wr": 72.1,
+          "pf": 1.43,
+          "expect": 16.42,
+          "total": 3118.92,
+          "max_dd": 1453.92,
+          "sharpe": 1.76,
+          "calmar": 2.85
+        }
+      }
+    }
+  ],
+  "top_by_pnl": [
+    {
+      "label": "PT50/125/250_SL100_ATM_runner67",
+      "pt1": 50,
+      "pt2": 125,
+      "pt3": 250,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "runner67",
+      "stats": {
+        "n": 931,
+        "wr": 67.5,
+        "pf": 1.38,
+        "expect": 17.37,
+        "total": 16173.08,
+        "max_dd": 5298.13,
+        "sharpe": 1.58,
+        "calmar": 0.83
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 279,
+          "wr": 65.6,
+          "pf": 1.26,
+          "expect": 13.95,
+          "total": 3890.75,
+          "max_dd": 2378.96,
+          "sharpe": 1.13,
+          "calmar": 1.48
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 67.1,
+          "pf": 1.39,
+          "expect": 18.25,
+          "total": 4434.42,
+          "max_dd": 1831.92,
+          "sharpe": 1.64,
+          "calmar": 2.51
+        },
+        "trade3": {
+          "n": 219,
+          "wr": 70.3,
+          "pf": 1.58,
+          "expect": 23.28,
+          "total": 5098.67,
+          "max_dd": 1591.46,
+          "sharpe": 2.3,
+          "calmar": 3.69
+        },
+        "trade4": {
+          "n": 190,
+          "wr": 67.4,
+          "pf": 1.36,
+          "expect": 14.47,
+          "total": 2749.25,
+          "max_dd": 1744.87,
+          "sharpe": 1.5,
+          "calmar": 2.09
+        }
+      }
+    },
+    {
+      "label": "PT50/100/250_SL100_ATM_runner67",
+      "pt1": 50,
+      "pt2": 100,
+      "pt3": 250,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "runner67",
+      "stats": {
+        "n": 931,
+        "wr": 65.0,
+        "pf": 1.36,
+        "expect": 17.34,
+        "total": 16146.83,
+        "max_dd": 5366.17,
+        "sharpe": 1.57,
+        "calmar": 0.81
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 279,
+          "wr": 62.7,
+          "pf": 1.26,
+          "expect": 14.32,
+          "total": 3996.17,
+          "max_dd": 2287.83,
+          "sharpe": 1.15,
+          "calmar": 1.58
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 63.8,
+          "pf": 1.36,
+          "expect": 17.87,
+          "total": 4343.42,
+          "max_dd": 1901.33,
+          "sharpe": 1.59,
+          "calmar": 2.37
+        },
+        "trade3": {
+          "n": 219,
+          "wr": 68.0,
+          "pf": 1.51,
+          "expect": 21.3,
+          "total": 4665.0,
+          "max_dd": 1612.42,
+          "sharpe": 2.11,
+          "calmar": 3.33
+        },
+        "trade4": {
+          "n": 190,
+          "wr": 66.3,
+          "pf": 1.4,
+          "expect": 16.54,
+          "total": 3142.25,
+          "max_dd": 1682.83,
+          "sharpe": 1.69,
+          "calmar": 2.48
+        }
+      }
+    },
+    {
+      "label": "PT100/125/250_SL100_ATM_runner67",
+      "pt1": 100,
+      "pt2": 125,
+      "pt3": 250,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "runner67",
+      "stats": {
+        "n": 927,
+        "wr": 49.8,
+        "pf": 1.24,
+        "expect": 17.21,
+        "total": 15957.79,
+        "max_dd": 6962.92,
+        "sharpe": 1.3,
+        "calmar": 0.62
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 277,
+          "wr": 49.8,
+          "pf": 1.2,
+          "expect": 15.77,
+          "total": 4368.87,
+          "max_dd": 2678.33,
+          "sharpe": 1.08,
+          "calmar": 1.48
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 49.4,
+          "pf": 1.21,
+          "expect": 15.22,
+          "total": 3699.29,
+          "max_dd": 2020.38,
+          "sharpe": 1.17,
+          "calmar": 1.9
+        },
+        "trade3": {
+          "n": 218,
+          "wr": 52.3,
+          "pf": 1.41,
+          "expect": 26.53,
+          "total": 5782.58,
+          "max_dd": 2198.0,
+          "sharpe": 2.1,
+          "calmar": 3.04
+        },
+        "trade4": {
+          "n": 189,
+          "wr": 47.6,
+          "pf": 1.17,
+          "expect": 11.15,
+          "total": 2107.04,
+          "max_dd": 2215.96,
+          "sharpe": 0.94,
+          "calmar": 1.27
+        }
+      }
+    },
+    {
+      "label": "PT50/125/250_SL100_ATM_runner50",
+      "pt1": 50,
+      "pt2": 125,
+      "pt3": 250,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "runner50",
+      "stats": {
+        "n": 931,
+        "wr": 68.3,
+        "pf": 1.38,
+        "expect": 17.06,
+        "total": 15884.62,
+        "max_dd": 4683.69,
+        "sharpe": 1.69,
+        "calmar": 0.92
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 279,
+          "wr": 65.9,
+          "pf": 1.25,
+          "expect": 13.29,
+          "total": 3707.38,
+          "max_dd": 2208.19,
+          "sharpe": 1.17,
+          "calmar": 1.52
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 68.3,
+          "pf": 1.38,
+          "expect": 17.38,
+          "total": 4222.38,
+          "max_dd": 1573.38,
+          "sharpe": 1.71,
+          "calmar": 2.78
+        },
+        "trade3": {
+          "n": 219,
+          "wr": 70.8,
+          "pf": 1.58,
+          "expect": 22.63,
+          "total": 4955.5,
+          "max_dd": 1486.19,
+          "sharpe": 2.43,
+          "calmar": 3.84
+        },
+        "trade4": {
+          "n": 190,
+          "wr": 68.9,
+          "pf": 1.41,
+          "expect": 15.79,
+          "total": 2999.37,
+          "max_dd": 1592.31,
+          "sharpe": 1.79,
+          "calmar": 2.5
+        }
+      }
+    },
+    {
+      "label": "PT50/100/250_SL100_ATM_runner50",
+      "pt1": 50,
+      "pt2": 100,
+      "pt3": 250,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "runner50",
+      "stats": {
+        "n": 931,
+        "wr": 66.6,
+        "pf": 1.37,
+        "expect": 16.93,
+        "total": 15759.5,
+        "max_dd": 4813.25,
+        "sharpe": 1.69,
+        "calmar": 0.89
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 279,
+          "wr": 64.9,
+          "pf": 1.26,
+          "expect": 13.63,
+          "total": 3801.5,
+          "max_dd": 1981.0,
+          "sharpe": 1.22,
+          "calmar": 1.73
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 65.4,
+          "pf": 1.37,
+          "expect": 17.12,
+          "total": 4160.12,
+          "max_dd": 1640.0,
+          "sharpe": 1.7,
+          "calmar": 2.63
+        },
+        "trade3": {
+          "n": 219,
+          "wr": 68.9,
+          "pf": 1.53,
+          "expect": 20.93,
+          "total": 4583.0,
+          "max_dd": 1522.75,
+          "sharpe": 2.29,
+          "calmar": 3.46
+        },
+        "trade4": {
+          "n": 190,
+          "wr": 67.9,
+          "pf": 1.44,
+          "expect": 16.92,
+          "total": 3214.87,
+          "max_dd": 1526.75,
+          "sharpe": 1.91,
+          "calmar": 2.79
+        }
+      }
+    },
+    {
+      "label": "PT50/125/250_SL100_ATM_equal",
+      "pt1": 50,
+      "pt2": 125,
+      "pt3": 250,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "equal",
+      "stats": {
+        "n": 931,
+        "wr": 70.5,
+        "pf": 1.38,
+        "expect": 16.75,
+        "total": 15596.17,
+        "max_dd": 4069.25,
+        "sharpe": 1.81,
+        "calmar": 1.04
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 279,
+          "wr": 67.4,
+          "pf": 1.24,
+          "expect": 12.63,
+          "total": 3524.0,
+          "max_dd": 2037.42,
+          "sharpe": 1.22,
+          "calmar": 1.56
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 70.0,
+          "pf": 1.36,
+          "expect": 16.5,
+          "total": 4010.33,
+          "max_dd": 1371.5,
+          "sharpe": 1.77,
+          "calmar": 3.03
+        },
+        "trade3": {
+          "n": 219,
+          "wr": 73.1,
+          "pf": 1.56,
+          "expect": 21.97,
+          "total": 4812.33,
+          "max_dd": 1426.33,
+          "sharpe": 2.57,
+          "calmar": 3.88
+        },
+        "trade4": {
+          "n": 190,
+          "wr": 72.6,
+          "pf": 1.45,
+          "expect": 17.1,
+          "total": 3249.5,
+          "max_dd": 1439.75,
+          "sharpe": 2.09,
+          "calmar": 2.99
+        }
+      }
+    },
+    {
+      "label": "PT50/100/250_SL100_ATM_equal",
+      "pt1": 50,
+      "pt2": 100,
+      "pt3": 250,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "equal",
+      "stats": {
+        "n": 931,
+        "wr": 70.5,
+        "pf": 1.37,
+        "expect": 16.51,
+        "total": 15372.17,
+        "max_dd": 4260.33,
+        "sharpe": 1.82,
+        "calmar": 0.98
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 279,
+          "wr": 67.4,
+          "pf": 1.25,
+          "expect": 12.93,
+          "total": 3606.83,
+          "max_dd": 1945.0,
+          "sharpe": 1.27,
+          "calmar": 1.67
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 70.0,
+          "pf": 1.36,
+          "expect": 16.37,
+          "total": 3976.83,
+          "max_dd": 1452.0,
+          "sharpe": 1.79,
+          "calmar": 2.84
+        },
+        "trade3": {
+          "n": 219,
+          "wr": 73.1,
+          "pf": 1.53,
+          "expect": 20.55,
+          "total": 4501.0,
+          "max_dd": 1486.5,
+          "sharpe": 2.47,
+          "calmar": 3.48
+        },
+        "trade4": {
+          "n": 190,
+          "wr": 72.6,
+          "pf": 1.46,
+          "expect": 17.3,
+          "total": 3287.5,
+          "max_dd": 1370.67,
+          "sharpe": 2.14,
+          "calmar": 3.18
+        }
+      }
+    },
+    {
+      "label": "PT100/125/250_SL100_ATM_runner50",
+      "pt1": 100,
+      "pt2": 125,
+      "pt3": 250,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "runner50",
+      "stats": {
+        "n": 927,
+        "wr": 52.8,
+        "pf": 1.24,
+        "expect": 16.5,
+        "total": 15290.94,
+        "max_dd": 6335.88,
+        "sharpe": 1.32,
+        "calmar": 0.66
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 277,
+          "wr": 51.6,
+          "pf": 1.2,
+          "expect": 15.01,
+          "total": 4157.56,
+          "max_dd": 2413.0,
+          "sharpe": 1.09,
+          "calmar": 1.57
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 52.7,
+          "pf": 1.21,
+          "expect": 14.84,
+          "total": 3605.44,
+          "max_dd": 1836.56,
+          "sharpe": 1.21,
+          "calmar": 2.04
+        },
+        "trade3": {
+          "n": 218,
+          "wr": 54.6,
+          "pf": 1.38,
+          "expect": 24.2,
+          "total": 5275.62,
+          "max_dd": 2175.0,
+          "sharpe": 2.03,
+          "calmar": 2.8
+        },
+        "trade4": {
+          "n": 189,
+          "wr": 52.4,
+          "pf": 1.19,
+          "expect": 11.92,
+          "total": 2252.31,
+          "max_dd": 2115.19,
+          "sharpe": 1.06,
+          "calmar": 1.42
+        }
+      }
+    },
+    {
+      "label": "PT75/125/250_SL100_ATM_runner67",
+      "pt1": 75,
+      "pt2": 125,
+      "pt3": 250,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "runner67",
+      "stats": {
+        "n": 928,
+        "wr": 57.4,
+        "pf": 1.26,
+        "expect": 16.27,
+        "total": 15096.12,
+        "max_dd": 7695.21,
+        "sharpe": 1.32,
+        "calmar": 0.53
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 278,
+          "wr": 56.5,
+          "pf": 1.21,
+          "expect": 14.83,
+          "total": 4122.92,
+          "max_dd": 2615.79,
+          "sharpe": 1.07,
+          "calmar": 1.43
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 56.8,
+          "pf": 1.21,
+          "expect": 12.95,
+          "total": 3146.0,
+          "max_dd": 2165.0,
+          "sharpe": 1.07,
+          "calmar": 1.51
+        },
+        "trade3": {
+          "n": 218,
+          "wr": 59.2,
+          "pf": 1.36,
+          "expect": 20.95,
+          "total": 4567.33,
+          "max_dd": 2053.67,
+          "sharpe": 1.79,
+          "calmar": 2.57
+        },
+        "trade4": {
+          "n": 189,
+          "wr": 57.7,
+          "pf": 1.33,
+          "expect": 17.25,
+          "total": 3259.87,
+          "max_dd": 1981.83,
+          "sharpe": 1.57,
+          "calmar": 2.19
+        }
+      }
+    },
+    {
+      "label": "PT50/150/250_SL100_ATM_runner67",
+      "pt1": 50,
+      "pt2": 150,
+      "pt3": 250,
+      "sl": 100,
+      "strike": "ATM",
+      "weights": "runner67",
+      "stats": {
+        "n": 931,
+        "wr": 68.9,
+        "pf": 1.36,
+        "expect": 16.21,
+        "total": 15089.75,
+        "max_dd": 5232.33,
+        "sharpe": 1.48,
+        "calmar": 0.78
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 279,
+          "wr": 65.9,
+          "pf": 1.22,
+          "expect": 11.69,
+          "total": 3260.17,
+          "max_dd": 2296.5,
+          "sharpe": 0.95,
+          "calmar": 1.28
+        },
+        "trade2": {
+          "n": 243,
+          "wr": 68.7,
+          "pf": 1.37,
+          "expect": 17.0,
+          "total": 4131.58,
+          "max_dd": 1689.5,
+          "sharpe": 1.53,
+          "calmar": 2.54
+        },
+        "trade3": {
+          "n": 219,
+          "wr": 71.2,
+          "pf": 1.55,
+          "expect": 22.09,
+          "total": 4837.75,
+          "max_dd": 1656.92,
+          "sharpe": 2.21,
+          "calmar": 3.36
+        },
+        "trade4": {
+          "n": 190,
+          "wr": 70.5,
+          "pf": 1.38,
+          "expect": 15.05,
+          "total": 2860.25,
+          "max_dd": 1841.33,
+          "sharpe": 1.56,
+          "calmar": 2.06
+        }
+      }
+    }
+  ],
+  "top_by_wr": [
+    {
+      "label": "PT25/100/250_SL100_OTM_equal",
+      "pt1": 25,
+      "pt2": 100,
+      "pt3": 250,
+      "sl": 100,
+      "strike": "OTM",
+      "weights": "equal",
+      "stats": {
+        "n": 925,
+        "wr": 82.8,
+        "pf": 1.32,
+        "expect": 6.45,
+        "total": 5962.33,
+        "max_dd": 3642.42,
+        "sharpe": 1.25,
+        "calmar": 0.45
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 278,
+          "wr": 79.5,
+          "pf": 1.22,
+          "expect": 5.87,
+          "total": 1631.83,
+          "max_dd": 1778.17,
+          "sharpe": 0.96,
+          "calmar": 0.83
+        },
+        "trade2": {
+          "n": 245,
+          "wr": 83.3,
+          "pf": 1.45,
+          "expect": 8.69,
+          "total": 2129.33,
+          "max_dd": 1005.42,
+          "sharpe": 1.58,
+          "calmar": 2.18
+        },
+        "trade3": {
+          "n": 214,
+          "wr": 86.4,
+          "pf": 1.61,
+          "expect": 8.97,
+          "total": 1920.17,
+          "max_dd": 729.42,
+          "sharpe": 2.0,
+          "calmar": 3.1
+        },
+        "trade4": {
+          "n": 188,
+          "wr": 83.0,
+          "pf": 1.09,
+          "expect": 1.49,
+          "total": 281.0,
+          "max_dd": 907.83,
+          "sharpe": 0.42,
+          "calmar": 0.41
+        }
+      }
+    },
+    {
+      "label": "PT25/150/250_SL100_OTM_equal",
+      "pt1": 25,
+      "pt2": 150,
+      "pt3": 250,
+      "sl": 100,
+      "strike": "OTM",
+      "weights": "equal",
+      "stats": {
+        "n": 925,
+        "wr": 82.8,
+        "pf": 1.32,
+        "expect": 6.37,
+        "total": 5888.17,
+        "max_dd": 3566.17,
+        "sharpe": 1.18,
+        "calmar": 0.45
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 278,
+          "wr": 79.5,
+          "pf": 1.19,
+          "expect": 5.01,
+          "total": 1392.0,
+          "max_dd": 1930.25,
+          "sharpe": 0.79,
+          "calmar": 0.65
+        },
+        "trade2": {
+          "n": 245,
+          "wr": 83.3,
+          "pf": 1.52,
+          "expect": 10.1,
+          "total": 2474.17,
+          "max_dd": 958.25,
+          "sharpe": 1.72,
+          "calmar": 2.66
+        },
+        "trade3": {
+          "n": 214,
+          "wr": 86.4,
+          "pf": 1.66,
+          "expect": 9.71,
+          "total": 2078.83,
+          "max_dd": 689.0,
+          "sharpe": 2.04,
+          "calmar": 3.55
+        },
+        "trade4": {
+          "n": 188,
+          "wr": 83.0,
+          "pf": 0.98,
+          "expect": -0.3,
+          "total": -56.83,
+          "max_dd": 958.17,
+          "sharpe": -0.09,
+          "calmar": -0.08
+        }
+      }
+    },
+    {
+      "label": "PT25/150/200_SL100_OTM_equal",
+      "pt1": 25,
+      "pt2": 150,
+      "pt3": 200,
+      "sl": 100,
+      "strike": "OTM",
+      "weights": "equal",
+      "stats": {
+        "n": 925,
+        "wr": 82.8,
+        "pf": 1.31,
+        "expect": 6.13,
+        "total": 5671.17,
+        "max_dd": 3599.75,
+        "sharpe": 1.18,
+        "calmar": 0.43
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 278,
+          "wr": 79.5,
+          "pf": 1.18,
+          "expect": 4.9,
+          "total": 1362.17,
+          "max_dd": 1703.75,
+          "sharpe": 0.79,
+          "calmar": 0.72
+        },
+        "trade2": {
+          "n": 245,
+          "wr": 83.3,
+          "pf": 1.48,
+          "expect": 9.29,
+          "total": 2274.83,
+          "max_dd": 958.25,
+          "sharpe": 1.67,
+          "calmar": 2.44
+        },
+        "trade3": {
+          "n": 214,
+          "wr": 86.4,
+          "pf": 1.66,
+          "expect": 9.68,
+          "total": 2072.17,
+          "max_dd": 691.25,
+          "sharpe": 2.12,
+          "calmar": 3.53
+        },
+        "trade4": {
+          "n": 188,
+          "wr": 83.0,
+          "pf": 0.99,
+          "expect": -0.2,
+          "total": -38.0,
+          "max_dd": 990.67,
+          "sharpe": -0.06,
+          "calmar": -0.05
+        }
+      }
+    },
+    {
+      "label": "PT25/100/200_SL100_OTM_equal",
+      "pt1": 25,
+      "pt2": 100,
+      "pt3": 200,
+      "sl": 100,
+      "strike": "OTM",
+      "weights": "equal",
+      "stats": {
+        "n": 925,
+        "wr": 82.8,
+        "pf": 1.31,
+        "expect": 6.08,
+        "total": 5623.5,
+        "max_dd": 3621.83,
+        "sharpe": 1.22,
+        "calmar": 0.42
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 278,
+          "wr": 79.5,
+          "pf": 1.2,
+          "expect": 5.38,
+          "total": 1494.67,
+          "max_dd": 1596.5,
+          "sharpe": 0.9,
+          "calmar": 0.85
+        },
+        "trade2": {
+          "n": 245,
+          "wr": 83.3,
+          "pf": 1.4,
+          "expect": 7.65,
+          "total": 1874.83,
+          "max_dd": 997.92,
+          "sharpe": 1.47,
+          "calmar": 1.93
+        },
+        "trade3": {
+          "n": 214,
+          "wr": 86.4,
+          "pf": 1.62,
+          "expect": 9.2,
+          "total": 1968.17,
+          "max_dd": 742.42,
+          "sharpe": 2.13,
+          "calmar": 3.12
+        },
+        "trade4": {
+          "n": 188,
+          "wr": 83.0,
+          "pf": 1.09,
+          "expect": 1.52,
+          "total": 285.83,
+          "max_dd": 927.33,
+          "sharpe": 0.43,
+          "calmar": 0.41
+        }
+      }
+    },
+    {
+      "label": "PT25/125/250_SL100_OTM_equal",
+      "pt1": 25,
+      "pt2": 125,
+      "pt3": 250,
+      "sl": 100,
+      "strike": "OTM",
+      "weights": "equal",
+      "stats": {
+        "n": 925,
+        "wr": 82.8,
+        "pf": 1.3,
+        "expect": 6.03,
+        "total": 5578.17,
+        "max_dd": 3637.17,
+        "sharpe": 1.16,
+        "calmar": 0.42
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 278,
+          "wr": 79.5,
+          "pf": 1.19,
+          "expect": 5.08,
+          "total": 1411.08,
+          "max_dd": 1730.5,
+          "sharpe": 0.82,
+          "calmar": 0.74
+        },
+        "trade2": {
+          "n": 245,
+          "wr": 83.3,
+          "pf": 1.46,
+          "expect": 8.93,
+          "total": 2187.33,
+          "max_dd": 965.67,
+          "sharpe": 1.59,
+          "calmar": 2.33
+        },
+        "trade3": {
+          "n": 214,
+          "wr": 86.4,
+          "pf": 1.6,
+          "expect": 8.78,
+          "total": 1878.42,
+          "max_dd": 738.75,
+          "sharpe": 1.92,
+          "calmar": 2.99
+        },
+        "trade4": {
+          "n": 188,
+          "wr": 83.0,
+          "pf": 1.03,
+          "expect": 0.54,
+          "total": 101.33,
+          "max_dd": 928.92,
+          "sharpe": 0.15,
+          "calmar": 0.15
+        }
+      }
+    },
+    {
+      "label": "PT25/175/250_SL100_OTM_equal",
+      "pt1": 25,
+      "pt2": 175,
+      "pt3": 250,
+      "sl": 100,
+      "strike": "OTM",
+      "weights": "equal",
+      "stats": {
+        "n": 925,
+        "wr": 82.8,
+        "pf": 1.29,
+        "expect": 5.82,
+        "total": 5379.92,
+        "max_dd": 3505.42,
+        "sharpe": 1.08,
+        "calmar": 0.42
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 278,
+          "wr": 79.5,
+          "pf": 1.17,
+          "expect": 4.47,
+          "total": 1243.92,
+          "max_dd": 1953.33,
+          "sharpe": 0.71,
+          "calmar": 0.58
+        },
+        "trade2": {
+          "n": 245,
+          "wr": 83.3,
+          "pf": 1.4,
+          "expect": 7.72,
+          "total": 1891.08,
+          "max_dd": 938.25,
+          "sharpe": 1.35,
+          "calmar": 2.07
+        },
+        "trade3": {
+          "n": 214,
+          "wr": 86.4,
+          "pf": 1.72,
+          "expect": 10.58,
+          "total": 2264.0,
+          "max_dd": 670.17,
+          "sharpe": 2.14,
+          "calmar": 3.98
+        },
+        "trade4": {
+          "n": 188,
+          "wr": 83.0,
+          "pf": 0.99,
+          "expect": -0.1,
+          "total": -19.08,
+          "max_dd": 942.67,
+          "sharpe": -0.03,
+          "calmar": -0.03
+        }
+      }
+    },
+    {
+      "label": "PT25/125/200_SL100_OTM_equal",
+      "pt1": 25,
+      "pt2": 125,
+      "pt3": 200,
+      "sl": 100,
+      "strike": "OTM",
+      "weights": "equal",
+      "stats": {
+        "n": 925,
+        "wr": 82.8,
+        "pf": 1.29,
+        "expect": 5.85,
+        "total": 5413.83,
+        "max_dd": 3655.83,
+        "sharpe": 1.16,
+        "calmar": 0.4
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 278,
+          "wr": 79.5,
+          "pf": 1.18,
+          "expect": 4.87,
+          "total": 1354.25,
+          "max_dd": 1535.0,
+          "sharpe": 0.81,
+          "calmar": 0.8
+        },
+        "trade2": {
+          "n": 245,
+          "wr": 83.3,
+          "pf": 1.42,
+          "expect": 8.11,
+          "total": 1988.0,
+          "max_dd": 963.25,
+          "sharpe": 1.52,
+          "calmar": 2.12
+        },
+        "trade3": {
+          "n": 214,
+          "wr": 86.4,
+          "pf": 1.61,
+          "expect": 9.0,
+          "total": 1926.42,
+          "max_dd": 716.83,
+          "sharpe": 2.05,
+          "calmar": 3.16
+        },
+        "trade4": {
+          "n": 188,
+          "wr": 83.0,
+          "pf": 1.05,
+          "expect": 0.77,
+          "total": 145.17,
+          "max_dd": 965.58,
+          "sharpe": 0.22,
+          "calmar": 0.2
+        }
+      }
+    },
+    {
+      "label": "PT25/175/200_SL100_OTM_equal",
+      "pt1": 25,
+      "pt2": 175,
+      "pt3": 200,
+      "sl": 100,
+      "strike": "OTM",
+      "weights": "equal",
+      "stats": {
+        "n": 925,
+        "wr": 82.8,
+        "pf": 1.28,
+        "expect": 5.62,
+        "total": 5202.08,
+        "max_dd": 3557.5,
+        "sharpe": 1.08,
+        "calmar": 0.4
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 278,
+          "wr": 79.5,
+          "pf": 1.16,
+          "expect": 4.37,
+          "total": 1214.08,
+          "max_dd": 1726.83,
+          "sharpe": 0.71,
+          "calmar": 0.64
+        },
+        "trade2": {
+          "n": 245,
+          "wr": 83.3,
+          "pf": 1.37,
+          "expect": 7.06,
+          "total": 1730.92,
+          "max_dd": 938.25,
+          "sharpe": 1.3,
+          "calmar": 1.9
+        },
+        "trade3": {
+          "n": 214,
+          "wr": 86.4,
+          "pf": 1.72,
+          "expect": 10.55,
+          "total": 2257.33,
+          "max_dd": 676.17,
+          "sharpe": 2.22,
+          "calmar": 3.93
+        },
+        "trade4": {
+          "n": 188,
+          "wr": 83.0,
+          "pf": 1.0,
+          "expect": -0.0,
+          "total": -0.25,
+          "max_dd": 973.67,
+          "sharpe": -0.0,
+          "calmar": -0.0
+        }
+      }
+    },
+    {
+      "label": "PT25/175/250_SL100_OTM_runner50",
+      "pt1": 25,
+      "pt2": 175,
+      "pt3": 250,
+      "sl": 100,
+      "strike": "OTM",
+      "weights": "runner50",
+      "stats": {
+        "n": 925,
+        "wr": 82.8,
+        "pf": 1.28,
+        "expect": 5.67,
+        "total": 5245.31,
+        "max_dd": 3667.19,
+        "sharpe": 0.97,
+        "calmar": 0.39
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 278,
+          "wr": 79.5,
+          "pf": 1.19,
+          "expect": 5.0,
+          "total": 1389.81,
+          "max_dd": 2105.75,
+          "sharpe": 0.73,
+          "calmar": 0.6
+        },
+        "trade2": {
+          "n": 245,
+          "wr": 83.3,
+          "pf": 1.38,
+          "expect": 7.36,
+          "total": 1802.69,
+          "max_dd": 1049.88,
+          "sharpe": 1.18,
+          "calmar": 1.77
+        },
+        "trade3": {
+          "n": 214,
+          "wr": 86.4,
+          "pf": 1.72,
+          "expect": 10.59,
+          "total": 2265.25,
+          "max_dd": 711.5,
+          "sharpe": 1.95,
+          "calmar": 3.75
+        },
+        "trade4": {
+          "n": 188,
+          "wr": 83.0,
+          "pf": 0.93,
+          "expect": -1.13,
+          "total": -212.44,
+          "max_dd": 949.19,
+          "sharpe": -0.3,
+          "calmar": -0.3
+        }
+      }
+    },
+    {
+      "label": "PT25/175/200_SL100_OTM_runner50",
+      "pt1": 25,
+      "pt2": 175,
+      "pt3": 200,
+      "sl": 100,
+      "strike": "OTM",
+      "weights": "runner50",
+      "stats": {
+        "n": 925,
+        "wr": 82.8,
+        "pf": 1.27,
+        "expect": 5.38,
+        "total": 4978.56,
+        "max_dd": 3619.69,
+        "sharpe": 0.97,
+        "calmar": 0.37
+      },
+      "by_tier": {
+        "trade1": {
+          "n": 278,
+          "wr": 79.5,
+          "pf": 1.18,
+          "expect": 4.84,
+          "total": 1345.06,
+          "max_dd": 1766.0,
+          "sharpe": 0.74,
+          "calmar": 0.69
+        },
+        "trade2": {
+          "n": 245,
+          "wr": 83.3,
+          "pf": 1.33,
+          "expect": 6.38,
+          "total": 1562.44,
+          "max_dd": 1034.94,
+          "sharpe": 1.11,
+          "calmar": 1.55
+        },
+        "trade3": {
+          "n": 214,
+          "wr": 86.4,
+          "pf": 1.71,
+          "expect": 10.54,
+          "total": 2255.25,
+          "max_dd": 711.5,
+          "sharpe": 2.07,
+          "calmar": 3.73
+        },
+        "trade4": {
+          "n": 188,
+          "wr": 83.0,
+          "pf": 0.94,
+          "expect": -0.98,
+          "total": -184.19,
+          "max_dd": 980.75,
+          "sharpe": -0.26,
+          "calmar": -0.25
+        }
+      }
+    }
+  ],
+  "signal_counts": {
+    "trade1": 291,
+    "trade2": 253,
+    "trade3": 225,
+    "trade4": 194
+  }
+}
