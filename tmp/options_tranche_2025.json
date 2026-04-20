@@ -1,0 +1,2267 @@
+{
+  "strategy": {
+    "align_min": 0.7,
+    "orb_max": 2.25,
+    "t1_r": 1.0,
+    "t2_r": 2.0,
+    "trail_r": 1.5,
+    "weights": [
+      0.25,
+      0.25,
+      0.5
+    ]
+  },
+  "underlying_stats": {
+    "n": 38,
+    "wr": 60.5,
+    "pf": 1.71,
+    "expect": 0.4248,
+    "total": 16.14,
+    "max_dd": 3.91,
+    "sharpe": 3.75,
+    "calmar": 27.38,
+    "ann_ret": 107.04
+  },
+  "options_stats": {
+    "ATM": {
+      "n": 37,
+      "wr": 45.9,
+      "pf": 1.56,
+      "expect": 17.7703,
+      "total": 657.5,
+      "max_dd": 269.0,
+      "sharpe": 2.82,
+      "calmar": 16.65,
+      "ann_ret": 4478.11
+    },
+    "OTM": {
+      "n": 37,
+      "wr": 35.1,
+      "pf": 1.19,
+      "expect": 4.7703,
+      "total": 176.5,
+      "max_dd": 267.25,
+      "sharpe": 1.05,
+      "calmar": 4.5,
+      "ann_ret": 1202.11
+    },
+    "OTM+1": {
+      "n": 37,
+      "wr": 24.3,
+      "pf": 0.89,
+      "expect": -1.8581,
+      "total": -68.75,
+      "max_dd": 240.75,
+      "sharpe": -0.64,
+      "calmar": -1.94,
+      "ann_ret": -468.24
+    }
+  },
+  "trades": [
+    {
+      "date": "2025-01-22",
+      "entry_price": 531.24,
+      "entry_time": "09:49",
+      "orb_range": 1.93,
+      "alignment": 0.9,
+      "sim": {
+        "t1_hit": true,
+        "t1_price": 533.22,
+        "t1_time": "11:47",
+        "t2_hit": false,
+        "t2_price": 531.24,
+        "t2_time": "15:51",
+        "t3_price": 531.24,
+        "t3_time": "15:51",
+        "t3_reason": "BE_STOP",
+        "combined_pnl": 0.495,
+        "combined_pnl_r": 0.25,
+        "winner": true
+      },
+      "options": {
+        "ATM": {
+          "strike": 531,
+          "opt_entry": 1.29,
+          "opt_t1": 2.46,
+          "opt_t2": 0.43,
+          "opt_t3": 0.43,
+          "pnl_t1": 117.0,
+          "pnl_t2": -86.0,
+          "pnl_t3": -86.0,
+          "combined_pnl": -35.25,
+          "winner": false
+        },
+        "OTM": {
+          "strike": 532,
+          "opt_entry": 0.82,
+          "opt_t1": 1.69,
+          "opt_t2": 0.07,
+          "opt_t3": 0.07,
+          "pnl_t1": 87.0,
+          "pnl_t2": -75.0,
+          "pnl_t3": -75.0,
+          "combined_pnl": -34.5,
+          "winner": false
+        },
+        "OTM+1": {
+          "strike": 533,
+          "opt_entry": 0.47,
+          "opt_t1": 1.0,
+          "opt_t2": 0.01,
+          "opt_t3": 0.01,
+          "pnl_t1": 53.0,
+          "pnl_t2": -46.0,
+          "pnl_t3": -46.0,
+          "combined_pnl": -21.25,
+          "winner": false
+        }
+      }
+    },
+    {
+      "date": "2025-01-24",
+      "entry_price": 533.22,
+      "entry_time": "09:46",
+      "orb_range": 1.25,
+      "alignment": 0.8,
+      "sim": {
+        "t1_hit": false,
+        "t1_price": 531.91,
+        "t1_time": "10:16",
+        "t2_hit": false,
+        "t2_price": 531.91,
+        "t2_time": "10:16",
+        "t3_price": 531.91,
+        "t3_time": "10:16",
+        "t3_reason": "STOP",
+        "combined_pnl": -1.31,
+        "combined_pnl_r": -1.0,
+        "winner": false
+      },
+      "options": {
+        "ATM": {
+          "strike": 533,
+          "opt_entry": 1.41,
+          "opt_t1": 0.74,
+          "opt_t2": 0.74,
+          "opt_t3": 0.74,
+          "pnl_t1": -67.0,
+          "pnl_t2": -67.0,
+          "pnl_t3": -67.0,
+          "combined_pnl": -67.0,
+          "winner": false
+        },
+        "OTM": {
+          "strike": 534,
+          "opt_entry": 0.93,
+          "opt_t1": 0.43,
+          "opt_t2": 0.43,
+          "opt_t3": 0.43,
+          "pnl_t1": -50.0,
+          "pnl_t2": -50.0,
+          "pnl_t3": -50.0,
+          "combined_pnl": -50.0,
+          "winner": false
+        },
+        "OTM+1": {
+          "strike": 535,
+          "opt_entry": 0.57,
+          "opt_t1": 0.23,
+          "opt_t2": 0.23,
+          "opt_t3": 0.23,
+          "pnl_t1": -34.0,
+          "pnl_t2": -34.0,
+          "pnl_t3": -34.0,
+          "combined_pnl": -34.0,
+          "winner": false
+        }
+      }
+    },
+    {
+      "date": "2025-02-06",
+      "entry_price": 528.05,
+      "entry_time": "09:45",
+      "orb_range": 1.19,
+      "alignment": 0.9,
+      "sim": {
+        "t1_hit": false,
+        "t1_price": 526.4,
+        "t1_time": "14:33",
+        "t2_hit": false,
+        "t2_price": 526.4,
+        "t2_time": "14:33",
+        "t3_price": 526.4,
+        "t3_time": "14:33",
+        "t3_reason": "STOP",
+        "combined_pnl": -1.65,
+        "combined_pnl_r": -1.0,
+        "winner": false
+      },
+      "options": {
+        "ATM": {
+          "strike": 528,
+          "opt_entry": 1.6,
+          "opt_t1": 0.38,
+          "opt_t2": 0.38,
+          "opt_t3": 0.38,
+          "pnl_t1": -122.0,
+          "pnl_t2": -122.0,
+          "pnl_t3": -122.0,
+          "combined_pnl": -122.0,
+          "winner": false
+        },
+        "OTM": {
+          "strike": 529,
+          "opt_entry": 1.13,
+          "opt_t1": 0.18,
+          "opt_t2": 0.18,
+          "opt_t3": 0.18,
+          "pnl_t1": -95.0,
+          "pnl_t2": -95.0,
+          "pnl_t3": -95.0,
+          "combined_pnl": -95.0,
+          "winner": false
+        },
+        "OTM+1": {
+          "strike": 530,
+          "opt_entry": 0.76,
+          "opt_t1": 0.07,
+          "opt_t2": 0.07,
+          "opt_t3": 0.07,
+          "pnl_t1": -69.0,
+          "pnl_t2": -69.0,
+          "pnl_t3": -69.0,
+          "combined_pnl": -69.0,
+          "winner": false
+        }
+      }
+    },
+    {
+      "date": "2025-02-10",
+      "entry_price": 528.21,
+      "entry_time": "09:46",
+      "orb_range": 1.405,
+      "alignment": 0.7,
+      "sim": {
+        "t1_hit": true,
+        "t1_price": 529.67,
+        "t1_time": "10:23",
+        "t2_hit": false,
+        "t2_price": 529.215,
+        "t2_time": "15:59",
+        "t3_price": 529.215,
+        "t3_time": "15:59",
+        "t3_reason": "EOD",
+        "combined_pnl": 1.1188,
+        "combined_pnl_r": 0.7663,
+        "winner": true
+      },
+      "options": {
+        "ATM": {
+          "strike": 528,
+          "opt_entry": 1.59,
+          "opt_t1": 2.32,
+          "opt_t2": 1.37,
+          "opt_t3": 1.37,
+          "pnl_t1": 73.0,
+          "pnl_t2": -22.0,
+          "pnl_t3": -22.0,
+          "combined_pnl": 1.75,
+          "winner": true
+        },
+        "OTM": {
+          "strike": 529,
+          "opt_entry": 1.08,
+          "opt_t1": 1.61,
+          "opt_t2": 0.36,
+          "opt_t3": 0.36,
+          "pnl_t1": 53.0,
+          "pnl_t2": -72.0,
+          "pnl_t3": -72.0,
+          "combined_pnl": -40.75,
+          "winner": false
+        },
+        "OTM+1": {
+          "strike": 530,
+          "opt_entry": 0.68,
+          "opt_t1": 1.01,
+          "opt_t2": 0.04,
+          "opt_t3": 0.04,
+          "pnl_t1": 33.0,
+          "pnl_t2": -64.0,
+          "pnl_t3": -64.0,
+          "combined_pnl": -39.75,
+          "winner": false
+        }
+      }
+    },
+    {
+      "date": "2025-02-14",
+      "entry_price": 536.9,
+      "entry_time": "10:07",
+      "orb_range": 1.17,
+      "alignment": 0.9,
+      "sim": {
+        "t1_hit": true,
+        "t1_price": 538.13,
+        "t1_time": "13:46",
+        "t2_hit": false,
+        "t2_price": 538.16,
+        "t2_time": "15:59",
+        "t3_price": 538.16,
+        "t3_time": "15:59",
+        "t3_reason": "EOD",
+        "combined_pnl": 1.2525,
+        "combined_pnl_r": 1.0183,
+        "winner": true
+      },
+      "options": {
+        "ATM": {
+          "strike": 537,
+          "opt_entry": 1.12,
+          "opt_t1": 1.4,
+          "opt_t2": 1.0,
+          "opt_t3": 1.0,
+          "pnl_t1": 28.0,
+          "pnl_t2": -12.0,
+          "pnl_t3": -12.0,
+          "combined_pnl": -2.0,
+          "winner": false
+        },
+        "OTM": {
+          "strike": 538,
+          "opt_entry": 0.68,
+          "opt_t1": 0.73,
+          "opt_t2": 0.2,
+          "opt_t3": 0.2,
+          "pnl_t1": 5.0,
+          "pnl_t2": -48.0,
+          "pnl_t3": -48.0,
+          "combined_pnl": -34.75,
+          "winner": false
+        },
+        "OTM+1": {
+          "strike": 539,
+          "opt_entry": 0.39,
+          "opt_t1": 0.3,
+          "opt_t2": 0.01,
+          "opt_t3": 0.01,
+          "pnl_t1": -9.0,
+          "pnl_t2": -38.0,
+          "pnl_t3": -38.0,
+          "combined_pnl": -30.75,
+          "winner": false
+        }
+      }
+    },
+    {
+      "date": "2025-03-24",
+      "entry_price": 488.71,
+      "entry_time": "09:46",
+      "orb_range": 1.54,
+      "alignment": 0.7,
+      "sim": {
+        "t1_hit": true,
+        "t1_price": 490.3,
+        "t1_time": "11:06",
+        "t2_hit": false,
+        "t2_price": 490.44,
+        "t2_time": "15:59",
+        "t3_price": 490.44,
+        "t3_time": "15:59",
+        "t3_reason": "EOD",
+        "combined_pnl": 1.695,
+        "combined_pnl_r": 1.066,
+        "winner": true
+      },
+      "options": {
+        "ATM": {
+          "strike": 489,
+          "opt_entry": 1.29,
+          "opt_t1": 1.99,
+          "opt_t2": 1.6,
+          "opt_t3": 1.6,
+          "pnl_t1": 70.0,
+          "pnl_t2": 31.0,
+          "pnl_t3": 31.0,
+          "combined_pnl": 40.75,
+          "winner": true
+        },
+        "OTM": {
+          "strike": 490,
+          "opt_entry": 0.83,
+          "opt_t1": 1.3,
+          "opt_t2": 0.51,
+          "opt_t3": 0.51,
+          "pnl_t1": 47.0,
+          "pnl_t2": -32.0,
+          "pnl_t3": -32.0,
+          "combined_pnl": -12.25,
+          "winner": false
+        },
+        "OTM+1": {
+          "strike": 491,
+          "opt_entry": 0.54,
+          "opt_t1": 0.77,
+          "opt_t2": 0.05,
+          "opt_t3": 0.05,
+          "pnl_t1": 23.0,
+          "pnl_t2": -49.0,
+          "pnl_t3": -49.0,
+          "combined_pnl": -31.0,
+          "winner": false
+        }
+      }
+    },
+    {
+      "date": "2025-05-27",
+      "entry_price": 516.82,
+      "entry_time": "09:55",
+      "orb_range": 2.2,
+      "alignment": 0.8,
+      "sim": {
+        "t1_hit": true,
+        "t1_price": 519.05,
+        "t1_time": "10:26",
+        "t2_hit": true,
+        "t2_price": 521.28,
+        "t2_time": "13:50",
+        "t3_price": 521.2,
+        "t3_time": "15:59",
+        "t3_reason": "EOD",
+        "combined_pnl": 3.8625,
+        "combined_pnl_r": 1.7321,
+        "winner": true
+      },
+      "options": {
+        "ATM": {
+          "strike": 517,
+          "opt_entry": 1.26,
+          "opt_t1": 2.52,
+          "opt_t2": 4.36,
+          "opt_t3": 4.13,
+          "pnl_t1": 126.0,
+          "pnl_t2": 310.0,
+          "pnl_t3": 287.0,
+          "combined_pnl": 252.5,
+          "winner": true
+        },
+        "OTM": {
+          "strike": 518,
+          "opt_entry": 0.84,
+          "opt_t1": 1.77,
+          "opt_t2": 3.44,
+          "opt_t3": 3.15,
+          "pnl_t1": 93.0,
+          "pnl_t2": 260.0,
+          "pnl_t3": 231.0,
+          "combined_pnl": 203.75,
+          "winner": true
+        },
+        "OTM+1": {
+          "strike": 519,
+          "opt_entry": 0.52,
+          "opt_t1": 1.17,
+          "opt_t2": 2.48,
+          "opt_t3": 2.15,
+          "pnl_t1": 65.0,
+          "pnl_t2": 196.0,
+          "pnl_t3": 163.0,
+          "combined_pnl": 146.75,
+          "winner": true
+        }
+      }
+    },
+    {
+      "date": "2025-06-03",
+      "entry_price": 524.95,
+      "entry_time": "09:57",
+      "orb_range": 2.03,
+      "alignment": 0.8,
+      "sim": {
+        "t1_hit": true,
+        "t1_price": 527.17,
+        "t1_time": "12:15",
+        "t2_hit": false,
+        "t2_price": 527.43,
+        "t2_time": "15:59",
+        "t3_price": 527.43,
+        "t3_time": "15:59",
+        "t3_reason": "EOD",
+        "combined_pnl": 2.415,
+        "combined_pnl_r": 1.0878,
+        "winner": true
+      },
+      "options": {
+        "ATM": {
+          "strike": 525,
+          "opt_entry": 1.31,
+          "opt_t1": 2.48,
+          "opt_t2": 2.4,
+          "opt_t3": 2.4,
+          "pnl_t1": 117.0,
+          "pnl_t2": 109.0,
+          "pnl_t3": 109.0,
+          "combined_pnl": 111.0,
+          "winner": true
+        },
+        "OTM": {
+          "strike": 526,
+          "opt_entry": 0.86,
+          "opt_t1": 1.69,
+          "opt_t2": 1.39,
+          "opt_t3": 1.39,
+          "pnl_t1": 83.0,
+          "pnl_t2": 53.0,
+          "pnl_t3": 53.0,
+          "combined_pnl": 60.5,
+          "winner": true
+        },
+        "OTM+1": {
+          "strike": 527,
+          "opt_entry": 0.54,
+          "opt_t1": 1.02,
+          "opt_t2": 0.45,
+          "opt_t3": 0.45,
+          "pnl_t1": 48.0,
+          "pnl_t2": -9.0,
+          "pnl_t3": -9.0,
+          "combined_pnl": 5.25,
+          "winner": true
+        }
+      }
+    },
+    {
+      "date": "2025-06-06",
+      "entry_price": 531.46,
+      "entry_time": "09:46",
+      "orb_range": 2.04,
+      "alignment": 0.7,
+      "sim": {
+        "t1_hit": false,
+        "t1_price": 529.3,
+        "t1_time": "10:32",
+        "t2_hit": false,
+        "t2_price": 529.3,
+        "t2_time": "10:32",
+        "t3_price": 529.3,
+        "t3_time": "10:32",
+        "t3_reason": "STOP",
+        "combined_pnl": -2.16,
+        "combined_pnl_r": -1.0,
+        "winner": false
+      },
+      "options": {
+        "ATM": {
+          "strike": 531,
+          "opt_entry": 1.69,
+          "opt_t1": 0.8,
+          "opt_t2": 0.8,
+          "opt_t3": 0.8,
+          "pnl_t1": -89.0,
+          "pnl_t2": -89.0,
+          "pnl_t3": -89.0,
+          "combined_pnl": -89.0,
+          "winner": false
+        },
+        "OTM": {
+          "strike": 532,
+          "opt_entry": 1.16,
+          "opt_t1": 0.46,
+          "opt_t2": 0.46,
+          "opt_t3": 0.46,
+          "pnl_t1": -70.0,
+          "pnl_t2": -70.0,
+          "pnl_t3": -70.0,
+          "combined_pnl": -70.0,
+          "winner": false
+        },
+        "OTM+1": {
+          "strike": 533,
+          "opt_entry": 0.75,
+          "opt_t1": 0.27,
+          "opt_t2": 0.27,
+          "opt_t3": 0.27,
+          "pnl_t1": -48.0,
+          "pnl_t2": -48.0,
+          "pnl_t3": -48.0,
+          "combined_pnl": -48.0,
+          "winner": false
+        }
+      }
+    },
+    {
+      "date": "2025-06-09",
+      "entry_price": 530.74,
+      "entry_time": "10:09",
+      "orb_range": 1.54,
+      "alignment": 0.7,
+      "sim": {
+        "t1_hit": false,
+        "t1_price": 530.68,
+        "t1_time": "15:59",
+        "t2_hit": false,
+        "t2_price": 530.68,
+        "t2_time": "15:59",
+        "t3_price": 530.68,
+        "t3_time": "15:59",
+        "t3_reason": "EOD",
+        "combined_pnl": -0.06,
+        "combined_pnl_r": -0.0347,
+        "winner": false
+      },
+      "options": {
+        "ATM": {
+          "strike": 531,
+          "opt_entry": 1.05,
+          "opt_t1": 0.09,
+          "opt_t2": 0.09,
+          "opt_t3": 0.09,
+          "pnl_t1": -96.0,
+          "pnl_t2": -96.0,
+          "pnl_t3": -96.0,
+          "combined_pnl": -96.0,
+          "winner": false
+        },
+        "OTM": {
+          "strike": 532,
+          "opt_entry": 0.66,
+          "opt_t1": 0.01,
+          "opt_t2": 0.01,
+          "opt_t3": 0.01,
+          "pnl_t1": -65.0,
+          "pnl_t2": -65.0,
+          "pnl_t3": -65.0,
+          "combined_pnl": -65.0,
+          "winner": false
+        },
+        "OTM+1": {
+          "strike": 533,
+          "opt_entry": 0.37,
+          "opt_t1": 0.02,
+          "opt_t2": 0.02,
+          "opt_t3": 0.02,
+          "pnl_t1": -35.0,
+          "pnl_t2": -35.0,
+          "pnl_t3": -35.0,
+          "combined_pnl": -35.0,
+          "winner": false
+        }
+      }
+    },
+    {
+      "date": "2025-06-10",
+      "entry_price": 532.43,
+      "entry_time": "09:52",
+      "orb_range": 1.63,
+      "alignment": 0.7,
+      "sim": {
+        "t1_hit": false,
+        "t1_price": 530.74,
+        "t1_time": "11:32",
+        "t2_hit": false,
+        "t2_price": 530.74,
+        "t2_time": "11:32",
+        "t3_price": 530.74,
+        "t3_time": "11:32",
+        "t3_reason": "STOP",
+        "combined_pnl": -1.69,
+        "combined_pnl_r": -1.0,
+        "winner": false
+      },
+      "options": {
+        "ATM": {
+          "strike": 532,
+          "opt_entry": 1.38,
+          "opt_t1": 0.54,
+          "opt_t2": 0.54,
+          "opt_t3": 0.54,
+          "pnl_t1": -84.0,
+          "pnl_t2": -84.0,
+          "pnl_t3": -84.0,
+          "combined_pnl": -84.0,
+          "winner": false
+        },
+        "OTM": {
+          "strike": 533,
+          "opt_entry": 0.9,
+          "opt_t1": 0.31,
+          "opt_t2": 0.31,
+          "opt_t3": 0.31,
+          "pnl_t1": -59.0,
+          "pnl_t2": -59.0,
+          "pnl_t3": -59.0,
+          "combined_pnl": -59.0,
+          "winner": false
+        },
+        "OTM+1": {
+          "strike": 534,
+          "opt_entry": 0.55,
+          "opt_t1": 0.17,
+          "opt_t2": 0.17,
+          "opt_t3": 0.17,
+          "pnl_t1": -38.0,
+          "pnl_t2": -38.0,
+          "pnl_t3": -38.0,
+          "combined_pnl": -38.0,
+          "winner": false
+        }
+      }
+    },
+    {
+      "date": "2025-06-16",
+      "entry_price": 532.51,
+      "entry_time": "09:45",
+      "orb_range": 2.02,
+      "alignment": 0.7,
+      "sim": {
+        "t1_hit": true,
+        "t1_price": 534.57,
+        "t1_time": "10:18",
+        "t2_hit": false,
+        "t2_price": 534.25,
+        "t2_time": "15:59",
+        "t3_price": 534.25,
+        "t3_time": "15:59",
+        "t3_reason": "EOD",
+        "combined_pnl": 1.82,
+        "combined_pnl_r": 0.8835,
+        "winner": true
+      },
+      "options": {
+        "ATM": {
+          "strike": 533,
+          "opt_entry": 0.88,
+          "opt_t1": 2.23,
+          "opt_t2": 1.27,
+          "opt_t3": 1.27,
+          "pnl_t1": 135.0,
+          "pnl_t2": 39.0,
+          "pnl_t3": 39.0,
+          "combined_pnl": 63.0,
+          "winner": true
+        },
+        "OTM": {
+          "strike": 534,
+          "opt_entry": 0.5,
+          "opt_t1": 1.49,
+          "opt_t2": 0.34,
+          "opt_t3": 0.34,
+          "pnl_t1": 99.0,
+          "pnl_t2": -16.0,
+          "pnl_t3": -16.0,
+          "combined_pnl": 12.75,
+          "winner": true
+        },
+        "OTM+1": {
+          "strike": 535,
+          "opt_entry": 0.26,
+          "opt_t1": 0.91,
+          "opt_t2": 0.02,
+          "opt_t3": 0.02,
+          "pnl_t1": 65.0,
+          "pnl_t2": -24.0,
+          "pnl_t3": -24.0,
+          "combined_pnl": -1.75,
+          "winner": false
+        }
+      }
+    },
+    {
+      "date": "2025-06-24",
+      "entry_price": 537.94,
+      "entry_time": "09:47",
+      "orb_range": 1.615,
+      "alignment": 0.8,
+      "sim": {
+        "t1_hit": true,
+        "t1_price": 539.605,
+        "t1_time": "12:38",
+        "t2_hit": false,
+        "t2_price": 539.735,
+        "t2_time": "15:59",
+        "t3_price": 539.735,
+        "t3_time": "15:59",
+        "t3_reason": "EOD",
+        "combined_pnl": 1.7625,
+        "combined_pnl_r": 1.0586,
+        "winner": true
+      },
+      "options": {
+        "ATM": {
+          "strike": 538,
+          "opt_entry": 1.16,
+          "opt_t1": 1.89,
+          "opt_t2": 1.87,
+          "opt_t3": 1.87,
+          "pnl_t1": 73.0,
+          "pnl_t2": 71.0,
+          "pnl_t3": 71.0,
+          "combined_pnl": 71.5,
+          "winner": true
+        },
+        "OTM": {
+          "strike": 539,
+          "opt_entry": 0.71,
+          "opt_t1": 1.15,
+          "opt_t2": 0.8,
+          "opt_t3": 0.8,
+          "pnl_t1": 44.0,
+          "pnl_t2": 9.0,
+          "pnl_t3": 9.0,
+          "combined_pnl": 17.75,
+          "winner": true
+        },
+        "OTM+1": {
+          "strike": 540,
+          "opt_entry": 0.39,
+          "opt_t1": 0.58,
+          "opt_t2": 0.1,
+          "opt_t3": 0.1,
+          "pnl_t1": 19.0,
+          "pnl_t2": -29.0,
+          "pnl_t3": -29.0,
+          "combined_pnl": -17.0,
+          "winner": false
+        }
+      }
+    },
+    {
+      "date": "2025-06-27",
+      "entry_price": 548.35,
+      "entry_time": "09:55",
+      "orb_range": 1.35,
+      "alignment": 0.9,
+      "sim": {
+        "t1_hit": true,
+        "t1_price": 549.96,
+        "t1_time": "10:12",
+        "t2_hit": false,
+        "t2_price": 548.35,
+        "t2_time": "10:52",
+        "t3_price": 548.35,
+        "t3_time": "10:52",
+        "t3_reason": "BE_STOP",
+        "combined_pnl": 0.4025,
+        "combined_pnl_r": 0.25,
+        "winner": true
+      },
+      "options": {
+        "ATM": {
+          "strike": 548,
+          "opt_entry": 1.14,
+          "opt_t1": 2.33,
+          "opt_t2": 1.37,
+          "opt_t3": 1.37,
+          "pnl_t1": 119.0,
+          "pnl_t2": 23.0,
+          "pnl_t3": 23.0,
+          "combined_pnl": 47.0,
+          "winner": true
+        },
+        "OTM": {
+          "strike": 549,
+          "opt_entry": 0.64,
+          "opt_t1": 1.59,
+          "opt_t2": 0.81,
+          "opt_t3": 0.81,
+          "pnl_t1": 95.0,
+          "pnl_t2": 17.0,
+          "pnl_t3": 17.0,
+          "combined_pnl": 36.5,
+          "winner": true
+        },
+        "OTM+1": {
+          "strike": 550,
+          "opt_entry": 0.34,
+          "opt_t1": 0.97,
+          "opt_t2": 0.41,
+          "opt_t3": 0.41,
+          "pnl_t1": 63.0,
+          "pnl_t2": 7.0,
+          "pnl_t3": 7.0,
+          "combined_pnl": 21.0,
+          "winner": true
+        }
+      }
+    },
+    {
+      "date": "2025-07-02",
+      "entry_price": 547.77,
+      "entry_time": "09:45",
+      "orb_range": 1.31,
+      "alignment": 0.9,
+      "sim": {
+        "t1_hit": true,
+        "t1_price": 549.42,
+        "t1_time": "10:27",
+        "t2_hit": false,
+        "t2_price": 550.81,
+        "t2_time": "15:59",
+        "t3_price": 550.81,
+        "t3_time": "15:59",
+        "t3_reason": "EOD",
+        "combined_pnl": 2.6925,
+        "combined_pnl_r": 1.6318,
+        "winner": true
+      },
+      "options": {
+        "ATM": {
+          "strike": 548,
+          "opt_entry": 0.92,
+          "opt_t1": 1.89,
+          "opt_t2": 2.8,
+          "opt_t3": 2.8,
+          "pnl_t1": 97.0,
+          "pnl_t2": 188.0,
+          "pnl_t3": 188.0,
+          "combined_pnl": 165.25,
+          "winner": true
+        },
+        "OTM": {
+          "strike": 549,
+          "opt_entry": 0.57,
+          "opt_t1": 1.22,
+          "opt_t2": 1.8,
+          "opt_t3": 1.8,
+          "pnl_t1": 65.0,
+          "pnl_t2": 123.0,
+          "pnl_t3": 123.0,
+          "combined_pnl": 108.5,
+          "winner": true
+        },
+        "OTM+1": {
+          "strike": 550,
+          "opt_entry": 0.34,
+          "opt_t1": 0.7,
+          "opt_t2": 0.89,
+          "opt_t3": 0.89,
+          "pnl_t1": 36.0,
+          "pnl_t2": 55.0,
+          "pnl_t3": 55.0,
+          "combined_pnl": 50.25,
+          "winner": true
+        }
+      }
+    },
+    {
+      "date": "2025-07-03",
+      "entry_price": 554.64,
+      "entry_time": "09:51",
+      "orb_range": 1.33,
+      "alignment": 1.0,
+      "sim": {
+        "t1_hit": true,
+        "t1_price": 556.1,
+        "t1_time": "10:10",
+        "t2_hit": false,
+        "t2_price": 555.81,
+        "t2_time": "15:59",
+        "t3_price": 555.81,
+        "t3_time": "15:59",
+        "t3_reason": "EOD",
+        "combined_pnl": 1.2425,
+        "combined_pnl_r": 0.851,
+        "winner": true
+      },
+      "options": {
+        "ATM": {
+          "strike": 555,
+          "opt_entry": 0.6,
+          "opt_t1": 1.51,
+          "opt_t2": 1.01,
+          "opt_t3": 1.01,
+          "pnl_t1": 91.0,
+          "pnl_t2": 41.0,
+          "pnl_t3": 41.0,
+          "combined_pnl": 53.5,
+          "winner": true
+        },
+        "OTM": {
+          "strike": 556,
+          "opt_entry": 0.29,
+          "opt_t1": 0.85,
+          "opt_t2": 0.18,
+          "opt_t3": 0.18,
+          "pnl_t1": 56.0,
+          "pnl_t2": -11.0,
+          "pnl_t3": -11.0,
+          "combined_pnl": 5.75,
+          "winner": true
+        },
+        "OTM+1": {
+          "strike": 557,
+          "opt_entry": 0.13,
+          "opt_t1": 0.4,
+          "opt_t2": 0.02,
+          "opt_t3": 0.02,
+          "pnl_t1": 27.0,
+          "pnl_t2": -11.0,
+          "pnl_t3": -11.0,
+          "combined_pnl": -1.5,
+          "winner": false
+        }
+      }
+    },
+    {
+      "date": "2025-07-09",
+      "entry_price": 556.74,
+      "entry_time": "09:45",
+      "orb_range": 2.08,
+      "alignment": 0.8,
+      "sim": {
+        "t1_hit": false,
+        "t1_price": 554.46,
+        "t1_time": "10:36",
+        "t2_hit": false,
+        "t2_price": 554.46,
+        "t2_time": "10:36",
+        "t3_price": 554.46,
+        "t3_time": "10:36",
+        "t3_reason": "STOP",
+        "combined_pnl": -2.28,
+        "combined_pnl_r": -1.0,
+        "winner": false
+      },
+      "options": {
+        "ATM": {
+          "strike": 557,
+          "opt_entry": 0.78,
+          "opt_t1": 0.26,
+          "opt_t2": 0.26,
+          "opt_t3": 0.26,
+          "pnl_t1": -52.0,
+          "pnl_t2": -52.0,
+          "pnl_t3": -52.0,
+          "combined_pnl": -52.0,
+          "winner": false
+        },
+        "OTM": {
+          "strike": 558,
+          "opt_entry": 0.43,
+          "opt_t1": 0.12,
+          "opt_t2": 0.12,
+          "opt_t3": 0.12,
+          "pnl_t1": -31.0,
+          "pnl_t2": -31.0,
+          "pnl_t3": -31.0,
+          "combined_pnl": -31.0,
+          "winner": false
+        },
+        "OTM+1": {
+          "strike": 559,
+          "opt_entry": 0.21,
+          "opt_t1": 0.07,
+          "opt_t2": 0.07,
+          "opt_t3": 0.07,
+          "pnl_t1": -14.0,
+          "pnl_t2": -14.0,
+          "pnl_t3": -14.0,
+          "combined_pnl": -14.0,
+          "winner": false
+        }
+      }
+    },
+    {
+      "date": "2025-07-17",
+      "entry_price": 558.71,
+      "entry_time": "09:48",
+      "orb_range": 1.48,
+      "alignment": 0.8,
+      "sim": {
+        "t1_hit": true,
+        "t1_price": 560.21,
+        "t1_time": "10:49",
+        "t2_hit": true,
+        "t2_price": 561.71,
+        "t2_time": "12:02",
+        "t3_price": 561.8,
+        "t3_time": "15:59",
+        "t3_reason": "EOD",
+        "combined_pnl": 2.67,
+        "combined_pnl_r": 1.78,
+        "winner": true
+      },
+      "options": {
+        "ATM": {
+          "strike": 559,
+          "opt_entry": 0.96,
+          "opt_t1": 1.81,
+          "opt_t2": 2.88,
+          "opt_t3": 2.81,
+          "pnl_t1": 85.0,
+          "pnl_t2": 192.0,
+          "pnl_t3": 185.0,
+          "combined_pnl": 161.75,
+          "winner": true
+        },
+        "OTM": {
+          "strike": 560,
+          "opt_entry": 0.55,
+          "opt_t1": 1.15,
+          "opt_t2": 2.03,
+          "opt_t3": 1.6,
+          "pnl_t1": 60.0,
+          "pnl_t2": 148.0,
+          "pnl_t3": 105.0,
+          "combined_pnl": 104.5,
+          "winner": true
+        },
+        "OTM+1": {
+          "strike": 561,
+          "opt_entry": 0.3,
+          "opt_t1": 0.63,
+          "opt_t2": 1.28,
+          "opt_t3": 0.89,
+          "pnl_t1": 33.0,
+          "pnl_t2": 98.0,
+          "pnl_t3": 59.0,
+          "combined_pnl": 62.25,
+          "winner": true
+        }
+      }
+    },
+    {
+      "date": "2025-07-21",
+      "entry_price": 564.7,
+      "entry_time": "09:45",
+      "orb_range": 2.18,
+      "alignment": 0.9,
+      "sim": {
+        "t1_hit": false,
+        "t1_price": 564.16,
+        "t1_time": "15:59",
+        "t2_hit": false,
+        "t2_price": 564.16,
+        "t2_time": "15:59",
+        "t3_price": 564.16,
+        "t3_time": "15:59",
+        "t3_reason": "EOD",
+        "combined_pnl": -0.54,
+        "combined_pnl_r": -0.2069,
+        "winner": false
+      },
+      "options": {
+        "ATM": {
+          "strike": 565,
+          "opt_entry": 0.51,
+          "opt_t1": 0.01,
+          "opt_t2": 0.01,
+          "opt_t3": 0.01,
+          "pnl_t1": -50.0,
+          "pnl_t2": -50.0,
+          "pnl_t3": -50.0,
+          "combined_pnl": -50.0,
+          "winner": false
+        },
+        "OTM": {
+          "strike": 566,
+          "opt_entry": 0.23,
+          "opt_t1": 0.01,
+          "opt_t2": 0.01,
+          "opt_t3": 0.01,
+          "pnl_t1": -22.0,
+          "pnl_t2": -22.0,
+          "pnl_t3": -22.0,
+          "combined_pnl": -22.0,
+          "winner": false
+        },
+        "OTM+1": {
+          "strike": 567,
+          "opt_entry": 0.1,
+          "opt_t1": 0.01,
+          "opt_t2": 0.01,
+          "opt_t3": 0.01,
+          "pnl_t1": -9.0,
+          "pnl_t2": -9.0,
+          "pnl_t3": -9.0,
+          "combined_pnl": -9.0,
+          "winner": false
+        }
+      }
+    },
+    {
+      "date": "2025-07-24",
+      "entry_price": 565.71,
+      "entry_time": "09:48",
+      "orb_range": 1.83,
+      "alignment": 0.8,
+      "sim": {
+        "t1_hit": false,
+        "t1_price": 563.87,
+        "t1_time": "10:12",
+        "t2_hit": false,
+        "t2_price": 563.87,
+        "t2_time": "10:12",
+        "t3_price": 563.87,
+        "t3_time": "10:12",
+        "t3_reason": "STOP",
+        "combined_pnl": -1.84,
+        "combined_pnl_r": -1.0,
+        "winner": false
+      },
+      "options": {
+        "ATM": {
+          "strike": 566,
+          "opt_entry": 0.98,
+          "opt_t1": 0.3,
+          "opt_t2": 0.3,
+          "opt_t3": 0.3,
+          "pnl_t1": -68.0,
+          "pnl_t2": -68.0,
+          "pnl_t3": -68.0,
+          "combined_pnl": -68.0,
+          "winner": false
+        },
+        "OTM": {
+          "strike": 567,
+          "opt_entry": 0.58,
+          "opt_t1": 0.14,
+          "opt_t2": 0.14,
+          "opt_t3": 0.14,
+          "pnl_t1": -44.0,
+          "pnl_t2": -44.0,
+          "pnl_t3": -44.0,
+          "combined_pnl": -44.0,
+          "winner": false
+        },
+        "OTM+1": {
+          "strike": 568,
+          "opt_entry": 0.3,
+          "opt_t1": 0.07,
+          "opt_t2": 0.07,
+          "opt_t3": 0.07,
+          "pnl_t1": -23.0,
+          "pnl_t2": -23.0,
+          "pnl_t3": -23.0,
+          "combined_pnl": -23.0,
+          "winner": false
+        }
+      }
+    },
+    {
+      "date": "2025-07-25",
+      "entry_price": 565.54,
+      "entry_time": "09:49",
+      "orb_range": 1.11,
+      "alignment": 0.8,
+      "sim": {
+        "t1_hit": true,
+        "t1_price": 566.81,
+        "t1_time": "12:12",
+        "t2_hit": false,
+        "t2_price": 566.39,
+        "t2_time": "15:59",
+        "t3_price": 566.39,
+        "t3_time": "15:59",
+        "t3_reason": "EOD",
+        "combined_pnl": 0.955,
+        "combined_pnl_r": 0.752,
+        "winner": true
+      },
+      "options": {
+        "ATM": {
+          "strike": 566,
+          "opt_entry": 0.66,
+          "opt_t1": 1.13,
+          "opt_t2": 0.46,
+          "opt_t3": 0.46,
+          "pnl_t1": 47.0,
+          "pnl_t2": -20.0,
+          "pnl_t3": -20.0,
+          "combined_pnl": -3.25,
+          "winner": false
+        },
+        "OTM": {
+          "strike": 567,
+          "opt_entry": 0.33,
+          "opt_t1": 0.51,
+          "opt_t2": 0.01,
+          "opt_t3": 0.01,
+          "pnl_t1": 18.0,
+          "pnl_t2": -32.0,
+          "pnl_t3": -32.0,
+          "combined_pnl": -19.5,
+          "winner": false
+        },
+        "OTM+1": {
+          "strike": 568,
+          "opt_entry": 0.13,
+          "opt_t1": 0.16,
+          "opt_t2": 0.01,
+          "opt_t3": 0.01,
+          "pnl_t1": 3.0,
+          "pnl_t2": -12.0,
+          "pnl_t3": -12.0,
+          "combined_pnl": -8.25,
+          "winner": false
+        }
+      }
+    },
+    {
+      "date": "2025-07-28",
+      "entry_price": 568.7,
+      "entry_time": "09:45",
+      "orb_range": 0.97,
+      "alignment": 0.8,
+      "sim": {
+        "t1_hit": false,
+        "t1_price": 567.54,
+        "t1_time": "11:19",
+        "t2_hit": false,
+        "t2_price": 567.54,
+        "t2_time": "11:19",
+        "t3_price": 567.54,
+        "t3_time": "11:19",
+        "t3_reason": "STOP",
+        "combined_pnl": -1.16,
+        "combined_pnl_r": -1.0,
+        "winner": false
+      },
+      "options": {
+        "ATM": {
+          "strike": 569,
+          "opt_entry": 0.66,
+          "opt_t1": 0.26,
+          "opt_t2": 0.26,
+          "opt_t3": 0.26,
+          "pnl_t1": -40.0,
+          "pnl_t2": -40.0,
+          "pnl_t3": -40.0,
+          "combined_pnl": -40.0,
+          "winner": false
+        },
+        "OTM": {
+          "strike": 570,
+          "opt_entry": 0.34,
+          "opt_t1": 0.09,
+          "opt_t2": 0.09,
+          "opt_t3": 0.09,
+          "pnl_t1": -25.0,
+          "pnl_t2": -25.0,
+          "pnl_t3": -25.0,
+          "combined_pnl": -25.0,
+          "winner": false
+        },
+        "OTM+1": {
+          "strike": 571,
+          "opt_entry": 0.15,
+          "opt_t1": 0.05,
+          "opt_t2": 0.05,
+          "opt_t3": 0.05,
+          "pnl_t1": -10.0,
+          "pnl_t2": -10.0,
+          "pnl_t3": -10.0,
+          "combined_pnl": -10.0,
+          "winner": false
+        }
+      }
+    },
+    {
+      "date": "2025-08-08",
+      "entry_price": 572.47,
+      "entry_time": "09:45",
+      "orb_range": 1.98,
+      "alignment": 0.9,
+      "sim": {
+        "t1_hit": false,
+        "t1_price": 574.55,
+        "t1_time": "15:59",
+        "t2_hit": false,
+        "t2_price": 574.55,
+        "t2_time": "15:59",
+        "t3_price": 574.55,
+        "t3_time": "15:59",
+        "t3_reason": "EOD",
+        "combined_pnl": 2.08,
+        "combined_pnl_r": 0.9004,
+        "winner": true
+      },
+      "options": {
+        "ATM": {
+          "strike": 572,
+          "opt_entry": 1.3,
+          "opt_t1": 2.64,
+          "opt_t2": 2.64,
+          "opt_t3": 2.64,
+          "pnl_t1": 134.0,
+          "pnl_t2": 134.0,
+          "pnl_t3": 134.0,
+          "combined_pnl": 134.0,
+          "winner": true
+        },
+        "OTM": {
+          "strike": 573,
+          "opt_entry": 0.85,
+          "opt_t1": 1.64,
+          "opt_t2": 1.64,
+          "opt_t3": 1.64,
+          "pnl_t1": 79.0,
+          "pnl_t2": 79.0,
+          "pnl_t3": 79.0,
+          "combined_pnl": 79.0,
+          "winner": true
+        },
+        "OTM+1": {
+          "strike": 574,
+          "opt_entry": 0.49,
+          "opt_t1": 0.62,
+          "opt_t2": 0.62,
+          "opt_t3": 0.62,
+          "pnl_t1": 13.0,
+          "pnl_t2": 13.0,
+          "pnl_t3": 13.0,
+          "combined_pnl": 13.0,
+          "winner": true
+        }
+      }
+    },
+    {
+      "date": "2025-08-11",
+      "entry_price": 575.28,
+      "entry_time": "09:58",
+      "orb_range": 1.41,
+      "alignment": 0.9,
+      "sim": {
+        "t1_hit": true,
+        "t1_price": 576.73,
+        "t1_time": "12:10",
+        "t2_hit": false,
+        "t2_price": 575.28,
+        "t2_time": "12:44",
+        "t3_price": 575.28,
+        "t3_time": "12:44",
+        "t3_reason": "BE_STOP",
+        "combined_pnl": 0.3625,
+        "combined_pnl_r": 0.25,
+        "winner": true
+      },
+      "options": {
+        "ATM": {
+          "strike": 575,
+          "opt_entry": 1.27,
+          "opt_t1": 1.96,
+          "opt_t2": 0.93,
+          "opt_t3": 0.93,
+          "pnl_t1": 69.0,
+          "pnl_t2": -34.0,
+          "pnl_t3": -34.0,
+          "combined_pnl": -8.25,
+          "winner": false
+        },
+        "OTM": {
+          "strike": 576,
+          "opt_entry": 0.76,
+          "opt_t1": 1.19,
+          "opt_t2": 0.42,
+          "opt_t3": 0.42,
+          "pnl_t1": 43.0,
+          "pnl_t2": -34.0,
+          "pnl_t3": -34.0,
+          "combined_pnl": -14.75,
+          "winner": false
+        },
+        "OTM+1": {
+          "strike": 577,
+          "opt_entry": 0.4,
+          "opt_t1": 0.62,
+          "opt_t2": 0.15,
+          "opt_t3": 0.15,
+          "pnl_t1": 22.0,
+          "pnl_t2": -25.0,
+          "pnl_t3": -25.0,
+          "combined_pnl": -13.25,
+          "winner": false
+        }
+      }
+    },
+    {
+      "date": "2025-09-08",
+      "entry_price": 579.9,
+      "entry_time": "09:49",
+      "orb_range": 1.83,
+      "alignment": 0.9,
+      "sim": {
+        "t1_hit": false,
+        "t1_price": 578.06,
+        "t1_time": "13:52",
+        "t2_hit": false,
+        "t2_price": 578.06,
+        "t2_time": "13:52",
+        "t3_price": 578.06,
+        "t3_time": "13:52",
+        "t3_reason": "STOP",
+        "combined_pnl": -1.84,
+        "combined_pnl_r": -1.0,
+        "winner": false
+      },
+      "options": {
+        "ATM": {
+          "strike": 580,
+          "opt_entry": 0.85,
+          "opt_t1": 0.08,
+          "opt_t2": 0.08,
+          "opt_t3": 0.08,
+          "pnl_t1": -77.0,
+          "pnl_t2": -77.0,
+          "pnl_t3": -77.0,
+          "combined_pnl": -77.0,
+          "winner": false
+        },
+        "OTM": {
+          "strike": 581,
+          "opt_entry": 0.45,
+          "opt_t1": 0.03,
+          "opt_t2": 0.03,
+          "opt_t3": 0.03,
+          "pnl_t1": -42.0,
+          "pnl_t2": -42.0,
+          "pnl_t3": -42.0,
+          "combined_pnl": -42.0,
+          "winner": false
+        },
+        "OTM+1": {
+          "strike": 582,
+          "opt_entry": 0.22,
+          "opt_t1": 0.01,
+          "opt_t2": 0.01,
+          "opt_t3": 0.01,
+          "pnl_t1": -21.0,
+          "pnl_t2": -21.0,
+          "pnl_t3": -21.0,
+          "combined_pnl": -21.0,
+          "winner": false
+        }
+      }
+    },
+    {
+      "date": "2025-09-11",
+      "entry_price": 583.8,
+      "entry_time": "10:08",
+      "orb_range": 2.07,
+      "alignment": 0.9,
+      "sim": {
+        "t1_hit": false,
+        "t1_price": 584.1,
+        "t1_time": "15:59",
+        "t2_hit": false,
+        "t2_price": 584.1,
+        "t2_time": "15:59",
+        "t3_price": 584.1,
+        "t3_time": "15:59",
+        "t3_reason": "EOD",
+        "combined_pnl": 0.3,
+        "combined_pnl_r": 0.1402,
+        "winner": true
+      },
+      "options": {
+        "ATM": {
+          "strike": 584,
+          "opt_entry": 1.08,
+          "opt_t1": 0.31,
+          "opt_t2": 0.31,
+          "opt_t3": 0.31,
+          "pnl_t1": -77.0,
+          "pnl_t2": -77.0,
+          "pnl_t3": -77.0,
+          "combined_pnl": -77.0,
+          "winner": false
+        },
+        "OTM": {
+          "strike": 585,
+          "opt_entry": 0.6,
+          "opt_t1": 0.03,
+          "opt_t2": 0.03,
+          "opt_t3": 0.03,
+          "pnl_t1": -57.0,
+          "pnl_t2": -57.0,
+          "pnl_t3": -57.0,
+          "combined_pnl": -57.0,
+          "winner": false
+        },
+        "OTM+1": {
+          "strike": 586,
+          "opt_entry": 0.29,
+          "opt_t1": 0.01,
+          "opt_t2": 0.01,
+          "opt_t3": 0.01,
+          "pnl_t1": -28.0,
+          "pnl_t2": -28.0,
+          "pnl_t3": -28.0,
+          "combined_pnl": -28.0,
+          "winner": false
+        }
+      }
+    },
+    {
+      "date": "2025-09-12",
+      "entry_price": 585.7,
+      "entry_time": "10:21",
+      "orb_range": 1.48,
+      "alignment": 1.0,
+      "sim": {
+        "t1_hit": true,
+        "t1_price": 587.3,
+        "t1_time": "14:33",
+        "t2_hit": false,
+        "t2_price": 586.66,
+        "t2_time": "15:59",
+        "t3_price": 586.66,
+        "t3_time": "15:59",
+        "t3_reason": "EOD",
+        "combined_pnl": 1.12,
+        "combined_pnl_r": 0.7,
+        "winner": true
+      },
+      "options": {
+        "ATM": {
+          "strike": 586,
+          "opt_entry": 0.53,
+          "opt_t1": 1.3,
+          "opt_t2": 0.66,
+          "opt_t3": 0.66,
+          "pnl_t1": 77.0,
+          "pnl_t2": 13.0,
+          "pnl_t3": 13.0,
+          "combined_pnl": 29.0,
+          "winner": true
+        },
+        "OTM": {
+          "strike": 587,
+          "opt_entry": 0.2,
+          "opt_t1": 0.49,
+          "opt_t2": 0.07,
+          "opt_t3": 0.07,
+          "pnl_t1": 29.0,
+          "pnl_t2": -13.0,
+          "pnl_t3": -13.0,
+          "combined_pnl": -2.5,
+          "winner": false
+        },
+        "OTM+1": {
+          "strike": 588,
+          "opt_entry": 0.06,
+          "opt_t1": 0.11,
+          "opt_t2": 0.01,
+          "opt_t3": 0.01,
+          "pnl_t1": 5.0,
+          "pnl_t2": -5.0,
+          "pnl_t3": -5.0,
+          "combined_pnl": -2.5,
+          "winner": false
+        }
+      }
+    },
+    {
+      "date": "2025-09-15",
+      "entry_price": 589.67,
+      "entry_time": "09:49",
+      "orb_range": 1.33,
+      "alignment": 1.0,
+      "sim": {
+        "t1_hit": true,
+        "t1_price": 591.04,
+        "t1_time": "11:57",
+        "t2_hit": false,
+        "t2_price": 591.7,
+        "t2_time": "15:59",
+        "t3_price": 591.7,
+        "t3_time": "15:59",
+        "t3_reason": "EOD",
+        "combined_pnl": 1.865,
+        "combined_pnl_r": 1.3613,
+        "winner": true
+      },
+      "options": {
+        "ATM": {
+          "strike": 590,
+          "opt_entry": 0.72,
+          "opt_t1": 1.38,
+          "opt_t2": 1.58,
+          "opt_t3": 1.58,
+          "pnl_t1": 66.0,
+          "pnl_t2": 86.0,
+          "pnl_t3": 86.0,
+          "combined_pnl": 81.0,
+          "winner": true
+        },
+        "OTM": {
+          "strike": 591,
+          "opt_entry": 0.35,
+          "opt_t1": 0.67,
+          "opt_t2": 0.69,
+          "opt_t3": 0.69,
+          "pnl_t1": 32.0,
+          "pnl_t2": 34.0,
+          "pnl_t3": 34.0,
+          "combined_pnl": 33.5,
+          "winner": true
+        },
+        "OTM+1": {
+          "strike": 592,
+          "opt_entry": 0.15,
+          "opt_t1": 0.23,
+          "opt_t2": 0.04,
+          "opt_t3": 0.04,
+          "pnl_t1": 8.0,
+          "pnl_t2": -11.0,
+          "pnl_t3": -11.0,
+          "combined_pnl": -6.25,
+          "winner": false
+        }
+      }
+    },
+    {
+      "date": "2025-09-19",
+      "entry_price": 597.89,
+      "entry_time": "09:49",
+      "orb_range": 1.08,
+      "alignment": 1.0,
+      "sim": {
+        "t1_hit": false,
+        "t1_price": 596.56,
+        "t1_time": "10:47",
+        "t2_hit": false,
+        "t2_price": 596.56,
+        "t2_time": "10:47",
+        "t3_price": 596.56,
+        "t3_time": "10:47",
+        "t3_reason": "STOP",
+        "combined_pnl": -1.33,
+        "combined_pnl_r": -1.0,
+        "winner": false
+      },
+      "options": {
+        "ATM": {
+          "strike": 598,
+          "opt_entry": 0.85,
+          "opt_t1": 0.42,
+          "opt_t2": 0.42,
+          "opt_t3": 0.42,
+          "pnl_t1": -43.0,
+          "pnl_t2": -43.0,
+          "pnl_t3": -43.0,
+          "combined_pnl": -43.0,
+          "winner": false
+        },
+        "OTM": {
+          "strike": 599,
+          "opt_entry": 0.48,
+          "opt_t1": 0.21,
+          "opt_t2": 0.21,
+          "opt_t3": 0.21,
+          "pnl_t1": -27.0,
+          "pnl_t2": -27.0,
+          "pnl_t3": -27.0,
+          "combined_pnl": -27.0,
+          "winner": false
+        },
+        "OTM+1": {
+          "strike": 600,
+          "opt_entry": 0.25,
+          "opt_t1": 0.11,
+          "opt_t2": 0.11,
+          "opt_t3": 0.11,
+          "pnl_t1": -14.0,
+          "pnl_t2": -14.0,
+          "pnl_t3": -14.0,
+          "combined_pnl": -14.0,
+          "winner": false
+        }
+      }
+    },
+    {
+      "date": "2025-09-29",
+      "entry_price": 600.96,
+      "entry_time": "09:45",
+      "orb_range": 1.61,
+      "alignment": 0.9,
+      "sim": {
+        "t1_hit": false,
+        "t1_price": 599.05,
+        "t1_time": "11:36",
+        "t2_hit": false,
+        "t2_price": 599.05,
+        "t2_time": "11:36",
+        "t3_price": 599.05,
+        "t3_time": "11:36",
+        "t3_reason": "STOP",
+        "combined_pnl": -1.91,
+        "combined_pnl_r": -1.0,
+        "winner": false
+      },
+      "options": {
+        "ATM": {
+          "strike": 601,
+          "opt_entry": 0.98,
+          "opt_t1": 0.19,
+          "opt_t2": 0.19,
+          "opt_t3": 0.19,
+          "pnl_t1": -79.0,
+          "pnl_t2": -79.0,
+          "pnl_t3": -79.0,
+          "combined_pnl": -79.0,
+          "winner": false
+        },
+        "OTM": {
+          "strike": 602,
+          "opt_entry": 0.55,
+          "opt_t1": 0.09,
+          "opt_t2": 0.09,
+          "opt_t3": 0.09,
+          "pnl_t1": -46.0,
+          "pnl_t2": -46.0,
+          "pnl_t3": -46.0,
+          "combined_pnl": -46.0,
+          "winner": false
+        },
+        "OTM+1": {
+          "strike": 603,
+          "opt_entry": 0.27,
+          "opt_t1": 0.04,
+          "opt_t2": 0.04,
+          "opt_t3": 0.04,
+          "pnl_t1": -23.0,
+          "pnl_t2": -23.0,
+          "pnl_t3": -23.0,
+          "combined_pnl": -23.0,
+          "winner": false
+        }
+      }
+    },
+    {
+      "date": "2025-10-08",
+      "entry_price": 607.19,
+      "entry_time": "09:48",
+      "orb_range": 1.81,
+      "alignment": 0.9,
+      "sim": {
+        "t1_hit": true,
+        "t1_price": 609.11,
+        "t1_time": "11:25",
+        "t2_hit": true,
+        "t2_price": 611.03,
+        "t2_time": "15:27",
+        "t3_price": 611.45,
+        "t3_time": "15:59",
+        "t3_reason": "EOD",
+        "combined_pnl": 3.57,
+        "combined_pnl_r": 1.8594,
+        "winner": true
+      },
+      "options": {
+        "ATM": {
+          "strike": 607,
+          "opt_entry": 1.3,
+          "opt_t1": 2.52,
+          "opt_t2": 4.0,
+          "opt_t3": 4.4,
+          "pnl_t1": 122.0,
+          "pnl_t2": 270.0,
+          "pnl_t3": 310.0,
+          "combined_pnl": 253.0,
+          "winner": true
+        },
+        "OTM": {
+          "strike": 608,
+          "opt_entry": 0.79,
+          "opt_t1": 1.66,
+          "opt_t2": 3.04,
+          "opt_t3": 3.46,
+          "pnl_t1": 87.0,
+          "pnl_t2": 225.0,
+          "pnl_t3": 267.0,
+          "combined_pnl": 211.5,
+          "winner": true
+        },
+        "OTM+1": {
+          "strike": 609,
+          "opt_entry": 0.43,
+          "opt_t1": 0.94,
+          "opt_t2": 1.99,
+          "opt_t3": 2.42,
+          "pnl_t1": 51.0,
+          "pnl_t2": 156.0,
+          "pnl_t3": 199.0,
+          "combined_pnl": 151.25,
+          "winner": true
+        }
+      }
+    },
+    {
+      "date": "2025-10-10",
+      "entry_price": 613.09,
+      "entry_time": "09:45",
+      "orb_range": 1.96,
+      "alignment": 0.8,
+      "sim": {
+        "t1_hit": false,
+        "t1_price": 610.96,
+        "t1_time": "10:57",
+        "t2_hit": false,
+        "t2_price": 610.96,
+        "t2_time": "10:57",
+        "t3_price": 610.96,
+        "t3_time": "10:57",
+        "t3_reason": "STOP",
+        "combined_pnl": -2.13,
+        "combined_pnl_r": -1.0,
+        "winner": false
+      },
+      "options": {
+        "ATM": {
+          "strike": 613,
+          "opt_entry": 1.03,
+          "opt_t1": 0.14,
+          "opt_t2": 0.14,
+          "opt_t3": 0.14,
+          "pnl_t1": -89.0,
+          "pnl_t2": -89.0,
+          "pnl_t3": -89.0,
+          "combined_pnl": -89.0,
+          "winner": false
+        },
+        "OTM": {
+          "strike": 614,
+          "opt_entry": 0.59,
+          "opt_t1": 0.05,
+          "opt_t2": 0.05,
+          "opt_t3": 0.05,
+          "pnl_t1": -54.0,
+          "pnl_t2": -54.0,
+          "pnl_t3": -54.0,
+          "combined_pnl": -54.0,
+          "winner": false
+        },
+        "OTM+1": {
+          "strike": 615,
+          "opt_entry": 0.3,
+          "opt_t1": 0.04,
+          "opt_t2": 0.04,
+          "opt_t3": 0.04,
+          "pnl_t1": -26.0,
+          "pnl_t2": -26.0,
+          "pnl_t3": -26.0,
+          "combined_pnl": -26.0,
+          "winner": false
+        }
+      }
+    },
+    {
+      "date": "2025-10-23",
+      "entry_price": 607.41,
+      "entry_time": "09:45",
+      "orb_range": 2.23,
+      "alignment": 0.7,
+      "sim": {
+        "t1_hit": true,
+        "t1_price": 610.3,
+        "t1_time": "13:00",
+        "t2_hit": false,
+        "t2_price": 610.6,
+        "t2_time": "15:59",
+        "t3_price": 610.6,
+        "t3_time": "15:59",
+        "t3_reason": "EOD",
+        "combined_pnl": 3.115,
+        "combined_pnl_r": 1.0779,
+        "winner": true
+      },
+      "options": {
+        "ATM": {
+          "strike": 607,
+          "opt_entry": 1.58,
+          "opt_t1": 3.42,
+          "opt_t2": 3.7,
+          "opt_t3": 3.7,
+          "pnl_t1": 184.0,
+          "pnl_t2": 212.0,
+          "pnl_t3": 212.0,
+          "combined_pnl": 205.0,
+          "winner": true
+        },
+        "OTM": {
+          "strike": 608,
+          "opt_entry": 1.09,
+          "opt_t1": 2.47,
+          "opt_t2": 2.57,
+          "opt_t3": 2.57,
+          "pnl_t1": 138.0,
+          "pnl_t2": 148.0,
+          "pnl_t3": 148.0,
+          "combined_pnl": 145.5,
+          "winner": true
+        },
+        "OTM+1": {
+          "strike": 609,
+          "opt_entry": 0.71,
+          "opt_t1": 1.62,
+          "opt_t2": 1.55,
+          "opt_t3": 1.55,
+          "pnl_t1": 91.0,
+          "pnl_t2": 84.0,
+          "pnl_t3": 84.0,
+          "combined_pnl": 85.75,
+          "winner": true
+        }
+      }
+    },
+    {
+      "date": "2025-10-27",
+      "entry_price": 625.57,
+      "entry_time": "10:01",
+      "orb_range": 1.5,
+      "alignment": 1.0,
+      "sim": {
+        "t1_hit": true,
+        "t1_price": 627.1,
+        "t1_time": "13:42",
+        "t2_hit": false,
+        "t2_price": 628.08,
+        "t2_time": "15:59",
+        "t3_price": 628.08,
+        "t3_time": "15:59",
+        "t3_reason": "EOD",
+        "combined_pnl": 2.265,
+        "combined_pnl_r": 1.4804,
+        "winner": true
+      },
+      "options": {
+        "ATM": {
+          "strike": 626,
+          "opt_entry": 0.64,
+          "opt_t1": 1.33,
+          "opt_t2": 2.1,
+          "opt_t3": 2.1,
+          "pnl_t1": 69.0,
+          "pnl_t2": 146.0,
+          "pnl_t3": 146.0,
+          "combined_pnl": 126.75,
+          "winner": true
+        },
+        "OTM": {
+          "strike": 627,
+          "opt_entry": 0.3,
+          "opt_t1": 0.53,
+          "opt_t2": 1.14,
+          "opt_t3": 1.14,
+          "pnl_t1": 23.0,
+          "pnl_t2": 84.0,
+          "pnl_t3": 84.0,
+          "combined_pnl": 68.75,
+          "winner": true
+        },
+        "OTM+1": {
+          "strike": 628,
+          "opt_entry": 0.14,
+          "opt_t1": 0.16,
+          "opt_t2": 0.22,
+          "opt_t3": 0.22,
+          "pnl_t1": 2.0,
+          "pnl_t2": 8.0,
+          "pnl_t3": 8.0,
+          "combined_pnl": 6.5,
+          "winner": true
+        }
+      }
+    },
+    {
+      "date": "2025-10-29",
+      "entry_price": 636.3,
+      "entry_time": "09:52",
+      "orb_range": 0.9,
+      "alignment": 1.0,
+      "sim": {
+        "t1_hit": false,
+        "t1_price": 635.31,
+        "t1_time": "10:50",
+        "t2_hit": false,
+        "t2_price": 635.31,
+        "t2_time": "10:50",
+        "t3_price": 635.31,
+        "t3_time": "10:50",
+        "t3_reason": "STOP",
+        "combined_pnl": -0.99,
+        "combined_pnl_r": -1.0,
+        "winner": false
+      },
+      "options": {
+        "ATM": {
+          "strike": 636,
+          "opt_entry": 2.8,
+          "opt_t1": 2.62,
+          "opt_t2": 2.62,
+          "opt_t3": 2.62,
+          "pnl_t1": -18.0,
+          "pnl_t2": -18.0,
+          "pnl_t3": -18.0,
+          "combined_pnl": -18.0,
+          "winner": false
+        },
+        "OTM": {
+          "strike": 637,
+          "opt_entry": 2.29,
+          "opt_t1": 2.14,
+          "opt_t2": 2.14,
+          "opt_t3": 2.14,
+          "pnl_t1": -15.0,
+          "pnl_t2": -15.0,
+          "pnl_t3": -15.0,
+          "combined_pnl": -15.0,
+          "winner": false
+        },
+        "OTM+1": {
+          "strike": 638,
+          "opt_entry": 1.84,
+          "opt_t1": 1.73,
+          "opt_t2": 1.73,
+          "opt_t3": 1.73,
+          "pnl_t1": -11.0,
+          "pnl_t2": -11.0,
+          "pnl_t3": -11.0,
+          "combined_pnl": -11.0,
+          "winner": false
+        }
+      }
+    },
+    {
+      "date": "2025-11-26",
+      "entry_price": 613.68,
+      "entry_time": "09:50",
+      "orb_range": 1.96,
+      "alignment": 0.7,
+      "sim": {
+        "t1_hit": false,
+        "t1_price": 611.7,
+        "t1_time": "09:58",
+        "t2_hit": false,
+        "t2_price": 611.7,
+        "t2_time": "09:58",
+        "t3_price": 611.7,
+        "t3_time": "09:58",
+        "t3_reason": "STOP",
+        "combined_pnl": -1.98,
+        "combined_pnl_r": -1.0,
+        "winner": false
+      },
+      "options": {
+        "ATM": {
+          "strike": 614,
+          "opt_entry": 1.39,
+          "opt_t1": 0.71,
+          "opt_t2": 0.71,
+          "opt_t3": 0.71,
+          "pnl_t1": -68.0,
+          "pnl_t2": -68.0,
+          "pnl_t3": -68.0,
+          "combined_pnl": -68.0,
+          "winner": false
+        },
+        "OTM": {
+          "strike": 615,
+          "opt_entry": 0.94,
+          "opt_t1": 0.45,
+          "opt_t2": 0.45,
+          "opt_t3": 0.45,
+          "pnl_t1": -49.0,
+          "pnl_t2": -49.0,
+          "pnl_t3": -49.0,
+          "combined_pnl": -49.0,
+          "winner": false
+        },
+        "OTM+1": {
+          "strike": 616,
+          "opt_entry": 0.62,
+          "opt_t1": 0.28,
+          "opt_t2": 0.28,
+          "opt_t3": 0.28,
+          "pnl_t1": -34.0,
+          "pnl_t2": -34.0,
+          "pnl_t3": -34.0,
+          "combined_pnl": -34.0,
+          "winner": false
+        }
+      }
+    },
+    {
+      "date": "2025-11-28",
+      "entry_price": 617.68,
+      "entry_time": null,
+      "orb_range": 2.15,
+      "alignment": 0.7,
+      "sim": {
+        "t1_hit": false,
+        "t1_price": 619.06,
+        "t1_time": "15:59",
+        "t2_hit": false,
+        "t2_price": 619.06,
+        "t2_time": "15:59",
+        "t3_price": 619.06,
+        "t3_time": "15:59",
+        "t3_reason": "EOD",
+        "combined_pnl": 1.38,
+        "combined_pnl_r": 0.6106,
+        "winner": true
+      },
+      "options": {}
+    },
+    {
+      "date": "2025-12-24",
+      "entry_price": 622.8,
+      "entry_time": "10:12",
+      "orb_range": 1.05,
+      "alignment": 0.8,
+      "sim": {
+        "t1_hit": true,
+        "t1_price": 623.88,
+        "t1_time": "11:37",
+        "t2_hit": false,
+        "t2_price": 623.2,
+        "t2_time": "15:59",
+        "t3_price": 623.2,
+        "t3_time": "15:59",
+        "t3_reason": "EOD",
+        "combined_pnl": 0.57,
+        "combined_pnl_r": 0.5278,
+        "winner": true
+      },
+      "options": {
+        "ATM": {
+          "strike": 623,
+          "opt_entry": 0.35,
+          "opt_t1": 1.04,
+          "opt_t2": 0.5,
+          "opt_t3": 0.5,
+          "pnl_t1": 69.0,
+          "pnl_t2": 15.0,
+          "pnl_t3": 15.0,
+          "combined_pnl": 28.5,
+          "winner": true
+        },
+        "OTM": {
+          "strike": 624,
+          "opt_entry": 0.12,
+          "opt_t1": 0.38,
+          "opt_t2": 0.01,
+          "opt_t3": 0.01,
+          "pnl_t1": 26.0,
+          "pnl_t2": -11.0,
+          "pnl_t3": -11.0,
+          "combined_pnl": -1.75,
+          "winner": false
+        },
+        "OTM+1": {
+          "strike": 625,
+          "opt_entry": 0.04,
+          "opt_t1": 0.11,
+          "opt_t2": 0.01,
+          "opt_t3": 0.01,
+          "pnl_t1": 7.0,
+          "pnl_t2": -3.0,
+          "pnl_t3": -3.0,
+          "combined_pnl": -0.5,
+          "winner": false
+        }
+      }
+    }
+  ]
+}
