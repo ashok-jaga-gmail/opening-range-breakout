@@ -409,3 +409,118 @@ From MAE analysis: 80%+ WR requires trades that don't pull back beyond ~0.75R. T
 - 70–80% alignment
 - Narrow daily CPR (width = 'narrow' → trending day expected)
 - RSI daily in bullish or overbought state
+
+---
+
+## Session 6 — Grid Search Optimization (Maximize P&L + WR)
+
+### Prompt
+> "Maximize p/l as well"
+
+### Script: `orb_optimized.py`
+
+256-configuration grid search over:
+- `align_min`: 0.60 / 0.70 / 0.75 / 0.80
+- `require_rsi_bull`: True / False
+- `require_narrow_cpr`: True / False
+- `t1_r`: 0.75R / 1.0R
+- `t2_r`: 1.5R / 2.0R
+- `trail_r`: 1.0R / 1.5R
+- `weights`: equal 1/3 vs runner-heavy 25/25/50
+
+LONG-only and daily CPR alignment fixed (established by Session 5).
+
+### Key Discoveries
+
+**1. Adding RSI bull / narrow CPR filters HURTS**
+
+Counterintuitive: despite being strong individual predictors, these filters over-restrict trade count without proportionally improving outcomes. The CPR above_top filter alone is sufficient. The RSI and width filters appear to remove legitimate trades during consolidation-to-breakout transitions.
+
+**2. align70 is the optimal threshold**
+
+- align60: more trades (435), slightly higher total P&L, lower Calmar (looser quality)
+- align70: fewer trades (395), highest Calmar (8.53), near-best P&L
+- align75/80: too few trades (diminishing returns)
+
+**3. T2=2.0R + runner50 is the P&L maximizer**
+
+Giving 50% of the position to the runner (T3) and setting T2 at the proven R2 level (2.0R) captures more of the MFE on strong days without materially increasing max drawdown.
+
+**4. Trail width (1.0R vs 1.5R) is almost a wash**
+
+Tighter trail (1.0R) is marginally better for Calmar; wider trail (1.5R) is marginally better for total P&L. The difference is negligible — implementation preference.
+
+### Top Configs
+
+**By Calmar (risk-adjusted):**
+
+| # | n | WR | PF | Expectancy | Total | MaxDD | Calmar | Config |
+|---|---|---|---|---|---|---|---|---|
+| 1 | 395 | 57.0% | 1.59 | +$0.286 | +$112.97 | $8.45 | **8.53** | align70, T1=1R, T2=1.5R, trail=1R, runner50 |
+| 2 | 395 | 56.7% | 1.61 | +$0.293 | +$115.79 | $8.67 | **8.52** | align70, T1=1R, T2=1.5R, trail=1.5R, runner50 |
+| 3 | 395 | 57.7% | 1.66 | +$0.318 | +$125.43 | $9.46 | **8.46** | align70, T1=1R, T2=2R, trail=1.5R, runner50 ★ |
+
+**By Total P&L:**
+
+| # | n | WR | PF | Expectancy | Total | MaxDD | Calmar | Config |
+|---|---|---|---|---|---|---|---|---|
+| 1 | 435 | 57.0% | 1.61 | +$0.301 | **+$130.96** | $11.64 | 6.51 | align60, T1=1R, T2=2R, trail=1R, runner50 |
+| 3 | 395 | 57.7% | 1.66 | +$0.318 | **+$125.43** | $9.46 | 8.46 | align70, T1=1R, T2=2R, trail=1.5R, runner50 ★ |
+
+★ = **Recommended config**: best balance of P&L and Calmar
+
+### Recommended Final Strategy
+
+```
+Filters (pre-trade):
+  • LONG only
+  • Daily CPR: price above_top
+  • Alignment ≥ 70%  (≥7/10 indicators confirm direction)
+  • ORB range ≤ $2.25  (Q3 — exclude chaotic wide-range days)
+
+Entry:
+  First 1-min bar at/after 09:45 closing above ORB high
+  Entry price = close of that bar
+
+Position: 3 tranches
+  T1 — 25% of size at +1.0R  → move stop to BREAKEVEN
+  T2 — 25% of size at +2.0R  → begin trailing at 1.5R from high-water mark
+  T3 — 50% of size  (runner) → trail or hold to EOD
+
+Stop: ORB low (1R below typical entry price)
+```
+
+**8-year results (2018–2026), 395 trades:**
+
+| Metric | Value |
+|---|---|
+| Win Rate | 57.7% |
+| Profit Factor | 1.66 |
+| Expectancy | +$0.318 / trade |
+| Total P&L (per share) | +$125.43 |
+| Max Drawdown | $9.46 |
+| Sharpe | 3.24 |
+| Calmar | **8.46** |
+
+**Annual breakdown (best config):**
+
+| Year | n | WR | Total | Calmar |
+|---|---|---|---|---|
+| 2018 | 33 | 57.6% | +$7.00 | 40.5 |
+| 2019 | 59 | 57.6% | +$2.52 | 2.5 |
+| 2020 | 66 | 54.5% | +$15.65 | 10.3 |
+| 2021 | 67 | 62.7% | +$26.64 | 33.6 |
+| 2022 | 15 | 60.0% | +$6.97 | 19.6 |
+| 2023 | 66 | 50.0% | +$21.73 | 15.1 |
+| 2024 | 50 | 58.0% | +$17.76 | 10.6 |
+| 2025 | 38 | 57.9% | +$14.11 | 23.9 |
+
+8 of 8 years profitable. Worst year: 2019 (+$2.52, WR 57.6%). Best year: 2021 (+$26.64, WR 62.7%).
+
+### What the grid search ruled out
+
+- **RSI daily filter**: removes too many good trades in early-trend stages
+- **Narrow CPR filter**: choppy days can still produce strong ORB trends; too restrictive
+- **align80+**: sharp drop in trade count, diminishing marginal quality improvement
+- **T1 at 0.75R**: lower Calmar than 1.0R because it exits the first tranche too early, leaving less breakeven-stop protection on the remaining position
+- **Equal 1/3 weights**: runner-heavy (50%) consistently outperforms — the runner is the alpha generator
