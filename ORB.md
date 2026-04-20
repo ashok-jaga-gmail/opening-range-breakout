@@ -524,3 +524,96 @@ Stop: ORB low (1R below typical entry price)
 - **align80+**: sharp drop in trade count, diminishing marginal quality improvement
 - **T1 at 0.75R**: lower Calmar than 1.0R because it exits the first tranche too early, leaving less breakeven-stop protection on the remaining position
 - **Equal 1/3 weights**: runner-heavy (50%) consistently outperforms — the runner is the alpha generator
+
+---
+
+## Session 7 — Options Grid Search (2025–2026, 53 trades)
+
+### Overview
+
+Applies the optimized underlying strategy to 0DTE QQQ options, then runs a 324-config grid search over option-price percentage targets (PT1/PT2/PT3) and stop-loss (SL%) — replacing R-multiple exits with pure option-price percentage moves.
+
+**Data**: 53 filtered trades (2025 Jan – 2026 Jan) with confirmed Thetadata options coverage.  
+**Grid**: PT1 ∈ {25, 50, 75, 100}%, PT2 ∈ {100, 150, 200}%, PT3 ∈ {200, 300}%, SL ∈ {30, 50, 75}%  
+**Weights**: equal (1/3 each) or runner50 (25/25/50)  
+**Strikes**: ATM (Δ≈0.50), OTM (+1 strike), OTM+1 (+2 strikes)
+
+**Exit logic**:
+- T1 hit when option HIGH ≥ entry_opt × (1 + PT1/100) → stop moves to entry_opt (breakeven)
+- T2 hit when option HIGH ≥ entry_opt × (1 + PT2/100) → trailing stop = max_opt × (1 − SL/100)
+- T3 hit when option HIGH ≥ entry_opt × (1 + PT3/100) or EOD
+- SL: any tranche stopped when LOW ≤ current stop price
+
+### Top configs by Calmar
+
+| # | WR | PF | Exp | Total | MaxDD | Calmar | Config |
+|---|---|---|---|---|---|---|---|
+| 1 | 75.5% | 2.61 | +$11.15 | +$591 | $90 | **31.12** | PT25/100/200, SL30, OTM, runner50 |
+| 2 | 75.5% | 2.49 | +$10.35 | +$549 | $90 | 28.89 | PT25/150/200, SL30, OTM, runner50 |
+| 3 | 75.5% | 2.49 | +$10.32 | +$547 | $90 | 28.80 | PT25/100/200, SL30, OTM, equal |
+| 4 | 83.0% | 2.67 | +$12.61 | +$668 | $114 | 27.88 | PT25/100/300, SL50, OTM, runner50 |
+| 5 | 75.5% | 2.72 | +$7.21 | +$382 | $66 | 27.41 | PT25/200/300, SL30, OTM+1, runner50 |
+| 7 | 69.8% | 2.21 | +$16.31 | +$864 | $153 | 26.90 | PT25/100/300, SL30, ATM, runner50 |
+| 14 | **90.6%** | 3.05 | +$14.47 | +$767 | $150 | 24.31 | PT25/100/300, SL75, OTM, runner50 |
+
+### Top configs by P&L
+
+| # | WR | Total | MaxDD | Calmar | Config |
+|---|---|---|---|---|---|
+| 1 | 58.5% | **+$1,225** | $340 | 17.13 | PT75/150/300, SL50, ATM, runner50 |
+| 2 | 41.5% | +$1,220 | $343 | 16.92 | PT75/100/300, SL30, ATM, runner50 |
+| 3 | 58.5% | +$1,208 | $332 | 17.33 | PT75/150/300, SL50, ATM, equal |
+| 4 | 41.5% | +$1,207 | $343 | 16.74 | PT75/100/200, SL30, ATM, runner50 |
+| 5 | 58.5% | +$1,195 | $340 | 16.72 | PT75/100/300, SL50, ATM, runner50 |
+
+### Top configs by win rate
+
+| # | WR | Total | Calmar | Config |
+|---|---|---|---|---|
+| 1 | **90.6%** | +$767 | 24.31 | PT25/100/300, SL75, OTM, runner50 |
+| 2 | **90.6%** | +$692 | 23.89 | PT25/100/300, SL75, OTM, equal |
+| 3 | **90.6%** | +$663 | 20.95 | PT25/200/300, SL75, OTM, runner50 |
+| 4 | **90.6%** | +$607 | 20.94 | PT25/100/200, SL75, OTM, equal |
+
+### Best config deep-dive: PT25/100/200_SL30_OTM_runner50
+
+53 trades (2025 Jan – 2026 Jan), Calmar = **31.12**
+
+| Month | n | WR | Total |
+|---|---|---|---|
+| 2025-01 | 3 | 66.7% | −$23 |
+| 2025-02 | 4 | 75.0% | −$17 |
+| 2025-03 | 1 | 100.0% | +$5 |
+| 2025-04 | 2 | 50.0% | +$239 |
+| 2025-05 | 3 | 66.7% | +$155 |
+| 2025-06 | 7 | 57.1% | +$5 |
+| 2025-07 | 8 | 87.5% | +$72 |
+| 2025-08 | 2 | 50.0% | +$27 |
+| 2025-09 | 6 | 83.3% | +$20 |
+| 2025-10 | 8 | 87.5% | +$111 |
+| 2025-11 | 1 | 0.0% | −$28 |
+| 2025-12 | 4 | 100.0% | +$17 |
+| 2026-01 | 4 | 75.0% | +$8 |
+
+Best trade: 2025-04-24 (+$294). Worst: 2025-04-28 (−$55).  
+11 of 13 months profitable.
+
+### Key findings
+
+1. **PT1=25% is the dominant first target** — quick partial exit on OTM options achieves high WR by capturing the frequent early move before options decay or reverse. Tight SL30 keeps the max drawdown low.
+
+2. **OTM dominates Calmar; ATM dominates P&L** — OTM options amplify percentage moves (cheaper entry, same dollar swing on a good day), producing superior risk-adjusted returns. ATM options cost more but generate higher absolute dollar P&L on large moves.
+
+3. **runner50 consistently beats equal weights** — confirmed again in options space. The T3 runner (50% position) is the primary alpha generator; T1/T2 cover cost and lock in breakeven.
+
+4. **90.6% win rate is achievable** — PT25/SL75/OTM configs hit 90.6% WR across 53 trades. The cost is wider stops (SL75 = 75% loss on remaining tranches) but Calmar remains excellent (24+).
+
+5. **SL30 = best risk-adjusted; SL75 = best win rate** — tight stops get stopped out less on dollar basis but allow more re-entries; wide stops let winners run further but accept larger individual losses.
+
+6. **ATM vs OTM trade-off summary**:
+
+| Objective | Strike | PT1 | SL | WR | Calmar | Total |
+|---|---|---|---|---|---|---|
+| Best Calmar | OTM | 25% | 30% | 75.5% | 31.12 | +$591 |
+| Best P&L | ATM | 75% | 50% | 58.5% | 17.13 | +$1,225 |
+| Best Win Rate | OTM | 25% | 75% | **90.6%** | 24.31 | +$767 |

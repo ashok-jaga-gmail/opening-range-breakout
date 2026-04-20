@@ -1,0 +1,958 @@
+{
+  "top_by_calmar": [
+    {
+      "label": "PT25/100/200_SL30_OTM_runner50",
+      "pt1": 25,
+      "pt2": 100,
+      "pt3": 200,
+      "sl": 30,
+      "strike": "OTM",
+      "weights": "runner50",
+      "stats": {
+        "n": 53,
+        "wr": 75.5,
+        "pf": 2.61,
+        "expect": 11.15,
+        "total": 591.1,
+        "max_dd": 90.3,
+        "sharpe": 3.59,
+        "calmar": 31.12
+      }
+    },
+    {
+      "label": "PT25/150/200_SL30_OTM_runner50",
+      "pt1": 25,
+      "pt2": 150,
+      "pt3": 200,
+      "sl": 30,
+      "strike": "OTM",
+      "weights": "runner50",
+      "stats": {
+        "n": 53,
+        "wr": 75.5,
+        "pf": 2.49,
+        "expect": 10.35,
+        "total": 548.6,
+        "max_dd": 90.3,
+        "sharpe": 3.03,
+        "calmar": 28.89
+      }
+    },
+    {
+      "label": "PT25/100/200_SL30_OTM_equal",
+      "pt1": 25,
+      "pt2": 100,
+      "pt3": 200,
+      "sl": 30,
+      "strike": "OTM",
+      "weights": "equal",
+      "stats": {
+        "n": 53,
+        "wr": 75.5,
+        "pf": 2.49,
+        "expect": 10.32,
+        "total": 547.03,
+        "max_dd": 90.3,
+        "sharpe": 3.85,
+        "calmar": 28.8
+      }
+    },
+    {
+      "label": "PT25/100/300_SL50_OTM_runner50",
+      "pt1": 25,
+      "pt2": 100,
+      "pt3": 300,
+      "sl": 50,
+      "strike": "OTM",
+      "weights": "runner50",
+      "stats": {
+        "n": 53,
+        "wr": 83.0,
+        "pf": 2.67,
+        "expect": 12.61,
+        "total": 668.38,
+        "max_dd": 114.0,
+        "sharpe": 3.4,
+        "calmar": 27.88
+      }
+    },
+    {
+      "label": "PT25/200/300_SL30_OTM+1_runner50",
+      "pt1": 25,
+      "pt2": 200,
+      "pt3": 300,
+      "sl": 30,
+      "strike": "OTM+1",
+      "weights": "runner50",
+      "stats": {
+        "n": 53,
+        "wr": 75.5,
+        "pf": 2.72,
+        "expect": 7.21,
+        "total": 382.27,
+        "max_dd": 66.3,
+        "sharpe": 2.74,
+        "calmar": 27.41
+      }
+    },
+    {
+      "label": "PT25/100/300_SL50_OTM_equal",
+      "pt1": 25,
+      "pt2": 100,
+      "pt3": 300,
+      "sl": 50,
+      "strike": "OTM",
+      "weights": "equal",
+      "stats": {
+        "n": 53,
+        "wr": 83.0,
+        "pf": 2.51,
+        "expect": 11.42,
+        "total": 605.5,
+        "max_dd": 106.33,
+        "sharpe": 3.67,
+        "calmar": 27.08
+      }
+    },
+    {
+      "label": "PT25/100/300_SL30_ATM_runner50",
+      "pt1": 25,
+      "pt2": 100,
+      "pt3": 300,
+      "sl": 30,
+      "strike": "ATM",
+      "weights": "runner50",
+      "stats": {
+        "n": 53,
+        "wr": 69.8,
+        "pf": 2.21,
+        "expect": 16.31,
+        "total": 864.21,
+        "max_dd": 152.74,
+        "sharpe": 3.37,
+        "calmar": 26.9
+      }
+    },
+    {
+      "label": "PT25/150/200_SL30_OTM_equal",
+      "pt1": 25,
+      "pt2": 150,
+      "pt3": 200,
+      "sl": 30,
+      "strike": "OTM",
+      "weights": "equal",
+      "stats": {
+        "n": 53,
+        "wr": 75.5,
+        "pf": 2.38,
+        "expect": 9.62,
+        "total": 509.7,
+        "max_dd": 90.3,
+        "sharpe": 3.18,
+        "calmar": 26.84
+      }
+    },
+    {
+      "label": "PT25/200/300_SL30_OTM+1_equal",
+      "pt1": 25,
+      "pt2": 200,
+      "pt3": 300,
+      "sl": 30,
+      "strike": "OTM+1",
+      "weights": "equal",
+      "stats": {
+        "n": 53,
+        "wr": 75.5,
+        "pf": 2.62,
+        "expect": 6.82,
+        "total": 361.63,
+        "max_dd": 66.3,
+        "sharpe": 2.8,
+        "calmar": 25.93
+      }
+    },
+    {
+      "label": "PT25/100/300_SL30_OTM_runner50",
+      "pt1": 25,
+      "pt2": 100,
+      "pt3": 300,
+      "sl": 30,
+      "strike": "OTM",
+      "weights": "runner50",
+      "stats": {
+        "n": 53,
+        "wr": 75.5,
+        "pf": 2.28,
+        "expect": 8.89,
+        "total": 470.95,
+        "max_dd": 90.3,
+        "sharpe": 3.53,
+        "calmar": 24.8
+      }
+    },
+    {
+      "label": "PT25/150/300_SL30_OTM_runner50",
+      "pt1": 25,
+      "pt2": 150,
+      "pt3": 300,
+      "sl": 30,
+      "strike": "OTM",
+      "weights": "runner50",
+      "stats": {
+        "n": 53,
+        "wr": 75.5,
+        "pf": 2.28,
+        "expect": 8.88,
+        "total": 470.45,
+        "max_dd": 90.3,
+        "sharpe": 2.99,
+        "calmar": 24.77
+      }
+    },
+    {
+      "label": "PT25/100/300_SL30_OTM_equal",
+      "pt1": 25,
+      "pt2": 100,
+      "pt3": 300,
+      "sl": 30,
+      "strike": "OTM",
+      "weights": "equal",
+      "stats": {
+        "n": 53,
+        "wr": 75.5,
+        "pf": 2.27,
+        "expect": 8.81,
+        "total": 466.93,
+        "max_dd": 90.3,
+        "sharpe": 3.81,
+        "calmar": 24.59
+      }
+    },
+    {
+      "label": "PT25/100/300_SL30_OTM+1_runner50",
+      "pt1": 25,
+      "pt2": 100,
+      "pt3": 300,
+      "sl": 30,
+      "strike": "OTM+1",
+      "weights": "runner50",
+      "stats": {
+        "n": 53,
+        "wr": 75.5,
+        "pf": 2.53,
+        "expect": 6.45,
+        "total": 342.02,
+        "max_dd": 66.3,
+        "sharpe": 3.7,
+        "calmar": 24.53
+      }
+    },
+    {
+      "label": "PT25/100/300_SL75_OTM_runner50",
+      "pt1": 25,
+      "pt2": 100,
+      "pt3": 300,
+      "sl": 75,
+      "strike": "OTM",
+      "weights": "runner50",
+      "stats": {
+        "n": 53,
+        "wr": 90.6,
+        "pf": 3.05,
+        "expect": 14.47,
+        "total": 766.94,
+        "max_dd": 150.0,
+        "sharpe": 3.61,
+        "calmar": 24.31
+      }
+    },
+    {
+      "label": "PT25/100/200_SL30_ATM_runner50",
+      "pt1": 25,
+      "pt2": 100,
+      "pt3": 200,
+      "sl": 30,
+      "strike": "ATM",
+      "weights": "runner50",
+      "stats": {
+        "n": 53,
+        "wr": 69.8,
+        "pf": 2.09,
+        "expect": 14.71,
+        "total": 779.66,
+        "max_dd": 152.74,
+        "sharpe": 3.25,
+        "calmar": 24.27
+      }
+    },
+    {
+      "label": "PT25/150/300_SL30_OTM_equal",
+      "pt1": 25,
+      "pt2": 150,
+      "pt3": 300,
+      "sl": 30,
+      "strike": "OTM",
+      "weights": "equal",
+      "stats": {
+        "n": 53,
+        "wr": 75.5,
+        "pf": 2.24,
+        "expect": 8.63,
+        "total": 457.6,
+        "max_dd": 90.3,
+        "sharpe": 3.17,
+        "calmar": 24.09
+      }
+    },
+    {
+      "label": "PT25/100/300_SL30_OTM+1_equal",
+      "pt1": 25,
+      "pt2": 100,
+      "pt3": 300,
+      "sl": 30,
+      "strike": "OTM+1",
+      "weights": "equal",
+      "stats": {
+        "n": 53,
+        "wr": 75.5,
+        "pf": 2.5,
+        "expect": 6.31,
+        "total": 334.63,
+        "max_dd": 66.3,
+        "sharpe": 3.95,
+        "calmar": 24.0
+      }
+    },
+    {
+      "label": "PT25/200/300_SL30_OTM_equal",
+      "pt1": 25,
+      "pt2": 200,
+      "pt3": 300,
+      "sl": 30,
+      "strike": "OTM",
+      "weights": "equal",
+      "stats": {
+        "n": 53,
+        "wr": 75.5,
+        "pf": 2.23,
+        "expect": 8.57,
+        "total": 454.17,
+        "max_dd": 90.3,
+        "sharpe": 2.83,
+        "calmar": 23.91
+      }
+    },
+    {
+      "label": "PT25/100/300_SL75_OTM_equal",
+      "pt1": 25,
+      "pt2": 100,
+      "pt3": 300,
+      "sl": 75,
+      "strike": "OTM",
+      "weights": "equal",
+      "stats": {
+        "n": 53,
+        "wr": 90.6,
+        "pf": 2.85,
+        "expect": 13.06,
+        "total": 692.25,
+        "max_dd": 137.75,
+        "sharpe": 3.88,
+        "calmar": 23.89
+      }
+    },
+    {
+      "label": "PT25/100/200_SL50_OTM_equal",
+      "pt1": 25,
+      "pt2": 100,
+      "pt3": 200,
+      "sl": 50,
+      "strike": "OTM",
+      "weights": "equal",
+      "stats": {
+        "n": 53,
+        "wr": 83.0,
+        "pf": 2.33,
+        "expect": 10.08,
+        "total": 534.0,
+        "max_dd": 106.33,
+        "sharpe": 3.56,
+        "calmar": 23.88
+      }
+    },
+    {
+      "label": "PT25/200/300_SL30_OTM_runner50",
+      "pt1": 25,
+      "pt2": 200,
+      "pt3": 300,
+      "sl": 30,
+      "strike": "OTM",
+      "weights": "runner50",
+      "stats": {
+        "n": 53,
+        "wr": 75.5,
+        "pf": 2.22,
+        "expect": 8.45,
+        "total": 448.05,
+        "max_dd": 90.3,
+        "sharpe": 2.65,
+        "calmar": 23.59
+      }
+    },
+    {
+      "label": "PT25/100/300_SL30_ATM_equal",
+      "pt1": 25,
+      "pt2": 100,
+      "pt3": 300,
+      "sl": 30,
+      "strike": "ATM",
+      "weights": "equal",
+      "stats": {
+        "n": 53,
+        "wr": 69.8,
+        "pf": 2.03,
+        "expect": 13.94,
+        "total": 738.88,
+        "max_dd": 149.77,
+        "sharpe": 3.37,
+        "calmar": 23.46
+      }
+    },
+    {
+      "label": "PT25/100/200_SL50_OTM_runner50",
+      "pt1": 25,
+      "pt2": 100,
+      "pt3": 200,
+      "sl": 50,
+      "strike": "OTM",
+      "weights": "runner50",
+      "stats": {
+        "n": 53,
+        "wr": 83.0,
+        "pf": 2.4,
+        "expect": 10.59,
+        "total": 561.13,
+        "max_dd": 114.0,
+        "sharpe": 3.25,
+        "calmar": 23.4
+      }
+    },
+    {
+      "label": "PT25/100/300_SL75_OTM+1_runner50",
+      "pt1": 25,
+      "pt2": 100,
+      "pt3": 300,
+      "sl": 75,
+      "strike": "OTM+1",
+      "weights": "runner50",
+      "stats": {
+        "n": 53,
+        "wr": 88.7,
+        "pf": 2.89,
+        "expect": 9.75,
+        "total": 516.62,
+        "max_dd": 105.0,
+        "sharpe": 3.12,
+        "calmar": 23.39
+      }
+    },
+    {
+      "label": "PT25/200/300_SL50_OTM_runner50",
+      "pt1": 25,
+      "pt2": 200,
+      "pt3": 300,
+      "sl": 50,
+      "strike": "OTM",
+      "weights": "runner50",
+      "stats": {
+        "n": 53,
+        "wr": 83.0,
+        "pf": 2.59,
+        "expect": 12.01,
+        "total": 636.62,
+        "max_dd": 131.25,
+        "sharpe": 2.85,
+        "calmar": 23.06
+      }
+    },
+    {
+      "label": "PT25/150/300_SL50_OTM_runner50",
+      "pt1": 25,
+      "pt2": 150,
+      "pt3": 300,
+      "sl": 50,
+      "strike": "OTM",
+      "weights": "runner50",
+      "stats": {
+        "n": 53,
+        "wr": 83.0,
+        "pf": 2.59,
+        "expect": 12.01,
+        "total": 636.38,
+        "max_dd": 131.25,
+        "sharpe": 3.03,
+        "calmar": 23.05
+      }
+    },
+    {
+      "label": "PT25/200/300_SL30_ATM_runner50",
+      "pt1": 25,
+      "pt2": 200,
+      "pt3": 300,
+      "sl": 30,
+      "strike": "ATM",
+      "weights": "runner50",
+      "stats": {
+        "n": 53,
+        "wr": 69.8,
+        "pf": 2.02,
+        "expect": 13.72,
+        "total": 727.21,
+        "max_dd": 152.74,
+        "sharpe": 2.53,
+        "calmar": 22.64
+      }
+    },
+    {
+      "label": "PT25/100/200_SL30_OTM+1_equal",
+      "pt1": 25,
+      "pt2": 100,
+      "pt3": 200,
+      "sl": 30,
+      "strike": "OTM+1",
+      "weights": "equal",
+      "stats": {
+        "n": 53,
+        "wr": 75.5,
+        "pf": 2.38,
+        "expect": 5.82,
+        "total": 308.3,
+        "max_dd": 66.3,
+        "sharpe": 3.89,
+        "calmar": 22.11
+      }
+    },
+    {
+      "label": "PT25/100/200_SL75_OTM+1_runner50",
+      "pt1": 25,
+      "pt2": 100,
+      "pt3": 200,
+      "sl": 75,
+      "strike": "OTM+1",
+      "weights": "runner50",
+      "stats": {
+        "n": 53,
+        "wr": 88.7,
+        "pf": 2.77,
+        "expect": 9.12,
+        "total": 483.38,
+        "max_dd": 105.0,
+        "sharpe": 3.27,
+        "calmar": 21.89
+      }
+    },
+    {
+      "label": "PT25/100/200_SL30_OTM+1_runner50",
+      "pt1": 25,
+      "pt2": 100,
+      "pt3": 200,
+      "sl": 30,
+      "strike": "OTM+1",
+      "weights": "runner50",
+      "stats": {
+        "n": 53,
+        "wr": 75.5,
+        "pf": 2.36,
+        "expect": 5.71,
+        "total": 302.52,
+        "max_dd": 66.3,
+        "sharpe": 3.65,
+        "calmar": 21.7
+      }
+    }
+  ],
+  "top_by_pnl": [
+    {
+      "label": "PT75/150/300_SL50_ATM_runner50",
+      "pt1": 75,
+      "pt2": 150,
+      "pt3": 300,
+      "sl": 50,
+      "strike": "ATM",
+      "weights": "runner50",
+      "stats": {
+        "n": 53,
+        "wr": 58.5,
+        "pf": 1.86,
+        "expect": 23.1,
+        "total": 1224.56,
+        "max_dd": 339.88,
+        "sharpe": 3.47,
+        "calmar": 17.13
+      }
+    },
+    {
+      "label": "PT75/100/300_SL30_ATM_runner50",
+      "pt1": 75,
+      "pt2": 100,
+      "pt3": 300,
+      "sl": 30,
+      "strike": "ATM",
+      "weights": "runner50",
+      "stats": {
+        "n": 53,
+        "wr": 41.5,
+        "pf": 2.06,
+        "expect": 23.03,
+        "total": 1220.36,
+        "max_dd": 342.98,
+        "sharpe": 3.92,
+        "calmar": 16.92
+      }
+    },
+    {
+      "label": "PT75/150/300_SL50_ATM_equal",
+      "pt1": 75,
+      "pt2": 150,
+      "pt3": 300,
+      "sl": 50,
+      "strike": "ATM",
+      "weights": "equal",
+      "stats": {
+        "n": 53,
+        "wr": 58.5,
+        "pf": 1.85,
+        "expect": 22.8,
+        "total": 1208.42,
+        "max_dd": 331.5,
+        "sharpe": 3.67,
+        "calmar": 17.33
+      }
+    },
+    {
+      "label": "PT75/100/200_SL30_ATM_runner50",
+      "pt1": 75,
+      "pt2": 100,
+      "pt3": 200,
+      "sl": 30,
+      "strike": "ATM",
+      "weights": "runner50",
+      "stats": {
+        "n": 53,
+        "wr": 41.5,
+        "pf": 2.05,
+        "expect": 22.78,
+        "total": 1207.36,
+        "max_dd": 342.98,
+        "sharpe": 4.0,
+        "calmar": 16.74
+      }
+    },
+    {
+      "label": "PT75/100/300_SL50_ATM_runner50",
+      "pt1": 75,
+      "pt2": 100,
+      "pt3": 300,
+      "sl": 50,
+      "strike": "ATM",
+      "weights": "runner50",
+      "stats": {
+        "n": 53,
+        "wr": 58.5,
+        "pf": 1.84,
+        "expect": 22.55,
+        "total": 1195.31,
+        "max_dd": 339.88,
+        "sharpe": 3.58,
+        "calmar": 16.72
+      }
+    },
+    {
+      "label": "PT75/150/200_SL50_ATM_runner50",
+      "pt1": 75,
+      "pt2": 150,
+      "pt3": 200,
+      "sl": 50,
+      "strike": "ATM",
+      "weights": "runner50",
+      "stats": {
+        "n": 53,
+        "wr": 58.5,
+        "pf": 1.84,
+        "expect": 22.47,
+        "total": 1190.81,
+        "max_dd": 339.88,
+        "sharpe": 3.5,
+        "calmar": 16.66
+      }
+    },
+    {
+      "label": "PT75/150/200_SL50_ATM_equal",
+      "pt1": 75,
+      "pt2": 150,
+      "pt3": 200,
+      "sl": 50,
+      "strike": "ATM",
+      "weights": "equal",
+      "stats": {
+        "n": 53,
+        "wr": 58.5,
+        "pf": 1.84,
+        "expect": 22.38,
+        "total": 1185.92,
+        "max_dd": 331.5,
+        "sharpe": 3.69,
+        "calmar": 17.01
+      }
+    },
+    {
+      "label": "PT75/200/300_SL50_ATM_runner50",
+      "pt1": 75,
+      "pt2": 200,
+      "pt3": 300,
+      "sl": 50,
+      "strike": "ATM",
+      "weights": "runner50",
+      "stats": {
+        "n": 53,
+        "wr": 58.5,
+        "pf": 1.83,
+        "expect": 22.29,
+        "total": 1181.56,
+        "max_dd": 339.88,
+        "sharpe": 3.21,
+        "calmar": 16.53
+      }
+    },
+    {
+      "label": "PT75/200/300_SL50_ATM_equal",
+      "pt1": 75,
+      "pt2": 200,
+      "pt3": 300,
+      "sl": 50,
+      "strike": "ATM",
+      "weights": "equal",
+      "stats": {
+        "n": 53,
+        "wr": 58.5,
+        "pf": 1.83,
+        "expect": 22.13,
+        "total": 1172.92,
+        "max_dd": 331.5,
+        "sharpe": 3.37,
+        "calmar": 16.82
+      }
+    },
+    {
+      "label": "PT75/100/200_SL50_ATM_runner50",
+      "pt1": 75,
+      "pt2": 100,
+      "pt3": 200,
+      "sl": 50,
+      "strike": "ATM",
+      "weights": "runner50",
+      "stats": {
+        "n": 53,
+        "wr": 58.5,
+        "pf": 1.82,
+        "expect": 21.92,
+        "total": 1161.56,
+        "max_dd": 339.88,
+        "sharpe": 3.62,
+        "calmar": 16.25
+      }
+    }
+  ],
+  "top_by_wr": [
+    {
+      "label": "PT25/100/300_SL75_OTM_runner50",
+      "pt1": 25,
+      "pt2": 100,
+      "pt3": 300,
+      "sl": 75,
+      "strike": "OTM",
+      "weights": "runner50",
+      "stats": {
+        "n": 53,
+        "wr": 90.6,
+        "pf": 3.05,
+        "expect": 14.47,
+        "total": 766.94,
+        "max_dd": 150.0,
+        "sharpe": 3.61,
+        "calmar": 24.31
+      }
+    },
+    {
+      "label": "PT25/100/300_SL75_OTM_equal",
+      "pt1": 25,
+      "pt2": 100,
+      "pt3": 300,
+      "sl": 75,
+      "strike": "OTM",
+      "weights": "equal",
+      "stats": {
+        "n": 53,
+        "wr": 90.6,
+        "pf": 2.85,
+        "expect": 13.06,
+        "total": 692.25,
+        "max_dd": 137.75,
+        "sharpe": 3.88,
+        "calmar": 23.89
+      }
+    },
+    {
+      "label": "PT25/200/300_SL75_OTM_runner50",
+      "pt1": 25,
+      "pt2": 200,
+      "pt3": 300,
+      "sl": 75,
+      "strike": "OTM",
+      "weights": "runner50",
+      "stats": {
+        "n": 53,
+        "wr": 90.6,
+        "pf": 2.77,
+        "expect": 12.5,
+        "total": 662.56,
+        "max_dd": 150.38,
+        "sharpe": 2.89,
+        "calmar": 20.95
+      }
+    },
+    {
+      "label": "PT25/100/200_SL75_OTM_equal",
+      "pt1": 25,
+      "pt2": 100,
+      "pt3": 200,
+      "sl": 75,
+      "strike": "OTM",
+      "weights": "equal",
+      "stats": {
+        "n": 53,
+        "wr": 90.6,
+        "pf": 2.62,
+        "expect": 11.45,
+        "total": 606.67,
+        "max_dd": 137.75,
+        "sharpe": 3.75,
+        "calmar": 20.94
+      }
+    },
+    {
+      "label": "PT25/100/200_SL75_OTM_runner50",
+      "pt1": 25,
+      "pt2": 100,
+      "pt3": 200,
+      "sl": 75,
+      "strike": "OTM",
+      "weights": "runner50",
+      "stats": {
+        "n": 53,
+        "wr": 90.6,
+        "pf": 2.7,
+        "expect": 12.05,
+        "total": 638.56,
+        "max_dd": 150.0,
+        "sharpe": 3.43,
+        "calmar": 20.24
+      }
+    },
+    {
+      "label": "PT25/200/300_SL75_OTM_equal",
+      "pt1": 25,
+      "pt2": 200,
+      "pt3": 300,
+      "sl": 75,
+      "strike": "OTM",
+      "weights": "equal",
+      "stats": {
+        "n": 53,
+        "wr": 90.6,
+        "pf": 2.67,
+        "expect": 11.8,
+        "total": 625.17,
+        "max_dd": 149.0,
+        "sharpe": 3.05,
+        "calmar": 19.95
+      }
+    },
+    {
+      "label": "PT25/150/300_SL75_OTM_runner50",
+      "pt1": 25,
+      "pt2": 150,
+      "pt3": 300,
+      "sl": 75,
+      "strike": "OTM",
+      "weights": "runner50",
+      "stats": {
+        "n": 53,
+        "wr": 90.6,
+        "pf": 2.67,
+        "expect": 11.79,
+        "total": 624.81,
+        "max_dd": 150.38,
+        "sharpe": 2.9,
+        "calmar": 19.76
+      }
+    },
+    {
+      "label": "PT25/150/300_SL75_OTM_equal",
+      "pt1": 25,
+      "pt2": 150,
+      "pt3": 300,
+      "sl": 75,
+      "strike": "OTM",
+      "weights": "equal",
+      "stats": {
+        "n": 53,
+        "wr": 90.6,
+        "pf": 2.57,
+        "expect": 11.1,
+        "total": 588.5,
+        "max_dd": 149.0,
+        "sharpe": 3.13,
+        "calmar": 18.78
+      }
+    },
+    {
+      "label": "PT25/150/200_SL75_OTM_runner50",
+      "pt1": 25,
+      "pt2": 150,
+      "pt3": 200,
+      "sl": 75,
+      "strike": "OTM",
+      "weights": "runner50",
+      "stats": {
+        "n": 53,
+        "wr": 90.6,
+        "pf": 2.43,
+        "expect": 10.11,
+        "total": 535.94,
+        "max_dd": 150.38,
+        "sharpe": 2.79,
+        "calmar": 16.95
+      }
+    },
+    {
+      "label": "PT25/150/200_SL75_OTM_equal",
+      "pt1": 25,
+      "pt2": 150,
+      "pt3": 200,
+      "sl": 75,
+      "strike": "OTM",
+      "weights": "equal",
+      "stats": {
+        "n": 53,
+        "wr": 90.6,
+        "pf": 2.41,
+        "expect": 9.99,
+        "total": 529.25,
+        "max_dd": 149.0,
+        "sharpe": 3.06,
+        "calmar": 16.89
+      }
+    }
+  ]
+}
