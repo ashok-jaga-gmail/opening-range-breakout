@@ -236,3 +236,84 @@ The indicators identify **potential regime change / turnaround signals** as foll
 - **4h MACD bearish_cross** = short-term top forming; short ORB setups strengthen
 - **1h MACD bullish** = local trend supporting long ORBs ($0.338 expectancy)
 - **1h/4h MACD fade states** = avoid (momentum is stalling; breakouts likely to fail)
+
+---
+
+## Session 4 — MAE/MFE Analysis
+
+### Prompt
+> "Can you do a MAE/MFE analysis on each trade, update md file after each significant research"
+
+### Script: `orb_mae_mfe.py`
+
+Re-walks 1-minute bars for each of the 1,976 R2 trades (2018–2026) to compute:
+- **MAE** (Maximum Adverse Excursion): worst intrabar move against the position, in R-multiples
+- **MFE** (Maximum Favorable Excursion): best intrabar move in the position's favour, in R-multiples
+- **Efficiency**: exit_pnl / MFE — how much of the best available move was captured
+
+### Key Findings
+
+**1. MAE distribution (R2 exit, n=1,976)**
+
+| Metric | P25 | Median | P75 | P90 | Mean |
+|---|---|---|---|---|---|
+| MAE (R) | 0.469 | 1.010 | 1.161 | 1.286 | 0.852 |
+| MFE (R) | 0.331 | 0.908 | 1.870 | 2.243 | 1.090 |
+| Efficiency | –2.876 | –0.617 | 0.844 | 0.980 | –3.025 |
+
+Median MAE ≈ 1.0R means the typical trade visits the stop area before resolving. Negative median efficiency is dominated by losers (which hit 1R stop with little MFE).
+
+**2. Winners vs Losers — the MAE split is the sharpest edge**
+
+| Group | n | MAE Median | MFE Median |
+|---|---|---|---|
+| Winners | 846 | **0.42R** | 2.02R |
+| Losers | 1,130 | **1.14R** | 0.41R |
+
+Winners barely pull back. Losers touch or breach the stop. This is the clearest filter signal in the dataset.
+
+**3. MAE bucket win rates — stop placement matters enormously**
+
+| MAE bucket | Wins | Losses | WR |
+|---|---|---|---|
+| < 0.25R | 211 | 5 | **97.7%** |
+| 0.25–0.50R | 288 | 25 | **92.0%** |
+| 0.50–0.75R | 197 | 45 | **81.4%** |
+| 0.75–1.00R | 116 | 88 | **56.9%** |
+| ≥ 1.00R | 34 | 967 | **3.4%** |
+
+Interpretation: the win rate degrades sharply as MAE approaches 1R. Trades that pull back ≥1R are almost entirely losses (stop-outs).
+
+**4. Stop sensitivity — tighter stops, higher WR, fewer trades**
+
+| Stop at | Trades surviving | Win Rate |
+|---|---|---|
+| 0.25R | 11% (217) | 97.7% |
+| 0.50R | 27% (532) | 94.4% |
+| 0.75R | 39% (771) | 90.3% |
+| 1.00R (baseline) | 50% (983) | 83.2% |
+
+A trailing stop at 0.5R would keep 94% WR but discard 73% of trades — selectivity at the cost of frequency.
+
+**5. MFE target reach — how often did price reach each level?**
+
+| Target | All trades | Winners only | Losers only |
+|---|---|---|---|
+| 0.5R | 66.1% | 98.1% | 42.1% |
+| 1.0R | 47.0% | 85.5% | 18.1% |
+| 1.5R | 33.1% | 69.1% | 6.2% |
+| 2.0R | 22.4% | 50.7% | 1.2% |
+| 3.0R | 0.3% | 0.6% | 0.1% |
+
+50.7% of winners reached 2R MFE — consistent with R2 being captured. Only 2.8% of all trades had MFE > 2R but exited below target (meaning price ran 2R then reversed before the target was touched — these are partial-capture candidates for a trailing stop after 1R).
+
+**6. Winner efficiency = 90.9%**
+
+When a trade wins, it captures 90.9% (median) of its best possible intraday move. The R2 fixed target is tight enough to lock in most of the available MFE on winners.
+
+### Practical Implications for Paper
+
+1. **MAE is a leading loss indicator**: Any pullback > 0.75R is a warning sign; > 1R is almost always a loss. Consider a time-stop or partial exit rule if MAE exceeds 0.5R.
+2. **The stop at 1R (ORB opposite edge) is appropriate**: the data shows most winners have MAE < 0.5R — widening the stop would add risk without improving winning trades.
+3. **R2 target is well-calibrated**: 50.7% of winners reach 2R in MFE, efficiency is 90.9% — suggesting R2 captures the move without over-staying.
+4. **Tighter stops improve WR dramatically but reduce trade count** — a composite filter (regime indicators + MAE stop tightening) is the natural next research step.
