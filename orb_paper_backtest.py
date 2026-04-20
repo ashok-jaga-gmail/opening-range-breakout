@@ -554,7 +554,7 @@ def main():
 
     output = {
         "metadata": {
-            "data_file":    DBN_FILE,
+            "data_file":    CSV_FILE,
             "orb_minutes":  15,
             "entry_bar":    "09:45",
             "entry_price":  "close of first breakout bar",
