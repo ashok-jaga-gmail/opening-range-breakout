@@ -617,3 +617,64 @@ Best trade: 2025-04-24 (+$294). Worst: 2025-04-28 (−$55).
 | Best Calmar | OTM | 25% | 30% | 75.5% | 31.12 | +$591 |
 | Best P&L | ATM | 75% | 50% | 58.5% | 17.13 | +$1,225 |
 | Best Win Rate | OTM | 25% | 75% | **90.6%** | 24.31 | +$767 |
+
+---
+
+## Golden Strategy — ORB Options, No Filters (2025–2026)
+
+> **Confirmed 2026-04-19.** The definitive best configuration after removing all regime/CPR/alignment filters and running all 289 ORB breakout trades (LONG + SHORT) through the Session 7 best options exit structure.
+
+### Why no filters?
+
+The alignment, CPR, and ORB% filters were designed for the underlying R-multiple strategy. In options space, PT25/SL30 is self-protecting: T1 at +25% locks in partial gains immediately and moves the stop to breakeven. This structure resolves most trades positively regardless of macro regime — the filters remove good trades alongside bad ones.
+
+Removing all filters: 53 → 289 trades, +$591 → **+$5,990** P&L.
+
+### Golden Config
+
+| Parameter | Value |
+|---|---|
+| Signal | 15-min ORB breakout, both LONG and SHORT |
+| Filters | **None** |
+| Instrument | QQQ 0DTE options (calls for LONG, puts for SHORT) |
+| Strike | OTM (+1 from ATM) |
+| PT1 | +25% option gain → stop to breakeven |
+| PT2 | +100% option gain → trailing stop at max × 70% |
+| PT3 | +200% option gain or EOD |
+| SL | −30% from entry option price |
+| Weights | T1=25%, T2=25%, T3=50% |
+
+### Results (289 trades, 2025 Jan – 2026 Mar)
+
+| Metric | Value |
+|---|---|
+| Win Rate | **79.2%** |
+| Total P&L | **+$5,990** (per contract) |
+| Max Drawdown | $234 |
+| Calmar | **25.56** |
+| LONG trades | 152 |
+| SHORT trades | 137 |
+
+### 2025 monthly breakdown (all 12 months profitable)
+
+| Month | n | WR | P&L |
+|---|---|---|---|
+| Jan | 20 | 75% | +$205 |
+| Feb | 19 | 89% | +$938 |
+| Mar | 21 | 76% | +$690 |
+| Apr | 21 | 67% | +$948 |
+| May | 21 | 86% | +$239 |
+| Jun | 20 | 75% | +$229 |
+| Jul | 22 | 77% | +$206 |
+| Aug | 21 | 81% | +$295 |
+| Sep | 21 | 86% | +$269 |
+| Oct | 23 | 78% | +$177 |
+| Nov | 18 | 89% | +$951 |
+| Dec | 21 | 86% | +$148 |
+
+### Filtered vs Golden comparison
+
+| Config | Trades | WR | Total P&L | MaxDD | Calmar |
+|---|---|---|---|---|---|
+| Filtered (align70 + CPR + ORB%) | 53 | 75.5% | +$591 | $90 | 31.12 |
+| **Golden (no filters)** | **289** | **79.2%** | **+$5,990** | **$234** | **25.56** |
