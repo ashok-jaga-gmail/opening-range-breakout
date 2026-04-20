@@ -32,7 +32,7 @@ OUT_FILE    = os.path.join(_HERE, "tmp", "options_tranche_2025.json")
 
 # ── Optimized strategy params (Session 6 best config) ────────────────────────
 ALIGN_MIN = 0.70
-ORB_MAX   = 2.25
+ORB_MAX_PCT = 0.64   # Q3 of ORB% across 2018-2026; price-normalised
 T1_R      = 1.0
 T2_R      = 2.0
 TRAIL_R   = 1.5
@@ -130,7 +130,7 @@ def compute_alignment(regime, direction):
 def passes_filter(trade, regime):
     if trade["direction"] != "LONG":
         return False, None
-    if trade["orb_range"] > ORB_MAX:
+    if trade["orb_range"] / trade["entry_price"] * 100 > ORB_MAX_PCT:
         return False, None
     if regime.get("cpr_daily_state") not in (None, "unknown", "above_top"):
         return False, None
@@ -537,7 +537,7 @@ def main():
     os.makedirs(os.path.dirname(OUT_FILE), exist_ok=True)
     with open(OUT_FILE, "w") as f:
         json.dump({
-            "strategy": {"align_min": ALIGN_MIN, "orb_max": ORB_MAX,
+            "strategy": {"align_min": ALIGN_MIN, "orb_max_pct": ORB_MAX_PCT,
                          "t1_r": T1_R, "t2_r": T2_R, "trail_r": TRAIL_R,
                          "weights": [W1, W2, W3]},
             "underlying_stats": ul_stats,

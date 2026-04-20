@@ -33,7 +33,7 @@ TRADES_FILE = "/tmp/orb_paper_results.json"
 REGIME_FILE = "/tmp/orb_regime_results.json"
 OUT_FILE    = os.path.join(_HERE, "tmp", "optimized_results.json")
 
-ORB_MAX = 2.25   # Q3, fixed — enough to keep reasonable trade count
+ORB_MAX_PCT = 0.64   # Q3 of ORB% across 2018-2026; price-normalised to avoid bias vs recent years
 
 # ---------------------------------------------------------------------------
 # Data loading
@@ -97,7 +97,8 @@ def passes_filter(trade, regime, cfg):
 
     if cfg["long_only"] and direction != "LONG":
         return False, None
-    if orb_range > ORB_MAX:
+    orb_pct = orb_range / trade["entry_price"] * 100
+    if orb_pct > ORB_MAX_PCT:
         return False, None
 
     # Daily CPR must align
