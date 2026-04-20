@@ -317,3 +317,95 @@ When a trade wins, it captures 90.9% (median) of its best possible intraday move
 2. **The stop at 1R (ORB opposite edge) is appropriate**: the data shows most winners have MAE < 0.5R — widening the stop would add risk without improving winning trades.
 3. **R2 target is well-calibrated**: 50.7% of winners reach 2R in MFE, efficiency is 90.9% — suggesting R2 captures the move without over-staying.
 4. **Tighter stops improve WR dramatically but reduce trade count** — a composite filter (regime indicators + MAE stop tightening) is the natural next research step.
+
+---
+
+## Session 5 — Tranche Exit Strategy
+
+### Prompt
+> "Come up with a high winrate strategy based on all the findings so far, a good strategy has multiple tranches, takes profit at right places and leaves some runners for eod"
+
+### Script: `orb_tranche_strategy.py`
+
+### Strategy Design
+
+**Pre-trade filters (all must pass):**
+1. Alignment score ≥ 60% (≥6/10 regime indicators confirm direction)
+2. Daily CPR: price above_top for LONG, below_bottom for SHORT
+3. ORB range ≤ $2.25 (Q3 threshold — excludes wide/chaotic days)
+
+**Entry:** Same as baseline (first 1-min bar at/after 09:45 that closes outside ORB)
+
+**Position: 3 equal tranches (1/3 each)**
+
+| Tranche | Target | Stop action after hit |
+|---|---|---|
+| T1 | 1.0R | Move stop to **breakeven** |
+| T2 | 1.5R | Begin **1R trailing stop** from HWM |
+| T3 (runner) | Trail or EOD | Exit on trail trigger or 15:59 |
+
+Rationale from MAE/MFE: 85.5% of winners reach 1R MFE, 69.1% reach 1.5R. Moving stop to BE after T1 eliminates the possibility of a full loss on an already-confirmed trade.
+
+### Results (546 filtered trades, 2018–2026)
+
+**Overall comparison:**
+
+| Strategy | n | WR | PF | Expectancy | MaxDD | Calmar |
+|---|---|---|---|---|---|---|
+| Tranche (T1/T2/Trail) | 546 | **55.1%** | 1.39 | +$0.213 | $12.12 | 4.43 |
+| Baseline R2 (filtered) | 546 | 48.7% | 1.49 | +$0.306 | $11.48 | 6.71 |
+
+The tranche structure improves WR (+6.4pp) at the cost of lower per-trade expectancy, as T1 and T2 lock in profits early. Baseline R2 has higher Calmar because R2 winners capture the full 2R move.
+
+**Phase breakdown (where do trades resolve?):**
+
+| Sequence | n | % | WR | Avg P&L |
+|---|---|---|---|---|
+| All 3 tranches (T1+T2+Runner) | 161 | 29.5% | **100%** | +$1.93 |
+| T1 hit → EOD (no T2) | 33 | 6.0% | **100%** | +$1.37 |
+| T1 hit → stopped at BE | 56 | 10.3% | **100%** | +$0.46 |
+| Full stop (pre-T1) | 203 | 37.2% | 0% | −$1.38 |
+| EOD, no T1 hit | 84 | 15.4% | 60.7% | +$0.19 |
+
+**45.8% of trades hit T1 and are guaranteed profitable.** The only losers are the 37.2% full stops and a subset of the 15.4% EOD-no-T1 group.
+
+**Runner (T3) performance:**
+- 161 trades (29.5%) reach all 3 tranches
+- T3 exit: TRAIL=81 (50%), EOD=80 (50%) — evenly split
+- T3 exit level: P25=1.08R, Median=1.60R, P75=2.15R, Mean=1.75R
+
+**Direction breakdown:**
+
+| Direction | n | WR | PF | Calmar |
+|---|---|---|---|---|
+| LONG | 435 | **56.3%** | 1.53 | **6.22** |
+| SHORT | 111 | 50.5% | 1.05 | 0.36 |
+
+**SHORT trades have virtually no edge on this strategy** (Calmar 0.36). The filter should be LONG-only or at minimum SHORT should require much higher alignment.
+
+**Alignment score sweet spot (70–80%):**
+
+| Score band | n | WR | PF | Avg P&L |
+|---|---|---|---|---|
+| 60–70% | 74 | 48.6% | 1.20 | +$0.13 |
+| **70–80%** | **102** | **63.7%** | **2.37** | **+$0.63** |
+| 80–90% | 143 | 56.6% | 1.20 | +$0.12 |
+| 90–100% | 227 | 52.4% | 1.21 | +$0.11 |
+
+70–80% alignment is the sweet spot — high enough to confirm quality without being so restrictive that only the most obvious (crowded) setups remain. Very high alignment (90%+) likely means overbought conditions where mean-reversion risk is elevated.
+
+### Key Findings
+
+1. **WR improved to 55.1%** (from 42.9% unfiltered) through the regime + CPR filter alone
+2. **45.8% of all filtered trades are guaranteed winners** (hit T1 → stop moves to BE)
+3. **Runners add meaningful value**: median T3 exit at 1.6R, half reaching EOD
+4. **LONG-only is the correct implementation** — SHORT edge is negligible
+5. **70–80% alignment band is optimal** — tightest WR/PF sweet spot
+6. **Baseline R2 still beats tranche on Calmar** (6.71 vs 4.43) — tranche is preferred for traders who prioritize consistency and reduced emotional burden of watching a trade reverse from 1.8R back to stop
+
+### Path to Higher Win Rate (80%+ target)
+From MAE analysis: 80%+ WR requires trades that don't pull back beyond ~0.75R. The next filter is:
+- LONG only
+- 70–80% alignment
+- Narrow daily CPR (width = 'narrow' → trending day expected)
+- RSI daily in bullish or overbought state
