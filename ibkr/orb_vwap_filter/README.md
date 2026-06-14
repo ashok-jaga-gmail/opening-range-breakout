@@ -91,19 +91,21 @@ REENTRY_WAIT_MINUTES = 15
 
 ## Backtest (2025 & 2026)
 
-A faithful historical replay on **real QQQ 0DTE option 1-minute prices** — see
-[BACKTEST_2025_2026.md](BACKTEST_2025_2026.md). Summary (per 3-contract position,
-before commissions/slippage):
+A **look-ahead-free** historical replay on **real QQQ 0DTE option 1-minute prices** —
+signals on the completed bar's close, fills at the next bar's open (the −50% stop is a
+real resting order). See [BACKTEST_2025_2026.md](BACKTEST_2025_2026.md). Summary (per
+3-contract position, before commissions/slippage):
 
 | | 2025 (full year) | 2026 (Jan–Jun 12) |
 |---|---:|---:|
-| Trades | 494 | 160 |
-| Win rate | 32.8% | 33.1% |
-| Total P&L | −$433 | −$4,121 |
-| Profit factor | 0.98 | 0.68 |
+| Trades | 488 | 159 |
+| Win rate | 25.4% | 27.0% |
+| Total P&L | +$2,892 | −$3,426 |
+| Profit factor | 1.08 | 0.80 |
 
-~66% of trades hit the −50% stop. **Net-negative in both years once realistic costs
-are included** — the exit structure needs optimization before risking capital.
+Positive-skew, low-win-rate (~1 in 4): ~65% stop out at −50%, but winners average ~3×
+losers. **Profitable in 2025 but only thin/near-breakeven after realistic costs; loss-
+making in 2026** — the edge lives in a few trend days.
 
 ## Quick Start
 

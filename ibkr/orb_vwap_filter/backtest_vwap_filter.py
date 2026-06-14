@@ -5,26 +5,36 @@ Faithfully replays the live bot's rules (orb_vwap_filter.py) on real data:
   - QQQ 1-minute underlying bars   -> opening range, session VWAP, breakouts
   - QQQ 0DTE option 1-minute OHLC  -> real option-premium path for exits
 
-Strategy (matches orb_vwap_filter.py constants):
-  - Opening range: 09:30-09:44 ET (15 one-minute bars)
-  - Session VWAP from 09:30 using typical price (H+L+C)/3
-  - Entry (after 09:45, before 13:00), no position, VWAP filter STRICT:
+NO LOOK-AHEAD. The live bot is a 1-minute *poller*: every minute it reads the
+last completed bar and the current option marketPrice, then submits MARKET orders.
+So every decision here is made on a COMPLETED bar's CLOSE, and the resulting fill
+happens at the NEXT bar's OPEN — never on the same bar that produced the signal,
+and never using a bar's intrabar high to "capture" a price the poller never saw.
+The only intrabar fill is the -50% stop, because the bot places a real resting
+StopOrder at entry (it triggers when the market trades through the stop level).
+
+Strategy (matches orb_vwap_filter.py code, not just the README):
+  - Opening range: 09:30-09:44 ET (15 one-minute bars); session VWAP from 09:30
+  - Entry (post-09:45), no position, VWAP filter STRICT, evaluated on bar close:
         close > range_high AND close > VWAP  -> buy CALLs
         close < range_low  AND close < VWAP  -> buy PUTs
-  - Strike: round(entry_underlying) +/- OTM_STRIKES_OUT (3), $1 spacing
-  - Size: 3 contracts; scale out 1 contract at +50%, +100%, +150% of premium
-  - Hybrid stop: close ALL remaining at -50% of entry premium
-  - Opposite breakout: close ALL remaining if underlying breaks the other OR side
-  - EOD: force-flat at 13:00 ET
-  - Daily risk: stop trading for the day once realized P&L <= -$1000
-  - Re-entry: after any flat, require underlying to return inside the OR before a
-    new entry; after a STOP, also wait REENTRY_WAIT_MINUTES (15) before re-entry
+    -> entry fills at the NEXT bar's option OPEN.
+  - Strike: 3rd listed strike strictly beyond the breakout price ($1 spacing)
+        calls -> floor(price)+3 ;  puts -> ceil(price)-3
+  - Size 3 contracts. Profit ladder is gated by REMAINING qty (as coded):
+        qty==3 & premium>=+150%  -> sell 1
+        qty==2 & premium>=+100%  -> sell 1
+        qty==1 & premium>= +50%  -> sell 1
+    i.e. the FIRST contract only comes off at +150%; one contract per poll;
+    sells fill at the NEXT bar's option OPEN.
+  - Resting hybrid stop: sell ALL remaining at -50% of entry premium (intrabar).
+  - Opposite breakout (polled on close): sell ALL remaining at next bar open.
+  - EOD: force-flat at 13:00 ET (at the 13:00 observed close).
+  - Daily risk: once realized P&L <= -$1000, stop opening NEW trades that day.
+  - Re-entry: after any flat, underlying must trade back inside the OR before a
+    new entry; after a STOP, also wait REENTRY_WAIT_MINUTES (15).
 
-Exit fills (intrabar, no slippage/commission modelled):
-  - profit target -> option HIGH crosses target -> fill at target price
-  - stop          -> option LOW  crosses stop   -> fill at stop price
-  - opposite/EOD  -> fill at option CLOSE of that bar
-  Stop is checked before targets within a bar (conservative).
+No commissions or slippage are modelled (results are optimistic on that axis).
 
 Usage:  python3 backtest_vwap_filter.py 2025 2026
 """
@@ -132,8 +142,19 @@ def load_option_day(year, date_str):
 
 
 # ---------------------------------------------------------------- per-day sim
+def opt_open_at(opt, right, strike, hhmm):
+    """Option OPEN at a given minute (the price a market order placed on the
+    prior bar's close would realistically fill at). None if unavailable."""
+    b = opt[right].get(strike, {}).get(hhmm)
+    if b is None:
+        return None
+    o = b[0]
+    return o if o > 0 else None
+
+
 def simulate_day(date_str, bars, opt):
-    """Return list of trade dicts for the day."""
+    """Return list of trade dicts for the day. No look-ahead: signals on a
+    completed bar's CLOSE, fills on the NEXT bar's OPEN (stop is intrabar)."""
     if len(bars) < 16:
         return []
     or_bars = [b for b in bars if OR_START <= b[0] < OR_END_EXCL]
@@ -154,68 +175,71 @@ def simulate_day(date_str, bars, opt):
         vwap[t] = (cvp / cv) if cv > 0 else None
 
     trades = []
-    pos = None                 # dict when in a trade
+    pos = None
     day_pnl = 0.0
     need_reset = False         # must return inside OR before new entry
     last_stop_min = None
+    risk_blocked = False       # daily loss cap hit -> no new entries
 
-    for t, o, h, l, c, v in bars:
+    n = len(bars)
+    for i in range(n):
+        t, o, h, l, c, v = bars[i]
         if t < ENTRY_START:
             continue
         cur_min = to_min(t)
+        nxt_t = bars[i + 1][0] if i + 1 < n else None   # next bar -> fill time
+        force_eod = (t >= TRADING_END)
 
         # ---- reset gate: underlying back inside OR re-arms entries ----
         if need_reset and pos is None and range_low <= c <= range_high:
             need_reset = False
 
-        # ---- manage open position ----
+        # ---- manage open position (this bar = the just-completed poll bar) ----
         if pos is not None:
-            sd = opt[pos["right"]].get(pos["strike"], {})
-            bar = sd.get(t)
-            force_eod = (t >= TRADING_END)
-            if bar is not None:
-                oo, oh, ol, oc = bar
-                ent = pos["opt_entry"]
-                # 1) stop (checked first, conservative)
-                stop_px = ent * (1 - STOP_LOSS_PCT / 100.0)
-                if ol <= stop_px and pos["contracts"] > 0:
-                    pnl = (stop_px - ent) * 100.0 * pos["contracts"]
-                    pos["realized"] += pnl
+            ent = pos["opt_entry"]
+            stop_px = pos["stop_px"]
+            obar = opt[pos["right"]].get(pos["strike"], {}).get(t)
+            fill_open = opt_open_at(opt, pos["right"], pos["strike"], nxt_t) if nxt_t else None
+            if obar is not None:
+                oo, oh, ol, oc = obar
+                pos["last_close"] = oc
+                # 1) resting STOP (real StopOrder) -> intrabar low fill at stop price
+                if pos["contracts"] > 0 and ol <= stop_px:
+                    pos["realized"] += (stop_px - ent) * 100.0 * pos["contracts"]
                     pos["exits"].append(("stop", t, round(stop_px, 2), pos["contracts"]))
                     pos["contracts"] = 0
-                # 2) opposite breakout
+                # 2) opposite breakout (polled on close -> fill next open)
                 if pos["contracts"] > 0:
                     opp = (pos["right"] == "call" and c < range_low) or \
                           (pos["right"] == "put"  and c > range_high)
                     if opp:
-                        pnl = (oc - ent) * 100.0 * pos["contracts"]
-                        pos["realized"] += pnl
-                        pos["exits"].append(("opp_breakout", t, round(oc, 2), pos["contracts"]))
+                        px = fill_open if fill_open else oc
+                        pos["realized"] += (px - ent) * 100.0 * pos["contracts"]
+                        pos["exits"].append(("opp_breakout", t, round(px, 2), pos["contracts"]))
                         pos["contracts"] = 0
-                # 3) profit targets (1 contract each)
-                if pos["contracts"] > 0:
-                    for lvl in PROFIT_LEVELS:
-                        if lvl in pos["hit"] or pos["contracts"] == 0:
-                            continue
-                        tgt = ent * (1 + lvl / 100.0)
-                        if oh >= tgt:
-                            pnl = (tgt - ent) * 100.0 * 1
-                            pos["realized"] += pnl
-                            pos["hit"].add(lvl)
-                            pos["exits"].append((f"target_{lvl}", t, round(tgt, 2), 1))
-                            pos["contracts"] -= 1
-                # 4) EOD force flat
+                # 3) profit ladder, gated by REMAINING qty, 1 contract per poll,
+                #    filled at next bar open (no intrabar high capture)
+                if pos["contracts"] > 0 and not force_eod:
+                    q = pos["contracts"]
+                    prem_pct = (oc - ent) / ent * 100.0
+                    need = {3: 150, 2: 100, 1: 50}[q]
+                    if prem_pct >= need:
+                        px = fill_open if fill_open else oc
+                        pos["realized"] += (px - ent) * 100.0 * 1
+                        pos["exits"].append((f"tp_q{q}", t, round(px, 2), 1))
+                        pos["contracts"] -= 1
+                # 4) EOD force flat at the 13:00 observed close
                 if force_eod and pos["contracts"] > 0:
-                    pnl = (oc - ent) * 100.0 * pos["contracts"]
-                    pos["realized"] += pnl
+                    pos["realized"] += (oc - ent) * 100.0 * pos["contracts"]
                     pos["exits"].append(("eod", t, round(oc, 2), pos["contracts"]))
                     pos["contracts"] = 0
             elif force_eod and pos["contracts"] > 0:
-                # no option bar at 13:00; close at last known close
-                pos["exits"].append(("eod_nobar", t, None, pos["contracts"]))
+                # no option bar at EOD -> close at last observed option close
+                px = pos.get("last_close", ent)
+                pos["realized"] += (px - ent) * 100.0 * pos["contracts"]
+                pos["exits"].append(("eod_nobar", t, round(px, 2), pos["contracts"]))
                 pos["contracts"] = 0
 
-            # position fully closed?
             if pos["contracts"] == 0:
                 stopped = any(e[0] == "stop" for e in pos["exits"])
                 day_pnl += pos["realized"]
@@ -226,13 +250,13 @@ def simulate_day(date_str, bars, opt):
                 need_reset = True
                 pos = None
 
-        # ---- stop trading for the day on risk cap ----
+        # ---- daily risk cap: block NEW entries (existing pos still managed) ----
         if day_pnl <= -MAX_DAILY_RISK:
-            break
-        if t >= TRADING_END:
+            risk_blocked = True
+        if force_eod or risk_blocked or nxt_t is None:
             continue
 
-        # ---- look for a new entry ----
+        # ---- new entry: signal on close[t], FILL at next bar option open ----
         if pos is None and not need_reset:
             if last_stop_min is not None and (cur_min - last_stop_min) < REENTRY_WAIT_MIN:
                 continue
@@ -246,21 +270,21 @@ def simulate_day(date_str, bars, opt):
                 direction = "put"
             if direction is None:
                 continue
-            atm = round(c)
-            strike = atm + OTM_STRIKES_OUT if direction == "call" else atm - OTM_STRIKES_OUT
-            sd = opt[direction].get(strike, {})
-            bar = sd.get(t)
-            opt_entry = None
-            if bar is not None:
-                opt_entry = bar[3] if bar[3] > 0 else (bar[0] if bar[0] > 0 else None)
+            # 3rd listed strike strictly beyond the breakout price ($1 spacing)
+            strike = (math.floor(c) + OTM_STRIKES_OUT) if direction == "call" \
+                else (math.ceil(c) - OTM_STRIKES_OUT)
+            opt_entry = opt_open_at(opt, direction, strike, nxt_t)  # fill next bar open
             if not opt_entry:
                 continue
             pos = {
                 "date": date_str, "direction": direction, "strike": strike,
-                "right": direction, "entry_time": t, "entry_under": round(c, 2),
-                "vwap": round(vw, 2), "or_high": round(range_high, 2),
-                "or_low": round(range_low, 2), "opt_entry": round(opt_entry, 2),
-                "contracts": CONTRACTS, "hit": set(), "exits": [], "realized": 0.0,
+                "right": direction, "signal_time": t, "entry_time": nxt_t,
+                "entry_under": round(c, 2), "vwap": round(vw, 2),
+                "or_high": round(range_high, 2), "or_low": round(range_low, 2),
+                "opt_entry": round(opt_entry, 2),
+                "stop_px": round(opt_entry * (1 - STOP_LOSS_PCT / 100.0), 2),
+                "contracts": CONTRACTS, "exits": [], "realized": 0.0,
+                "last_close": opt_entry,
             }
     return trades
 
