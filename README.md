@@ -238,7 +238,9 @@ opening-range-breakout/
 ├── orb_paper_backtest.py       # Main backtest: ORB detection + 7 exit strategies
 ├── orb_regime_indicators.py    # Multi-TF CPR, RSI, MACD computation + stratified analysis
 ├── README.md                   # This file: full documentation and results
-└── ORB.md                      # Research prompts and methodology notes
+├── ORB.md                      # Research prompts and methodology notes
+└── ibkr/
+    └── orb_vwap_filter/        # Live 0DTE options bot (ORB + VWAP filter) — see below
 ```
 
 ---
@@ -301,6 +303,30 @@ To use CSV data instead, replace `load_dbn_to_daily_bars()` in `orb_paper_backte
 9. **2020 and 2018 were losing years** — COVID-driven volatility and late-2018 crash created whipsaw conditions that violated stop loss reliability. Strategy benefits from calmer trending environments.
 
 10. **80% indicator alignment beats 100%.** Fully aligned setups may attract excessive participation, eroding edge.
+
+---
+
+## Live Execution — `ibkr/orb_vwap_filter/`
+
+Beyond the historical research above, the repo ships a **fully automated 0DTE options bot** that trades the ORB live through Interactive Brokers (`ib_insync`). It layers a **VWAP confirmation filter** on top of the breakout to cut down on fakeouts.
+
+| Aspect | Setting |
+|---|---|
+| **Opening Range** | 09:30–09:45 ET (15 min) |
+| **Entry** | Break of range high **and** price > VWAP → calls; break of range low **and** price < VWAP → puts |
+| **Instrument** | 0DTE options, 3 strikes OTM, 3 contracts |
+| **Profit Taking** | Scale out 1/3 at +50%, +100%, +150% (CPR-style) |
+| **Stop Loss** | Hybrid — 50% of entry premium |
+| **Risk Guard** | Max \$1,000 daily loss, 15-min re-entry cooldown, force-flat at 13:00 ET |
+| **Ops** | Stateless design (JSON state file), HTML dashboard, cron-driven (runs every minute) |
+
+```bash
+cd ibkr/orb_vwap_filter
+./test_orb_vwap_filter.sh     # verify setup
+python3 orb_vwap_filter.py    # run once (or wire orb_vwap_filter.sh into cron)
+```
+
+See [`ibkr/orb_vwap_filter/README.md`](ibkr/orb_vwap_filter/README.md) and [`QUICK_REFERENCE.md`](ibkr/orb_vwap_filter/QUICK_REFERENCE.md) for full configuration and command reference. **0DTE options are extremely risky — paper trade first.**
 
 ---
 

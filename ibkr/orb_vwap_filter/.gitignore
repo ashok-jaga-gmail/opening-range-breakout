@@ -1,0 +1,5 @@
+bot.html
+orb_vwap_filter.log
+bot_state.json
+*.pyc
+__pycache__/
