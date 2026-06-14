@@ -83,9 +83,27 @@ REENTRY_WAIT_MINUTES = 15
 
 - **orb_vwap_filter.py**: Main bot (800+ lines)
 - **orb_vwap_filter.sh**: Cron runner script
+- **backtest_vwap_filter.py**: Historical backtest on real 0DTE option prices
+- **BACKTEST_2025_2026.md**: 2025 & 2026 backtest results and methodology
 - **bot_state.json**: State persistence (auto-generated)
 - **bot.html**: HTML dashboard (auto-generated)
 - **orb_vwap_filter.log**: Execution logs (auto-generated)
+
+## Backtest (2025 & 2026)
+
+A faithful historical replay on **real QQQ 0DTE option 1-minute prices** — see
+[BACKTEST_2025_2026.md](BACKTEST_2025_2026.md). Summary (per 3-contract position,
+before commissions/slippage):
+
+| | 2025 (full year) | 2026 (Jan–Jun 12) |
+|---|---:|---:|
+| Trades | 494 | 160 |
+| Win rate | 32.8% | 33.1% |
+| Total P&L | −$433 | −$4,121 |
+| Profit factor | 0.98 | 0.68 |
+
+~66% of trades hit the −50% stop. **Net-negative in both years once realistic costs
+are included** — the exit structure needs optimization before risking capital.
 
 ## Quick Start
 
