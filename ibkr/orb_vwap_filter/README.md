@@ -100,20 +100,23 @@ REENTRY_WAIT_MINUTES = 15
 ## Backtest (2025 & 2026)
 
 A **look-ahead-free** historical replay on **real QQQ 0DTE option 1-minute prices** —
-signals on the completed bar's close, fills at the next bar's open (the −50% stop is a
-real resting order). See [BACKTEST_2025_2026.md](BACKTEST_2025_2026.md). Summary (per
-3-contract position, before commissions/slippage):
+signals on the completed bar's close, fills at the next bar's open. Figures below are for
+the **recommended VIX-gated strategy** (calls + puts, +30% scalp — see the next section
+and [GRID_SEARCH.md](GRID_SEARCH.md)), **per contract, net of $0.65/contract/side**. The
+original live-bot config ([150/100/50] ladder, −50% stop) is documented separately in
+[BACKTEST_2025_2026.md](BACKTEST_2025_2026.md).
 
 | | 2025 (full year) | 2026 (Jan–Jun 12) |
 |---|---:|---:|
-| Trades | 488 | 159 |
-| Win rate | 25.4% | 27.0% |
-| Total P&L | +$2,892 | −$3,426 |
-| Profit factor | 1.08 | 0.80 |
+| Trades | 242 | 92 |
+| Win rate | 67.8% | 69.6% |
+| Total P&L | +$1,312 | +$1,506 |
+| Profit factor | 1.24 | 1.61 |
 
-Positive-skew, low-win-rate (~1 in 4): ~65% stop out at −50%, but winners average ~3×
-losers. **Profitable in 2025 but only thin/near-breakeven after realistic costs; loss-
-making in 2026** — the edge lives in a few trend days.
+Net-positive in **both** years after costs, with a ~68% win rate — the VIX gates carry the
+calls in calm/trending vol and switch the puts on only in genuine fear. (Scaled to 10
+contracts in the equity curve below.) Still a **long-biased** strategy harvesting the
+2025–26 uptrend; validate on a down market before risking capital.
 
 ### Recommended config — portfolio equity curve (10 contracts)
 
