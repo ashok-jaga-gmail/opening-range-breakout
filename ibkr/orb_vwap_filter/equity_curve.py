@@ -1,7 +1,9 @@
 """
 equity_curve.py — Portfolio (equity) curve for the recommended strategy at 10 contracts.
 
-Strategy: ORB +30% scalp, OTM-1, -75% stop, OR>=$1, 3 trades/day.
+Strategy: ORB +20% scalp, OTM-1, -75% stop, OR>=$1, 3 trades/day.
+  (+20% beats +30% once the VIX/direction filters are in place — re-checked the
+   strike x target x stop grid with the filters on; OTM-1 stays optimal.)
   - CALLS  : upside opening-range breakout, but SKIPPED when VIX opens > 25 (panic
              regime: calls lose ~$69/day at 36% win rate there)
   - PUTS   : taken only on days where VIX OPENED ABOVE its pivot AND VIX open >= 18
@@ -10,8 +12,8 @@ Strategy: ORB +30% scalp, OTM-1, -75% stop, OR>=$1, 3 trades/day.
              analysis showed puts lose below ~16-18 and earn their keep at higher vol.
              VIX pivot = (prevH+prevL+prevC)/3 from the prior session, read from
              vix_daily.csv.
-Sized at 10 contracts with a $4,000/day loss circuit-breaker (DAILY_CAP). It sits just
-above the worst realized day in this backtest (-$3,036), so it never actually binds here;
+Sized at 10 contracts with a $4,000/day loss circuit-breaker (DAILY_CAP). It sits well
+above the worst realized day in this backtest (-$2,486), so it never actually binds here;
 it is only a tail backstop. Net of $0.65/contract/side.
 
 Produces:
@@ -34,10 +36,10 @@ from grid_search_nocpr import build_ctx, to_min, COMMISSION
 _HERE = os.path.dirname(os.path.abspath(__file__))
 CONTRACTS = 10
 DAILY_CAP = 4000             # daily-loss circuit breaker; above the worst realized day
-                             # (-$3,036 at 10 contracts), so it is inert in this backtest
+                             # (-$2,486 at 10 contracts), so it is inert in this backtest
 VIX_MIN_OPEN = 18.0          # put floor:  only take gated puts when VIX open >= this
 VIX_MAX_CALLS = 25.0         # call ceiling: skip CALLS when VIX open > this (panic regime)
-CFG = {"tpd": 3, "split": [CONTRACTS], "tgts": [30], "sl": 75, "otm": 1,
+CFG = {"tpd": 3, "split": [CONTRACTS], "tgts": [20], "sl": 75, "otm": 1,
        "or_floor": 1.0, "dir": "both"}
 
 
@@ -192,7 +194,7 @@ def main():
     ax.axhline(0, color="#888", lw=0.8)
     ax.axvline(yb, color="#c62828", ls="--", lw=1, alpha=0.7)
     ax.text(yb, ax.get_ylim()[1] * 0.92, " 2026", color="#c62828", fontsize=9)
-    ax.set_title("ORB +30% scalp — calls[VIX open≤25] + puts[VIX open>pivot & ≥18] — 10 contracts",
+    ax.set_title("ORB +20% scalp — calls[VIX open≤25] + puts[VIX open>pivot & ≥18] — 10 contracts",
                  fontsize=10)
     ax.set_ylabel("Portfolio equity — cumulative net P&L ($)")
     ax.yaxis.set_major_formatter(dollar)

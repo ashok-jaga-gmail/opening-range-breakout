@@ -22,7 +22,7 @@ A fully automated 0DTE options trading bot based on the Opening Range Breakout (
 - **No Reversal**: Exits on opposite breakout, waits for re-entry
 
 > **Shipped defaults vs. research-optimal:** the settings above are what the bot trades as
-> shipped. A **research-optimal VIX-gated variant** (calls + puts, +30% scalp, VIX-gated
+> shipped. A **research-optimal VIX-gated variant** (calls + puts, +20% scalp, VIX-gated
 > entries) backtests substantially better — see [Backtest (2025 & 2026)](#backtest-2025--2026)
 > below — but is **not yet wired into the live bot**.
 
@@ -107,7 +107,7 @@ REENTRY_WAIT_MINUTES = 15
 
 A **look-ahead-free** historical replay on **real QQQ 0DTE option 1-minute prices** —
 signals on the completed bar's close, fills at the next bar's open. Figures below are for
-the **recommended VIX-gated strategy** (calls + puts, +30% scalp — see the next section
+the **recommended VIX-gated strategy** (calls + puts, +20% scalp — see the next section
 and [GRID_SEARCH.md](GRID_SEARCH.md)), at **10 contracts** (with a $4,000 daily-loss
 circuit breaker), **net of $0.65/contract/side**. The original live-bot config
 ([150/100/50] ladder, −50% stop) is documented separately in
@@ -115,12 +115,12 @@ circuit breaker), **net of $0.65/contract/side**. The original live-bot config
 
 | | 2025 (full year) | 2026 (Jan–Jun 12) |
 |---|---:|---:|
-| Trades | 242 | 92 |
-| Win rate | 67.8% | 69.6% |
-| Total P&L | +$13,119 | +$15,056 |
-| Profit factor | 1.24 | 1.61 |
+| Trades | 263 | 100 |
+| Win rate | 74.5% | 80.0% |
+| Total P&L | +$13,199 | +$19,318 |
+| Profit factor | 1.29 | 2.27 |
 
-Net-positive in **both** years after costs, with a ~68% win rate — the VIX gates carry the
+Net-positive in **both** years after costs, with a ~75–80% win rate — the VIX gates carry the
 calls in calm/trending vol and switch the puts on only in genuine fear. Still a
 **long-biased** strategy harvesting the 2025–26 uptrend; validate on a down market before
 risking capital.
@@ -128,8 +128,10 @@ risking capital.
 ### Recommended config — portfolio equity curve (10 contracts)
 
 The configuration grid search ([GRID_SEARCH.md](GRID_SEARCH.md)) found a CPR-free
-**+30% scalp** (`OTM-1 · +30% target · −75% stop · OR ≥ $1 · 3 trades/day`) that is
-net-positive (after commissions) in both years.
+**+20% scalp** (`OTM-1 · +20% target · −75% stop · OR ≥ $1 · 3 trades/day`) that is
+net-positive (after commissions) in both years. (+20% beats the original +30% once the
+VIX/direction filters are in place — the strike × target × stop grid was re-checked with
+the filters on; OTM-1 stays optimal, the target tightens to +20%.)
 
 VIX (from [`vix_daily.csv`](vix_daily.csv), pivot = `(prevH+prevL+prevC)/3`) gates **both**
 sides, using only the **VIX open** (known at 9:30 → no look-ahead):
@@ -142,7 +144,7 @@ sides, using only the **VIX open** (known at 9:30 → no look-ahead):
 
 The two gates are complementary: calls carry the calm/trending regimes, puts hedge the
 high-vol fear regime where calls fail. Sized at **10 contracts** with a **$4,000 daily-loss
-circuit breaker** — it sits above the worst realized day (−$3,036), so it never actually
+circuit breaker** — it sits above the worst realized day (−$2,486), so it never actually
 binds here and is only a tail backstop. Net of $0.65/contract/side — reproduce with
 [`equity_curve.py`](equity_curve.py):
 
@@ -150,14 +152,15 @@ binds here and is only a tail backstop. Net of $0.65/contract/side — reproduce
 
 | | 2025 | 2026 (Jan–Jun) | Combined |
 |---|---:|---:|---:|
-| **Net P&L** | **+$13,119** | **+$15,056** | **+$28,176** |
-| Trades / days | 242 / 169 | 92 / 66 | — |
-| Day win rate | 63% | 68% | — |
+| **Net P&L** | **+$13,199** | **+$19,318** | **+$32,516** |
+| Trades / days | 263 / 169 | 100 / 66 | — |
+| Day win rate | 68% | 76% | — |
 
-Progression of the combined 2-year result as each gate is added:
-**+$14,539** (calls only) → **+$18,952** (puts: VIX open > pivot) → **+$23,337**
-(+ VIX-open ≥ 18 put floor) → **+$28,176** (+ skip calls when VIX open > 25). The call
-ceiling alone adds **+$4,839** by removing the April-2025-style panic-day losses.
+Progression of the combined 2-year result as each gate is added (at the +30% target used
+during the gate search): **+$14,539** (calls only) → **+$18,952** (puts: VIX open > pivot)
+→ **+$23,337** (+ VIX-open ≥ 18 put floor) → **+$28,176** (+ skip calls when VIX open > 25).
+Finally, re-optimising the exit with all gates on (target **+30% → +20%**) gives the
+**+$32,516** above.
 
 ⚠️ Still a **long-biased** strategy harvesting the 2025–26 QQQ uptrend; the VIX gate adds a
 short side only on risk-off days. It was ≈ breakeven-to-negative in 2024 and would likely

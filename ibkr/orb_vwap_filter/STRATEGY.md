@@ -3,10 +3,11 @@
 # ORB-Adaptive — A Strategy Built From the MAE/MFE + Grid-Search Insights
 
 > **Update / superseded:** this regime-switched synthesis concluded "no edge," but that was
-> before the **direction** lever was isolated. A later CPR-free search found a profitable,
-> both-years-positive **calls-only +30% scalp** — see [`GRID_SEARCH.md`](GRID_SEARCH.md)
-> (Round 3). The "no skill in the CPR-width regime" finding below still stands; the
-> resolution was direction, not regime.
+> before the **direction** lever and **VIX-regime gates** were added. The current recommended
+> strategy — **calls + VIX-gated puts · OTM-1 · +20% target · −75% stop** (+$32,516 combined,
+> 2025–26) — is documented in [`GRID_SEARCH.md`](GRID_SEARCH.md) (Round 4) and the bot
+> [`README.md`](README.md#backtest-2025--2026). The "no skill in the CPR-width regime" finding
+> below still stands; the resolution was direction + VIX regime, not CPR-width.
 
 This documents an attempt to **synthesize every insight** from the research into one
 strategy, and the honest result of backtesting it (no look-ahead, train 2025 /
