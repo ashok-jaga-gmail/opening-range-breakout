@@ -52,6 +52,9 @@ crontab -e
 | `CPR_LEVEL_3_PROFIT_PERCENT` | 150 | Third exit % |
 | `REENTRY_WAIT_MINUTES` | 15 | Wait after stop |
 | `VWAP_FILTER_STRICT` | False | VWAP entry filter (off by default; pure ORB entry) |
+| `VIX_GATING_ENABLED` | True | VIX regime gate on entries (uses the VIX open) |
+| `VIX_CALL_MAX_OPEN` | 25.0 | Skip calls when VIX opens above this |
+| `VIX_PUT_MIN_OPEN` | 18.0 | Puts only when VIX open ≥ this AND above its pivot |
 | `IBKR_CLIENT_ID` | 21 | Must be unique |
 
 ## Trading Logic
@@ -61,6 +64,7 @@ crontab -e
 - ✓ Trading hours (9:45 AM - 1:00 PM EST)
 - ✓ Range captured (9:30-9:45 AM)
 - ✓ Breakout detected (price > range_high for calls / price < range_low for puts; VWAP confirmation only if `VWAP_FILTER_STRICT = True`)
+- ✓ VIX regime gate passes (calls: VIX open ≤ 25; puts: VIX open > prior-day pivot & ≥ 18) — when `VIX_GATING_ENABLED = True`
 - ✓ Daily risk not exceeded
 - ✓ Not in re-entry wait
 - ✓ No existing position

@@ -21,7 +21,10 @@ all access goes through a running Gateway (or TWS) session on your machine/LAN.
   Client Portal → Settings → Paper Trading Account — use this first).
 - **Market-data subscriptions** for what you trade. For QQQ you need US equity +
   **US options (OPRA)** real-time data, otherwise the bots get delayed/empty quotes.
-  Add them in Client Portal → Settings → **Market Data Subscriptions**.
+  Add them in Client Portal → Settings → **Market Data Subscriptions**. The
+  `orb_vwap_filter` bot's **VIX regime gate** also requires **VIX index data (CBOE)** for
+  its daily-bar request; if VIX is unavailable the gate **fails closed** (no entries) — set
+  `VIX_GATING_ENABLED = False` to trade without it.
 - **Python 3.9+** (the bots use `zoneinfo`, added in 3.9). Check with `python3 --version`.
 - ~2 GB free disk for the Gateway + a Java runtime (bundled with the installer).
 

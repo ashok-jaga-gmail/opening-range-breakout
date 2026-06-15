@@ -16,15 +16,18 @@ A fully automated 0DTE options trading bot based on the Opening Range Breakout (
 
 - **Opening Range**: Captures 15-minute range (9:30-9:45 AM EST)
 - **Entry**: Breakout above range high (calls) OR below range low (puts). *(VWAP confirmation optional — off by default.)*
+- **VIX regime gate**: calls skipped when VIX opens > 25; puts only when VIX opens above its
+  prior-day pivot **and** ≥ 18 (uses the VIX open → no look-ahead). On by default.
 - **Exit**: CPR-based profit taking at 50%, 100%, 150%
 - **Stop Loss**: Hybrid approach - 50% of entry price
 - **Position Management**: 3 contracts, scale out 1/3 at each profit level
 - **No Reversal**: Exits on opposite breakout, waits for re-entry
 
-> **Shipped defaults vs. research-optimal:** the settings above are what the bot trades as
-> shipped. A **research-optimal VIX-gated variant** (calls + puts, +20% scalp, VIX-gated
-> entries) backtests substantially better — see [Backtest (2025 & 2026)](#backtest-2025--2026)
-> below — but is **not yet wired into the live bot**.
+> **Shipped vs. research-optimal:** the **VIX regime gating is now wired into the bot**
+> (calls/puts gated by the VIX open, above). The *rest* of the research-optimal config —
+> **OTM-1 strike, +20% target, −75% stop, single tranche** — is **not** yet: the bot still
+> ships with the [150/100/50] ladder and −50% stop. So the live bot won't reproduce the
+> [Backtest](#backtest-2025--2026) figures until those exit parameters are also adopted.
 
 ## Key Features
 
@@ -32,6 +35,7 @@ A fully automated 0DTE options trading bot based on the Opening Range Breakout (
 - **Opening Range**: 9:30-9:45 AM EST
 - **Trading Hours**: 9:45 AM - 1:00 PM EST (post-range)
 - **VWAP Filter**: Optional, **off by default** (computed for the dashboard; not used to gate entries)
+- **VIX Regime Gate**: on by default — calls stand down on panic opens (VIX > 25); puts only on genuine fear opens (VIX open > pivot & ≥ 18)
 - **Risk Management**: Max $1,000 daily loss, 15-min re-entry cooldown
 - **State Persistence**: Fully stateless design with JSON state file
 - **HTML Dashboard**: Auto-updating dashboard with range/VWAP metrics
@@ -42,9 +46,9 @@ A fully automated 0DTE options trading bot based on the Opening Range Breakout (
 1. Post-opening range (after 9:45 AM EST)
 2. Trading hours (9:45 AM - 1:00 PM EST)
 3. Range successfully captured
-4. Breakout detected:
-   - **Calls**: price > range_high *(AND price > VWAP only if `VWAP_FILTER_STRICT = True`)*
-   - **Puts**: price < range_low *(AND price < VWAP only if `VWAP_FILTER_STRICT = True`)*
+4. Breakout detected **and VIX regime gate passes** (gate active when `VIX_GATING_ENABLED = True`):
+   - **Calls**: price > range_high, and VIX open ≤ 25 *(AND price > VWAP only if `VWAP_FILTER_STRICT = True`)*
+   - **Puts**: price < range_low, and VIX open > prior-day pivot & ≥ 18 *(AND price < VWAP only if `VWAP_FILTER_STRICT = True`)*
 5. No existing position
 6. Risk limit not exceeded ($1,000 max daily loss)
 7. Not in re-entry cooldown (15 minutes after stop out)
@@ -76,6 +80,11 @@ TRADING_END_MINUTE = 0
 # Position Settings
 CONTRACTS_PER_TRADE = 3
 OTM_STRIKES_OUT = 3
+
+# VIX Regime Gating (uses the VIX open; no look-ahead)
+VIX_GATING_ENABLED = True
+VIX_CALL_MAX_OPEN = 25.0   # skip calls when VIX opens above this
+VIX_PUT_MIN_OPEN = 18.0    # puts only when VIX open >= this AND above its prior-day pivot
 
 # Risk Management
 MAX_DAILY_RISK = 1000

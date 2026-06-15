@@ -38,6 +38,19 @@ VWAP_FILTER_STRICT = False    # VWAP entry filter DISABLED (ablation 2024-2026: 
 BAR_SIZE_OPENING_RANGE = '1 min'  # 1-minute bars for range capture
 BAR_SIZE_VWAP = '1 min'       # 1-minute bars for VWAP calculation
 
+# VIX Regime Gating (uses only the VIX OPEN -> known at 9:30, so no look-ahead)
+#   Calls: skipped when VIX opens above VIX_CALL_MAX_OPEN (panic regime: long
+#          breakouts gap-fail; backtest -$69/day at 36% win rate there).
+#   Puts : taken only when VIX opens ABOVE its prior-day pivot AND >= VIX_PUT_MIN_OPEN
+#          (a genuine risk-off open; low-vol shorts just bleed).
+# VIX pivot = (prevHigh + prevLow + prevClose)/3 from the prior session.
+# Set VIX_GATING_ENABLED = False to disable.
+VIX_GATING_ENABLED = True
+VIX_CALL_MAX_OPEN = 25.0
+VIX_PUT_MIN_OPEN = 18.0
+VIX_SYMBOL = 'VIX'
+VIX_EXCHANGE = 'CBOE'
+
 # Position Settings
 CONTRACTS_PER_TRADE = 3
 OTM_STRIKES_OUT = 3  # How many strikes OTM to trade
@@ -120,19 +133,61 @@ def capture_opening_range(bars, range_start_time, range_end_time):
     return range_high, range_low, True
 
 
-def check_breakout(current_price, range_high, range_low, vwap, current_position):
+def vix_allows_entry(direction, vix_open, vix_pivot):
+    """Apply the VIX regime gate. Returns True if a 'call'/'put' entry is allowed.
+    Fail-closed: if gating is on but VIX data is unavailable, stand down."""
+    if not VIX_GATING_ENABLED:
+        return True
+    if vix_open is None or vix_pivot is None:
+        return False
+    if direction == 'call':
+        return vix_open <= VIX_CALL_MAX_OPEN
+    if direction == 'put':
+        return (vix_open > vix_pivot) and (vix_open >= VIX_PUT_MIN_OPEN)
+    return True
+
+
+async def get_vix_open_and_pivot(ib):
+    """Today's VIX open and its prior-day CPR pivot = (prevH+prevL+prevC)/3.
+    Both are fixed by 9:30, so gating on them introduces no look-ahead.
+    Returns (vix_open, vix_pivot), or (None, None) if unavailable."""
+    try:
+        vix = Index(VIX_SYMBOL, VIX_EXCHANGE, 'USD')
+        qualified = await ib.qualifyContractsAsync(vix)
+        if not qualified:
+            return None, None
+        bars = await ib.reqHistoricalDataAsync(
+            qualified[0], endDateTime='', durationStr='5 D',
+            barSizeSetting='1 day', whatToShow='TRADES', useRTH=True, formatDate=1)
+        if not bars or len(bars) < 2:
+            return None, None
+        today, prev = bars[-1], bars[-2]
+        pivot = (prev.high + prev.low + prev.close) / 3.0
+        return float(today.open), float(pivot)
+    except Exception as e:
+        print("VIX data fetch failed (" + str(e) + ") - VIX gate will block entries")
+        return None, None
+
+
+def check_breakout(current_price, range_high, range_low, vwap, current_position,
+                   vix_open=None, vix_pivot=None):
     """
     Detect a valid opening-range breakout.
-    The VWAP filter is applied only if VWAP_FILTER_STRICT is True (default False);
-    otherwise entry is a pure ORB breakout.
+    The VWAP filter is applied only if VWAP_FILTER_STRICT is True (default False).
+    The VIX regime gate (if VIX_GATING_ENABLED) filters ENTRIES by direction using the
+    VIX open vs its prior-day pivot. Exit checks are unaffected.
     Returns: 'call', 'put', 'exit', or None
     """
     # No position - check for entry
     if current_position is None:
         if current_price > range_high and (not VWAP_FILTER_STRICT or current_price > vwap):
-            return 'call'  # Bullish opening-range breakout
+            if vix_allows_entry('call', vix_open, vix_pivot):
+                return 'call'  # Bullish opening-range breakout
+            return None        # VIX gate blocked the call
         elif current_price < range_low and (not VWAP_FILTER_STRICT or current_price < vwap):
-            return 'put'   # Bearish opening-range breakout
+            if vix_allows_entry('put', vix_open, vix_pivot):
+                return 'put'   # Bearish opening-range breakout
+            return None        # VIX gate blocked the put
         return None
 
     # Have position - check for opposite breakout (exit signal)
@@ -659,10 +714,22 @@ async def main():
                 # No position - check for entry signal
                 # Check if range is captured and we're post-opening range
                 if range_captured and is_post_opening_range(est_now) and (vwap or not VWAP_FILTER_STRICT):
-                    breakout_signal = check_breakout(current_price, range_high, range_low, vwap, None)
+                    # VIX regime levels (open + prior-day pivot) for the entry gate
+                    vix_open, vix_pivot = (await get_vix_open_and_pivot(ib)
+                                           if VIX_GATING_ENABLED else (None, None))
+                    state['vix_open'] = vix_open
+                    state['vix_pivot'] = round(vix_pivot, 2) if vix_pivot is not None else None
+                    if vix_open is not None:
+                        print("VIX open: " + "{:.2f}".format(vix_open)
+                              + "  pivot: " + ("{:.2f}".format(vix_pivot) if vix_pivot else "N/A")
+                              + "  (calls<=" + str(VIX_CALL_MAX_OPEN)
+                              + ", puts>pivot & >=" + str(VIX_PUT_MIN_OPEN) + ")")
+
+                    breakout_signal = check_breakout(current_price, range_high, range_low, vwap,
+                                                     None, vix_open, vix_pivot)
 
                     if breakout_signal in ['call', 'put']:
-                        # Entry signal confirmed (opening-range breakout)
+                        # Entry signal confirmed (opening-range breakout, VIX gate passed)
                         direction = breakout_signal
                         state['breakout_price'] = current_price
                         state['vwap_at_entry'] = vwap
