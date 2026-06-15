@@ -178,7 +178,6 @@ def main():
     for v in ys:
         peak = max(peak, v)
         dd.append(v - peak)
-    max_dd = min(dd)
     dollar = matplotlib.ticker.FuncFormatter(lambda v, _: f"${v:,.0f}")
     yb = datetime(2026, 1, 1)
 
@@ -198,9 +197,8 @@ def main():
     ax.grid(True, alpha=0.25)
     ax.annotate(f"${round(cum):,}", xy=(xs[-1], ys[-1]), xytext=(-46, 6),
                 textcoords="offset points", fontsize=10, fontweight="bold", color="#1565c0")
-    sub = (f"2025  +${year_stats['2025']['net']:,}   |   "
-           f"2026  +${year_stats['2026']['net']:,}   |   "
-           f"max drawdown  ${max_dd:,.0f}")
+    sub = (f"2025  +\\${year_stats['2025']['net']:,}   |   "
+           f"2026  +\\${year_stats['2026']['net']:,}")
     ax.text(0.012, 0.95, sub, transform=ax.transAxes, fontsize=8.5, va="top",
             bbox=dict(boxstyle="round,pad=0.3", fc="white", ec="#cccccc", alpha=0.85))
 
@@ -211,16 +209,13 @@ def main():
     ax2.set_ylabel("Drawdown ($)", fontsize=9)
     ax2.yaxis.set_major_formatter(dollar)
     ax2.grid(True, alpha=0.25)
-    i_trough = dd.index(max_dd)
-    ax2.annotate(f"max ${max_dd:,.0f}", xy=(xs[i_trough], max_dd), xytext=(4, -2),
-                 textcoords="offset points", fontsize=8, color="#c62828")
     ax2.xaxis.set_major_formatter(mdates.DateFormatter("%Y-%m"))
     ax2.xaxis.set_major_locator(mdates.MonthLocator(interval=2))
     fig.autofmt_xdate()
     fig.tight_layout()
     out = os.path.join(_HERE, "equity_curve.png")
     fig.savefig(out, dpi=130)
-    print(f"  saved -> {out}   (max drawdown ${max_dd:,.0f})")
+    print(f"  saved -> {out}")
 
 
 if __name__ == "__main__":
