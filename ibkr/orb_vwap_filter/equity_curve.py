@@ -172,29 +172,55 @@ def main():
         print(f"  {y}: net ${s['net']:>7}  ({s['trades']} trades, {s['days']} days, dayWR {s['daywr']}%)")
     print(f"  COMBINED net: ${round(cum)}   (10 contracts, daily cap ${DAILY_CAP})")
 
-    # ---- plot ----
+    # ---- plot: equity curve (top) + drawdown underwater (bottom) ----
     xs = [d for d, _ in series]; ys = [v for _, v in series]
-    fig, ax = plt.subplots(figsize=(10, 4.8))
+    peak = ys[0]; dd = []
+    for v in ys:
+        peak = max(peak, v)
+        dd.append(v - peak)
+    max_dd = min(dd)
+    dollar = matplotlib.ticker.FuncFormatter(lambda v, _: f"${v:,.0f}")
+    yb = datetime(2026, 1, 1)
+
+    fig, (ax, ax2) = plt.subplots(
+        2, 1, figsize=(10, 6.4), sharex=True, gridspec_kw={"height_ratios": [3, 1]})
+
+    # equity
     ax.plot(xs, ys, lw=1.6, color="#1565c0")
     ax.fill_between(xs, 0, ys, where=[v >= 0 for v in ys], color="#1565c0", alpha=0.10)
     ax.axhline(0, color="#888", lw=0.8)
-    yb = datetime(2026, 1, 1)
     ax.axvline(yb, color="#c62828", ls="--", lw=1, alpha=0.7)
     ax.text(yb, ax.get_ylim()[1] * 0.92, " 2026", color="#c62828", fontsize=9)
     ax.set_title("ORB +30% scalp — calls[VIX open≤25] + puts[VIX open>pivot & ≥18] — 10 contracts",
                  fontsize=10)
-    ax.set_ylabel("Cumulative net P&L ($)")
-    ax.yaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda v, _: f"${v:,.0f}"))
-    ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y-%m"))
-    ax.xaxis.set_major_locator(mdates.MonthLocator(interval=2))
-    fig.autofmt_xdate()
+    ax.set_ylabel("Portfolio equity — cumulative net P&L ($)")
+    ax.yaxis.set_major_formatter(dollar)
     ax.grid(True, alpha=0.25)
-    ax.annotate(f"${round(cum):,}", xy=(xs[-1], ys[-1]), xytext=(-44, 6),
+    ax.annotate(f"${round(cum):,}", xy=(xs[-1], ys[-1]), xytext=(-46, 6),
                 textcoords="offset points", fontsize=10, fontweight="bold", color="#1565c0")
+    sub = (f"2025  +${year_stats['2025']['net']:,}   |   "
+           f"2026  +${year_stats['2026']['net']:,}   |   "
+           f"max drawdown  ${max_dd:,.0f}")
+    ax.text(0.012, 0.95, sub, transform=ax.transAxes, fontsize=8.5, va="top",
+            bbox=dict(boxstyle="round,pad=0.3", fc="white", ec="#cccccc", alpha=0.85))
+
+    # drawdown (underwater)
+    ax2.fill_between(xs, dd, 0, color="#c62828", alpha=0.30)
+    ax2.plot(xs, dd, lw=0.9, color="#c62828")
+    ax2.axvline(yb, color="#c62828", ls="--", lw=1, alpha=0.5)
+    ax2.set_ylabel("Drawdown ($)", fontsize=9)
+    ax2.yaxis.set_major_formatter(dollar)
+    ax2.grid(True, alpha=0.25)
+    i_trough = dd.index(max_dd)
+    ax2.annotate(f"max ${max_dd:,.0f}", xy=(xs[i_trough], max_dd), xytext=(4, -2),
+                 textcoords="offset points", fontsize=8, color="#c62828")
+    ax2.xaxis.set_major_formatter(mdates.DateFormatter("%Y-%m"))
+    ax2.xaxis.set_major_locator(mdates.MonthLocator(interval=2))
+    fig.autofmt_xdate()
     fig.tight_layout()
     out = os.path.join(_HERE, "equity_curve.png")
     fig.savefig(out, dpi=130)
-    print(f"  saved -> {out}")
+    print(f"  saved -> {out}   (max drawdown ${max_dd:,.0f})")
 
 
 if __name__ == "__main__":

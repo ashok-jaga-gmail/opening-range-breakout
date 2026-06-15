@@ -135,13 +135,14 @@ high-vol fear regime where calls fail. Sized at **10 contracts** (daily-loss cap
 $10,000 to match size), net of $0.65/contract/side — reproduce with
 [`equity_curve.py`](equity_curve.py):
 
-![Cumulative net P&L — VIX-gated calls + puts, 10 contracts](equity_curve.png)
+![Portfolio equity curve and drawdown — VIX-gated calls + puts, 10 contracts](equity_curve.png)
 
 | | 2025 | 2026 (Jan–Jun) | Combined |
 |---|---:|---:|---:|
 | **Net P&L** | **+$13,119** | **+$15,056** | **+$28,176** |
 | Trades / days | 242 / 169 | 92 / 66 | — |
 | Day win rate | 63% | 68% | — |
+| Max drawdown | — | — | −$7,354 |
 
 Progression of the combined 2-year result as each gate is added:
 **+$14,539** (calls only) → **+$18,952** (puts: VIX open > pivot) → **+$23,337**
