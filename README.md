@@ -1,3 +1,5 @@
+> **Disclaimer:** Not Financial Advice, educational purposes only
+
 # QQQ 15-Minute Opening Range Breakout — Research Paper
 
 A systematic backtest and regime analysis of the **15-minute Opening Range Breakout (ORB)** strategy on **QQQ (Nasdaq-100 ETF)** covering **2018–2026**, plus multi-timeframe regime filters using CPR, RSI, and MACD.

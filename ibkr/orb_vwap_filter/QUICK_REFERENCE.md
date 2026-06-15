@@ -1,3 +1,5 @@
+> **Disclaimer:** Not Financial Advice, educational purposes only
+
 # ORB + VWAP Bot Quick Reference
 
 ## Quick Commands

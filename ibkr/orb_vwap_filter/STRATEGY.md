@@ -1,3 +1,5 @@
+> **Disclaimer:** Not Financial Advice, educational purposes only
+
 # ORB-Adaptive — A Strategy Built From the MAE/MFE + Grid-Search Insights
 
 > **Update / superseded:** this regime-switched synthesis concluded "no edge," but that was

@@ -1,3 +1,5 @@
+> **Disclaimer:** Not Financial Advice, educational purposes only
+
 # IBKR Setup Guide
 
 How to set up Interactive Brokers (IBKR) **IB Gateway** and the Python environment

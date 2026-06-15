@@ -1,3 +1,5 @@
+> **Disclaimer:** Not Financial Advice, educational purposes only
+
 # ORB Strategy — Configuration Grid Search
 
 All searches use the **no-look-ahead** engine (signal on the completed bar's close, fill

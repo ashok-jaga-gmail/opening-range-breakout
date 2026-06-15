@@ -1,3 +1,5 @@
+> **Disclaimer:** Not Financial Advice, educational purposes only
+
 # QQQ 2026 Daily Narratives — ORB Lens
 *49 trading days: 2026-01-02 through 2026-03-13*
 *Price data from Databento XNAS.ITCH. Market context from public sources.*
