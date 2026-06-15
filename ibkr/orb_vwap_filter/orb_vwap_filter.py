@@ -52,19 +52,20 @@ VIX_SYMBOL = 'VIX'
 VIX_EXCHANGE = 'CBOE'
 
 # Position Settings
-CONTRACTS_PER_TRADE = 3
-OTM_STRIKES_OUT = 3  # How many strikes OTM to trade
+CONTRACTS_PER_TRADE = 3   # sizing knob (the +$32k backtest was run at 10 contracts)
+OTM_STRIKES_OUT = 1       # 1-strike OTM (research-optimal)
 
 # Risk Management
 MAX_DAILY_RISK = 1000  # Maximum $ loss per day
-STOP_LOSS_PERCENT = 50  # Stop loss at 50% of entry price
-HYBRID_STOP_ENABLED = True  # Use hybrid stop (50% OR range boundary, whichever closer)
+STOP_LOSS_PERCENT = 75  # Stop loss at 75% of entry premium (research-optimal)
+HYBRID_STOP_ENABLED = True  # Stop order placed at entry
 POSITION_REVERSAL_ALLOWED = False  # No reversal - exit and wait for re-entry
 
-# CPR (Central Pivot Range) - Profit taking levels
-CPR_LEVEL_1_PROFIT_PERCENT = 50   # Close 1 contract at 50% profit
-CPR_LEVEL_2_PROFIT_PERCENT = 100  # Close 1 contract at 100% profit
-CPR_LEVEL_3_PROFIT_PERCENT = 150  # Close 1 contract at 150% profit
+# Profit target (single tranche: exit ALL contracts at this premium gain)
+PROFIT_TARGET_PERCENT = 20  # +20% target (research-optimal with the VIX gates)
+
+# Opening-range filter
+MIN_OR_RANGE = 1.0  # Skip the session if the opening range is narrower than this (in $)
 
 # Re-entry after stop out
 REENTRY_WAIT_MINUTES = 15  # Wait 15 minutes before re-entering after stop out
@@ -679,41 +680,26 @@ async def main():
                             state['position'] = None
                             state['contracts_remaining'] = 0
                         else:
-                            # Check profit levels for partial exits
+                            # Single-tranche profit target: exit ALL contracts at +PROFIT_TARGET_PERCENT%
                             profit_pct = ((current_option_price - avg_cost) / avg_cost) * 100 if avg_cost > 0 else 0
 
-                            # Implement CPR-based profit taking
-                            if profit_pct >= CPR_LEVEL_3_PROFIT_PERCENT and position_qty == 3:
-                                # Close 1 contract at level 3
-                                action_message = "Hit CPR Level 3 (" + str(CPR_LEVEL_3_PROFIT_PERCENT) + "% profit) - Closing 1/3 contracts"
-                                close_order = MarketOrder('SELL', 1)
-                                close_order.algoStrategy = 'Adaptive'
-                                close_order.algoParams = [TagValue('adaptivePriority', 'Normal')]
-                                ib.placeOrder(opt_position.contract, close_order)
-
-                            elif profit_pct >= CPR_LEVEL_2_PROFIT_PERCENT and position_qty == 2:
-                                # Close 1 contract at level 2
-                                action_message = "Hit CPR Level 2 (" + str(CPR_LEVEL_2_PROFIT_PERCENT) + "% profit) - Closing 1/3 contracts"
-                                close_order = MarketOrder('SELL', 1)
-                                close_order.algoStrategy = 'Adaptive'
-                                close_order.algoParams = [TagValue('adaptivePriority', 'Normal')]
-                                ib.placeOrder(opt_position.contract, close_order)
-
-                            elif profit_pct >= CPR_LEVEL_1_PROFIT_PERCENT and position_qty == 1:
-                                # Close last contract at level 1
-                                action_message = "Hit CPR Level 1 (" + str(CPR_LEVEL_1_PROFIT_PERCENT) + "% profit) - Closing final contract"
-                                close_order = MarketOrder('SELL', 1)
+                            if profit_pct >= PROFIT_TARGET_PERCENT and position_qty > 0:
+                                action_message = ("Hit +" + str(PROFIT_TARGET_PERCENT) + "% target - closing all "
+                                                  + str(position_qty) + " contracts")
+                                close_order = MarketOrder('SELL', position_qty)
                                 close_order.algoStrategy = 'Adaptive'
                                 close_order.algoParams = [TagValue('adaptivePriority', 'Normal')]
                                 ib.placeOrder(opt_position.contract, close_order)
 
                             # Hybrid stop loss management (no dynamic updates - set once at entry)
-                            # Stop loss is placed at entry and managed via stop orders
+                            # Stop loss (-STOP_LOSS_PERCENT%) is placed at entry as a resting StopOrder
 
             elif can_reenter:
                 # No position - check for entry signal
                 # Check if range is captured and we're post-opening range
-                if range_captured and is_post_opening_range(est_now) and (vwap or not VWAP_FILTER_STRICT):
+                or_wide_enough = (range_high is not None and range_low is not None
+                                  and (range_high - range_low) >= MIN_OR_RANGE)
+                if range_captured and or_wide_enough and is_post_opening_range(est_now) and (vwap or not VWAP_FILTER_STRICT):
                     # VIX regime levels (open + prior-day pivot) for the entry gate
                     vix_open, vix_pivot = (await get_vix_open_and_pivot(ib)
                                            if VIX_GATING_ENABLED else (None, None))

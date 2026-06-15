@@ -42,14 +42,13 @@ crontab -e
 | `TRADING_END_HOUR` | 13 | Trading end (EST) |
 | `TRADING_END_MINUTE` | 0 | Trading end minute |
 | `CONTRACTS_PER_TRADE` | 3 | Position size |
-| `OTM_STRIKES_OUT` | 3 | Strikes OTM |
+| `OTM_STRIKES_OUT` | 1 | Strikes OTM (1 = nearest) |
 | `MAX_DAILY_RISK` | 1000 | Max daily loss $ |
-| `STOP_LOSS_PERCENT` | 50 | SL % |
-| `HYBRID_STOP_ENABLED` | True | Use hybrid SL |
+| `STOP_LOSS_PERCENT` | 75 | SL % of entry premium |
+| `HYBRID_STOP_ENABLED` | True | Resting stop order at entry |
 | `POSITION_REVERSAL_ALLOWED` | False | No reversal |
-| `CPR_LEVEL_1_PROFIT_PERCENT` | 50 | First exit % |
-| `CPR_LEVEL_2_PROFIT_PERCENT` | 100 | Second exit % |
-| `CPR_LEVEL_3_PROFIT_PERCENT` | 150 | Third exit % |
+| `PROFIT_TARGET_PERCENT` | 20 | Single target — exit all at +20% |
+| `MIN_OR_RANGE` | 1.0 | Skip session if OR < this ($) |
 | `REENTRY_WAIT_MINUTES` | 15 | Wait after stop |
 | `VWAP_FILTER_STRICT` | False | VWAP entry filter (off by default; pure ORB entry) |
 | `VIX_GATING_ENABLED` | True | VIX regime gate on entries (uses the VIX open) |
@@ -62,7 +61,7 @@ crontab -e
 ### Entry (ALL must be true)
 - ✓ Post-opening range (after 9:45 AM EST)
 - ✓ Trading hours (9:45 AM - 1:00 PM EST)
-- ✓ Range captured (9:30-9:45 AM)
+- ✓ Range captured (9:30-9:45 AM) and ≥ $1 wide (`MIN_OR_RANGE`)
 - ✓ Breakout detected (price > range_high for calls / price < range_low for puts; VWAP confirmation only if `VWAP_FILTER_STRICT = True`)
 - ✓ VIX regime gate passes (calls: VIX open ≤ 25; puts: VIX open > prior-day pivot & ≥ 18) — when `VIX_GATING_ENABLED = True`
 - ✓ Daily risk not exceeded
@@ -70,8 +69,8 @@ crontab -e
 - ✓ No existing position
 
 ### Exit Triggers
-- **Stop Loss**: 50% of entry
-- **Profit**: 50%, 100%, 150% (scale out)
+- **Profit Target**: exit all at **+20%** premium (single tranche)
+- **Stop Loss**: resting stop at **−75%** of entry premium
 - **Opposite Breakout**: Exit if price breaks opposite side
 - **EOD**: 1:00 PM EST
 

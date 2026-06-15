@@ -18,16 +18,17 @@ A fully automated 0DTE options trading bot based on the Opening Range Breakout (
 - **Entry**: Breakout above range high (calls) OR below range low (puts). *(VWAP confirmation optional — off by default.)*
 - **VIX regime gate**: calls skipped when VIX opens > 25; puts only when VIX opens above its
   prior-day pivot **and** ≥ 18 (uses the VIX open → no look-ahead). On by default.
-- **Exit**: CPR-based profit taking at 50%, 100%, 150%
-- **Stop Loss**: Hybrid approach - 50% of entry price
-- **Position Management**: 3 contracts, scale out 1/3 at each profit level
+- **Strike**: 1-strike OTM (`OTM_STRIKES_OUT = 1`)
+- **Exit (profit)**: single **+20% premium target** — exits **all** contracts (no scale-out)
+- **Stop Loss**: **−75%** of entry premium (resting stop order)
+- **Position Management**: 3 contracts, single tranche; skip the session if the opening range < $1
 - **No Reversal**: Exits on opposite breakout, waits for re-entry
 
-> **Shipped vs. research-optimal:** the **VIX regime gating is now wired into the bot**
-> (calls/puts gated by the VIX open, above). The *rest* of the research-optimal config —
-> **OTM-1 strike, +20% target, −75% stop, single tranche** — is **not** yet: the bot still
-> ships with the [150/100/50] ladder and −50% stop. So the live bot won't reproduce the
-> [Backtest](#backtest-2025--2026) figures until those exit parameters are also adopted.
+> **Now matches the research-optimal config.** The bot implements the full backtested
+> strategy: **VIX-gated entries, OTM-1, +20% target, −75% stop, single tranche, OR ≥ $1**.
+> Two knobs differ from the [Backtest](#backtest-2025--2026): position **size** (`CONTRACTS_PER_TRADE = 3`
+> vs the 10 used in the curve) and a **trades-per-day cap** (the backtest capped at 3/day;
+> the bot relies on its re-entry cooldown instead). Scale size and add a cap to taste.
 
 ## Key Features
 
@@ -45,7 +46,7 @@ A fully automated 0DTE options trading bot based on the Opening Range Breakout (
 
 1. Post-opening range (after 9:45 AM EST)
 2. Trading hours (9:45 AM - 1:00 PM EST)
-3. Range successfully captured
+3. Range successfully captured **and ≥ $1 wide** (`MIN_OR_RANGE`)
 4. Breakout detected **and VIX regime gate passes** (gate active when `VIX_GATING_ENABLED = True`):
    - **Calls**: price > range_high, and VIX open ≤ 25 *(AND price > VWAP only if `VWAP_FILTER_STRICT = True`)*
    - **Puts**: price < range_low, and VIX open > prior-day pivot & ≥ 18 *(AND price < VWAP only if `VWAP_FILTER_STRICT = True`)*
@@ -55,8 +56,8 @@ A fully automated 0DTE options trading bot based on the Opening Range Breakout (
 
 ## Exit Conditions
 
-1. **CPR Profit Taking**: Scale out 1/3 at 50%, 100%, 150% profit
-2. **Hybrid Stop Loss**: 50% of entry price
+1. **Profit Target**: exit **all** contracts at **+20%** premium (single tranche)
+2. **Stop Loss**: resting stop at **−75%** of entry premium
 3. **Opposite Breakout**: Exit all if price breaks opposite side of range
 4. **End of Day**: Force close all positions at 1:00 PM EST
 
@@ -79,7 +80,7 @@ TRADING_END_MINUTE = 0
 
 # Position Settings
 CONTRACTS_PER_TRADE = 3
-OTM_STRIKES_OUT = 3
+OTM_STRIKES_OUT = 1        # 1-strike OTM
 
 # VIX Regime Gating (uses the VIX open; no look-ahead)
 VIX_GATING_ENABLED = True
@@ -88,14 +89,15 @@ VIX_PUT_MIN_OPEN = 18.0    # puts only when VIX open >= this AND above its prior
 
 # Risk Management
 MAX_DAILY_RISK = 1000
-STOP_LOSS_PERCENT = 50
+STOP_LOSS_PERCENT = 75     # stop at -75% of entry premium
 HYBRID_STOP_ENABLED = True
 POSITION_REVERSAL_ALLOWED = False
 
-# CPR Profit Levels
-CPR_LEVEL_1_PROFIT_PERCENT = 50
-CPR_LEVEL_2_PROFIT_PERCENT = 100
-CPR_LEVEL_3_PROFIT_PERCENT = 150
+# Profit target (single tranche: exit ALL at this premium gain)
+PROFIT_TARGET_PERCENT = 20
+
+# Opening-range filter
+MIN_OR_RANGE = 1.0         # skip the session if the OR is narrower than this ($)
 
 # Re-entry Wait
 REENTRY_WAIT_MINUTES = 15
