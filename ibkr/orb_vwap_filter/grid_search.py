@@ -386,17 +386,18 @@ def evaluate(ctxs, cfg):
 # ---------------------------------------------------------------- config space
 def build_configs():
     tpd_opts = [1, 2, 3, 99]
-    sl_opts = [30, 40, 50, 60, 75]
+    sl_opts = [30, 40, 50, 60, 75, 100]   # 100 = effectively NO stop (premium can't go <0)
+    # 9999 = "ride to EOD/stop" (target never realistically hit)
     pct_ladders = {
-        1: [[50], [100], [150], [200]],
-        2: [[50, 100], [50, 150], [100, 200], [75, 150]],
-        3: [[50, 100, 150], [50, 150, 300], [75, 150, 250], [100, 200, 300]],
-        4: [[50, 100, 150, 200], [50, 100, 200, 300], [40, 90, 160, 260]],
+        1: [[30], [50], [100], [150], [200], [300], [400], [500], [750], [1000], [9999]],
+        2: [[50, 150], [50, 300], [100, 200], [100, 400], [150, 500], [200, 600], [100, 9999], [50, 9999]],
+        3: [[50, 100, 150], [50, 150, 300], [50, 150, 500], [100, 300, 750], [50, 200, 600], [100, 200, 9999]],
+        4: [[50, 100, 150, 200], [50, 100, 200, 300], [50, 150, 300, 600], [100, 250, 500, 1000], [50, 150, 400, 9999]],
     }
     cpr_ladders = {
-        1: [["r1"], ["r2"]],
-        2: [["r1", "r2"], ["tc", "r1"]],
-        3: [["r1", "r2", "r3"], ["tc", "r1", "r2"]],
+        1: [["r1"]],
+        2: [["r1", "r2"]],
+        3: [["r1", "r2", "r3"]],
         4: [["tc", "r1", "r2", "r3"]],
     }
     per_opts = {1: [1, 2, 3], 2: [1, 2, 3], 3: [1, 2, 3], 4: [1, 2]}  # contracts = T*per <= 9
@@ -459,14 +460,18 @@ def main():
                   f"{r['y2026']['total']:>9.0f}{r['y2026']['pf']:>6.2f}"
                   f"{r['combined']:>9.0f}{r['y2025']['mdd']:>8.0f}")
 
-    show("TOP BY 2025 TOTAL P&L (train)", sorted(rows, key=lambda r: -r["y2025"]["total"]))
-    show("TOP BY COMBINED 2025+2026 P&L", sorted(rows, key=lambda r: -r["combined"]))
-    show("TOP BY 2026 TOTAL P&L (validation)", sorted(rows, key=lambda r: -r["y2026"]["total"]))
+    # ---- 2026 is the priority objective (more representative) ----
+    pos26 = [r for r in rows if r["y2026"]["total"] > 0]
+    show(f"*** PROFITABLE IN 2026 ({len(pos26)} configs) — ranked by 2026 P&L ***",
+         sorted(pos26, key=lambda r: -r["y2026"]["total"]), k=25)
+    show("TOP BY 2026 PROFIT FACTOR (min 40 trades in 2026)",
+         sorted([r for r in rows if r["y2026"]["trades"] >= 40], key=lambda r: -r["y2026"]["pf"]))
     robust = [r for r in rows if r["y2025"]["total"] > 0 and r["y2026"]["total"] > 0]
-    show(f"ROBUST: POSITIVE IN BOTH YEARS ({len(robust)} configs) — by combined",
-         sorted(robust, key=lambda r: -r["combined"]))
-    show("TOP BY 2025 PROFIT FACTOR (min 60 trades)",
-         sorted([r for r in rows if r["y2025"]["trades"] >= 60], key=lambda r: -r["y2025"]["pf"]))
+    show(f"ROBUST: POSITIVE IN BOTH YEARS ({len(robust)} configs) — by 2026 then combined",
+         sorted(robust, key=lambda r: (-r["y2026"]["total"], -r["combined"])))
+    show("TOP BY 2026 TOTAL P&L (all configs, incl. negative)",
+         sorted(rows, key=lambda r: -r["y2026"]["total"]))
+    show("(reference) TOP BY 2025 TOTAL P&L (train)", sorted(rows, key=lambda r: -r["y2025"]["total"]))
 
     # ---- marginal effect of each dimension (avg combined PF & avg 2025/2026 $) ----
     def marginals(key, getter):
@@ -493,11 +498,29 @@ def main():
     marginals("target mode", lambda c: c["mode"])
     marginals("stop loss %", lambda c: c["sl"])
 
+    # ---- isolated target sweep: single tranche, 1 ctr, tpd=1, vary target & SL ----
+    print("\n" + "=" * 100)
+    print("  TARGET SWEEP — single tranche, 1 contract, tpd=1 (isolates target size)")
+    print("=" * 100)
+    print(f"  {'target%':>8} {'SL':>4} | {'2025 $':>9}{'25 PF':>7}{'25 WR':>7} | {'2026 $':>9}{'26 PF':>7}{'26 WR':>7}")
+    print("  " + "-" * 78)
+    sweep = [r for r in rows if r["cfg"]["tranches"] == 1 and r["cfg"]["contracts"] == 1
+             and r["cfg"]["tpd"] == 1 and r["cfg"]["mode"] == "pct" and r["cfg"]["sl"] in (50, 75, 100)]
+    for r in sorted(sweep, key=lambda r: (r["cfg"]["sl"], r["cfg"]["targets"][0])):
+        tg = r["cfg"]["targets"][0]
+        tgs = "ride/EOD" if tg >= 9999 else str(tg)
+        print(f"  {tgs:>8} {r['cfg']['sl']:>4} | {r['y2025']['total']:>9.0f}{r['y2025']['pf']:>7.2f}"
+              f"{r['y2025']['win_rate']:>7.1f} | {r['y2026']['total']:>9.0f}{r['y2026']['pf']:>7.2f}"
+              f"{r['y2026']['win_rate']:>7.1f}")
+
     out = os.path.join(_HERE, "grid_search_results.json")
     with open(out, "w") as f:
         json.dump({"n_configs": len(rows),
-                   "by_combined": sorted(rows, key=lambda r: -r["combined"])[:50],
-                   "robust_both_positive": sorted(robust, key=lambda r: -r["combined"])}, f, indent=2)
+                   "n_profitable_2026": len(pos26),
+                   "by_2026": sorted(rows, key=lambda r: -r["y2026"]["total"])[:60],
+                   "profitable_in_2026": sorted(pos26, key=lambda r: -r["y2026"]["total"]),
+                   "robust_both_positive": sorted(robust, key=lambda r: -r["y2026"]["total"])},
+                  f, indent=2)
     print(f"\n  Saved -> {out}")
 
 

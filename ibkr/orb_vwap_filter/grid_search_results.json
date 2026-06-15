@@ -1,449 +1,10 @@
 {
-  "n_configs": 1240,
-  "by_combined": [
+  "n_configs": 2304,
+  "n_profitable_2026": 3,
+  "by_2026": [
     {
       "cfg": {
-        "tpd": 99,
-        "tranches": 2,
-        "contracts": 6,
-        "split": [
-          3,
-          3
-        ],
-        "mode": "pct",
-        "targets": [
-          50,
-          150
-        ],
-        "sl": 50
-      },
-      "label": "tpd=inf ctr=6 tr=2 pct[50,150] sl=50",
-      "y2025": {
-        "trades": 481,
-        "win_rate": 41.0,
-        "total": 4820.0,
-        "pf": 1.091,
-        "mdd": -3502.0,
-        "sharpe": 0.028,
-        "calmar": 1.38
-      },
-      "y2026": {
-        "trades": 154,
-        "win_rate": 42.9,
-        "total": -4054.0,
-        "pf": 0.844,
-        "mdd": -6334.0,
-        "sharpe": -0.064,
-        "calmar": -0.64
-      },
-      "combined": 766.0
-    },
-    {
-      "cfg": {
-        "tpd": 99,
-        "tranches": 3,
-        "contracts": 6,
-        "split": [
-          2,
-          2,
-          2
-        ],
-        "mode": "pct",
-        "targets": [
-          50,
-          100,
-          150
-        ],
-        "sl": 50
-      },
-      "label": "tpd=inf ctr=6 tr=3 pct[50,100,150] sl=50",
-      "y2025": {
-        "trades": 481,
-        "win_rate": 31.8,
-        "total": 4986.0,
-        "pf": 1.088,
-        "mdd": -3794.0,
-        "sharpe": 0.028,
-        "calmar": 1.31
-      },
-      "y2026": {
-        "trades": 154,
-        "win_rate": 33.8,
-        "total": -4511.0,
-        "pf": 0.836,
-        "mdd": -6503.0,
-        "sharpe": -0.07,
-        "calmar": -0.69
-      },
-      "combined": 475.0
-    },
-    {
-      "cfg": {
-        "tpd": 3,
-        "tranches": 2,
-        "contracts": 6,
-        "split": [
-          3,
-          3
-        ],
-        "mode": "pct",
-        "targets": [
-          50,
-          150
-        ],
-        "sl": 50
-      },
-      "label": "tpd=3 ctr=6 tr=2 pct[50,150] sl=50",
-      "y2025": {
-        "trades": 462,
-        "win_rate": 40.7,
-        "total": 4479.0,
-        "pf": 1.085,
-        "mdd": -3442.0,
-        "sharpe": 0.026,
-        "calmar": 1.3
-      },
-      "y2026": {
-        "trades": 151,
-        "win_rate": 43.0,
-        "total": -4090.0,
-        "pf": 0.842,
-        "mdd": -6202.0,
-        "sharpe": -0.066,
-        "calmar": -0.66
-      },
-      "combined": 389.0
-    },
-    {
-      "cfg": {
-        "tpd": 99,
-        "tranches": 2,
-        "contracts": 6,
-        "split": [
-          3,
-          3
-        ],
-        "mode": "pct",
-        "targets": [
-          50,
-          100
-        ],
-        "sl": 40
-      },
-      "label": "tpd=inf ctr=6 tr=2 pct[50,100] sl=40",
-      "y2025": {
-        "trades": 546,
-        "win_rate": 39.6,
-        "total": 5348.0,
-        "pf": 1.102,
-        "mdd": -4916.0,
-        "sharpe": 0.033,
-        "calmar": 1.09
-      },
-      "y2026": {
-        "trades": 181,
-        "win_rate": 39.2,
-        "total": -5335.0,
-        "pf": 0.794,
-        "mdd": -5845.0,
-        "sharpe": -0.091,
-        "calmar": -0.91
-      },
-      "combined": 13.0
-    },
-    {
-      "cfg": {
-        "tpd": 99,
-        "tranches": 3,
-        "contracts": 6,
-        "split": [
-          2,
-          2,
-          2
-        ],
-        "mode": "pct",
-        "targets": [
-          50,
-          100,
-          150
-        ],
-        "sl": 40
-      },
-      "label": "tpd=inf ctr=6 tr=3 pct[50,100,150] sl=40",
-      "y2025": {
-        "trades": 543,
-        "win_rate": 29.3,
-        "total": 6635.0,
-        "pf": 1.122,
-        "mdd": -3685.0,
-        "sharpe": 0.037,
-        "calmar": 1.8
-      },
-      "y2026": {
-        "trades": 179,
-        "win_rate": 29.1,
-        "total": -6649.0,
-        "pf": 0.751,
-        "mdd": -7241.0,
-        "sharpe": -0.108,
-        "calmar": -0.92
-      },
-      "combined": -14.0
-    },
-    {
-      "cfg": {
-        "tpd": 3,
-        "tranches": 3,
-        "contracts": 6,
-        "split": [
-          2,
-          2,
-          2
-        ],
-        "mode": "pct",
-        "targets": [
-          50,
-          100,
-          150
-        ],
-        "sl": 50
-      },
-      "label": "tpd=3 ctr=6 tr=3 pct[50,100,150] sl=50",
-      "y2025": {
-        "trades": 462,
-        "win_rate": 31.4,
-        "total": 4532.0,
-        "pf": 1.08,
-        "mdd": -3920.0,
-        "sharpe": 0.026,
-        "calmar": 1.16
-      },
-      "y2026": {
-        "trades": 151,
-        "win_rate": 33.8,
-        "total": -4547.0,
-        "pf": 0.834,
-        "mdd": -6381.0,
-        "sharpe": -0.071,
-        "calmar": -0.71
-      },
-      "combined": -15.0
-    },
-    {
-      "cfg": {
-        "tpd": 99,
-        "tranches": 1,
-        "contracts": 1,
-        "split": [
-          1
-        ],
-        "mode": "pct",
-        "targets": [
-          150
-        ],
-        "sl": 50
-      },
-      "label": "tpd=inf ctr=1 tr=1 pct[150] sl=50",
-      "y2025": {
-        "trades": 486,
-        "win_rate": 26.1,
-        "total": 1110.0,
-        "pf": 1.091,
-        "mdd": -1040.0,
-        "sharpe": 0.027,
-        "calmar": 1.07
-      },
-      "y2026": {
-        "trades": 162,
-        "win_rate": 27.2,
-        "total": -1281.0,
-        "pf": 0.788,
-        "mdd": -2028.0,
-        "sharpe": -0.088,
-        "calmar": -0.63
-      },
-      "combined": -171.0
-    },
-    {
-      "cfg": {
-        "tpd": 99,
-        "tranches": 2,
-        "contracts": 6,
-        "split": [
-          3,
-          3
-        ],
-        "mode": "pct",
-        "targets": [
-          50,
-          150
-        ],
-        "sl": 40
-      },
-      "label": "tpd=inf ctr=6 tr=2 pct[50,150] sl=40",
-      "y2025": {
-        "trades": 543,
-        "win_rate": 39.6,
-        "total": 5879.0,
-        "pf": 1.112,
-        "mdd": -3470.0,
-        "sharpe": 0.034,
-        "calmar": 1.69
-      },
-      "y2026": {
-        "trades": 179,
-        "win_rate": 39.1,
-        "total": -6109.0,
-        "pf": 0.763,
-        "mdd": -6736.0,
-        "sharpe": -0.103,
-        "calmar": -0.91
-      },
-      "combined": -230.0
-    },
-    {
-      "cfg": {
-        "tpd": 3,
-        "tranches": 1,
-        "contracts": 1,
-        "split": [
-          1
-        ],
-        "mode": "pct",
-        "targets": [
-          150
-        ],
-        "sl": 50
-      },
-      "label": "tpd=3 ctr=1 tr=1 pct[150] sl=50",
-      "y2025": {
-        "trades": 467,
-        "win_rate": 25.7,
-        "total": 1082.0,
-        "pf": 1.089,
-        "mdd": -1040.0,
-        "sharpe": 0.027,
-        "calmar": 1.04
-      },
-      "y2026": {
-        "trades": 156,
-        "win_rate": 26.9,
-        "total": -1340.0,
-        "pf": 0.776,
-        "mdd": -1968.0,
-        "sharpe": -0.094,
-        "calmar": -0.68
-      },
-      "combined": -258.0
-    },
-    {
-      "cfg": {
-        "tpd": 99,
-        "tranches": 1,
-        "contracts": 1,
-        "split": [
-          1
-        ],
-        "mode": "pct",
-        "targets": [
-          50
-        ],
-        "sl": 75
-      },
-      "label": "tpd=inf ctr=1 tr=1 pct[50] sl=75",
-      "y2025": {
-        "trades": 402,
-        "win_rate": 49.5,
-        "total": 195.0,
-        "pf": 1.021,
-        "mdd": -1142.0,
-        "sharpe": 0.008,
-        "calmar": 0.17
-      },
-      "y2026": {
-        "trades": 127,
-        "win_rate": 53.5,
-        "total": -464.0,
-        "pf": 0.899,
-        "mdd": -1484.0,
-        "sharpe": -0.045,
-        "calmar": -0.31
-      },
-      "combined": -269.0
-    },
-    {
-      "cfg": {
-        "tpd": 3,
-        "tranches": 1,
-        "contracts": 1,
-        "split": [
-          1
-        ],
-        "mode": "pct",
-        "targets": [
-          50
-        ],
-        "sl": 75
-      },
-      "label": "tpd=3 ctr=1 tr=1 pct[50] sl=75",
-      "y2025": {
-        "trades": 393,
-        "win_rate": 49.4,
-        "total": 39.0,
-        "pf": 1.004,
-        "mdd": -1183.0,
-        "sharpe": 0.002,
-        "calmar": 0.03
-      },
-      "y2026": {
-        "trades": 126,
-        "win_rate": 54.0,
-        "total": -345.0,
-        "pf": 0.923,
-        "mdd": -1366.0,
-        "sharpe": -0.034,
-        "calmar": -0.25
-      },
-      "combined": -306.0
-    },
-    {
-      "cfg": {
-        "tpd": 99,
-        "tranches": 1,
-        "contracts": 2,
-        "split": [
-          2
-        ],
-        "mode": "pct",
-        "targets": [
-          150
-        ],
-        "sl": 50
-      },
-      "label": "tpd=inf ctr=2 tr=1 pct[150] sl=50",
-      "y2025": {
-        "trades": 486,
-        "win_rate": 26.1,
-        "total": 2221.0,
-        "pf": 1.091,
-        "mdd": -2081.0,
-        "sharpe": 0.027,
-        "calmar": 1.07
-      },
-      "y2026": {
-        "trades": 162,
-        "win_rate": 27.2,
-        "total": -2562.0,
-        "pf": 0.788,
-        "mdd": -4057.0,
-        "sharpe": -0.088,
-        "calmar": -0.63
-      },
-      "combined": -341.0
-    },
-    {
-      "cfg": {
-        "tpd": 3,
+        "tpd": 1,
         "tranches": 1,
         "contracts": 3,
         "split": [
@@ -451,104 +12,34 @@
         ],
         "mode": "pct",
         "targets": [
-          150
+          30
         ],
-        "sl": 50
+        "sl": 75
       },
-      "label": "tpd=3 ctr=3 tr=1 pct[150] sl=50",
+      "label": "tpd=1 ctr=3 tr=1 pct[30] sl=75",
       "y2025": {
-        "trades": 466,
-        "win_rate": 25.5,
-        "total": 2913.0,
-        "pf": 1.08,
-        "mdd": -3122.0,
-        "sharpe": 0.024,
-        "calmar": 0.93
-      },
-      "y2026": {
-        "trades": 154,
-        "win_rate": 27.3,
-        "total": -3294.0,
-        "pf": 0.809,
-        "mdd": -5176.0,
-        "sharpe": -0.078,
-        "calmar": -0.64
-      },
-      "combined": -381.0
-    },
-    {
-      "cfg": {
-        "tpd": 99,
-        "tranches": 1,
-        "contracts": 3,
-        "split": [
-          3
-        ],
-        "mode": "pct",
-        "targets": [
-          150
-        ],
-        "sl": 50
-      },
-      "label": "tpd=inf ctr=3 tr=1 pct[150] sl=50",
-      "y2025": {
-        "trades": 485,
-        "win_rate": 26.0,
-        "total": 2998.0,
-        "pf": 1.082,
-        "mdd": -3122.0,
-        "sharpe": 0.025,
-        "calmar": 0.96
-      },
-      "y2026": {
-        "trades": 158,
-        "win_rate": 27.2,
-        "total": -3387.0,
-        "pf": 0.805,
-        "mdd": -5354.0,
-        "sharpe": -0.079,
+        "trades": 245,
+        "win_rate": 59.6,
+        "total": -2278.0,
+        "pf": 0.871,
+        "mdd": -3590.0,
+        "sharpe": -0.054,
         "calmar": -0.63
       },
-      "combined": -389.0
-    },
-    {
-      "cfg": {
-        "tpd": 99,
-        "tranches": 1,
-        "contracts": 1,
-        "split": [
-          1
-        ],
-        "mode": "pct",
-        "targets": [
-          50
-        ],
-        "sl": 50
-      },
-      "label": "tpd=inf ctr=1 tr=1 pct[50] sl=50",
-      "y2025": {
-        "trades": 507,
-        "win_rate": 43.4,
-        "total": 864.0,
-        "pf": 1.092,
-        "mdd": -1016.0,
-        "sharpe": 0.034,
-        "calmar": 0.85
-      },
       "y2026": {
-        "trades": 174,
-        "win_rate": 43.1,
-        "total": -1332.0,
-        "pf": 0.749,
-        "mdd": -1648.0,
-        "sharpe": -0.121,
-        "calmar": -0.81
+        "trades": 82,
+        "win_rate": 65.9,
+        "total": 344.0,
+        "pf": 1.047,
+        "mdd": -2263.0,
+        "sharpe": 0.018,
+        "calmar": 0.15
       },
-      "combined": -468.0
+      "combined": -1934.0
     },
     {
       "cfg": {
-        "tpd": 3,
+        "tpd": 1,
         "tranches": 1,
         "contracts": 2,
         "split": [
@@ -556,30 +47,65 @@
         ],
         "mode": "pct",
         "targets": [
-          150
+          30
         ],
-        "sl": 50
+        "sl": 75
       },
-      "label": "tpd=3 ctr=2 tr=1 pct[150] sl=50",
+      "label": "tpd=1 ctr=2 tr=1 pct[30] sl=75",
       "y2025": {
-        "trades": 467,
-        "win_rate": 25.7,
-        "total": 2164.0,
-        "pf": 1.089,
-        "mdd": -2081.0,
-        "sharpe": 0.027,
-        "calmar": 1.04
+        "trades": 245,
+        "win_rate": 59.6,
+        "total": -1518.0,
+        "pf": 0.871,
+        "mdd": -2394.0,
+        "sharpe": -0.054,
+        "calmar": -0.63
       },
       "y2026": {
-        "trades": 156,
-        "win_rate": 26.9,
-        "total": -2680.0,
-        "pf": 0.776,
-        "mdd": -3935.0,
-        "sharpe": -0.094,
-        "calmar": -0.68
+        "trades": 82,
+        "win_rate": 65.9,
+        "total": 229.0,
+        "pf": 1.047,
+        "mdd": -1508.0,
+        "sharpe": 0.018,
+        "calmar": 0.15
       },
-      "combined": -516.0
+      "combined": -1289.0
+    },
+    {
+      "cfg": {
+        "tpd": 1,
+        "tranches": 1,
+        "contracts": 1,
+        "split": [
+          1
+        ],
+        "mode": "pct",
+        "targets": [
+          30
+        ],
+        "sl": 75
+      },
+      "label": "tpd=1 ctr=1 tr=1 pct[30] sl=75",
+      "y2025": {
+        "trades": 245,
+        "win_rate": 59.6,
+        "total": -759.0,
+        "pf": 0.871,
+        "mdd": -1197.0,
+        "sharpe": -0.054,
+        "calmar": -0.63
+      },
+      "y2026": {
+        "trades": 82,
+        "win_rate": 65.9,
+        "total": 115.0,
+        "pf": 1.047,
+        "mdd": -754.0,
+        "sharpe": 0.018,
+        "calmar": 0.15
+      },
+      "combined": -644.0
     },
     {
       "cfg": {
@@ -618,40 +144,248 @@
     },
     {
       "cfg": {
-        "tpd": 99,
-        "tranches": 2,
+        "tpd": 1,
+        "tranches": 1,
         "contracts": 2,
         "split": [
-          1,
+          2
+        ],
+        "mode": "pct",
+        "targets": [
+          50
+        ],
+        "sl": 75
+      },
+      "label": "tpd=1 ctr=2 tr=1 pct[50] sl=75",
+      "y2025": {
+        "trades": 245,
+        "win_rate": 49.4,
+        "total": -1026.0,
+        "pf": 0.927,
+        "mdd": -2426.0,
+        "sharpe": -0.031,
+        "calmar": -0.42
+      },
+      "y2026": {
+        "trades": 82,
+        "win_rate": 54.9,
+        "total": -54.0,
+        "pf": 0.991,
+        "mdd": -1300.0,
+        "sharpe": -0.004,
+        "calmar": -0.04
+      },
+      "combined": -1080.0
+    },
+    {
+      "cfg": {
+        "tpd": 1,
+        "tranches": 1,
+        "contracts": 1,
+        "split": [
           1
         ],
         "mode": "pct",
         "targets": [
-          50,
-          150
+          30
         ],
-        "sl": 50
+        "sl": 100
       },
-      "label": "tpd=inf ctr=2 tr=2 pct[50,150] sl=50",
+      "label": "tpd=1 ctr=1 tr=1 pct[30] sl=100",
       "y2025": {
-        "trades": 486,
-        "win_rate": 41.4,
-        "total": 1818.0,
-        "pf": 1.101,
-        "mdd": -1168.0,
-        "sharpe": 0.031,
-        "calmar": 1.56
+        "trades": 245,
+        "win_rate": 60.0,
+        "total": -960.0,
+        "pf": 0.842,
+        "mdd": -1303.0,
+        "sharpe": -0.067,
+        "calmar": -0.74
       },
       "y2026": {
-        "trades": 162,
-        "win_rate": 41.4,
-        "total": -2362.0,
-        "pf": 0.76,
-        "mdd": -3274.0,
-        "sharpe": -0.104,
-        "calmar": -0.72
+        "trades": 82,
+        "win_rate": 65.9,
+        "total": -60.0,
+        "pf": 0.977,
+        "mdd": -897.0,
+        "sharpe": -0.009,
+        "calmar": -0.07
       },
-      "combined": -544.0
+      "combined": -1020.0
+    },
+    {
+      "cfg": {
+        "tpd": 1,
+        "tranches": 1,
+        "contracts": 3,
+        "split": [
+          3
+        ],
+        "mode": "pct",
+        "targets": [
+          50
+        ],
+        "sl": 75
+      },
+      "label": "tpd=1 ctr=3 tr=1 pct[50] sl=75",
+      "y2025": {
+        "trades": 245,
+        "win_rate": 49.4,
+        "total": -1538.0,
+        "pf": 0.927,
+        "mdd": -3638.0,
+        "sharpe": -0.031,
+        "calmar": -0.42
+      },
+      "y2026": {
+        "trades": 82,
+        "win_rate": 54.9,
+        "total": -81.0,
+        "pf": 0.991,
+        "mdd": -1951.0,
+        "sharpe": -0.004,
+        "calmar": -0.04
+      },
+      "combined": -1619.0
+    },
+    {
+      "cfg": {
+        "tpd": 1,
+        "tranches": 1,
+        "contracts": 2,
+        "split": [
+          2
+        ],
+        "mode": "pct",
+        "targets": [
+          30
+        ],
+        "sl": 100
+      },
+      "label": "tpd=1 ctr=2 tr=1 pct[30] sl=100",
+      "y2025": {
+        "trades": 245,
+        "win_rate": 60.0,
+        "total": -1920.0,
+        "pf": 0.842,
+        "mdd": -2606.0,
+        "sharpe": -0.067,
+        "calmar": -0.74
+      },
+      "y2026": {
+        "trades": 82,
+        "win_rate": 65.9,
+        "total": -120.0,
+        "pf": 0.977,
+        "mdd": -1794.0,
+        "sharpe": -0.009,
+        "calmar": -0.07
+      },
+      "combined": -2040.0
+    },
+    {
+      "cfg": {
+        "tpd": 1,
+        "tranches": 1,
+        "contracts": 3,
+        "split": [
+          3
+        ],
+        "mode": "pct",
+        "targets": [
+          30
+        ],
+        "sl": 100
+      },
+      "label": "tpd=1 ctr=3 tr=1 pct[30] sl=100",
+      "y2025": {
+        "trades": 245,
+        "win_rate": 60.0,
+        "total": -2880.0,
+        "pf": 0.842,
+        "mdd": -3909.0,
+        "sharpe": -0.067,
+        "calmar": -0.74
+      },
+      "y2026": {
+        "trades": 82,
+        "win_rate": 65.9,
+        "total": -180.0,
+        "pf": 0.977,
+        "mdd": -2691.0,
+        "sharpe": -0.009,
+        "calmar": -0.07
+      },
+      "combined": -3060.0
+    },
+    {
+      "cfg": {
+        "tpd": 2,
+        "tranches": 1,
+        "contracts": 1,
+        "split": [
+          1
+        ],
+        "mode": "pct",
+        "targets": [
+          30
+        ],
+        "sl": 75
+      },
+      "label": "tpd=2 ctr=1 tr=1 pct[30] sl=75",
+      "y2025": {
+        "trades": 371,
+        "win_rate": 60.6,
+        "total": -638.0,
+        "pf": 0.919,
+        "mdd": -1486.0,
+        "sharpe": -0.032,
+        "calmar": -0.43
+      },
+      "y2026": {
+        "trades": 119,
+        "win_rate": 62.2,
+        "total": -263.0,
+        "pf": 0.926,
+        "mdd": -1442.0,
+        "sharpe": -0.031,
+        "calmar": -0.18
+      },
+      "combined": -901.0
+    },
+    {
+      "cfg": {
+        "tpd": 1,
+        "tranches": 1,
+        "contracts": 1,
+        "split": [
+          1
+        ],
+        "mode": "pct",
+        "targets": [
+          50
+        ],
+        "sl": 100
+      },
+      "label": "tpd=1 ctr=1 tr=1 pct[50] sl=100",
+      "y2025": {
+        "trades": 245,
+        "win_rate": 49.4,
+        "total": -767.0,
+        "pf": 0.895,
+        "mdd": -1433.0,
+        "sharpe": -0.045,
+        "calmar": -0.54
+      },
+      "y2026": {
+        "trades": 82,
+        "win_rate": 54.9,
+        "total": -304.0,
+        "pf": 0.909,
+        "mdd": -836.0,
+        "sharpe": -0.04,
+        "calmar": -0.36
+      },
+      "combined": -1071.0
     },
     {
       "cfg": {
@@ -663,30 +397,65 @@
         ],
         "mode": "pct",
         "targets": [
-          50
+          30
         ],
-        "sl": 40
+        "sl": 75
       },
-      "label": "tpd=inf ctr=1 tr=1 pct[50] sl=40",
+      "label": "tpd=inf ctr=1 tr=1 pct[30] sl=75",
       "y2025": {
-        "trades": 566,
-        "win_rate": 39.0,
-        "total": 584.0,
-        "pf": 1.063,
-        "mdd": -1188.0,
-        "sharpe": 0.023,
-        "calmar": 0.49
+        "trades": 451,
+        "win_rate": 61.4,
+        "total": 114.0,
+        "pf": 1.014,
+        "mdd": -1387.0,
+        "sharpe": 0.005,
+        "calmar": 0.08
       },
       "y2026": {
-        "trades": 200,
-        "win_rate": 37.0,
-        "total": -1160.0,
-        "pf": 0.779,
-        "mdd": -1369.0,
-        "sharpe": -0.103,
-        "calmar": -0.85
+        "trades": 139,
+        "win_rate": 61.2,
+        "total": -342.0,
+        "pf": 0.916,
+        "mdd": -1596.0,
+        "sharpe": -0.035,
+        "calmar": -0.21
       },
-      "combined": -576.0
+      "combined": -228.0
+    },
+    {
+      "cfg": {
+        "tpd": 3,
+        "tranches": 1,
+        "contracts": 1,
+        "split": [
+          1
+        ],
+        "mode": "pct",
+        "targets": [
+          50
+        ],
+        "sl": 75
+      },
+      "label": "tpd=3 ctr=1 tr=1 pct[50] sl=75",
+      "y2025": {
+        "trades": 393,
+        "win_rate": 49.4,
+        "total": 39.0,
+        "pf": 1.004,
+        "mdd": -1183.0,
+        "sharpe": 0.002,
+        "calmar": 0.03
+      },
+      "y2026": {
+        "trades": 126,
+        "win_rate": 54.0,
+        "total": -345.0,
+        "pf": 0.923,
+        "mdd": -1366.0,
+        "sharpe": -0.034,
+        "calmar": -0.25
+      },
+      "combined": -306.0
     },
     {
       "cfg": {
@@ -725,6 +494,111 @@
     },
     {
       "cfg": {
+        "tpd": 3,
+        "tranches": 1,
+        "contracts": 1,
+        "split": [
+          1
+        ],
+        "mode": "pct",
+        "targets": [
+          30
+        ],
+        "sl": 75
+      },
+      "label": "tpd=3 ctr=1 tr=1 pct[30] sl=75",
+      "y2025": {
+        "trades": 427,
+        "win_rate": 60.9,
+        "total": -236.0,
+        "pf": 0.972,
+        "mdd": -1415.0,
+        "sharpe": -0.011,
+        "calmar": -0.17
+      },
+      "y2026": {
+        "trades": 134,
+        "win_rate": 61.2,
+        "total": -399.0,
+        "pf": 0.899,
+        "mdd": -1599.0,
+        "sharpe": -0.042,
+        "calmar": -0.25
+      },
+      "combined": -635.0
+    },
+    {
+      "cfg": {
+        "tpd": 1,
+        "tranches": 1,
+        "contracts": 1,
+        "split": [
+          1
+        ],
+        "mode": "pct",
+        "targets": [
+          30
+        ],
+        "sl": 50
+      },
+      "label": "tpd=1 ctr=1 tr=1 pct[30] sl=50",
+      "y2025": {
+        "trades": 245,
+        "win_rate": 51.8,
+        "total": -642.0,
+        "pf": 0.876,
+        "mdd": -926.0,
+        "sharpe": -0.054,
+        "calmar": -0.69
+      },
+      "y2026": {
+        "trades": 82,
+        "win_rate": 52.4,
+        "total": -414.0,
+        "pf": 0.823,
+        "mdd": -818.0,
+        "sharpe": -0.084,
+        "calmar": -0.51
+      },
+      "combined": -1056.0
+    },
+    {
+      "cfg": {
+        "tpd": 1,
+        "tranches": 1,
+        "contracts": 1,
+        "split": [
+          1
+        ],
+        "mode": "pct",
+        "targets": [
+          30
+        ],
+        "sl": 60
+      },
+      "label": "tpd=1 ctr=1 tr=1 pct[30] sl=60",
+      "y2025": {
+        "trades": 245,
+        "win_rate": 54.3,
+        "total": -1206.0,
+        "pf": 0.794,
+        "mdd": -1296.0,
+        "sharpe": -0.091,
+        "calmar": -0.93
+      },
+      "y2026": {
+        "trades": 82,
+        "win_rate": 57.3,
+        "total": -423.0,
+        "pf": 0.835,
+        "mdd": -981.0,
+        "sharpe": -0.075,
+        "calmar": -0.43
+      },
+      "combined": -1629.0
+    },
+    {
+      "cfg": {
         "tpd": 99,
         "tranches": 1,
         "contracts": 1,
@@ -733,104 +607,65 @@
         ],
         "mode": "pct",
         "targets": [
-          100
+          50
         ],
-        "sl": 40
+        "sl": 75
       },
-      "label": "tpd=inf ctr=1 tr=1 pct[100] sl=40",
+      "label": "tpd=inf ctr=1 tr=1 pct[50] sl=75",
       "y2025": {
-        "trades": 549,
-        "win_rate": 28.4,
-        "total": 979.0,
-        "pf": 1.09,
-        "mdd": -972.0,
-        "sharpe": 0.029,
-        "calmar": 1.01
+        "trades": 402,
+        "win_rate": 49.5,
+        "total": 195.0,
+        "pf": 1.021,
+        "mdd": -1142.0,
+        "sharpe": 0.008,
+        "calmar": 0.17
       },
       "y2026": {
-        "trades": 189,
-        "win_rate": 25.9,
-        "total": -1737.0,
-        "pf": 0.7,
-        "mdd": -1916.0,
-        "sharpe": -0.139,
-        "calmar": -0.91
+        "trades": 127,
+        "win_rate": 53.5,
+        "total": -464.0,
+        "pf": 0.899,
+        "mdd": -1484.0,
+        "sharpe": -0.045,
+        "calmar": -0.31
       },
-      "combined": -758.0
+      "combined": -269.0
     },
     {
       "cfg": {
-        "tpd": 99,
-        "tranches": 2,
-        "contracts": 4,
+        "tpd": 2,
+        "tranches": 1,
+        "contracts": 2,
         "split": [
-          2,
           2
         ],
         "mode": "pct",
         "targets": [
-          50,
-          100
+          30
         ],
-        "sl": 40
+        "sl": 75
       },
-      "label": "tpd=inf ctr=4 tr=2 pct[50,100] sl=40",
+      "label": "tpd=2 ctr=2 tr=1 pct[30] sl=75",
       "y2025": {
-        "trades": 547,
-        "win_rate": 39.5,
-        "total": 2978.0,
-        "pf": 1.083,
-        "mdd": -3865.0,
-        "sharpe": 0.027,
-        "calmar": 0.77
+        "trades": 371,
+        "win_rate": 60.6,
+        "total": -1276.0,
+        "pf": 0.919,
+        "mdd": -2972.0,
+        "sharpe": -0.032,
+        "calmar": -0.43
       },
       "y2026": {
-        "trades": 183,
-        "win_rate": 38.8,
-        "total": -3738.0,
-        "pf": 0.786,
-        "mdd": -4078.0,
-        "sharpe": -0.095,
-        "calmar": -0.92
+        "trades": 119,
+        "win_rate": 62.2,
+        "total": -527.0,
+        "pf": 0.926,
+        "mdd": -2884.0,
+        "sharpe": -0.031,
+        "calmar": -0.18
       },
-      "combined": -760.0
-    },
-    {
-      "cfg": {
-        "tpd": 3,
-        "tranches": 2,
-        "contracts": 2,
-        "split": [
-          1,
-          1
-        ],
-        "mode": "pct",
-        "targets": [
-          50,
-          150
-        ],
-        "sl": 50
-      },
-      "label": "tpd=3 ctr=2 tr=2 pct[50,150] sl=50",
-      "y2025": {
-        "trades": 467,
-        "win_rate": 41.1,
-        "total": 1704.0,
-        "pf": 1.095,
-        "mdd": -1148.0,
-        "sharpe": 0.029,
-        "calmar": 1.48
-      },
-      "y2026": {
-        "trades": 156,
-        "win_rate": 41.7,
-        "total": -2486.0,
-        "pf": 0.744,
-        "mdd": -3152.0,
-        "sharpe": -0.112,
-        "calmar": -0.79
-      },
-      "combined": -782.0
+      "combined": -1803.0
     },
     {
       "cfg": {
@@ -869,38 +704,108 @@
     },
     {
       "cfg": {
-        "tpd": 99,
+        "tpd": 2,
         "tranches": 1,
-        "contracts": 2,
+        "contracts": 1,
         "split": [
-          2
+          1
         ],
         "mode": "pct",
         "targets": [
           50
         ],
-        "sl": 75
+        "sl": 100
       },
-      "label": "tpd=inf ctr=2 tr=1 pct[50] sl=75",
+      "label": "tpd=2 ctr=1 tr=1 pct[50] sl=100",
       "y2025": {
-        "trades": 401,
-        "win_rate": 49.4,
-        "total": 112.0,
-        "pf": 1.006,
-        "mdd": -2561.0,
-        "sharpe": 0.002,
-        "calmar": 0.04
+        "trades": 344,
+        "win_rate": 49.1,
+        "total": -697.0,
+        "pf": 0.926,
+        "mdd": -1548.0,
+        "sharpe": -0.03,
+        "calmar": -0.45
       },
       "y2026": {
-        "trades": 127,
-        "win_rate": 53.5,
-        "total": -928.0,
-        "pf": 0.899,
-        "mdd": -2969.0,
-        "sharpe": -0.045,
+        "trades": 113,
+        "win_rate": 54.0,
+        "total": -547.0,
+        "pf": 0.876,
+        "mdd": -1512.0,
+        "sharpe": -0.055,
+        "calmar": -0.36
+      },
+      "combined": -1244.0
+    },
+    {
+      "cfg": {
+        "tpd": 1,
+        "tranches": 1,
+        "contracts": 1,
+        "split": [
+          1
+        ],
+        "mode": "pct",
+        "targets": [
+          50
+        ],
+        "sl": 60
+      },
+      "label": "tpd=1 ctr=1 tr=1 pct[50] sl=60",
+      "y2025": {
+        "trades": 245,
+        "win_rate": 44.9,
+        "total": -841.0,
+        "pf": 0.877,
+        "mdd": -1143.0,
+        "sharpe": -0.054,
+        "calmar": -0.74
+      },
+      "y2026": {
+        "trades": 82,
+        "win_rate": 46.3,
+        "total": -553.0,
+        "pf": 0.822,
+        "mdd": -850.0,
+        "sharpe": -0.084,
+        "calmar": -0.65
+      },
+      "combined": -1394.0
+    },
+    {
+      "cfg": {
+        "tpd": 2,
+        "tranches": 1,
+        "contracts": 1,
+        "split": [
+          1
+        ],
+        "mode": "pct",
+        "targets": [
+          30
+        ],
+        "sl": 100
+      },
+      "label": "tpd=2 ctr=1 tr=1 pct[30] sl=100",
+      "y2025": {
+        "trades": 361,
+        "win_rate": 60.4,
+        "total": -1172.0,
+        "pf": 0.859,
+        "mdd": -1748.0,
+        "sharpe": -0.057,
+        "calmar": -0.67
+      },
+      "y2026": {
+        "trades": 118,
+        "win_rate": 61.9,
+        "total": -561.0,
+        "pf": 0.851,
+        "mdd": -1828.0,
+        "sharpe": -0.064,
         "calmar": -0.31
       },
-      "combined": -816.0
+      "combined": -1733.0
     },
     {
       "cfg": {
@@ -912,100 +817,30 @@
         ],
         "mode": "pct",
         "targets": [
-          150
+          30
         ],
-        "sl": 40
+        "sl": 100
       },
-      "label": "tpd=inf ctr=1 tr=1 pct[150] sl=40",
+      "label": "tpd=inf ctr=1 tr=1 pct[30] sl=100",
       "y2025": {
-        "trades": 546,
-        "win_rate": 24.2,
-        "total": 1165.0,
-        "pf": 1.1,
-        "mdd": -867.0,
-        "sharpe": 0.029,
-        "calmar": 1.34
+        "trades": 436,
+        "win_rate": 61.5,
+        "total": -382.0,
+        "pf": 0.956,
+        "mdd": -1439.0,
+        "sharpe": -0.016,
+        "calmar": -0.27
       },
       "y2026": {
-        "trades": 187,
-        "win_rate": 21.4,
-        "total": -1982.0,
-        "pf": 0.669,
-        "mdd": -2248.0,
-        "sharpe": -0.148,
-        "calmar": -0.88
+        "trades": 134,
+        "win_rate": 61.9,
+        "total": -566.0,
+        "pf": 0.865,
+        "mdd": -1901.0,
+        "sharpe": -0.058,
+        "calmar": -0.3
       },
-      "combined": -817.0
-    },
-    {
-      "cfg": {
-        "tpd": 99,
-        "tranches": 1,
-        "contracts": 1,
-        "split": [
-          1
-        ],
-        "mode": "pct",
-        "targets": [
-          100
-        ],
-        "sl": 50
-      },
-      "label": "tpd=inf ctr=1 tr=1 pct[100] sl=50",
-      "y2025": {
-        "trades": 488,
-        "win_rate": 30.7,
-        "total": 650.0,
-        "pf": 1.057,
-        "mdd": -994.0,
-        "sharpe": 0.019,
-        "calmar": 0.65
-      },
-      "y2026": {
-        "trades": 164,
-        "win_rate": 31.1,
-        "total": -1475.0,
-        "pf": 0.749,
-        "mdd": -1858.0,
-        "sharpe": -0.115,
-        "calmar": -0.79
-      },
-      "combined": -825.0
-    },
-    {
-      "cfg": {
-        "tpd": 3,
-        "tranches": 1,
-        "contracts": 1,
-        "split": [
-          1
-        ],
-        "mode": "pct",
-        "targets": [
-          50
-        ],
-        "sl": 40
-      },
-      "label": "tpd=3 ctr=1 tr=1 pct[50] sl=40",
-      "y2025": {
-        "trades": 505,
-        "win_rate": 39.2,
-        "total": 259.0,
-        "pf": 1.029,
-        "mdd": -1392.0,
-        "sharpe": 0.011,
-        "calmar": 0.19
-      },
-      "y2026": {
-        "trades": 178,
-        "win_rate": 37.1,
-        "total": -1094.0,
-        "pf": 0.771,
-        "mdd": -1246.0,
-        "sharpe": -0.108,
-        "calmar": -0.88
-      },
-      "combined": -835.0
+      "combined": -948.0
     },
     {
       "cfg": {
@@ -1046,41 +881,6 @@
       "cfg": {
         "tpd": 3,
         "tranches": 1,
-        "contracts": 2,
-        "split": [
-          2
-        ],
-        "mode": "pct",
-        "targets": [
-          50
-        ],
-        "sl": 75
-      },
-      "label": "tpd=3 ctr=2 tr=1 pct[50] sl=75",
-      "y2025": {
-        "trades": 392,
-        "win_rate": 49.2,
-        "total": -200.0,
-        "pf": 0.989,
-        "mdd": -2644.0,
-        "sharpe": -0.004,
-        "calmar": -0.08
-      },
-      "y2026": {
-        "trades": 126,
-        "win_rate": 54.0,
-        "total": -691.0,
-        "pf": 0.923,
-        "mdd": -2731.0,
-        "sharpe": -0.034,
-        "calmar": -0.25
-      },
-      "combined": -891.0
-    },
-    {
-      "cfg": {
-        "tpd": 3,
-        "tranches": 1,
         "contracts": 1,
         "split": [
           1
@@ -1089,100 +889,28 @@
         "targets": [
           50
         ],
-        "sl": 50
+        "sl": 100
       },
-      "label": "tpd=3 ctr=1 tr=1 pct[50] sl=50",
+      "label": "tpd=3 ctr=1 tr=1 pct[50] sl=100",
       "y2025": {
-        "trades": 478,
-        "win_rate": 42.7,
-        "total": 538.0,
-        "pf": 1.058,
-        "mdd": -1200.0,
-        "sharpe": 0.022,
-        "calmar": 0.45
+        "trades": 376,
+        "win_rate": 49.5,
+        "total": -287.0,
+        "pf": 0.97,
+        "mdd": -1454.0,
+        "sharpe": -0.012,
+        "calmar": -0.2
       },
       "y2026": {
-        "trades": 166,
-        "win_rate": 42.8,
-        "total": -1456.0,
-        "pf": 0.722,
-        "mdd": -1674.0,
-        "sharpe": -0.137,
-        "calmar": -0.87
+        "trades": 122,
+        "win_rate": 54.9,
+        "total": -581.0,
+        "pf": 0.875,
+        "mdd": -1626.0,
+        "sharpe": -0.055,
+        "calmar": -0.36
       },
-      "combined": -918.0
-    },
-    {
-      "cfg": {
-        "tpd": 99,
-        "tranches": 2,
-        "contracts": 4,
-        "split": [
-          2,
-          2
-        ],
-        "mode": "pct",
-        "targets": [
-          50,
-          150
-        ],
-        "sl": 40
-      },
-      "label": "tpd=inf ctr=4 tr=2 pct[50,150] sl=40",
-      "y2025": {
-        "trades": 544,
-        "win_rate": 39.5,
-        "total": 3332.0,
-        "pf": 1.094,
-        "mdd": -2554.0,
-        "sharpe": 0.029,
-        "calmar": 1.3
-      },
-      "y2026": {
-        "trades": 181,
-        "win_rate": 38.7,
-        "total": -4253.0,
-        "pf": 0.756,
-        "mdd": -4671.0,
-        "sharpe": -0.106,
-        "calmar": -0.91
-      },
-      "combined": -921.0
-    },
-    {
-      "cfg": {
-        "tpd": 99,
-        "tranches": 1,
-        "contracts": 2,
-        "split": [
-          2
-        ],
-        "mode": "pct",
-        "targets": [
-          50
-        ],
-        "sl": 50
-      },
-      "label": "tpd=inf ctr=2 tr=1 pct[50] sl=50",
-      "y2025": {
-        "trades": 507,
-        "win_rate": 43.4,
-        "total": 1727.0,
-        "pf": 1.092,
-        "mdd": -2031.0,
-        "sharpe": 0.034,
-        "calmar": 0.85
-      },
-      "y2026": {
-        "trades": 174,
-        "win_rate": 43.1,
-        "total": -2664.0,
-        "pf": 0.749,
-        "mdd": -3297.0,
-        "sharpe": -0.121,
-        "calmar": -0.81
-      },
-      "combined": -937.0
+      "combined": -868.0
     },
     {
       "cfg": {
@@ -1194,250 +922,30 @@
         ],
         "mode": "pct",
         "targets": [
-          100
+          30
         ],
-        "sl": 75
+        "sl": 40
       },
-      "label": "tpd=1 ctr=1 tr=1 pct[100] sl=75",
+      "label": "tpd=1 ctr=1 tr=1 pct[30] sl=40",
       "y2025": {
         "trades": 245,
-        "win_rate": 36.3,
-        "total": -83.0,
-        "pf": 0.991,
-        "mdd": -1274.0,
-        "sharpe": -0.004,
-        "calmar": -0.07
+        "win_rate": 47.8,
+        "total": -539.0,
+        "pf": 0.883,
+        "mdd": -1029.0,
+        "sharpe": -0.051,
+        "calmar": -0.52
       },
       "y2026": {
         "trades": 82,
-        "win_rate": 39.0,
-        "total": -858.0,
-        "pf": 0.79,
-        "mdd": -1348.0,
-        "sharpe": -0.099,
-        "calmar": -0.64
+        "win_rate": 45.1,
+        "total": -603.0,
+        "pf": 0.724,
+        "mdd": -664.0,
+        "sharpe": -0.141,
+        "calmar": -0.91
       },
-      "combined": -941.0
-    },
-    {
-      "cfg": {
-        "tpd": 99,
-        "tranches": 3,
-        "contracts": 3,
-        "split": [
-          1,
-          1,
-          1
-        ],
-        "mode": "pct",
-        "targets": [
-          50,
-          100,
-          150
-        ],
-        "sl": 50
-      },
-      "label": "tpd=inf ctr=3 tr=3 pct[50,100,150] sl=50",
-      "y2025": {
-        "trades": 485,
-        "win_rate": 32.2,
-        "total": 2376.0,
-        "pf": 1.082,
-        "mdd": -2354.0,
-        "sharpe": 0.026,
-        "calmar": 1.01
-      },
-      "y2026": {
-        "trades": 158,
-        "win_rate": 32.9,
-        "total": -3325.0,
-        "pf": 0.775,
-        "mdd": -4321.0,
-        "sharpe": -0.099,
-        "calmar": -0.77
-      },
-      "combined": -949.0
-    },
-    {
-      "cfg": {
-        "tpd": 99,
-        "tranches": 2,
-        "contracts": 6,
-        "split": [
-          3,
-          3
-        ],
-        "mode": "pct",
-        "targets": [
-          50,
-          100
-        ],
-        "sl": 50
-      },
-      "label": "tpd=inf ctr=6 tr=2 pct[50,100] sl=50",
-      "y2025": {
-        "trades": 483,
-        "win_rate": 41.4,
-        "total": 3462.0,
-        "pf": 1.065,
-        "mdd": -5408.0,
-        "sharpe": 0.022,
-        "calmar": 0.64
-      },
-      "y2026": {
-        "trades": 156,
-        "win_rate": 42.3,
-        "total": -4440.0,
-        "pf": 0.829,
-        "mdd": -5956.0,
-        "sharpe": -0.074,
-        "calmar": -0.75
-      },
-      "combined": -978.0
-    },
-    {
-      "cfg": {
-        "tpd": 99,
-        "tranches": 2,
-        "contracts": 4,
-        "split": [
-          2,
-          2
-        ],
-        "mode": "pct",
-        "targets": [
-          50,
-          150
-        ],
-        "sl": 50
-      },
-      "label": "tpd=inf ctr=4 tr=2 pct[50,150] sl=50",
-      "y2025": {
-        "trades": 485,
-        "win_rate": 41.2,
-        "total": 3141.0,
-        "pf": 1.087,
-        "mdd": -2670.0,
-        "sharpe": 0.027,
-        "calmar": 1.18
-      },
-      "y2026": {
-        "trades": 158,
-        "win_rate": 41.8,
-        "total": -4129.0,
-        "pf": 0.779,
-        "mdd": -5572.0,
-        "sharpe": -0.094,
-        "calmar": -0.74
-      },
-      "combined": -988.0
-    },
-    {
-      "cfg": {
-        "tpd": 99,
-        "tranches": 1,
-        "contracts": 2,
-        "split": [
-          2
-        ],
-        "mode": "pct",
-        "targets": [
-          50
-        ],
-        "sl": 40
-      },
-      "label": "tpd=inf ctr=2 tr=1 pct[50] sl=40",
-      "y2025": {
-        "trades": 566,
-        "win_rate": 39.0,
-        "total": 1168.0,
-        "pf": 1.063,
-        "mdd": -2375.0,
-        "sharpe": 0.023,
-        "calmar": 0.49
-      },
-      "y2026": {
-        "trades": 199,
-        "win_rate": 37.2,
-        "total": -2215.0,
-        "pf": 0.787,
-        "mdd": -2632.0,
-        "sharpe": -0.099,
-        "calmar": -0.84
-      },
-      "combined": -1047.0
-    },
-    {
-      "cfg": {
-        "tpd": 99,
-        "tranches": 1,
-        "contracts": 1,
-        "split": [
-          1
-        ],
-        "mode": "pct",
-        "targets": [
-          50
-        ],
-        "sl": 30
-      },
-      "label": "tpd=inf ctr=1 tr=1 pct[50] sl=30",
-      "y2025": {
-        "trades": 633,
-        "win_rate": 33.6,
-        "total": 620.0,
-        "pf": 1.072,
-        "mdd": -840.0,
-        "sharpe": 0.025,
-        "calmar": 0.74
-      },
-      "y2026": {
-        "trades": 225,
-        "win_rate": 28.9,
-        "total": -1692.0,
-        "pf": 0.668,
-        "mdd": -1848.0,
-        "sharpe": -0.163,
-        "calmar": -0.92
-      },
-      "combined": -1072.0
-    },
-    {
-      "cfg": {
-        "tpd": 99,
-        "tranches": 2,
-        "contracts": 2,
-        "split": [
-          1,
-          1
-        ],
-        "mode": "pct",
-        "targets": [
-          50,
-          100
-        ],
-        "sl": 40
-      },
-      "label": "tpd=inf ctr=2 tr=2 pct[50,100] sl=40",
-      "y2025": {
-        "trades": 549,
-        "win_rate": 39.5,
-        "total": 1479.0,
-        "pf": 1.082,
-        "mdd": -1942.0,
-        "sharpe": 0.027,
-        "calmar": 0.76
-      },
-      "y2026": {
-        "trades": 188,
-        "win_rate": 38.3,
-        "total": -2555.0,
-        "pf": 0.734,
-        "mdd": -2915.0,
-        "sharpe": -0.122,
-        "calmar": -0.88
-      },
-      "combined": -1076.0
+      "combined": -1142.0
     },
     {
       "cfg": {
@@ -1451,139 +959,28 @@
         "targets": [
           50
         ],
-        "sl": 75
+        "sl": 100
       },
-      "label": "tpd=1 ctr=2 tr=1 pct[50] sl=75",
+      "label": "tpd=1 ctr=2 tr=1 pct[50] sl=100",
       "y2025": {
         "trades": 245,
         "win_rate": 49.4,
-        "total": -1026.0,
-        "pf": 0.927,
-        "mdd": -2426.0,
-        "sharpe": -0.031,
-        "calmar": -0.42
+        "total": -1534.0,
+        "pf": 0.895,
+        "mdd": -2866.0,
+        "sharpe": -0.045,
+        "calmar": -0.54
       },
       "y2026": {
         "trades": 82,
         "win_rate": 54.9,
-        "total": -54.0,
-        "pf": 0.991,
-        "mdd": -1300.0,
-        "sharpe": -0.004,
-        "calmar": -0.04
+        "total": -608.0,
+        "pf": 0.909,
+        "mdd": -1672.0,
+        "sharpe": -0.04,
+        "calmar": -0.36
       },
-      "combined": -1080.0
-    },
-    {
-      "cfg": {
-        "tpd": 3,
-        "tranches": 3,
-        "contracts": 3,
-        "split": [
-          1,
-          1,
-          1
-        ],
-        "mode": "pct",
-        "targets": [
-          50,
-          100,
-          150
-        ],
-        "sl": 50
-      },
-      "label": "tpd=3 ctr=3 tr=3 pct[50,100,150] sl=50",
-      "y2025": {
-        "trades": 466,
-        "win_rate": 31.8,
-        "total": 2148.0,
-        "pf": 1.075,
-        "mdd": -2416.0,
-        "sharpe": 0.024,
-        "calmar": 0.89
-      },
-      "y2026": {
-        "trades": 154,
-        "win_rate": 33.1,
-        "total": -3232.0,
-        "pf": 0.779,
-        "mdd": -4149.0,
-        "sharpe": -0.097,
-        "calmar": -0.78
-      },
-      "combined": -1084.0
-    },
-    {
-      "cfg": {
-        "tpd": 3,
-        "tranches": 1,
-        "contracts": 1,
-        "split": [
-          1
-        ],
-        "mode": "pct",
-        "targets": [
-          100
-        ],
-        "sl": 50
-      },
-      "label": "tpd=3 ctr=1 tr=1 pct[100] sl=50",
-      "y2025": {
-        "trades": 468,
-        "win_rate": 30.1,
-        "total": 445.0,
-        "pf": 1.039,
-        "mdd": -1014.0,
-        "sharpe": 0.013,
-        "calmar": 0.44
-      },
-      "y2026": {
-        "trades": 158,
-        "win_rate": 31.0,
-        "total": -1534.0,
-        "pf": 0.737,
-        "mdd": -1824.0,
-        "sharpe": -0.123,
-        "calmar": -0.84
-      },
-      "combined": -1089.0
-    },
-    {
-      "cfg": {
-        "tpd": 3,
-        "tranches": 2,
-        "contracts": 4,
-        "split": [
-          2,
-          2
-        ],
-        "mode": "pct",
-        "targets": [
-          50,
-          150
-        ],
-        "sl": 50
-      },
-      "label": "tpd=3 ctr=4 tr=2 pct[50,150] sl=50",
-      "y2025": {
-        "trades": 466,
-        "win_rate": 41.0,
-        "total": 2914.0,
-        "pf": 1.081,
-        "mdd": -2754.0,
-        "sharpe": 0.025,
-        "calmar": 1.06
-      },
-      "y2026": {
-        "trades": 154,
-        "win_rate": 42.2,
-        "total": -4005.0,
-        "pf": 0.783,
-        "mdd": -5336.0,
-        "sharpe": -0.092,
-        "calmar": -0.75
-      },
-      "combined": -1091.0
+      "combined": -2142.0
     },
     {
       "cfg": {
@@ -1595,67 +992,30 @@
         ],
         "mode": "pct",
         "targets": [
-          50
+          30
         ],
         "sl": 40
       },
-      "label": "tpd=2 ctr=1 tr=1 pct[50] sl=40",
+      "label": "tpd=2 ctr=1 tr=1 pct[30] sl=40",
       "y2025": {
-        "trades": 407,
-        "win_rate": 38.8,
-        "total": -60.0,
-        "pf": 0.992,
-        "mdd": -1425.0,
-        "sharpe": -0.003,
-        "calmar": -0.04
+        "trades": 410,
+        "win_rate": 48.3,
+        "total": -672.0,
+        "pf": 0.903,
+        "mdd": -1633.0,
+        "sharpe": -0.041,
+        "calmar": -0.41
       },
       "y2026": {
-        "trades": 142,
-        "win_rate": 33.8,
-        "total": -1045.0,
-        "pf": 0.743,
-        "mdd": -1082.0,
-        "sharpe": -0.125,
-        "calmar": -0.97
+        "trades": 144,
+        "win_rate": 45.8,
+        "total": -609.0,
+        "pf": 0.819,
+        "mdd": -763.0,
+        "sharpe": -0.085,
+        "calmar": -0.8
       },
-      "combined": -1105.0
-    },
-    {
-      "cfg": {
-        "tpd": 99,
-        "tranches": 2,
-        "contracts": 6,
-        "split": [
-          3,
-          3
-        ],
-        "mode": "pct",
-        "targets": [
-          75,
-          150
-        ],
-        "sl": 40
-      },
-      "label": "tpd=inf ctr=6 tr=2 pct[75,150] sl=40",
-      "y2025": {
-        "trades": 543,
-        "win_rate": 32.4,
-        "total": 7101.0,
-        "pf": 1.119,
-        "mdd": -3601.0,
-        "sharpe": 0.037,
-        "calmar": 1.97
-      },
-      "y2026": {
-        "trades": 179,
-        "win_rate": 30.2,
-        "total": -8208.0,
-        "pf": 0.726,
-        "mdd": -8880.0,
-        "sharpe": -0.124,
-        "calmar": -0.92
-      },
-      "combined": -1107.0
+      "combined": -1281.0
     },
     {
       "cfg": {
@@ -1694,7 +1054,147 @@
     },
     {
       "cfg": {
-        "tpd": 2,
+        "tpd": 3,
+        "tranches": 1,
+        "contracts": 1,
+        "split": [
+          1
+        ],
+        "mode": "pct",
+        "targets": [
+          30
+        ],
+        "sl": 100
+      },
+      "label": "tpd=3 ctr=1 tr=1 pct[30] sl=100",
+      "y2025": {
+        "trades": 414,
+        "win_rate": 61.4,
+        "total": -689.0,
+        "pf": 0.92,
+        "mdd": -1514.0,
+        "sharpe": -0.031,
+        "calmar": -0.46
+      },
+      "y2026": {
+        "trades": 130,
+        "win_rate": 61.5,
+        "total": -644.0,
+        "pf": 0.843,
+        "mdd": -1904.0,
+        "sharpe": -0.067,
+        "calmar": -0.34
+      },
+      "combined": -1333.0
+    },
+    {
+      "cfg": {
+        "tpd": 1,
+        "tranches": 1,
+        "contracts": 1,
+        "split": [
+          1
+        ],
+        "mode": "pct",
+        "targets": [
+          30
+        ],
+        "sl": 30
+      },
+      "label": "tpd=1 ctr=1 tr=1 pct[30] sl=30",
+      "y2025": {
+        "trades": 245,
+        "win_rate": 41.2,
+        "total": -549.0,
+        "pf": 0.863,
+        "mdd": -906.0,
+        "sharpe": -0.06,
+        "calmar": -0.61
+      },
+      "y2026": {
+        "trades": 82,
+        "win_rate": 36.6,
+        "total": -683.0,
+        "pf": 0.645,
+        "mdd": -856.0,
+        "sharpe": -0.193,
+        "calmar": -0.8
+      },
+      "combined": -1232.0
+    },
+    {
+      "cfg": {
+        "tpd": 99,
+        "tranches": 1,
+        "contracts": 2,
+        "split": [
+          2
+        ],
+        "mode": "pct",
+        "targets": [
+          30
+        ],
+        "sl": 75
+      },
+      "label": "tpd=inf ctr=2 tr=1 pct[30] sl=75",
+      "y2025": {
+        "trades": 450,
+        "win_rate": 61.3,
+        "total": 86.0,
+        "pf": 1.005,
+        "mdd": -2916.0,
+        "sharpe": 0.002,
+        "calmar": 0.03
+      },
+      "y2026": {
+        "trades": 139,
+        "win_rate": 61.2,
+        "total": -684.0,
+        "pf": 0.916,
+        "mdd": -3192.0,
+        "sharpe": -0.035,
+        "calmar": -0.21
+      },
+      "combined": -598.0
+    },
+    {
+      "cfg": {
+        "tpd": 3,
+        "tranches": 1,
+        "contracts": 2,
+        "split": [
+          2
+        ],
+        "mode": "pct",
+        "targets": [
+          50
+        ],
+        "sl": 75
+      },
+      "label": "tpd=3 ctr=2 tr=1 pct[50] sl=75",
+      "y2025": {
+        "trades": 392,
+        "win_rate": 49.2,
+        "total": -200.0,
+        "pf": 0.989,
+        "mdd": -2644.0,
+        "sharpe": -0.004,
+        "calmar": -0.08
+      },
+      "y2026": {
+        "trades": 126,
+        "win_rate": 54.0,
+        "total": -691.0,
+        "pf": 0.923,
+        "mdd": -2731.0,
+        "sharpe": -0.034,
+        "calmar": -0.25
+      },
+      "combined": -891.0
+    },
+    {
+      "cfg": {
+        "tpd": 99,
         "tranches": 1,
         "contracts": 1,
         "split": [
@@ -1704,65 +1204,413 @@
         "targets": [
           50
         ],
-        "sl": 50
+        "sl": 100
       },
-      "label": "tpd=2 ctr=1 tr=1 pct[50] sl=50",
+      "label": "tpd=inf ctr=1 tr=1 pct[50] sl=100",
       "y2025": {
-        "trades": 397,
-        "win_rate": 42.8,
-        "total": -2.0,
-        "pf": 1.0,
-        "mdd": -1330.0,
-        "sharpe": -0.0,
-        "calmar": -0.0
+        "trades": 382,
+        "win_rate": 49.7,
+        "total": -144.0,
+        "pf": 0.985,
+        "mdd": -1414.0,
+        "sharpe": -0.006,
+        "calmar": -0.1
       },
       "y2026": {
-        "trades": 139,
-        "win_rate": 42.4,
-        "total": -1122.0,
-        "pf": 0.751,
-        "mdd": -1262.0,
-        "sharpe": -0.121,
-        "calmar": -0.89
+        "trades": 123,
+        "win_rate": 54.5,
+        "total": -700.0,
+        "pf": 0.854,
+        "mdd": -1745.0,
+        "sharpe": -0.066,
+        "calmar": -0.4
       },
-      "combined": -1124.0
+      "combined": -844.0
     },
     {
       "cfg": {
-        "tpd": 99,
-        "tranches": 2,
+        "tpd": 2,
+        "tranches": 1,
         "contracts": 2,
         "split": [
-          1,
+          2
+        ],
+        "mode": "pct",
+        "targets": [
+          50
+        ],
+        "sl": 75
+      },
+      "label": "tpd=2 ctr=2 tr=1 pct[50] sl=75",
+      "y2025": {
+        "trades": 357,
+        "win_rate": 49.6,
+        "total": -581.0,
+        "pf": 0.968,
+        "mdd": -2542.0,
+        "sharpe": -0.013,
+        "calmar": -0.23
+      },
+      "y2026": {
+        "trades": 115,
+        "win_rate": 53.0,
+        "total": -733.0,
+        "pf": 0.913,
+        "mdd": -2552.0,
+        "sharpe": -0.038,
+        "calmar": -0.29
+      },
+      "combined": -1314.0
+    },
+    {
+      "cfg": {
+        "tpd": 2,
+        "tranches": 1,
+        "contracts": 1,
+        "split": [
           1
         ],
         "mode": "pct",
         "targets": [
-          50,
-          100
+          30
         ],
         "sl": 50
       },
-      "label": "tpd=inf ctr=2 tr=2 pct[50,100] sl=50",
+      "label": "tpd=2 ctr=1 tr=1 pct[30] sl=50",
       "y2025": {
-        "trades": 488,
-        "win_rate": 41.8,
-        "total": 1365.0,
-        "pf": 1.075,
-        "mdd": -1822.0,
-        "sharpe": 0.025,
-        "calmar": 0.75
+        "trades": 402,
+        "win_rate": 52.7,
+        "total": -446.0,
+        "pf": 0.939,
+        "mdd": -1416.0,
+        "sharpe": -0.025,
+        "calmar": -0.32
       },
       "y2026": {
-        "trades": 164,
-        "win_rate": 40.9,
-        "total": -2491.0,
-        "pf": 0.748,
-        "mdd": -3186.0,
-        "sharpe": -0.114,
-        "calmar": -0.78
+        "trades": 141,
+        "win_rate": 53.2,
+        "total": -761.0,
+        "pf": 0.796,
+        "mdd": -1376.0,
+        "sharpe": -0.095,
+        "calmar": -0.55
       },
-      "combined": -1126.0
+      "combined": -1207.0
+    },
+    {
+      "cfg": {
+        "tpd": 2,
+        "tranches": 1,
+        "contracts": 3,
+        "split": [
+          3
+        ],
+        "mode": "pct",
+        "targets": [
+          30
+        ],
+        "sl": 75
+      },
+      "label": "tpd=2 ctr=3 tr=1 pct[30] sl=75",
+      "y2025": {
+        "trades": 371,
+        "win_rate": 60.6,
+        "total": -1913.0,
+        "pf": 0.919,
+        "mdd": -4459.0,
+        "sharpe": -0.032,
+        "calmar": -0.43
+      },
+      "y2026": {
+        "trades": 119,
+        "win_rate": 62.2,
+        "total": -790.0,
+        "pf": 0.926,
+        "mdd": -4327.0,
+        "sharpe": -0.031,
+        "calmar": -0.18
+      },
+      "combined": -2703.0
+    },
+    {
+      "cfg": {
+        "tpd": 99,
+        "tranches": 1,
+        "contracts": 1,
+        "split": [
+          1
+        ],
+        "mode": "pct",
+        "targets": [
+          30
+        ],
+        "sl": 60
+      },
+      "label": "tpd=inf ctr=1 tr=1 pct[30] sl=60",
+      "y2025": {
+        "trades": 504,
+        "win_rate": 57.1,
+        "total": -167.0,
+        "pf": 0.981,
+        "mdd": -1252.0,
+        "sharpe": -0.007,
+        "calmar": -0.13
+      },
+      "y2026": {
+        "trades": 166,
+        "win_rate": 57.2,
+        "total": -795.0,
+        "pf": 0.822,
+        "mdd": -1731.0,
+        "sharpe": -0.079,
+        "calmar": -0.46
+      },
+      "combined": -962.0
+    },
+    {
+      "cfg": {
+        "tpd": 3,
+        "tranches": 1,
+        "contracts": 2,
+        "split": [
+          2
+        ],
+        "mode": "pct",
+        "targets": [
+          30
+        ],
+        "sl": 75
+      },
+      "label": "tpd=3 ctr=2 tr=1 pct[30] sl=75",
+      "y2025": {
+        "trades": 426,
+        "win_rate": 60.8,
+        "total": -615.0,
+        "pf": 0.963,
+        "mdd": -2972.0,
+        "sharpe": -0.014,
+        "calmar": -0.21
+      },
+      "y2026": {
+        "trades": 134,
+        "win_rate": 61.2,
+        "total": -798.0,
+        "pf": 0.899,
+        "mdd": -3198.0,
+        "sharpe": -0.042,
+        "calmar": -0.25
+      },
+      "combined": -1413.0
+    },
+    {
+      "cfg": {
+        "tpd": 99,
+        "tranches": 1,
+        "contracts": 1,
+        "split": [
+          1
+        ],
+        "mode": "pct",
+        "targets": [
+          30
+        ],
+        "sl": 50
+      },
+      "label": "tpd=inf ctr=1 tr=1 pct[30] sl=50",
+      "y2025": {
+        "trades": 534,
+        "win_rate": 53.7,
+        "total": 415.0,
+        "pf": 1.052,
+        "mdd": -1252.0,
+        "sharpe": 0.019,
+        "calmar": 0.33
+      },
+      "y2026": {
+        "trades": 189,
+        "win_rate": 54.5,
+        "total": -802.0,
+        "pf": 0.825,
+        "mdd": -1638.0,
+        "sharpe": -0.079,
+        "calmar": -0.49
+      },
+      "combined": -387.0
+    },
+    {
+      "cfg": {
+        "tpd": 1,
+        "tranches": 1,
+        "contracts": 2,
+        "split": [
+          2
+        ],
+        "mode": "pct",
+        "targets": [
+          30
+        ],
+        "sl": 50
+      },
+      "label": "tpd=1 ctr=2 tr=1 pct[30] sl=50",
+      "y2025": {
+        "trades": 245,
+        "win_rate": 51.8,
+        "total": -1285.0,
+        "pf": 0.876,
+        "mdd": -1851.0,
+        "sharpe": -0.054,
+        "calmar": -0.69
+      },
+      "y2026": {
+        "trades": 82,
+        "win_rate": 52.4,
+        "total": -828.0,
+        "pf": 0.823,
+        "mdd": -1637.0,
+        "sharpe": -0.084,
+        "calmar": -0.51
+      },
+      "combined": -2113.0
+    },
+    {
+      "cfg": {
+        "tpd": 1,
+        "tranches": 1,
+        "contracts": 2,
+        "split": [
+          2
+        ],
+        "mode": "pct",
+        "targets": [
+          30
+        ],
+        "sl": 60
+      },
+      "label": "tpd=1 ctr=2 tr=1 pct[30] sl=60",
+      "y2025": {
+        "trades": 245,
+        "win_rate": 54.3,
+        "total": -2412.0,
+        "pf": 0.794,
+        "mdd": -2592.0,
+        "sharpe": -0.091,
+        "calmar": -0.93
+      },
+      "y2026": {
+        "trades": 82,
+        "win_rate": 57.3,
+        "total": -846.0,
+        "pf": 0.835,
+        "mdd": -1961.0,
+        "sharpe": -0.075,
+        "calmar": -0.43
+      },
+      "combined": -3258.0
+    },
+    {
+      "cfg": {
+        "tpd": 1,
+        "tranches": 1,
+        "contracts": 1,
+        "split": [
+          1
+        ],
+        "mode": "pct",
+        "targets": [
+          100
+        ],
+        "sl": 75
+      },
+      "label": "tpd=1 ctr=1 tr=1 pct[100] sl=75",
+      "y2025": {
+        "trades": 245,
+        "win_rate": 36.3,
+        "total": -83.0,
+        "pf": 0.991,
+        "mdd": -1274.0,
+        "sharpe": -0.004,
+        "calmar": -0.07
+      },
+      "y2026": {
+        "trades": 82,
+        "win_rate": 39.0,
+        "total": -858.0,
+        "pf": 0.79,
+        "mdd": -1348.0,
+        "sharpe": -0.099,
+        "calmar": -0.64
+      },
+      "combined": -941.0
+    },
+    {
+      "cfg": {
+        "tpd": 1,
+        "tranches": 1,
+        "contracts": 3,
+        "split": [
+          3
+        ],
+        "mode": "pct",
+        "targets": [
+          50
+        ],
+        "sl": 100
+      },
+      "label": "tpd=1 ctr=3 tr=1 pct[50] sl=100",
+      "y2025": {
+        "trades": 245,
+        "win_rate": 49.4,
+        "total": -2301.0,
+        "pf": 0.895,
+        "mdd": -4299.0,
+        "sharpe": -0.045,
+        "calmar": -0.54
+      },
+      "y2026": {
+        "trades": 82,
+        "win_rate": 54.9,
+        "total": -912.0,
+        "pf": 0.909,
+        "mdd": -2508.0,
+        "sharpe": -0.04,
+        "calmar": -0.36
+      },
+      "combined": -3213.0
+    },
+    {
+      "cfg": {
+        "tpd": 99,
+        "tranches": 1,
+        "contracts": 2,
+        "split": [
+          2
+        ],
+        "mode": "pct",
+        "targets": [
+          50
+        ],
+        "sl": 75
+      },
+      "label": "tpd=inf ctr=2 tr=1 pct[50] sl=75",
+      "y2025": {
+        "trades": 401,
+        "win_rate": 49.4,
+        "total": 112.0,
+        "pf": 1.006,
+        "mdd": -2561.0,
+        "sharpe": 0.002,
+        "calmar": 0.04
+      },
+      "y2026": {
+        "trades": 127,
+        "win_rate": 53.5,
+        "total": -928.0,
+        "pf": 0.899,
+        "mdd": -2969.0,
+        "sharpe": -0.045,
+        "calmar": -0.31
+      },
+      "combined": -816.0
     },
     {
       "cfg": {
@@ -1774,30 +1622,592 @@
         ],
         "mode": "pct",
         "targets": [
-          100
+          30
+        ],
+        "sl": 60
+      },
+      "label": "tpd=3 ctr=1 tr=1 pct[30] sl=60",
+      "y2025": {
+        "trades": 472,
+        "win_rate": 56.4,
+        "total": -642.0,
+        "pf": 0.925,
+        "mdd": -1430.0,
+        "sharpe": -0.029,
+        "calmar": -0.45
+      },
+      "y2026": {
+        "trades": 156,
+        "win_rate": 56.4,
+        "total": -948.0,
+        "pf": 0.784,
+        "mdd": -1739.0,
+        "sharpe": -0.099,
+        "calmar": -0.54
+      },
+      "combined": -1590.0
+    },
+    {
+      "cfg": {
+        "tpd": 3,
+        "tranches": 1,
+        "contracts": 1,
+        "split": [
+          1
+        ],
+        "mode": "pct",
+        "targets": [
+          30
         ],
         "sl": 40
       },
-      "label": "tpd=3 ctr=1 tr=1 pct[100] sl=40",
+      "label": "tpd=3 ctr=1 tr=1 pct[30] sl=40",
       "y2025": {
-        "trades": 501,
-        "win_rate": 27.3,
-        "total": 410.0,
-        "pf": 1.038,
-        "mdd": -1242.0,
-        "sharpe": 0.013,
-        "calmar": 0.33
+        "trades": 513,
+        "win_rate": 48.7,
+        "total": -353.0,
+        "pf": 0.955,
+        "mdd": -1535.0,
+        "sharpe": -0.018,
+        "calmar": -0.23
       },
       "y2026": {
-        "trades": 172,
-        "win_rate": 25.6,
-        "total": -1567.0,
-        "pf": 0.707,
-        "mdd": -1654.0,
-        "sharpe": -0.136,
-        "calmar": -0.95
+        "trades": 182,
+        "win_rate": 45.1,
+        "total": -989.0,
+        "pf": 0.762,
+        "mdd": -1172.0,
+        "sharpe": -0.114,
+        "calmar": -0.84
       },
-      "combined": -1157.0
+      "combined": -1342.0
+    },
+    {
+      "cfg": {
+        "tpd": 2,
+        "tranches": 1,
+        "contracts": 1,
+        "split": [
+          1
+        ],
+        "mode": "pct",
+        "targets": [
+          30
+        ],
+        "sl": 30
+      },
+      "label": "tpd=2 ctr=1 tr=1 pct[30] sl=30",
+      "y2025": {
+        "trades": 417,
+        "win_rate": 42.7,
+        "total": -417.0,
+        "pf": 0.93,
+        "mdd": -1130.0,
+        "sharpe": -0.029,
+        "calmar": -0.37
+      },
+      "y2026": {
+        "trades": 150,
+        "win_rate": 37.3,
+        "total": -1018.0,
+        "pf": 0.679,
+        "mdd": -1192.0,
+        "sharpe": -0.167,
+        "calmar": -0.85
+      },
+      "combined": -1435.0
+    },
+    {
+      "cfg": {
+        "tpd": 99,
+        "tranches": 1,
+        "contracts": 3,
+        "split": [
+          3
+        ],
+        "mode": "pct",
+        "targets": [
+          30
+        ],
+        "sl": 75
+      },
+      "label": "tpd=inf ctr=3 tr=1 pct[30] sl=75",
+      "y2025": {
+        "trades": 450,
+        "win_rate": 61.3,
+        "total": 128.0,
+        "pf": 1.005,
+        "mdd": -4375.0,
+        "sharpe": 0.002,
+        "calmar": 0.03
+      },
+      "y2026": {
+        "trades": 139,
+        "win_rate": 61.2,
+        "total": -1027.0,
+        "pf": 0.916,
+        "mdd": -4787.0,
+        "sharpe": -0.035,
+        "calmar": -0.21
+      },
+      "combined": -899.0
+    },
+    {
+      "cfg": {
+        "tpd": 3,
+        "tranches": 1,
+        "contracts": 3,
+        "split": [
+          3
+        ],
+        "mode": "pct",
+        "targets": [
+          50
+        ],
+        "sl": 75
+      },
+      "label": "tpd=3 ctr=3 tr=1 pct[50] sl=75",
+      "y2025": {
+        "trades": 392,
+        "win_rate": 49.2,
+        "total": -299.0,
+        "pf": 0.989,
+        "mdd": -3967.0,
+        "sharpe": -0.004,
+        "calmar": -0.08
+      },
+      "y2026": {
+        "trades": 126,
+        "win_rate": 54.0,
+        "total": -1036.0,
+        "pf": 0.923,
+        "mdd": -4096.0,
+        "sharpe": -0.034,
+        "calmar": -0.25
+      },
+      "combined": -1335.0
+    },
+    {
+      "cfg": {
+        "tpd": 99,
+        "tranches": 1,
+        "contracts": 1,
+        "split": [
+          1
+        ],
+        "mode": "pct",
+        "targets": [
+          30
+        ],
+        "sl": 40
+      },
+      "label": "tpd=inf ctr=1 tr=1 pct[30] sl=40",
+      "y2025": {
+        "trades": 594,
+        "win_rate": 49.0,
+        "total": 94.0,
+        "pf": 1.011,
+        "mdd": -1396.0,
+        "sharpe": 0.004,
+        "calmar": 0.07
+      },
+      "y2026": {
+        "trades": 218,
+        "win_rate": 46.8,
+        "total": -1042.0,
+        "pf": 0.785,
+        "mdd": -1427.0,
+        "sharpe": -0.1,
+        "calmar": -0.73
+      },
+      "combined": -948.0
+    },
+    {
+      "cfg": {
+        "tpd": 3,
+        "tranches": 1,
+        "contracts": 1,
+        "split": [
+          1
+        ],
+        "mode": "pct",
+        "targets": [
+          30
+        ],
+        "sl": 50
+      },
+      "label": "tpd=3 ctr=1 tr=1 pct[30] sl=50",
+      "y2025": {
+        "trades": 490,
+        "win_rate": 52.9,
+        "total": 13.0,
+        "pf": 1.002,
+        "mdd": -1332.0,
+        "sharpe": 0.001,
+        "calmar": 0.01
+      },
+      "y2026": {
+        "trades": 169,
+        "win_rate": 53.8,
+        "total": -1044.0,
+        "pf": 0.763,
+        "mdd": -1730.0,
+        "sharpe": -0.112,
+        "calmar": -0.6
+      },
+      "combined": -1031.0
+    },
+    {
+      "cfg": {
+        "tpd": 2,
+        "tranches": 1,
+        "contracts": 1,
+        "split": [
+          1
+        ],
+        "mode": "pct",
+        "targets": [
+          50
+        ],
+        "sl": 40
+      },
+      "label": "tpd=2 ctr=1 tr=1 pct[50] sl=40",
+      "y2025": {
+        "trades": 407,
+        "win_rate": 38.8,
+        "total": -60.0,
+        "pf": 0.992,
+        "mdd": -1425.0,
+        "sharpe": -0.003,
+        "calmar": -0.04
+      },
+      "y2026": {
+        "trades": 142,
+        "win_rate": 33.8,
+        "total": -1045.0,
+        "pf": 0.743,
+        "mdd": -1082.0,
+        "sharpe": -0.125,
+        "calmar": -0.97
+      },
+      "combined": -1105.0
+    },
+    {
+      "cfg": {
+        "tpd": 1,
+        "tranches": 1,
+        "contracts": 2,
+        "split": [
+          2
+        ],
+        "mode": "pct",
+        "targets": [
+          50
+        ],
+        "sl": 40
+      },
+      "label": "tpd=1 ctr=2 tr=1 pct[50] sl=40",
+      "y2025": {
+        "trades": 245,
+        "win_rate": 37.1,
+        "total": -533.0,
+        "pf": 0.95,
+        "mdd": -1981.0,
+        "sharpe": -0.021,
+        "calmar": -0.27
+      },
+      "y2026": {
+        "trades": 82,
+        "win_rate": 35.4,
+        "total": -1064.0,
+        "pf": 0.791,
+        "mdd": -1506.0,
+        "sharpe": -0.102,
+        "calmar": -0.71
+      },
+      "combined": -1597.0
+    },
+    {
+      "cfg": {
+        "tpd": 2,
+        "tranches": 1,
+        "contracts": 1,
+        "split": [
+          1
+        ],
+        "mode": "pct",
+        "targets": [
+          50
+        ],
+        "sl": 60
+      },
+      "label": "tpd=2 ctr=1 tr=1 pct[50] sl=60",
+      "y2025": {
+        "trades": 391,
+        "win_rate": 45.5,
+        "total": -820.0,
+        "pf": 0.914,
+        "mdd": -1531.0,
+        "sharpe": -0.035,
+        "calmar": -0.54
+      },
+      "y2026": {
+        "trades": 130,
+        "win_rate": 46.2,
+        "total": -1072.0,
+        "pf": 0.767,
+        "mdd": -1443.0,
+        "sharpe": -0.111,
+        "calmar": -0.74
+      },
+      "combined": -1892.0
+    },
+    {
+      "cfg": {
+        "tpd": 2,
+        "tranches": 1,
+        "contracts": 1,
+        "split": [
+          1
+        ],
+        "mode": "pct",
+        "targets": [
+          30
+        ],
+        "sl": 60
+      },
+      "label": "tpd=2 ctr=1 tr=1 pct[30] sl=60",
+      "y2025": {
+        "trades": 397,
+        "win_rate": 56.4,
+        "total": -1039.0,
+        "pf": 0.871,
+        "mdd": -1586.0,
+        "sharpe": -0.053,
+        "calmar": -0.65
+      },
+      "y2026": {
+        "trades": 134,
+        "win_rate": 54.5,
+        "total": -1083.0,
+        "pf": 0.734,
+        "mdd": -1810.0,
+        "sharpe": -0.126,
+        "calmar": -0.6
+      },
+      "combined": -2122.0
+    },
+    {
+      "cfg": {
+        "tpd": 3,
+        "tranches": 1,
+        "contracts": 1,
+        "split": [
+          1
+        ],
+        "mode": "pct",
+        "targets": [
+          50
+        ],
+        "sl": 40
+      },
+      "label": "tpd=3 ctr=1 tr=1 pct[50] sl=40",
+      "y2025": {
+        "trades": 505,
+        "win_rate": 39.2,
+        "total": 259.0,
+        "pf": 1.029,
+        "mdd": -1392.0,
+        "sharpe": 0.011,
+        "calmar": 0.19
+      },
+      "y2026": {
+        "trades": 178,
+        "win_rate": 37.1,
+        "total": -1094.0,
+        "pf": 0.771,
+        "mdd": -1246.0,
+        "sharpe": -0.108,
+        "calmar": -0.88
+      },
+      "combined": -835.0
+    },
+    {
+      "cfg": {
+        "tpd": 2,
+        "tranches": 1,
+        "contracts": 2,
+        "split": [
+          2
+        ],
+        "mode": "pct",
+        "targets": [
+          50
+        ],
+        "sl": 100
+      },
+      "label": "tpd=2 ctr=2 tr=1 pct[50] sl=100",
+      "y2025": {
+        "trades": 344,
+        "win_rate": 49.1,
+        "total": -1394.0,
+        "pf": 0.926,
+        "mdd": -3096.0,
+        "sharpe": -0.03,
+        "calmar": -0.45
+      },
+      "y2026": {
+        "trades": 113,
+        "win_rate": 54.0,
+        "total": -1094.0,
+        "pf": 0.876,
+        "mdd": -3024.0,
+        "sharpe": -0.055,
+        "calmar": -0.36
+      },
+      "combined": -2488.0
+    },
+    {
+      "cfg": {
+        "tpd": 2,
+        "tranches": 1,
+        "contracts": 3,
+        "split": [
+          3
+        ],
+        "mode": "pct",
+        "targets": [
+          50
+        ],
+        "sl": 75
+      },
+      "label": "tpd=2 ctr=3 tr=1 pct[50] sl=75",
+      "y2025": {
+        "trades": 357,
+        "win_rate": 49.6,
+        "total": -871.0,
+        "pf": 0.968,
+        "mdd": -3812.0,
+        "sharpe": -0.013,
+        "calmar": -0.23
+      },
+      "y2026": {
+        "trades": 115,
+        "win_rate": 53.0,
+        "total": -1100.0,
+        "pf": 0.913,
+        "mdd": -3827.0,
+        "sharpe": -0.038,
+        "calmar": -0.29
+      },
+      "combined": -1971.0
+    }
+  ],
+  "profitable_in_2026": [
+    {
+      "cfg": {
+        "tpd": 1,
+        "tranches": 1,
+        "contracts": 3,
+        "split": [
+          3
+        ],
+        "mode": "pct",
+        "targets": [
+          30
+        ],
+        "sl": 75
+      },
+      "label": "tpd=1 ctr=3 tr=1 pct[30] sl=75",
+      "y2025": {
+        "trades": 245,
+        "win_rate": 59.6,
+        "total": -2278.0,
+        "pf": 0.871,
+        "mdd": -3590.0,
+        "sharpe": -0.054,
+        "calmar": -0.63
+      },
+      "y2026": {
+        "trades": 82,
+        "win_rate": 65.9,
+        "total": 344.0,
+        "pf": 1.047,
+        "mdd": -2263.0,
+        "sharpe": 0.018,
+        "calmar": 0.15
+      },
+      "combined": -1934.0
+    },
+    {
+      "cfg": {
+        "tpd": 1,
+        "tranches": 1,
+        "contracts": 2,
+        "split": [
+          2
+        ],
+        "mode": "pct",
+        "targets": [
+          30
+        ],
+        "sl": 75
+      },
+      "label": "tpd=1 ctr=2 tr=1 pct[30] sl=75",
+      "y2025": {
+        "trades": 245,
+        "win_rate": 59.6,
+        "total": -1518.0,
+        "pf": 0.871,
+        "mdd": -2394.0,
+        "sharpe": -0.054,
+        "calmar": -0.63
+      },
+      "y2026": {
+        "trades": 82,
+        "win_rate": 65.9,
+        "total": 229.0,
+        "pf": 1.047,
+        "mdd": -1508.0,
+        "sharpe": 0.018,
+        "calmar": 0.15
+      },
+      "combined": -1289.0
+    },
+    {
+      "cfg": {
+        "tpd": 1,
+        "tranches": 1,
+        "contracts": 1,
+        "split": [
+          1
+        ],
+        "mode": "pct",
+        "targets": [
+          30
+        ],
+        "sl": 75
+      },
+      "label": "tpd=1 ctr=1 tr=1 pct[30] sl=75",
+      "y2025": {
+        "trades": 245,
+        "win_rate": 59.6,
+        "total": -759.0,
+        "pf": 0.871,
+        "mdd": -1197.0,
+        "sharpe": -0.054,
+        "calmar": -0.63
+      },
+      "y2026": {
+        "trades": 82,
+        "win_rate": 65.9,
+        "total": 115.0,
+        "pf": 1.047,
+        "mdd": -754.0,
+        "sharpe": 0.018,
+        "calmar": 0.15
+      },
+      "combined": -644.0
     }
   ],
   "robust_both_positive": []
