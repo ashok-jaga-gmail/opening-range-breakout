@@ -21,6 +21,11 @@ A fully automated 0DTE options trading bot based on the Opening Range Breakout (
 - **Position Management**: 3 contracts, scale out 1/3 at each profit level
 - **No Reversal**: Exits on opposite breakout, waits for re-entry
 
+> **Shipped defaults vs. research-optimal:** the settings above are what the bot trades as
+> shipped. A **research-optimal VIX-gated variant** (calls + puts, +30% scalp, VIX-gated
+> entries) backtests substantially better — see [Backtest (2025 & 2026)](#backtest-2025--2026)
+> below — but is **not yet wired into the live bot**.
+
 ## Key Features
 
 - **Timezone**: EST (9:30 AM - 1:00 PM EST trading window)
@@ -91,20 +96,21 @@ REENTRY_WAIT_MINUTES = 15
 
 - **orb_vwap_filter.py**: Main bot (800+ lines)
 - **orb_vwap_filter.sh**: Cron runner script
-- **backtest_vwap_filter.py**: Historical backtest on real 0DTE option prices
-- **BACKTEST_2025_2026.md**: 2025 & 2026 backtest results and methodology
-- **bot_state.json**: State persistence (auto-generated)
-- **bot.html**: HTML dashboard (auto-generated)
-- **orb_vwap_filter.log**: Execution logs (auto-generated)
+- **backtest_vwap_filter.py** / **BACKTEST_2025_2026.md**: live-bot backtest + methodology
+- **grid_search.py**, **grid_search_nocpr.py** / **GRID_SEARCH.md**: configuration search
+- **equity_curve.py** / **equity_curve.png**: recommended-config equity curve (uses `vix_daily.csv`)
+- **vix_daily.csv**: CBOE VIX daily OHLC (2023–2026) for the VIX gates
+- **cpr_reach_study.py**, **mae_mfe_study.py**, **STRATEGY.md**: supporting research
+- **bot_state.json**, **bot.html**, **orb_vwap_filter.log**: runtime artifacts (auto-generated)
 
 ## Backtest (2025 & 2026)
 
 A **look-ahead-free** historical replay on **real QQQ 0DTE option 1-minute prices** —
 signals on the completed bar's close, fills at the next bar's open. Figures below are for
 the **recommended VIX-gated strategy** (calls + puts, +30% scalp — see the next section
-and [GRID_SEARCH.md](GRID_SEARCH.md)), at **10 contracts** (daily-loss cap scaled to
-$10,000), **net of $0.65/contract/side**. The original live-bot config ([150/100/50]
-ladder, −50% stop) is documented separately in
+and [GRID_SEARCH.md](GRID_SEARCH.md)), at **10 contracts** (with a $4,000 daily-loss
+circuit breaker), **net of $0.65/contract/side**. The original live-bot config
+([150/100/50] ladder, −50% stop) is documented separately in
 [BACKTEST_2025_2026.md](BACKTEST_2025_2026.md).
 
 | | 2025 (full year) | 2026 (Jan–Jun 12) |
@@ -135,8 +141,9 @@ sides, using only the **VIX open** (known at 9:30 → no look-ahead):
   vol; shorts only earn their keep at VIX ≥ ~18, so the floor removes "false fear" days.
 
 The two gates are complementary: calls carry the calm/trending regimes, puts hedge the
-high-vol fear regime where calls fail. Sized at **10 contracts** (daily-loss cap scaled to
-$10,000 to match size), net of $0.65/contract/side — reproduce with
+high-vol fear regime where calls fail. Sized at **10 contracts** with a **$4,000 daily-loss
+circuit breaker** — it sits above the worst realized day (−$3,036), so it never actually
+binds here and is only a tail backstop. Net of $0.65/contract/side — reproduce with
 [`equity_curve.py`](equity_curve.py):
 
 ![Portfolio equity curve and drawdown — VIX-gated calls + puts, 10 contracts](equity_curve.png)
@@ -199,8 +206,8 @@ open bot.html  # Auto-refreshes every 60 seconds
 
 ## Support
 
-See SETUP_GUIDE.md for detailed setup instructions.
-See QUICK_REFERENCE.md for command reference.
+See [../SETUP.md](../SETUP.md) for IB Gateway + Python setup instructions.
+See [QUICK_REFERENCE.md](QUICK_REFERENCE.md) for command reference.
 
 ---
 

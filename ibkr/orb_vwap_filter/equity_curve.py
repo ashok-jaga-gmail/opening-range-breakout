@@ -10,8 +10,9 @@ Strategy: ORB +30% scalp, OTM-1, -75% stop, OR>=$1, 3 trades/day.
              analysis showed puts lose below ~16-18 and earn their keep at higher vol.
              VIX pivot = (prevH+prevL+prevC)/3 from the prior session, read from
              vix_daily.csv.
-Sized at 10 contracts; the $1,000/day loss cap is scaled with size to $1,000 x contracts
-(keeping it at $1,000 would throttle a 10-lot to ~1 trade/day). Net of $0.65/contract/side.
+Sized at 10 contracts with a $4,000/day loss circuit-breaker (DAILY_CAP). It sits just
+above the worst realized day in this backtest (-$3,036), so it never actually binds here;
+it is only a tail backstop. Net of $0.65/contract/side.
 
 Produces:
   - printed per-year + combined stats
@@ -32,7 +33,8 @@ from grid_search_nocpr import build_ctx, to_min, COMMISSION
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
 CONTRACTS = 10
-DAILY_CAP = 1000 * CONTRACTS
+DAILY_CAP = 4000             # daily-loss circuit breaker; above the worst realized day
+                             # (-$3,036 at 10 contracts), so it is inert in this backtest
 VIX_MIN_OPEN = 18.0          # put floor:  only take gated puts when VIX open >= this
 VIX_MAX_CALLS = 25.0         # call ceiling: skip CALLS when VIX open > this (panic regime)
 CFG = {"tpd": 3, "split": [CONTRACTS], "tgts": [30], "sl": 75, "otm": 1,
