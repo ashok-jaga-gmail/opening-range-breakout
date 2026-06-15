@@ -3,9 +3,12 @@ equity_curve.py — Portfolio (equity) curve for the recommended strategy at 10 
 
 Strategy: ORB +30% scalp, OTM-1, -75% stop, OR>=$1, 3 trades/day.
   - CALLS  : taken every day on an upside opening-range breakout
-  - PUTS   : taken only on days where VIX OPENED ABOVE its pivot (a risk-off open,
-             known at 9:30 -> no look-ahead). VIX pivot = (prevH+prevL+prevC)/3 from
-             the prior session, read from vix_daily.csv.
+  - PUTS   : taken only on days where VIX OPENED ABOVE its pivot AND VIX open >= 18
+             (a genuine risk-off open, known at 9:30 -> no look-ahead). The >=18 floor
+             removes low-vol "false fear" days where shorts just bleed; per-VIX-regime
+             analysis showed puts lose below ~16-18 and earn their keep at higher vol.
+             VIX pivot = (prevH+prevL+prevC)/3 from the prior session, read from
+             vix_daily.csv.
 Sized at 10 contracts; the $1,000/day loss cap is scaled with size to $1,000 x contracts
 (keeping it at $1,000 would throttle a 10-lot to ~1 trade/day). Net of $0.65/contract/side.
 
@@ -29,12 +32,13 @@ from grid_search_nocpr import build_ctx, to_min, COMMISSION
 _HERE = os.path.dirname(os.path.abspath(__file__))
 CONTRACTS = 10
 DAILY_CAP = 1000 * CONTRACTS
+VIX_MIN_OPEN = 18.0          # absolute floor: only take gated puts when VIX open >= this
 CFG = {"tpd": 3, "split": [CONTRACTS], "tgts": [30], "sl": 75, "otm": 1,
        "or_floor": 1.0, "dir": "both"}
 
 
-def vix_open_above_pivot_days(path=os.path.join(_HERE, "vix_daily.csv")):
-    """Return the set of dates where VIX opened above its (prior-day) CPR pivot."""
+def vix_put_days(path=os.path.join(_HERE, "vix_daily.csv"), vix_min=VIX_MIN_OPEN):
+    """Dates where VIX opened ABOVE its (prior-day) CPR pivot AND VIX open >= vix_min."""
     rows = []
     for r in csv.DictReader(open(path)):
         rows.append((r["date"], float(r["open"]), float(r["high"]),
@@ -44,12 +48,12 @@ def vix_open_above_pivot_days(path=os.path.join(_HERE, "vix_daily.csv")):
     for i in range(1, len(rows)):
         d, o, h, l, c = rows[i]
         ph, pl, pc = rows[i - 1][2], rows[i - 1][3], rows[i - 1][4]
-        if o > (ph + pl + pc) / 3.0:
+        if o > (ph + pl + pc) / 3.0 and o >= vix_min:
             out.add(d)
     return out
 
 
-VIX_PUT_DAYS = vix_open_above_pivot_days()
+VIX_PUT_DAYS = vix_put_days()
 
 
 def sim_eq(ctx, c, cap):
@@ -109,7 +113,7 @@ def sim_eq(ctx, c, cap):
             if px > rhigh and px > vw and dirf in ("both", "call"):
                 d_ = "call"; strike = round(px) + otm; arr = ctx["call"].get(strike)
             elif (px < rlow and px < vw and dirf in ("both", "put")
-                  and ctx["date"] in VIX_PUT_DAYS):                # puts only on VIX-risk-off opens
+                  and ctx["date"] in VIX_PUT_DAYS):                # puts only on VIX open>pivot & >=18
                 d_ = "put"; strike = round(px) - otm; arr = ctx["put"].get(strike)
             else:
                 continue
@@ -165,7 +169,7 @@ def main():
     yb = datetime(2026, 1, 1)
     ax.axvline(yb, color="#c62828", ls="--", lw=1, alpha=0.7)
     ax.text(yb, ax.get_ylim()[1] * 0.92, " 2026", color="#c62828", fontsize=9)
-    ax.set_title("ORB +30% scalp — calls + VIX-gated puts — 10 contracts — cumulative net P&L (2025–2026)",
+    ax.set_title("ORB +30% scalp — calls + puts[VIX open>pivot & ≥18] — 10 contracts (2025–2026)",
                  fontsize=10.5)
     ax.set_ylabel("Cumulative net P&L ($)")
     ax.yaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda v, _: f"${v:,.0f}"))

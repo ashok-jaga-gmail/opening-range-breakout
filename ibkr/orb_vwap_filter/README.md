@@ -122,10 +122,11 @@ The configuration grid search ([GRID_SEARCH.md](GRID_SEARCH.md)) found a CPR-fre
 net-positive (after commissions) in both years. The directional split is:
 
 - **Calls** — taken every day on an upside opening-range breakout.
-- **Puts** — taken **only on days where VIX opens above its pivot** (a risk-off open,
-  known at 9:30 → no look-ahead; VIX pivot = `(prevH+prevL+prevC)/3`, from
-  [`vix_daily.csv`](vix_daily.csv)). Unfiltered puts lose every year; this gate turns the
-  short side from a drag into a contributor.
+- **Puts** — taken **only on days where VIX opens above its pivot AND VIX open ≥ 18**
+  (a genuine risk-off open, known at 9:30 → no look-ahead; VIX pivot =
+  `(prevH+prevL+prevC)/3`, from [`vix_daily.csv`](vix_daily.csv)). Unfiltered puts lose
+  every year, and even pivot-gated puts bleed in low vol; per-regime analysis showed shorts
+  only earn their keep at VIX ≥ ~18, so the floor removes the "false fear" low-vol days.
 
 Sized at **10 contracts** (daily-loss cap scaled to $10,000 to match size), net of
 $0.65/contract/side — reproduce with [`equity_curve.py`](equity_curve.py):
@@ -134,13 +135,13 @@ $0.65/contract/side — reproduce with [`equity_curve.py`](equity_curve.py):
 
 | | 2025 | 2026 (Jan–Jun) | Combined |
 |---|---:|---:|---:|
-| **Net P&L** | **+$10,188** | **+$8,764** | **+$18,952** |
-| Trades / days | 299 / 197 | 103 / 71 | — |
-| Day win rate | 61% | 62% | — |
+| **Net P&L** | **+$9,841** | **+$13,496** | **+$23,337** |
+| Trades / days | 258 / 177 | 93 / 67 | — |
+| Day win rate | 62% | 67% | — |
 
-Adding the VIX-gated puts lifts the combined 2-year result from **+$14,539** (calls only)
-to **+$18,952** — it roughly doubles 2025 (the puts' best year) while modestly diluting
-2026 (a near-vertical uptrend where even gated shorts struggle).
+The VIX gate lifts the combined 2-year result from **+$14,539** (calls only) → **+$18,952**
+(pivot gate) → **+$23,337** with the VIX-open ≥ 18 floor added. The floor barely touches
+2025 (−$347) but adds **+$4,732 in 2026** by cutting the low-vol put bleed.
 
 ⚠️ Still a **long-biased** strategy harvesting the 2025–26 QQQ uptrend; the VIX gate adds a
 short side only on risk-off days. It was ≈ breakeven-to-negative in 2024 and would likely
