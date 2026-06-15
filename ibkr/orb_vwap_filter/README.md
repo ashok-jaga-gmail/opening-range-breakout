@@ -115,23 +115,34 @@ making in 2026** — the edge lives in a few trend days.
 
 ### Recommended config — portfolio equity curve (10 contracts)
 
-The configuration grid search ([GRID_SEARCH.md](GRID_SEARCH.md)) found a CPR-free,
-**calls-only +30% scalp** that is net-positive (after commissions) in **both** years:
-`calls-only · OTM-1 · +30% target · −75% stop · OR ≥ $1 · 3 trades/day`. Sized at
-**10 contracts** (daily-loss cap scaled to $10,000 to match size), net of
+The configuration grid search ([GRID_SEARCH.md](GRID_SEARCH.md)) found a CPR-free
+**+30% scalp** (`OTM-1 · +30% target · −75% stop · OR ≥ $1 · 3 trades/day`) that is
+net-positive (after commissions) in both years. The directional split is:
+
+- **Calls** — taken every day on an upside opening-range breakout.
+- **Puts** — taken **only on days where VIX opens above its pivot** (a risk-off open,
+  known at 9:30 → no look-ahead; VIX pivot = `(prevH+prevL+prevC)/3`, from
+  [`vix_daily.csv`](vix_daily.csv)). Unfiltered puts lose every year; this gate turns the
+  short side from a drag into a contributor.
+
+Sized at **10 contracts** (daily-loss cap scaled to $10,000 to match size), net of
 $0.65/contract/side — reproduce with [`equity_curve.py`](equity_curve.py):
 
-![Cumulative net P&L — calls-only +30% scalp, 10 contracts](equity_curve.png)
+![Cumulative net P&L — calls + VIX-gated puts, 10 contracts](equity_curve.png)
 
 | | 2025 | 2026 (Jan–Jun) | Combined |
 |---|---:|---:|---:|
-| **Net P&L** | **+$4,396** | **+$10,142** | **+$14,539** |
-| Trades / days | 227 / 163 | 80 / 59 | — |
-| Day win rate | 63% | 68% | — |
+| **Net P&L** | **+$10,188** | **+$8,764** | **+$18,952** |
+| Trades / days | 299 / 197 | 103 / 71 | — |
+| Day win rate | 61% | 62% | — |
 
-⚠️ This is a **long bias** harvesting the 2025–26 QQQ uptrend (calls win, puts lose every
-year), **not** an all-weather edge — it was ≈ breakeven-to-negative in 2024 and would
-likely lose in a down market. Validate out-of-sample before risking capital.
+Adding the VIX-gated puts lifts the combined 2-year result from **+$14,539** (calls only)
+to **+$18,952** — it roughly doubles 2025 (the puts' best year) while modestly diluting
+2026 (a near-vertical uptrend where even gated shorts struggle).
+
+⚠️ Still a **long-biased** strategy harvesting the 2025–26 QQQ uptrend; the VIX gate adds a
+short side only on risk-off days. It was ≈ breakeven-to-negative in 2024 and would likely
+underperform in a sustained down market. Validate out-of-sample before risking capital.
 
 ## Quick Start
 
