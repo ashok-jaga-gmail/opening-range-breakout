@@ -2,12 +2,18 @@
 
 ## Overview
 
-A fully automated 0DTE options trading bot based on Opening Range Breakout (ORB) strategy with VWAP filter confirmation.
+A fully automated 0DTE options trading bot based on the Opening Range Breakout (ORB) strategy.
+
+> **Note:** the VWAP entry filter is **disabled by default** (`VWAP_FILTER_STRICT = False`).
+> An ablation over 2024–2026 showed it removes <3% of trades — it is redundant with the
+> OR-high breakout — and is net-neutral for calls / net-negative when trading both
+> directions. VWAP is still computed and shown on the dashboard. Set the flag to `True`
+> to restore the original VWAP-confirmed entries.
 
 ## Strategy
 
 - **Opening Range**: Captures 15-minute range (9:30-9:45 AM EST)
-- **Entry**: Breakout above range high + price > VWAP (calls) OR below range low + price < VWAP (puts)
+- **Entry**: Breakout above range high (calls) OR below range low (puts). *(VWAP confirmation optional — off by default.)*
 - **Exit**: CPR-based profit taking at 50%, 100%, 150%
 - **Stop Loss**: Hybrid approach - 50% of entry price
 - **Position Management**: 3 contracts, scale out 1/3 at each profit level
@@ -18,7 +24,7 @@ A fully automated 0DTE options trading bot based on Opening Range Breakout (ORB)
 - **Timezone**: EST (9:30 AM - 1:00 PM EST trading window)
 - **Opening Range**: 9:30-9:45 AM EST
 - **Trading Hours**: 9:45 AM - 1:00 PM EST (post-range)
-- **VWAP Filter**: Strict - only long if price > VWAP, short if price < VWAP
+- **VWAP Filter**: Optional, **off by default** (computed for the dashboard; not used to gate entries)
 - **Risk Management**: Max $1,000 daily loss, 15-min re-entry cooldown
 - **State Persistence**: Fully stateless design with JSON state file
 - **HTML Dashboard**: Auto-updating dashboard with range/VWAP metrics
@@ -30,8 +36,8 @@ A fully automated 0DTE options trading bot based on Opening Range Breakout (ORB)
 2. Trading hours (9:45 AM - 1:00 PM EST)
 3. Range successfully captured
 4. Breakout detected:
-   - **Calls**: price > range_high AND price > VWAP
-   - **Puts**: price < range_low AND price < VWAP
+   - **Calls**: price > range_high *(AND price > VWAP only if `VWAP_FILTER_STRICT = True`)*
+   - **Puts**: price < range_low *(AND price < VWAP only if `VWAP_FILTER_STRICT = True`)*
 5. No existing position
 6. Risk limit not exceeded ($1,000 max daily loss)
 7. Not in re-entry cooldown (15 minutes after stop out)

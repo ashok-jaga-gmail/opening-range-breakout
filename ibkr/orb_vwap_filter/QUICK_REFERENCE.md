@@ -49,7 +49,7 @@ crontab -e
 | `CPR_LEVEL_2_PROFIT_PERCENT` | 100 | Second exit % |
 | `CPR_LEVEL_3_PROFIT_PERCENT` | 150 | Third exit % |
 | `REENTRY_WAIT_MINUTES` | 15 | Wait after stop |
-| `VWAP_FILTER_STRICT` | True | Enforce VWAP filter |
+| `VWAP_FILTER_STRICT` | False | VWAP entry filter (off by default; pure ORB entry) |
 | `IBKR_CLIENT_ID` | 21 | Must be unique |
 
 ## Trading Logic
@@ -58,7 +58,7 @@ crontab -e
 - ✓ Post-opening range (after 9:45 AM EST)
 - ✓ Trading hours (9:45 AM - 1:00 PM EST)
 - ✓ Range captured (9:30-9:45 AM)
-- ✓ Breakout detected (price > range_high + price > VWAP OR price < range_low + price < VWAP)
+- ✓ Breakout detected (price > range_high for calls / price < range_low for puts; VWAP confirmation only if `VWAP_FILTER_STRICT = True`)
 - ✓ Daily risk not exceeded
 - ✓ Not in re-entry wait
 - ✓ No existing position
@@ -92,7 +92,7 @@ crontab -e
 
 | Issue | Check |
 |-------|-------|
-| No entries | Range captured, VWAP calculated, breakout + VWAP alignment, risk limit |
+| No entries | Range captured, breakout past range high/low, risk limit, re-entry cooldown |
 | Orders fail | IBKR permissions, account balance, connection |
 | Dashboard stale | Cron running, logs for errors |
 | State corrupted | Reset bot_state.json |

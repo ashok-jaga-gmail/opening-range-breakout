@@ -31,7 +31,10 @@ TRADING_END_MINUTE = 0
 
 # ORB Settings
 OPENING_RANGE_MINUTES = 15    # 9:30-9:45 AM EST
-VWAP_FILTER_STRICT = True     # Enforce VWAP filter (only long if price > VWAP, short if < VWAP)
+VWAP_FILTER_STRICT = False    # VWAP entry filter DISABLED (ablation 2024-2026: it removes
+                              # <3% of trades — redundant with the OR-high breakout — and is
+                              # net-neutral for calls / net-negative for both directions).
+                              # VWAP is still computed for the dashboard. Set True to re-enable.
 BAR_SIZE_OPENING_RANGE = '1 min'  # 1-minute bars for range capture
 BAR_SIZE_VWAP = '1 min'       # 1-minute bars for VWAP calculation
 
@@ -119,15 +122,17 @@ def capture_opening_range(bars, range_start_time, range_end_time):
 
 def check_breakout(current_price, range_high, range_low, vwap, current_position):
     """
-    Detect valid breakout with VWAP filter
+    Detect a valid opening-range breakout.
+    The VWAP filter is applied only if VWAP_FILTER_STRICT is True (default False);
+    otherwise entry is a pure ORB breakout.
     Returns: 'call', 'put', 'exit', or None
     """
     # No position - check for entry
     if current_position is None:
-        if current_price > range_high and current_price > vwap:
-            return 'call'  # Bullish breakout with VWAP confirmation
-        elif current_price < range_low and current_price < vwap:
-            return 'put'   # Bearish breakout with VWAP confirmation
+        if current_price > range_high and (not VWAP_FILTER_STRICT or current_price > vwap):
+            return 'call'  # Bullish opening-range breakout
+        elif current_price < range_low and (not VWAP_FILTER_STRICT or current_price < vwap):
+            return 'put'   # Bearish opening-range breakout
         return None
 
     # Have position - check for opposite breakout (exit signal)
@@ -653,11 +658,11 @@ async def main():
             elif can_reenter:
                 # No position - check for entry signal
                 # Check if range is captured and we're post-opening range
-                if range_captured and is_post_opening_range(est_now) and vwap:
+                if range_captured and is_post_opening_range(est_now) and (vwap or not VWAP_FILTER_STRICT):
                     breakout_signal = check_breakout(current_price, range_high, range_low, vwap, None)
 
                     if breakout_signal in ['call', 'put']:
-                        # Entry signal confirmed with VWAP filter
+                        # Entry signal confirmed (opening-range breakout)
                         direction = breakout_signal
                         state['breakout_price'] = current_price
                         state['vwap_at_entry'] = vwap
