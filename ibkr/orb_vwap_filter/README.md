@@ -119,29 +119,34 @@ making in 2026** — the edge lives in a few trend days.
 
 The configuration grid search ([GRID_SEARCH.md](GRID_SEARCH.md)) found a CPR-free
 **+30% scalp** (`OTM-1 · +30% target · −75% stop · OR ≥ $1 · 3 trades/day`) that is
-net-positive (after commissions) in both years. The directional split is:
+net-positive (after commissions) in both years.
 
-- **Calls** — taken every day on an upside opening-range breakout.
-- **Puts** — taken **only on days where VIX opens above its pivot AND VIX open ≥ 18**
-  (a genuine risk-off open, known at 9:30 → no look-ahead; VIX pivot =
-  `(prevH+prevL+prevC)/3`, from [`vix_daily.csv`](vix_daily.csv)). Unfiltered puts lose
-  every year, and even pivot-gated puts bleed in low vol; per-regime analysis showed shorts
-  only earn their keep at VIX ≥ ~18, so the floor removes the "false fear" low-vol days.
+VIX (from [`vix_daily.csv`](vix_daily.csv), pivot = `(prevH+prevL+prevC)/3`) gates **both**
+sides, using only the **VIX open** (known at 9:30 → no look-ahead):
 
-Sized at **10 contracts** (daily-loss cap scaled to $10,000 to match size), net of
-$0.65/contract/side — reproduce with [`equity_curve.py`](equity_curve.py):
+- **Calls** — upside opening-range breakout, **skipped when VIX opens > 25** (the panic
+  regime: calls lose ~$69/day at a 36% win rate there — it's the entire drag on the call side).
+- **Puts** — taken **only when VIX opens above its pivot AND VIX open ≥ 18** (a genuine
+  risk-off open). Unfiltered puts lose every year and even pivot-gated puts bleed in low
+  vol; shorts only earn their keep at VIX ≥ ~18, so the floor removes "false fear" days.
 
-![Cumulative net P&L — calls + VIX-gated puts, 10 contracts](equity_curve.png)
+The two gates are complementary: calls carry the calm/trending regimes, puts hedge the
+high-vol fear regime where calls fail. Sized at **10 contracts** (daily-loss cap scaled to
+$10,000 to match size), net of $0.65/contract/side — reproduce with
+[`equity_curve.py`](equity_curve.py):
+
+![Cumulative net P&L — VIX-gated calls + puts, 10 contracts](equity_curve.png)
 
 | | 2025 | 2026 (Jan–Jun) | Combined |
 |---|---:|---:|---:|
-| **Net P&L** | **+$9,841** | **+$13,496** | **+$23,337** |
-| Trades / days | 258 / 177 | 93 / 67 | — |
-| Day win rate | 62% | 67% | — |
+| **Net P&L** | **+$13,119** | **+$15,056** | **+$28,176** |
+| Trades / days | 242 / 169 | 92 / 66 | — |
+| Day win rate | 63% | 68% | — |
 
-The VIX gate lifts the combined 2-year result from **+$14,539** (calls only) → **+$18,952**
-(pivot gate) → **+$23,337** with the VIX-open ≥ 18 floor added. The floor barely touches
-2025 (−$347) but adds **+$4,732 in 2026** by cutting the low-vol put bleed.
+Progression of the combined 2-year result as each gate is added:
+**+$14,539** (calls only) → **+$18,952** (puts: VIX open > pivot) → **+$23,337**
+(+ VIX-open ≥ 18 put floor) → **+$28,176** (+ skip calls when VIX open > 25). The call
+ceiling alone adds **+$4,839** by removing the April-2025-style panic-day losses.
 
 ⚠️ Still a **long-biased** strategy harvesting the 2025–26 QQQ uptrend; the VIX gate adds a
 short side only on risk-off days. It was ≈ breakeven-to-negative in 2024 and would likely
