@@ -113,6 +113,26 @@ Positive-skew, low-win-rate (~1 in 4): ~65% stop out at −50%, but winners aver
 losers. **Profitable in 2025 but only thin/near-breakeven after realistic costs; loss-
 making in 2026** — the edge lives in a few trend days.
 
+### Recommended config — portfolio equity curve (10 contracts)
+
+The configuration grid search ([GRID_SEARCH.md](GRID_SEARCH.md)) found a CPR-free,
+**calls-only +30% scalp** that is net-positive (after commissions) in **both** years:
+`calls-only · OTM-1 · +30% target · −75% stop · OR ≥ $1 · 3 trades/day`. Sized at
+**10 contracts** (daily-loss cap scaled to $10,000 to match size), net of
+$0.65/contract/side — reproduce with [`equity_curve.py`](equity_curve.py):
+
+![Cumulative net P&L — calls-only +30% scalp, 10 contracts](equity_curve.png)
+
+| | 2025 | 2026 (Jan–Jun) | Combined |
+|---|---:|---:|---:|
+| **Net P&L** | **+$4,396** | **+$10,142** | **+$14,539** |
+| Trades / days | 227 / 163 | 80 / 59 | — |
+| Day win rate | 63% | 68% | — |
+
+⚠️ This is a **long bias** harvesting the 2025–26 QQQ uptrend (calls win, puts lose every
+year), **not** an all-weather edge — it was ≈ breakeven-to-negative in 2024 and would
+likely lose in a down market. Validate out-of-sample before risking capital.
+
 ## Quick Start
 
 ```bash

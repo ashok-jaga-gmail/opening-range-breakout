@@ -52,7 +52,7 @@ def build_ctx(year, days):
                         arr[idx[t]] = o
                 out[strike] = arr
             return out
-        ctxs.append({"times": times, "close": close, "vwap": vwap, "rhigh": rhigh,
+        ctxs.append({"date": d, "times": times, "close": close, "vwap": vwap, "rhigh": rhigh,
                      "rlow": rlow, "orr": orr, "call": align(opt["call"]), "put": align(opt["put"]),
                      "e0": next((i for i, t in enumerate(times) if t >= ENTRY_START), len(times)),
                      "eod": next((i for i, t in enumerate(times) if t >= TRADING_END), len(times))})
